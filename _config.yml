@@ -1,3 +1,13 @@
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "" # the subpath of your site, e.g. /blog
-title: "" # the name of your site, e.g. ACME Corp.
+url: "https://alex-k1m.github.io"
+baseurl: "/html-templates"
+title: "HTML Templates"
+collections:
+  fm-challenges:
+    output: true
+    permalink: /:title
+defaults:
+  - scope:
+      path: ""
+      type: "fm-challenges"
+    values:
+      layout: "fm-challenge"
