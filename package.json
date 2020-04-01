@@ -1,0 +1,21 @@
+{
+  "name": "html-templates",
+  "private": true,
+  "description": "A set of html templates made while practicing core web coding skills.",
+  "version": "0.1.0",
+  "author": "Alex Kim",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alex-K1m/html-templates.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Alex-K1m/html-templates/issues"
+  },
+  "homepage": "https://alex-k1m.github.io/html-templates/",
+  "devDependencies": {
+    "prettier": "^2.0.2"
+  }
+}
