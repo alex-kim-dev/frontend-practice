@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "Alex Kim",
   "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,6 +18,11 @@
   },
   "homepage": "https://alex-k1m.github.io/html-templates/",
   "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.2",
     "prettier": "^2.0.2"
   }
 }
