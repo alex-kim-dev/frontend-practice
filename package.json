@@ -5,8 +5,12 @@
   "version": "0.1.0",
   "author": "Alex Kim",
   "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
+    "lint": "npm run lint:js & npm run lint:scss",
+    "lint:js": "eslint .",
+    "lint:scss": "stylelint '**/*.scss'",
+    "fix": "npm run fix:js & npm run fix:scss",
+    "fix:js": "eslint --fix .",
+    "fix:scss": "stylelint --fix '**/*.scss'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,6 +27,13 @@
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-prettier": "^3.1.2",
-    "prettier": "^2.0.2"
-  }
+    "prettier": "^2.0.2",
+    "stylelint": "^13.2.1",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.0.0",
+    "stylelint-prettier": "^1.1.2"
+  },
+  "dependencies": {}
 }
