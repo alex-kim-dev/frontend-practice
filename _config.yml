@@ -5,10 +5,10 @@ collections:
   fm-challenges:
     output: true
     permalink: /:title
-defaults:
-  - scope:
-      path: ""
-      type: "fm-challenges"
-    values:
-      layout: "fm-challenge"
+# defaults:
+#   - scope:
+#       path: ""
+#       type: "fm-challenges"
+#     values:
+#       layout: "fm-challenge"
 exclude: [makefile, package.json, package-lock.json]
