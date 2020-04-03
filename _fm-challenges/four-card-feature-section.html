@@ -4,8 +4,9 @@ difficulty: newbie
 ---
 
 <!-- prettier-ignore -->
-{% assign cssPath = '/assets/css/' | append: page.slug | append: '.css' | relative_url %}
-{% assign imgPath = '/assets/images/' | append: page.slug %}
+{% assign assetsPath = '/assets/' | append: page.slug %}
+{% assign cssUrl = assetsPath | append: '/styles.css' | relative_url %}
+{% assign faviconUrl = assetsPath | append: '/favicon-32x32.png' | relative_url %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,13 +14,8 @@ difficulty: newbie
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Frontend Mentor | Four card feature section</title>
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="{{ '/favicon-32x32.png' | prepend: imgPath | relative_url }}"
-    />
-    <link rel="stylesheet" href="{{ cssPath }}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ faviconUrl }}" />
+    <link rel="stylesheet" href="{{ cssUrl }}" />
     <style>
       .attribution {
         font-size: 11px;
