@@ -11,3 +11,4 @@ defaults:
       type: "fm-challenges"
     values:
       layout: "fm-challenge"
+exclude: [makefile, package.json, package-lock.json]
