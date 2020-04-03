@@ -3,3 +3,12 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+
+node_modules
+logs
+*.log
+npm-debug.log*
+.npm
+.eslintcache
+.node_repl_history
+.env*
