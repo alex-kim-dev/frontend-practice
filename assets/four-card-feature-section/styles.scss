@@ -18,3 +18,100 @@ $color-primary-blue: hsl(212, 86%, 64%);
 $color-neutral-very-dark-blue: hsl(234, 12%, 34%);
 $color-neutral-grayish-blue: hsl(229, 6%, 66%);
 $color-neutral-very-light-gray: hsl(0, 0%, 98%);
+$color-back: hsl(0, 0, 100%);
+
+html {
+  font-size: 62.5%;
+}
+
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.feature {
+  padding: 8.8rem 3.2rem 8rem;
+  font-family: Poppins, sans-serif;
+  letter-spacing: 0.1px;
+  background: $color-neutral-very-light-gray;
+  &_header {
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+  }
+  &_heading {
+    margin-top: 1rem;
+    color: $color-neutral-very-dark-blue;
+    font-weight: 600;
+    font-size: 2.4rem;
+  }
+  &_quality {
+    order: -1;
+    color: $color-neutral-very-dark-blue;
+    font-weight: 200;
+    font-size: 2.4rem;
+  }
+  &_caption {
+    margin-top: 2rem;
+    color: $color-neutral-grayish-blue;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+  }
+  &_container {
+    display: grid;
+    grid-gap: 2.4rem;
+    margin-top: 7.4rem;
+  }
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  box-sizing: border-box;
+  height: 22.2rem;
+  padding: 3.2rem 2.8rem 2.8rem;
+  overflow: hidden;
+  background: $color-back;
+  border-radius: 0.8rem;
+  box-shadow: 0 0.8rem 2rem hsla(0, 0, 0, 0.2);
+  &:nth-child(1) > .card_border {
+    background: $color-primary-cyan;
+  }
+  &:nth-child(2) > .card_border {
+    background: $color-primary-red;
+  }
+  &:nth-child(3) > .card_border {
+    background: $color-primary-orange;
+  }
+  &:nth-child(4) > .card_border {
+    background: $color-primary-blue;
+  }
+  &_border {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    height: 0.4rem;
+    transform: translateX(-50%);
+  }
+  &_heading {
+    color: $color-neutral-very-dark-blue;
+    font-size: 2rem;
+  }
+  &_text {
+    margin-top: 0.6rem;
+    color: $color-neutral-grayish-blue;
+    font-size: 1.3rem;
+    line-height: 1.8em;
+  }
+  &_icon {
+    align-self: flex-end;
+    width: 5.7rem;
+  }
+}
+
+.spacer {
+  flex: 1;
+}
