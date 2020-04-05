@@ -20,15 +20,6 @@ difficulty: newbie
     <title>Frontend Mentor | Four card feature section</title>
     <link rel="icon" type="image/png" sizes="32x32" href="{{ faviconUrl }}" />
     <link rel="stylesheet" href="{{ cssUrl }}" />
-    <style>
-      .attribution {
-        font-size: 11px;
-        text-align: center;
-      }
-      .attribution a {
-        color: hsl(228, 45%, 44%);
-      }
-    </style>
   </head>
   <body>
     <section class="feature">
@@ -88,13 +79,7 @@ difficulty: newbie
       </div>
     </section>
     <footer>
-      <p class="attribution">
-        Challenge by
-        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-          >Frontend Mentor</a
-        >. Coded by
-        <a href="https://github.com/Alex-K1m" target="_blank">Alex Kim</a>.
-      </p>
+      {% include attribution.html %}
     </footer>
   </body>
 </html>
