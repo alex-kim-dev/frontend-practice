@@ -31,11 +31,13 @@ p {
 .feature {
   padding: 8.8rem 3.2rem 8rem;
   font-family: Poppins, sans-serif;
-  letter-spacing: 0.1px;
+  letter-spacing: 0.01em;
   background: $color-neutral-very-light-gray;
   &_header {
     display: flex;
     flex-flow: column;
+    max-width: 52rem;
+    margin: auto;
     text-align: center;
   }
   &_heading {
@@ -58,8 +60,8 @@ p {
   }
   &_container {
     display: grid;
-    grid-auto-rows: 1fr;
     grid-gap: 2.4rem;
+    justify-content: center;
     margin-top: 7.4rem;
   }
 }
@@ -74,7 +76,7 @@ p {
   overflow: hidden;
   background: $color-back;
   border-radius: 0.8rem;
-  box-shadow: 0 0.8rem 2rem hsla(0, 0, 0, 0.2);
+  box-shadow: 0 0.8rem 3rem hsla(0, 0, 0, 0.1);
   @for $i from 1 through length($colors-primary) {
     &:nth-child(#{$i}) > .card_border {
       background: nth($colors-primary, $i);
@@ -93,6 +95,7 @@ p {
     font-size: 2rem;
   }
   &_text {
+    flex: 1;
     margin-top: 0.6rem;
     color: $color-neutral-grayish-blue;
     font-size: 1.3rem;
@@ -102,5 +105,43 @@ p {
     align-self: flex-end;
     width: 5.7rem;
     margin-top: 3rem;
+  }
+}
+
+@media (min-width: $breakpoint-desktop) {
+  .feature {
+    padding-top: 8.6rem;
+    &_heading,
+    &_quality {
+      font-size: 3.6rem;
+    }
+    &_container {
+      grid-gap: 3rem;
+      grid-template: repeat(4, 1fr) / repeat(3, 35rem);
+      margin: 6.4rem auto 0;
+    }
+  }
+
+  .card {
+    padding: 3.5rem 3.2rem 3.2rem;
+    &:nth-child(1) {
+      grid-area: 2 / 1 / span 2;
+    }
+    &:nth-child(2) {
+      grid-area: 1 / 2 / span 2;
+    }
+    &:nth-child(3) {
+      grid-area: 3 / 2 / span 2;
+    }
+    &:nth-child(4) {
+      grid-area: 2 / 3 / span 2;
+    }
+    &_text {
+      margin-top: 1rem;
+    }
+    &_icon {
+      width: 6.4rem;
+      margin-top: 4rem;
+    }
   }
 }
