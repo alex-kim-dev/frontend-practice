@@ -9,6 +9,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
 
 $breakpoint-mobile: 375px;
+$breakpoint-tablet: 768px;
 $breakpoint-desktop: 1440px;
 
 $colors-primary: hsl(180, 62%, 55%), hsl(0, 78%, 62%), hsl(34, 97%, 64%),
@@ -105,6 +106,19 @@ p {
     align-self: flex-end;
     width: 5.7rem;
     margin-top: 3rem;
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .feature {
+    &_heading,
+    &_quality {
+      font-size: 3rem;
+    }
+    &_container {
+      grid-template-columns: repeat(2, 32rem);
+      margin: 7rem auto 0;
+    }
   }
 }
 
