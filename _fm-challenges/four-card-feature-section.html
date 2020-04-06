@@ -7,10 +7,6 @@ difficulty: newbie
 {% assign assetsPath = '/assets/' | append: page.slug %}
 {% assign cssUrl = assetsPath | append: '/styles.css' | relative_url %}
 {% assign faviconUrl = assetsPath | append: '/favicon-32x32.png' | relative_url %}
-{% assign supervisorIconUrl = assetsPath | append: '/icon-supervisor.svg' | relative_url %}
-{% assign teamBuilderIconUrl = assetsPath | append: '/icon-team-builder.svg' | relative_url %}
-{% assign karmaIconUrl = assetsPath | append: '/icon-karma.svg' | relative_url %}
-{% assign calculatorIconUrl = assetsPath | append: '/icon-calculator.svg' | relative_url %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,59 +20,47 @@ difficulty: newbie
   <body>
     <section class="feature">
       <header class="feature_header">
-        <h2 class="feature_heading">Powered by Technology</h2>
-        <div class="feature_quality">Reliable, efficient delivery</div>
+        <h2 class="feature_heading">Reliable, efficient delivery</h2>
+        <p class="feature_poweredby">Powered by Technology</p>
         <p class="feature_caption">
           Our Artificial Intelligence powered tools use millions of project data
           points to ensure that your project is successful
         </p>
       </header>
-      <div class="feature_container">
-        <div class="card">
+      <ul class="feature_list">
+        <li class="card">
           <div class="card_border"></div>
           <h3 class="card_heading">Supervisor</h3>
           <p class="card_text">
             Monitors activity to identify project roadblocks
           </p>
-          <img
-            src="{{ supervisorIconUrl }}"
-            alt="Supervisor icon"
-            class="card_icon"
-          />
-        </div>
-        <div class="card">
+          <div class="card_icon"></div>
+        </li>
+        <li class="card">
           <div class="card_border"></div>
           <h3 class="card_heading">Team Builder</h3>
           <p class="card_text">
             Scans our talent network to create the optimal team for your project
           </p>
-          <img
-            src="{{ teamBuilderIconUrl }}"
-            alt="Team builder icon"
-            class="card_icon"
-          />
-        </div>
-        <div class="card">
+          <div class="card_icon"></div>
+        </li>
+        <li class="card">
           <div class="card_border"></div>
           <h3 class="card_heading">Karma</h3>
           <p class="card_text">
             Regularly evaluates our talent to ensure quality
           </p>
-          <img src="{{ karmaIconUrl }}" alt="Karma icon" class="card_icon" />
-        </div>
-        <div class="card">
+          <div class="card_icon"></div>
+        </li>
+        <li class="card">
           <div class="card_border"></div>
           <h3 class="card_heading">Calculator</h3>
           <p class="card_text">
             Uses data from past projects to provide better delivery estimates
           </p>
-          <img
-            src="{{ calculatorIconUrl }}"
-            alt="Calculator icon"
-            class="card_icon"
-          />
-        </div>
-      </div>
+          <div class="card_icon"></div>
+        </li>
+      </ul>
     </section>
     <footer>
       {% include attribution.html %}
