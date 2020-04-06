@@ -1,0 +1,175 @@
+---
+---
+
+#unknown {
+} // fixes Unknown word (CssSyntaxError) on frontmatter by stylelint
+
+@import 'normalize';
+@import 'attribution';
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+
+$breakpoint-mobile: 375px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1440px;
+
+$colors-primary: hsl(180, 62%, 55%), hsl(0, 78%, 62%), hsl(34, 97%, 64%),
+  hsl(212, 86%, 64%);
+$color-neutral-very-dark-blue: hsl(234, 12%, 34%);
+$color-neutral-grayish-blue: hsl(229, 6%, 66%);
+$color-neutral-very-light-gray: hsl(0, 0%, 98%);
+$color-back: hsl(0, 0, 100%);
+
+$icons: "{{ '/assets/four-card-feature-section/icon-supervisor.svg' | relative_url }}",
+  "{{ '/assets/four-card-feature-section/icon-team-builder.svg' | relative_url }}",
+  "{{ '/assets/four-card-feature-section/icon-karma.svg' | relative_url }}",
+  "{{ '/assets/four-card-feature-section/icon-calculator.svg' | relative_url }}";
+
+html {
+  font-size: 62.5%;
+}
+
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.feature {
+  padding: 8.8rem 3.2rem 8rem;
+  font-family: Poppins, sans-serif;
+  letter-spacing: 0.01em;
+  background: $color-neutral-very-light-gray;
+  &_header {
+    display: flex;
+    flex-flow: column;
+    max-width: 52rem;
+    margin: auto;
+    text-align: center;
+  }
+  &_heading {
+    order: -1;
+    color: $color-neutral-very-dark-blue;
+    font-weight: 200;
+    font-size: 2.4rem;
+  }
+  &_poweredby {
+    margin-top: 1rem;
+    color: $color-neutral-very-dark-blue;
+    font-weight: 600;
+    font-size: 2.4rem;
+  }
+  &_caption {
+    margin-top: 2rem;
+    color: $color-neutral-grayish-blue;
+    font-size: 1.5rem;
+    line-height: 1.68em;
+  }
+  &_list {
+    display: grid;
+    grid-gap: 2.4rem;
+    justify-content: center;
+    margin-top: 7.4rem;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 3.2rem 2.8rem 2.8rem;
+  overflow: hidden;
+  background: $color-back;
+  border-radius: 0.8rem;
+  box-shadow: 0 0.8rem 3rem hsla(0, 0, 0, 0.1);
+  &_border {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    height: 0.4rem;
+    transform: translateX(-50%);
+  }
+  &_heading {
+    color: $color-neutral-very-dark-blue;
+    font-size: 2rem;
+  }
+  &_text {
+    flex: 1;
+    margin-top: 0.6rem;
+    color: $color-neutral-grayish-blue;
+    font-size: 1.3rem;
+    line-height: 1.8em;
+  }
+  &_icon {
+    align-self: flex-end;
+    width: 5.7rem;
+    height: 5.7rem;
+    margin-top: 3rem;
+  }
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i}) > .card_border {
+      background: nth($colors-primary, $i);
+    }
+    &:nth-child(#{$i}) > .card_icon {
+      background: url(#{nth($icons, $i)}) center;
+      background-size: contain;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .feature {
+    &_heading,
+    &_poweredby {
+      font-size: 3rem;
+    }
+    &_list {
+      grid-template-columns: repeat(2, 32rem);
+      margin: 7rem auto 0;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-desktop) {
+  .feature {
+    padding-top: 8.6rem;
+    &_heading,
+    &_poweredby {
+      font-size: 3.6rem;
+    }
+    &_list {
+      grid-gap: 3rem;
+      grid-template: repeat(4, 1fr) / repeat(3, 35rem);
+      margin: 6.4rem auto 0;
+    }
+  }
+
+  .card {
+    padding: 3.5rem 3.2rem 3.2rem;
+    &:nth-child(1) {
+      grid-area: 2 / 1 / span 2;
+    }
+    &:nth-child(2) {
+      grid-area: 1 / 2 / span 2;
+    }
+    &:nth-child(3) {
+      grid-area: 3 / 2 / span 2;
+    }
+    &:nth-child(4) {
+      grid-area: 2 / 3 / span 2;
+    }
+    &_text {
+      margin-top: 1rem;
+    }
+    &_icon {
+      width: 6.4rem;
+      height: 6.4rem;
+      margin-top: 4rem;
+    }
+  }
+}
