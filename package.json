@@ -5,12 +5,14 @@
   "version": "0.1.0",
   "author": "Alex Kim",
   "scripts": {
-    "lint": "npm run lint:js & npm run lint:scss",
+    "lint": "npm run lint:js & npm run lint:scss & npm run lint:html",
     "lint:js": "eslint .",
     "lint:scss": "stylelint '**/*.scss'",
-    "fix": "npm run fix:js & npm run fix:scss",
+    "lint:html": "prettier -c '**/*.html'",
+    "fix": "npm run fix:js & npm run fix:scss & npm run fix:html",
     "fix:js": "eslint --fix .",
     "fix:scss": "stylelint --fix '**/*.scss'",
+    "fix:html": "prettier --write '**/*.html'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
