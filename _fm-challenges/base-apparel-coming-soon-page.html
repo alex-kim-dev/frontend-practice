@@ -4,14 +4,48 @@ challenge: Base Apparel coming soon page
 difficulty: newbie
 ---
 
-<pre>
-  We're coming soon
+{% assign logo = '/assets/' | append: page.slug | append: '/logo.svg' |
+relative_url %}
 
-  Hello fellow shoppers! We're currently building our new fashion store.
-  Add your email below to stay up-to-date with announcements and our launch deals.
-
-  Email Address
-</pre>
+<header class="header">
+  <img
+    class="logo"
+    src="{{ logo }}"
+    alt="Base Apparel logo"
+    role="presentation"
+  />
+</header>
+<div class="heroImage"></div>
+<main class="content">
+  <h1 class="content_heading">
+    We're<br /><span class="content_heading-accent">coming<br />soon</span>
+  </h1>
+  <p class="content_text">
+    Hello fellow shoppers! We're currently building our new fashion store. Add
+    your email below to stay up-to-date with announcements and our launch deals.
+  </p>
+  <form class="subscribe" novalidate autocomplete="on">
+    <label class="subscribe_label" for="email">Enter email to subscribe</label>
+    <div class="subscribe_field">
+      <input
+        id="email"
+        class="subscribe_email"
+        type="email"
+        name="email"
+        placeholder="Email Address"
+        required
+      />
+      <button
+        class="subscribe_submit"
+        type="submit"
+        aria-label="Submit"
+      ></button>
+    </div>
+    <div class="subscribe_error" aria-live="polite">
+      Please provide a valid email
+    </div>
+  </form>
+</main>
 <footer>
   {% include attribution.html %}
 </footer>
