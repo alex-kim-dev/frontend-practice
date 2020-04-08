@@ -12,11 +12,15 @@
 $breakpoint-mobile: 375px;
 $breakpoint-desktop: 1440px;
 
+$color-background: white;
 $color-desaturated-red: hsl(0, 36%, 70%);
 $color-soft-red: hsl(0, 93%, 68%);
 $color-dark-grayish-red: hsl(0, 6%, 24%);
 $gradient1: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
 $gradient2: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+
+$hero-mobile: "{{ '/assets/base-apparel-coming-soon-page/hero-mobile.jpg' | relative_url }}";
+$icon-arrow: "{{ '/assets/base-apparel-coming-soon-page/icon-arrow.svg' | relative_url }}";
 
 html {
   font-size: 62.5%;
@@ -24,4 +28,95 @@ html {
 
 body {
   font-size: 1.6rem;
+  font-family: Josefin Sans, sans-serif;
+  background: $gradient1;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  padding: 3.1rem 3.2rem 3.2rem;
+}
+
+.logo {
+  height: 2.1rem;
+}
+
+.heroImage {
+  width: 100vw;
+  height: 66.6667vw;
+  background: url($hero-mobile) center no-repeat;
+  background-size: cover;
+}
+
+.content {
+  padding: 6.4rem 3.2rem 3.2rem;
+  color: $color-desaturated-red;
+  text-align: center;
+  &_heading {
+    font-weight: 300;
+    font-size: 4rem;
+    line-height: 1.05em;
+    letter-spacing: 0.27em;
+    text-transform: uppercase;
+    &-accent {
+      color: $color-dark-grayish-red;
+      font-weight: 600;
+    }
+  }
+  &_text {
+    margin-top: 1.6rem;
+    font-size: 1.4rem;
+    line-height: 1.6em;
+  }
+}
+
+.subscribe {
+  margin-top: 3.2rem;
+  &_label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+  &_field {
+    position: relative;
+  }
+  &_email {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1.4rem 2.4rem;
+    padding-right: 8.8rem;
+    color: $color-dark-grayish-red;
+    font-size: 1.6rem;
+    background: transparent;
+    border-radius: 2.4rem;
+    &::placeholder {
+      color: $color-desaturated-red;
+      letter-spacing: -0.06em;
+    }
+  }
+  &_submit {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 6.4rem;
+    height: 4.8rem;
+    padding: 0;
+    background: url($icon-arrow) center no-repeat, $gradient2;
+    border: none;
+    border-radius: 2.4rem;
+    box-shadow: 0 1rem 1.4rem hsla(0, 36%, 70%, 0.5);
+    transform: translateY(-50%);
+  }
+  &_error {
+    display: none;
+  }
 }
