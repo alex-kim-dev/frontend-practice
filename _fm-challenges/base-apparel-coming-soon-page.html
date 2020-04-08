@@ -24,17 +24,19 @@ relative_url %}
     Hello fellow shoppers! We're currently building our new fashion store. Add
     your email below to stay up-to-date with announcements and our launch deals.
   </p>
-  <form class="subscribe" novalidate autocomplete="on">
+  <form class="subscribe" novalidate autocomplete="on" onsubmit="return false;">
     <label class="subscribe_label" for="email">Enter email to subscribe</label>
     <div class="subscribe_field">
-      <input
-        id="email"
-        class="subscribe_email"
-        type="email"
-        name="email"
-        placeholder="Email Address"
-        required
-      />
+      <div class="subscribe_emailContainer">
+        <input
+          id="email"
+          class="subscribe_email"
+          type="email"
+          name="email"
+          placeholder="Email Address"
+          required
+        />
+      </div>
       <button
         class="subscribe_submit"
         type="submit"

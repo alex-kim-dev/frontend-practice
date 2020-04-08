@@ -16,8 +16,23 @@ $color-background: white;
 $color-desaturated-red: hsl(0, 36%, 70%);
 $color-soft-red: hsl(0, 93%, 68%);
 $color-dark-grayish-red: hsl(0, 6%, 24%);
-$gradient1: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
-$gradient2: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+$gradient-bg: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+$gradient-btn: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+$gradient-btn-active: linear-gradient(
+  135deg,
+  hsl(0, 80%, 81%),
+  hsl(0, 74%, 69%)
+);
+$gradient-btn-hover: linear-gradient(
+  135deg,
+  hsl(0, 84%, 93%),
+  hsl(0, 84%, 88%)
+);
+
+$border-thin: 0.1rem solid $color-desaturated-red;
+$border-focus: 0.2rem solid $color-soft-red;
+$shadow-btn: 0 1rem 1.4rem hsla(0, 36%, 70%, 0.5);
+$shadow-btn-hover: 0 1.6rem 1.4rem hsla(0, 36%, 70%, 0.5);
 
 $hero-mobile: "{{ '/assets/base-apparel-coming-soon-page/hero-mobile.jpg' | relative_url }}";
 $icon-arrow: "{{ '/assets/base-apparel-coming-soon-page/icon-arrow.svg' | relative_url }}";
@@ -29,7 +44,7 @@ html {
 body {
   font-size: 1.6rem;
   font-family: Josefin Sans, sans-serif;
-  background: $gradient1;
+  background: $gradient-bg;
 }
 
 h1,
@@ -89,18 +104,32 @@ p {
   &_field {
     position: relative;
   }
-  &_email {
+  &_emailContainer {
     box-sizing: border-box;
-    width: 100%;
-    padding: 1.4rem 2.4rem;
-    padding-right: 8.8rem;
+    height: 4.8rem;
+    border: $border-thin;
+    border-radius: 2.4rem;
+    &:focus-within {
+      border: $border-focus;
+      outline: none;
+    }
+  }
+  &_email {
+    position: absolute;
+    top: 50%;
+    left: 2.5rem;
+    width: calc(100% - 8.1rem - 2.5rem);
     color: $color-dark-grayish-red;
     font-size: 1.6rem;
     background: transparent;
-    border-radius: 2.4rem;
+    border: none;
+    transform: translateY(-50%);
     &::placeholder {
       color: $color-desaturated-red;
       letter-spacing: -0.06em;
+    }
+    &:focus {
+      outline: none;
     }
   }
   &_submit {
@@ -108,13 +137,25 @@ p {
     top: 50%;
     right: 0;
     width: 6.4rem;
-    height: 4.8rem;
+    height: 100%;
     padding: 0;
-    background: url($icon-arrow) center no-repeat, $gradient2;
+    background: url($icon-arrow) center no-repeat, $gradient-btn;
     border: none;
     border-radius: 2.4rem;
-    box-shadow: 0 1rem 1.4rem hsla(0, 36%, 70%, 0.5);
+    box-shadow: $shadow-btn;
     transform: translateY(-50%);
+    &:focus {
+      border: $border-focus;
+      outline: none;
+    }
+    &:hover {
+      background: url($icon-arrow) center no-repeat, $gradient-btn-hover;
+      box-shadow: $shadow-btn-hover;
+    }
+    &:active {
+      background: url($icon-arrow) center no-repeat, $gradient-btn-active;
+      box-shadow: $shadow-btn;
+    }
   }
   &_error {
     display: none;
