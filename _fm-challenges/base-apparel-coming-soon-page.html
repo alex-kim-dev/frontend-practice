@@ -36,17 +36,19 @@ relative_url %}
       <label class="subscribe_label" for="email"
         >Enter email to subscribe</label
       >
-      <div class="subscribe_field">
-        <div class="subscribe_emailContainer">
-          <input
-            id="email"
-            class="subscribe_email"
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            required
-          />
-          <div class="subscribe_errorIcon"></div>
+      <div class="subscribe_container">
+        <div class="subscribe_border">
+          <div class="subscribe_absWrapper">
+            <input
+              id="email"
+              class="subscribe_email"
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              required
+            />
+            <div class="subscribe_errorIcon"></div>
+          </div>
         </div>
         <button
           class="subscribe_submit"
@@ -55,7 +57,7 @@ relative_url %}
           onclick="document.querySelector('.subscribe').classList.toggle('subscribe-error')"
         ></button>
       </div>
-      <div class="subscribe_errorMsg" aria-live="polite">
+      <div class="subscribe_feedback" aria-live="polite">
         Please provide a valid email
       </div>
     </form>
