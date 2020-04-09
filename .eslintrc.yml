@@ -6,3 +6,9 @@ extends:
 
 env:
   browser: true
+
+parserOptions:
+  sourceType: script
+
+rules:
+  strict: ['error', 'global']
