@@ -31,6 +31,8 @@ $border-focus: 0.2rem solid $color-soft-red;
 $shadow-btn: 0 1rem 1.4rem hsla(0, 36%, 70%, 0.5);
 $shadow-btn-hover: 0 1.6rem 1.4rem hsla(0, 36%, 70%, 0.5);
 
+$feedback-transition-time: 0.3s;
+
 // subscribe input & errorIcon spacing
 $absWrapper-pl-xs: 2.4rem;
 $absWrapper-pl-lg: 3.2rem;
@@ -205,7 +207,7 @@ p {
     font-size: 1.4rem;
     background: transparent;
     border: none;
-    transition: width 0.3s;
+    transition: width $feedback-transition-time;
     @include lgUp {
       left: $absWrapper-pl-lg;
       width: calc(100% - #{$absWrapper-shrink-lg});
@@ -224,7 +226,7 @@ p {
     background: url($icon-error) left no-repeat;
     background-size: contain;
     opacity: 0;
-    transition: width 0.3s, opacity 0.3s, margin 0.3s;
+    transition: all $feedback-transition-time;
     @include lgUp {
       height: 2.4rem;
     }
@@ -260,11 +262,10 @@ p {
   }
   &_feedback {
     padding: 0.8rem $absWrapper-pl-xs;
-    color: $color-soft-red;
+    color: transparent;
     font-size: 1.3rem;
     text-align: left;
-    opacity: 0;
-    transition: opacity 0.3s;
+    transition: color $feedback-transition-time;
     @include lgUp {
       padding: 1.1rem $absWrapper-pl-lg;
     }
@@ -280,7 +281,12 @@ p {
       }
     }
     .subscribe_feedback {
-      opacity: 1;
+      color: $color-soft-red;
+    }
+  }
+  &-success {
+    .subscribe_feedback {
+      color: hsl(120, 80%, 40%);
     }
   }
 }

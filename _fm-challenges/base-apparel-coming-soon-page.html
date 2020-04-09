@@ -2,6 +2,7 @@
 title: Base Apparel coming soon page
 challenge: Base Apparel coming soon page
 difficulty: newbie
+includeJs: true
 ---
 
 {% assign logo = '/assets/' | append: page.slug | append: '/logo.svg' |
@@ -31,7 +32,6 @@ relative_url %}
       class="subscribe"
       novalidate
       autocomplete="on"
-      onsubmit="return false;"
     >
       <label class="subscribe_label" for="email"
         >Enter email to subscribe</label
@@ -54,12 +54,9 @@ relative_url %}
           class="subscribe_submit"
           type="submit"
           aria-label="Submit"
-          onclick="document.querySelector('.subscribe').classList.toggle('subscribe-error')"
         ></button>
       </div>
-      <div class="subscribe_feedback" aria-live="polite">
-        Please provide a valid email
-      </div>
+      <div class="subscribe_feedback" aria-live="polite"></div>
     </form>
   </main>
 </div>
