@@ -37,6 +37,7 @@ $shadow-btn-hover: 0 1.6rem 1.4rem hsla(0, 36%, 70%, 0.5);
 $hero-mobile: "{{ '/assets/base-apparel-coming-soon-page/hero-mobile.jpg' | relative_url }}";
 $hero-desktop: "{{ '/assets/base-apparel-coming-soon-page/hero-desktop.jpg' | relative_url }}";
 $icon-arrow: "{{ '/assets/base-apparel-coming-soon-page/icon-arrow.svg' | relative_url }}";
+$icon-error: "{{ '/assets/base-apparel-coming-soon-page/icon-error.svg' | relative_url }}";
 $bg-pattern-desktop: "{{ '/assets/base-apparel-coming-soon-page/bg-pattern-desktop.svg' | relative_url }}";
 
 html {
@@ -122,16 +123,29 @@ p {
     left: 2.5rem;
     width: calc(100% - 8.1rem - 2.5rem);
     color: $color-dark-grayish-red;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     background: transparent;
     border: none;
     transform: translateY(-50%);
+    transition: width 0.3s;
     &::placeholder {
       color: $color-desaturated-red;
     }
     &:focus {
       outline: none;
     }
+  }
+  &_errorIcon {
+    position: absolute;
+    top: 50%;
+    right: 7.4rem;
+    width: 0;
+    height: 2rem;
+    background: url($icon-error) left no-repeat;
+    background-size: contain;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: width 0.3s, opacity 0.3s;
   }
   &_submit {
     position: absolute;
@@ -158,8 +172,26 @@ p {
       box-shadow: $shadow-btn;
     }
   }
-  &_error {
-    display: none;
+  &_errorMsg {
+    padding: 0.8rem 2.4rem;
+    color: $color-soft-red;
+    font-size: 1.3rem;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  &-error {
+    .subscribe_email {
+      // width: calc(100% - 11.6rem - 3.2rem);
+      width: calc(100% - 10.4rem - 2.4rem);
+    }
+    .subscribe_errorIcon {
+      width: 2rem;
+      opacity: 1;
+    }
+    .subscribe_errorMsg {
+      opacity: 1;
+    }
   }
 }
 
@@ -224,11 +256,27 @@ p {
     }
     &_email {
       left: 3.2rem;
-      width: calc(100% - 10rem - 3.2rem);
+      width: calc(100% - 11.6rem - 3.2rem);
+      font-size: 1.6rem;
+    }
+    &_errorIcon {
+      right: 11.6rem;
+      height: 2.4rem;
     }
     &_submit {
       width: 10rem;
       border-radius: 2.8rem;
+    }
+    &_errorMsg {
+      padding: 1.1rem 3.2rem;
+    }
+    &-error {
+      .subscribe_email {
+        width: calc(100% - 3.2rem - 15.6rem);
+      }
+      .subscribe_errorIcon {
+        width: 2.4rem;
+      }
     }
   }
 }

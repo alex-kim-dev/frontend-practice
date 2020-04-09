@@ -46,14 +46,16 @@ relative_url %}
             placeholder="Email Address"
             required
           />
+          <div class="subscribe_errorIcon"></div>
         </div>
         <button
           class="subscribe_submit"
           type="submit"
           aria-label="Submit"
+          onclick="document.querySelector('.subscribe').classList.toggle('subscribe-error')"
         ></button>
       </div>
-      <div class="subscribe_error" aria-live="polite">
+      <div class="subscribe_errorMsg" aria-live="polite">
         Please provide a valid email
       </div>
     </form>
