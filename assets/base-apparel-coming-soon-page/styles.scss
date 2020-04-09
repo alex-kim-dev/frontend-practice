@@ -35,7 +35,9 @@ $shadow-btn: 0 1rem 1.4rem hsla(0, 36%, 70%, 0.5);
 $shadow-btn-hover: 0 1.6rem 1.4rem hsla(0, 36%, 70%, 0.5);
 
 $hero-mobile: "{{ '/assets/base-apparel-coming-soon-page/hero-mobile.jpg' | relative_url }}";
+$hero-desktop: "{{ '/assets/base-apparel-coming-soon-page/hero-desktop.jpg' | relative_url }}";
 $icon-arrow: "{{ '/assets/base-apparel-coming-soon-page/icon-arrow.svg' | relative_url }}";
+$bg-pattern-desktop: "{{ '/assets/base-apparel-coming-soon-page/bg-pattern-desktop.svg' | relative_url }}";
 
 html {
   font-size: 62.5%;
@@ -126,7 +128,6 @@ p {
     transform: translateY(-50%);
     &::placeholder {
       color: $color-desaturated-red;
-      letter-spacing: -0.06em;
     }
     &:focus {
       outline: none;
@@ -159,5 +160,75 @@ p {
   }
   &_error {
     display: none;
+  }
+}
+
+@media (min-width: $breakpoint-desktop) {
+  .wrapper {
+    position: relative;
+    display: grid;
+    grid-template: auto 1fr / 1fr 3.819444% 42.361111%; // 1fr 5.5rem 61rem;
+    // width: 144rem;
+    height: 100vh;
+    // margin: auto;
+  }
+
+  .header {
+    grid-area: 1 / 1;
+    width: 44.5rem;
+    margin: auto;
+    padding: 6.5rem 0;
+  }
+
+  .logo {
+    height: 3.3rem;
+  }
+
+  .content {
+    grid-area: 2 / 1;
+    width: 44.5rem;
+    margin: 0 auto;
+    padding: 6.5rem 0;
+    text-align: left;
+    &_heading {
+      font-size: 6.4rem;
+      line-height: 1.1em;
+    }
+    &_text {
+      margin-top: 2rem;
+      font-size: 1.6rem;
+      line-height: 1.75em;
+    }
+  }
+
+  .background {
+    z-index: -1;
+    grid-area: 1 / 1 / span 2 / span 2;
+    background: url($bg-pattern-desktop) no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .heroImage {
+    grid-area: 1 / 3 / span 2;
+    width: 100%;
+    height: 100%;
+    background: url($hero-desktop) center no-repeat;
+    background-size: cover;
+  }
+
+  .subscribe {
+    margin-top: 4rem;
+    &_emailContainer {
+      height: 5.6rem;
+      border-radius: 2.8rem;
+    }
+    &_email {
+      left: 3.2rem;
+      width: calc(100% - 10rem - 3.2rem);
+    }
+    &_submit {
+      width: 10rem;
+      border-radius: 2.8rem;
+    }
   }
 }
