@@ -17,12 +17,12 @@ New videos every week,
 {% assign benefits = allBenefits | strip_newlines | split: ',' %}
 
 <article class="offer">
-  <h2 class="offer_heading">Join our community</h2>
+  <h2 class="offer_heading heading">Join our community</h2>
   <section class="offer_product">
-    <h3 class="offer_subheading offer_subheading-accent">
+    <h3 class="subheading subheading-accent">
       30-day, hassle-free money back guarantee
     </h3>
-    <p class="offer_text">
+    <p class="offer_productText text">
       Gain access to our full library of tutorials along with expert code
       reviews. Perfect for any developers who are serious about honing their
       skills.
@@ -30,20 +30,20 @@ New videos every week,
   </section>
   <div class="offer_container">
     <section class="offer_subscription">
-      <h3 class="offer_subheading">Monthly Subscription</h3>
+      <h3 class="subheading">Monthly Subscription</h3>
       <div>
         <div class="offer_price"><span>&dollar;29</span>per month</div>
       </div>
-      <p class="offer_text offer_text-light offer_text-lg">
+      <p class="offer_subscriptionText text text-light text-lg">
         Full access for less than &dollar;1 a day
       </p>
       <button class="signup">Sign Up</button>
     </section>
     <section class="offer_benefits">
-      <h3 class="offer_subheading">Why Us</h3>
-      <ul class="offer_list offer_text offer_text-light offer_text-sm">
+      <h3 class="subheading">Why Us</h3>
+      <ul class="offer_benefitsList text text-light text-sm">
         {% for benefit in benefits %}
-        <li class="offer_listItem">
+        <li>
           <p>{{ benefit }}</p>
         </li>
         {% endfor %}

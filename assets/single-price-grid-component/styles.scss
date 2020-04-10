@@ -62,6 +62,7 @@ ul {
     border-radius: 0.8rem;
   }
 
+  // sections
   &_product {
     padding: 2.4rem 2.4rem 3.1rem;
     background: $color-light;
@@ -84,54 +85,36 @@ ul {
     }
   }
 
+  // other
+  &_container {
+    @include smUp {
+      display: flex;
+      > section {
+        width: 50%;
+      }
+    }
+  }
   &_heading {
     padding: 2.8rem 2.4rem 0;
-    color: $color-primary-cyan;
-    font-weight: 700;
-    font-size: 2rem;
-    letter-spacing: -0.01em;
     background: $color-light;
     @include smUp {
       padding: 4rem 4rem 0;
       font-size: 2.4rem;
     }
   }
-  &_subheading {
-    color: $color-light;
-    font-weight: 700;
-    font-size: 1.9rem;
-    line-height: 1.3em;
-    letter-spacing: -0.04em;
-    &-accent {
-      color: $color-primary-bright-yellow;
-      font-size: 1.6rem;
-      @include smUp {
-        font-size: 1.9rem;
-      }
+  &_productText {
+    margin-top: 1.7rem;
+    @include smUp {
+      margin-top: 0.7rem;
     }
   }
-  &_text {
+  &_subscriptionText {
     margin-top: 0.7rem;
-    color: $color-neutral-grayish-blue;
-    font-size: 1.6rem;
-    line-height: 1.7em;
-    letter-spacing: -0.01em;
-    &-light {
-      color: $color-light;
-    }
-    &-lg {
-      margin-top: 0.7rem;
-      font-size: 1.6rem;
-      line-height: 1.3em;
-    }
-    &-sm {
-      color: $color-neutral-light-gray;
-      line-height: 1.43em;
-      @include smUp {
-        margin-top: 1.6rem;
-        line-height: 1.3em;
-        letter-spacing: -0.07em;
-      }
+  }
+  &_benefitsList {
+    margin-top: 1.6rem;
+    @include smUp {
+      margin-top: 1.6rem;
     }
   }
   &_price {
@@ -147,12 +130,55 @@ ul {
       font-size: 3.2rem;
     }
   }
-  &_container {
+}
+
+.heading {
+  color: $color-primary-cyan;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: -0.01em;
+  @include smUp {
+    font-size: 2.4rem;
+  }
+}
+
+.subheading {
+  color: $color-light;
+  font-weight: 700;
+  font-size: 1.9rem;
+  line-height: 1.3em;
+  letter-spacing: -0.04em;
+  &-accent {
+    color: $color-primary-bright-yellow;
+    font-size: 1.6rem;
     @include smUp {
-      display: flex;
-      > section {
-        width: 50%;
-      }
+      font-size: 1.9rem;
+    }
+  }
+}
+
+.text {
+  color: $color-neutral-grayish-blue;
+  font-size: 1.4rem;
+  line-height: 1.9em;
+  letter-spacing: -0.01em;
+  @include smUp {
+    font-size: 1.6rem;
+    line-height: 1.7em;
+  }
+  &-light {
+    color: $color-light;
+  }
+  &-lg {
+    font-size: 1.6rem;
+    line-height: 1.3em;
+  }
+  &-sm {
+    color: $color-neutral-light-gray;
+    line-height: 1.43em;
+    @include smUp {
+      line-height: 1.3em;
+      letter-spacing: -0.07em;
     }
   }
 }
