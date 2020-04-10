@@ -9,8 +9,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
 
-@mixin lgUp {
-  @media (min-width: 1440px) {
+@mixin smUp {
+  @media (min-width: 768px) {
     @content;
   }
 }
@@ -30,6 +30,12 @@ body {
   font-size: 1.6rem;
   font-family: Karla, sans-serif;
   background: $color-neutral-light-gray;
+  @include smUp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
 }
 
 h2,
@@ -49,18 +55,33 @@ ul {
   overflow: hidden;
   border-radius: 0.4rem;
   box-shadow: 0 2rem 2.4rem hsla(0, 0, 0, 0.1);
+  @include smUp {
+    width: 63.5rem;
+    margin: 0;
+    margin-top: 0.1rem;
+    border-radius: 0.8rem;
+  }
 
   &_product {
     padding: 2.4rem 2.4rem 3.1rem;
     background: $color-light;
+    @include smUp {
+      padding: 2.4rem 4rem 4rem;
+    }
   }
   &_subscription {
     padding: 2.4rem;
     background: $color-primary-cyan;
+    @include smUp {
+      padding: 4rem;
+    }
   }
   &_benefits {
     padding: 2.3rem 2.4rem 2.4rem;
     background: $color-primary-cyan-lighter;
+    @include smUp {
+      padding: 4rem;
+    }
   }
 
   &_heading {
@@ -70,6 +91,10 @@ ul {
     font-size: 2rem;
     letter-spacing: -0.01em;
     background: $color-light;
+    @include smUp {
+      padding: 4rem 4rem 0;
+      font-size: 2.4rem;
+    }
   }
   &_subheading {
     color: $color-light;
@@ -80,13 +105,16 @@ ul {
     &-accent {
       color: $color-primary-bright-yellow;
       font-size: 1.6rem;
+      @include smUp {
+        font-size: 1.9rem;
+      }
     }
   }
   &_text {
-    margin-top: 1.7rem;
+    margin-top: 0.7rem;
     color: $color-neutral-grayish-blue;
-    font-size: 1.4rem;
-    line-height: 1.9em;
+    font-size: 1.6rem;
+    line-height: 1.7em;
     letter-spacing: -0.01em;
     &-light {
       color: $color-light;
@@ -99,6 +127,11 @@ ul {
     &-sm {
       color: $color-neutral-light-gray;
       line-height: 1.43em;
+      @include smUp {
+        margin-top: 1.6rem;
+        line-height: 1.3em;
+        letter-spacing: -0.07em;
+      }
     }
   }
   &_price {
@@ -114,6 +147,14 @@ ul {
       font-size: 3.2rem;
     }
   }
+  &_container {
+    @include smUp {
+      display: flex;
+      > section {
+        width: 50%;
+      }
+    }
+  }
 }
 
 .signup {
@@ -127,6 +168,9 @@ ul {
   border-radius: 0.4rem;
   box-shadow: 0 1rem 0.8rem hsla(0, 0, 0, 0.1);
   transition: all 0.2s;
+  @include smUp {
+    border-radius: 0.6rem;
+  }
   &:active {
     background: darken($color-primary-bright-yellow, 7%);
     box-shadow: 0 0.5rem 0.4rem hsla(0, 0, 0, 0.1);

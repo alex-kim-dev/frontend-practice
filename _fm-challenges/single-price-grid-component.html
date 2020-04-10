@@ -28,24 +28,26 @@ New videos every week,
       skills.
     </p>
   </section>
-  <section class="offer_subscription">
-    <h3 class="offer_subheading">Monthly Subscription</h3>
-    <div>
-      <div class="offer_price"><span>&dollar;29</span>per month</div>
-    </div>
-    <p class="offer_text offer_text-light offer_text-lg">
-      Full access for less than &dollar;1 a day
-    </p>
-    <button class="signup">Sign Up</button>
-  </section>
-  <section class="offer_benefits">
-    <h3 class="offer_subheading">Why Us</h3>
-    <ul class="offer_list offer_text offer_text-light offer_text-sm">
-      {% for benefit in benefits %}
-      <li class="offer_listItem">
-        <p>{{ benefit }}</p>
-      </li>
-      {% endfor %}
-    </ul>
-  </section>
+  <div class="offer_container">
+    <section class="offer_subscription">
+      <h3 class="offer_subheading">Monthly Subscription</h3>
+      <div>
+        <div class="offer_price"><span>&dollar;29</span>per month</div>
+      </div>
+      <p class="offer_text offer_text-light offer_text-lg">
+        Full access for less than &dollar;1 a day
+      </p>
+      <button class="signup">Sign Up</button>
+    </section>
+    <section class="offer_benefits">
+      <h3 class="offer_subheading">Why Us</h3>
+      <ul class="offer_list offer_text offer_text-light offer_text-sm">
+        {% for benefit in benefits %}
+        <li class="offer_listItem">
+          <p>{{ benefit }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
 </article>
