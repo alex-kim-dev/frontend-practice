@@ -1,0 +1,29 @@
+---
+---
+
+#unknown {
+} // fixes Unknown word (CssSyntaxError) on frontmatter by stylelint
+
+@import 'normalize';
+@import 'attribution';
+
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+
+@mixin lgUp {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+
+$color-primary-cyan: hsl(179, 62%, 43%);
+$color-primary-bright-yellow: hsl(71, 73%, 54%);
+$color-neutral-light-gray: hsl(204, 43%, 93%);
+$color-neutral-grayish-blue: hsl(218, 22%, 67%);
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
