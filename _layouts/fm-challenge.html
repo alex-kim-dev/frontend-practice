@@ -1,6 +1,7 @@
 <!-- prettier-ignore -->
 {% assign assetsPath = '/assets/' | append: page.slug %}
 {% assign cssUrl = assetsPath | append: '/styles.css' | relative_url %}
+{% assign scriptUrl = assetsPath | append: '/script.js' | relative_url %}
 {% assign faviconUrl = assetsPath | append: '/favicon-32x32.png' | relative_url %}
 
 <!DOCTYPE html>
@@ -16,6 +17,9 @@
     <meta name="author" content="Alex Kim, https://github.com/Alex-K1m" />
     <link rel="icon" type="image/png" sizes="32x32" href="{{ faviconUrl }}" />
     <link rel="stylesheet" href="{{ cssUrl }}" />
+    {% if page.includeJs %}
+    <script src="{{ scriptUrl }}" async></script>
+    {% endif %}
   </head>
   <body>
     {{ content }}
