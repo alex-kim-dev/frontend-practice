@@ -4,29 +4,48 @@ challenge: Single price grid component
 difficulty: newbie
 ---
 
-<pre>
-  Join our community
+<!-- prettier-ignore -->
+{% capture allBenefits %}
+Tutorials by industry experts,
+Peer &amp; expert code review,
+Coding exercises,
+Access to our GitHub repos,
+Community forum,
+Flashcard decks,
+New videos every week,
+{% endcapture %}
+{% assign benefits = allBenefits | strip_newlines | split: ',' %}
 
-  30-day, hassle-free money back guarantee
-
-  Gain access to our full library of tutorials along with expert code reviews.
-  Perfect for any developers who are serious about honing their skills.
-
-  Monthly Subscription
-
-  &dollar;29 per month
-
-  Full access for less than &dollar;1 a day
-
-  Sign Up
-
-  Why Us
-
-  Tutorials by industry experts
-  Peer &amp; expert code review
-  Coding exercises
-  Access to our GitHub repos
-  Community forum
-  Flashcard decks
-  New videos every week
-</pre>
+<article class="offer">
+  <h2 class="offer_heading">Join our community</h2>
+  <section class="offer_product">
+    <h3 class="offer_subheading offer_subheading-accent">
+      30-day, hassle-free money back guarantee
+    </h3>
+    <p class="offer_text">
+      Gain access to our full library of tutorials along with expert code
+      reviews. Perfect for any developers who are serious about honing their
+      skills.
+    </p>
+  </section>
+  <section class="offer_subscription">
+    <h3 class="offer_subheading">Monthly Subscription</h3>
+    <div>
+      <div class="offer_price"><span>&dollar;29 </span>per month</div>
+    </div>
+    <p class="offer_text offer_text-light">
+      Full access for less than &dollar;1 a day
+    </p>
+    <button class="signup">Sign Up</button>
+  </section>
+  <section class="offer_benefits">
+    <h3 class="offer_subheading">Why Us</h3>
+    <ul class="offer_list offer_text offer_text-light offer_text-sm">
+      {% for benefit in benefits %}
+      <li class="offer_listItem">
+        <p>{{ benefit }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+</article>
