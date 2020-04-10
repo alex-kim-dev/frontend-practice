@@ -1,0 +1,212 @@
+---
+---
+
+#unknown {
+} // fixes Unknown word (CssSyntaxError) on frontmatter by stylelint
+
+@import 'normalize';
+@import 'attribution';
+
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+
+@mixin smUp {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+$color-primary-cyan: hsl(179, 62%, 43%);
+$color-primary-cyan-lighter: hsl(179, 47%, 52%);
+$color-primary-bright-yellow: hsl(71, 73%, 54%);
+$color-neutral-light-gray: hsl(204, 43%, 93%);
+$color-neutral-grayish-blue: hsl(218, 22%, 67%);
+$color-light: white;
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: Karla, sans-serif;
+  background: $color-neutral-light-gray;
+  @include smUp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+}
+
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+.offer {
+  margin: 7.2rem 3.2rem 7.6rem;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  box-shadow: 0 2rem 2.4rem hsla(0, 0, 0, 0.1);
+  @include smUp {
+    width: 63.5rem;
+    margin: 0;
+    margin-top: 0.1rem;
+    border-radius: 0.8rem;
+  }
+
+  // sections
+  &_product {
+    padding: 2.4rem 2.4rem 3.1rem;
+    background: $color-light;
+    @include smUp {
+      padding: 2.4rem 4rem 4rem;
+    }
+  }
+  &_subscription {
+    padding: 2.4rem;
+    background: $color-primary-cyan;
+    @include smUp {
+      padding: 4rem;
+    }
+  }
+  &_benefits {
+    padding: 2.3rem 2.4rem 2.4rem;
+    background: $color-primary-cyan-lighter;
+    @include smUp {
+      padding: 4rem;
+    }
+  }
+
+  // other
+  &_container {
+    @include smUp {
+      display: flex;
+      > section {
+        width: 50%;
+      }
+    }
+  }
+  &_heading {
+    padding: 2.8rem 2.4rem 0;
+    background: $color-light;
+    @include smUp {
+      padding: 4rem 4rem 0;
+      font-size: 2.4rem;
+    }
+  }
+  &_productText {
+    margin-top: 1.7rem;
+    @include smUp {
+      margin-top: 0.7rem;
+    }
+  }
+  &_subscriptionText {
+    margin-top: 0.7rem;
+  }
+  &_benefitsList {
+    margin-top: 1.6rem;
+    @include smUp {
+      margin-top: 1.6rem;
+    }
+  }
+  &_price {
+    display: flex;
+    align-items: center;
+    margin-top: 1.6rem;
+    color: $color-neutral-light-gray;
+    letter-spacing: -0.01em;
+    > span {
+      margin-right: 1.2rem;
+      color: $color-light;
+      font-weight: 700;
+      font-size: 3.2rem;
+    }
+  }
+}
+
+.heading {
+  color: $color-primary-cyan;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: -0.01em;
+  @include smUp {
+    font-size: 2.4rem;
+  }
+}
+
+.subheading {
+  color: $color-light;
+  font-weight: 700;
+  font-size: 1.9rem;
+  line-height: 1.3em;
+  letter-spacing: -0.04em;
+  &-accent {
+    color: $color-primary-bright-yellow;
+    font-size: 1.6rem;
+    @include smUp {
+      font-size: 1.9rem;
+    }
+  }
+}
+
+.text {
+  color: $color-neutral-grayish-blue;
+  font-size: 1.4rem;
+  line-height: 1.9em;
+  letter-spacing: -0.01em;
+  @include smUp {
+    font-size: 1.6rem;
+    line-height: 1.7em;
+  }
+  &-light {
+    color: $color-light;
+  }
+  &-lg {
+    font-size: 1.6rem;
+    line-height: 1.3em;
+  }
+  &-sm {
+    color: $color-neutral-light-gray;
+    line-height: 1.43em;
+    @include smUp {
+      line-height: 1.3em;
+      letter-spacing: -0.07em;
+    }
+  }
+}
+
+.signup {
+  width: 100%;
+  margin-top: 2.9rem;
+  padding: 1.3rem;
+  color: $color-light;
+  background: $color-primary-bright-yellow;
+  border: none;
+  border: 0.2rem solid $color-primary-bright-yellow;
+  border-radius: 0.4rem;
+  box-shadow: 0 1rem 0.8rem hsla(0, 0, 0, 0.1);
+  transition: all 0.2s;
+  @include smUp {
+    border-radius: 0.6rem;
+  }
+  &:active {
+    background: darken($color-primary-bright-yellow, 7%);
+    box-shadow: 0 0.5rem 0.4rem hsla(0, 0, 0, 0.1);
+  }
+  &:focus {
+    border: 0.2rem solid $color-light;
+    outline: none;
+  }
+  &:hover {
+    background: lighten($color-primary-bright-yellow, 7%);
+    box-shadow: 0 1rem 1rem hsla(0, 0, 0, 0.2);
+  }
+}
