@@ -14,23 +14,23 @@ difficulty: newbie
     </h1>
     <p class="content_paragraph text">Subscribe and get notified</p>
     <form class="content_form subscribeForm" novalidate onsubmit="return false">
-      <label class="emailField text">
-        <input
-          class="emailField_input"
-          type="email"
-          name="email"
-          placeholder="Your email address..."
-          aria-describedby="feedback"
-        />
-        <div class="srOnly">Enter email to subscribe</div>
-      </label>
-      <p
-        id="feedback"
-        class="subscribeForm_feedback text text-error"
-        aria-live="polite"
-      >
-        Please provide a valid email address
-      </p>
+      <div>
+        <label class="emailField text">
+          <input
+            class="emailField_input"
+            type="email"
+            name="email"
+            placeholder="Your email address..."
+            aria-describedby="feedback"
+          />
+          <div class="srOnly">Enter email to subscribe</div>
+        </label>
+        <p
+          id="feedback"
+          class="subscribeForm_feedback text text-error"
+          aria-live="polite"
+        ></p>
+      </div>
       <button class="subscribeForm_submit button" type="submit">
         Notify Me
       </button>

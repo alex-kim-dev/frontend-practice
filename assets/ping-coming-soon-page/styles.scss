@@ -13,7 +13,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@1,300&display=swap&text=Pleas%20providm');
 
 @mixin smUp {
-  @media (min-width: 690px) {
+  @media (min-width: 690px / 16px * 1rem) {
     @content;
   }
 }
@@ -49,6 +49,9 @@ body {
   margin: auto;
   padding: 3.6rem 2.4rem;
   background: white;
+  @include smUp {
+    max-width: 69rem;
+  }
 }
 
 .text {
@@ -57,10 +60,16 @@ body {
   font-size: 1.2rem;
   font-family: Libre Franklin, sans-serif;
   line-height: normal;
+  @include smUp {
+    font-size: 1.6rem;
+  }
   &-h1 {
     color: $color-neutral-gray;
     font-size: 2.2rem;
     letter-spacing: 0.005em;
+    @include smUp {
+      font-size: 4.8rem;
+    }
   }
   &-bold {
     color: $color-neutral-very-dark-blue;
@@ -69,12 +78,18 @@ body {
   &-secondary {
     color: $color-neutral-gray;
     font-size: 1rem;
+    @include smUp {
+      font-size: 1.2rem;
+    }
   }
   &-error {
     color: $color-secondary-light-red;
     font-size: 1rem;
     font-style: italic;
     letter-spacing: 0.015em;
+    @include smUp {
+      font-size: 1.2rem;
+    }
   }
 }
 
@@ -97,6 +112,10 @@ body {
   height: 1.6rem;
   background: url($logo) center no-repeat;
   background-size: contain;
+  @include smUp {
+    width: 8.45rem;
+    height: 2.6rem;
+  }
 }
 
 .content {
@@ -104,13 +123,22 @@ body {
   &_heading {
     margin-top: 4rem;
     text-align: center;
+    @include smUp {
+      margin-top: 4.8rem;
+    }
   }
   &_paragraph {
     margin-top: 1.8rem;
     text-align: center;
+    @include smUp {
+      font-size: 2rem;
+    }
   }
   &_form {
     margin-top: 3.2rem;
+    @include smUp {
+      margin-top: 4rem;
+    }
   }
 }
 
@@ -119,8 +147,17 @@ body {
   top: 100%;
   left: 50%;
   width: calc(100% - 4.8rem);
-  max-width: 40rem;
+  max-width: 69rem;
   transform: translateX(-50%);
+  @include smUp {
+    display: flex;
+    align-items: flex-start;
+  }
+  :first-child {
+    @include smUp {
+      flex: 1;
+    }
+  }
   &_feedback {
     max-height: 0;
     padding: 0 3.2rem;
@@ -129,10 +166,18 @@ body {
     border: 0;
     opacity: 0;
     transition: 0.2s ease-in-out;
+    @include smUp {
+      text-align: left;
+    }
   }
   &_submit {
     width: 100%;
     margin-top: 1rem;
+    @include smUp {
+      width: unset;
+      margin-top: 0;
+      margin-left: 1.6rem;
+    }
   }
   &-error {
     .emailField_input {
@@ -143,6 +188,9 @@ body {
       padding-top: 0.6rem;
       padding-bottom: 1.4rem;
       opacity: 1;
+      @include smUp {
+        padding-top: 0.8rem;
+      }
     }
   }
 }
@@ -158,6 +206,10 @@ body {
     border: 0.1rem solid $color-secondary-pale-blue;
     border-radius: 2rem;
     transition: border-color 0.2s;
+    @include smUp {
+      height: 5.6rem;
+      border-radius: 2.8rem;
+    }
     &::placeholder {
       color: $color-secondary-pale-blue;
     }
@@ -191,6 +243,12 @@ body {
   border-radius: 2rem;
   box-shadow: $button-shadow;
   transition: 0.2s;
+  @include smUp {
+    height: 5.6rem;
+    padding: 0 6.25rem;
+    font-size: 1.6rem;
+    border-radius: 2.8rem;
+  }
   &:focus {
     outline: none;
     box-shadow: $button-shadow, 0 0 0 0.3rem $color-secondary-pale-blue;
@@ -208,10 +266,17 @@ body {
   margin-top: 19rem;
   background: url($back) center no-repeat;
   background-size: contain;
+  @include smUp {
+    height: 39rem;
+    margin-top: 18.4rem;
+  }
 }
 
 .footer {
   margin-top: 12rem;
+  @include smUp {
+    margin-top: 7rem;
+  }
   &_copyright {
     margin-top: 2.6rem;
     text-align: center;
