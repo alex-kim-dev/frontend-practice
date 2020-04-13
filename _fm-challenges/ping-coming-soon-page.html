@@ -8,35 +8,35 @@ includeJs: true
 <header class="header">
   <div class="header_logo logo"></div>
 </header>
-<main>
-  <article class="content">
-    <h1 class="content_heading text text-h1">
-      We are launching <span class="text-bold">soon!</span>
-    </h1>
-    <p class="content_paragraph text">Subscribe and get notified</p>
-    <form class="content_form subscribeForm" novalidate onsubmit="return false">
-      <div>
-        <label class="emailField text">
-          <input
-            class="emailField_input"
-            type="email"
-            name="email"
-            placeholder="Your email address..."
-            aria-describedby="feedback"
-          />
-          <div class="srOnly">Enter email to subscribe</div>
-        </label>
-        <p
-          id="feedback"
-          class="subscribeForm_feedback text text-error"
-          aria-live="polite"
-        ></p>
-      </div>
-      <button class="subscribeForm_submit button" type="submit">
-        Notify Me
-      </button>
-    </form>
-  </article>
+<main class="content">
+  <h1 class="content_heading text text-h1">
+    We are launching <span class="text-bold">soon!</span>
+  </h1>
+  <p class="content_paragraph text">Subscribe and get notified</p>
+  <form class="content_form subscribeForm" novalidate onsubmit="return false">
+    <div>
+      <label class="emailField text">
+        <input
+          class="emailField_input"
+          type="email"
+          name="email"
+          placeholder="Your email address..."
+          aria-describedby="feedback"
+        />
+        <div class="srOnly">Enter email to subscribe</div>
+      </label>
+      <p
+        id="feedback"
+        class="subscribeForm_feedback text text-error"
+        aria-live="polite"
+        aria-relevant="additions removals"
+        aria-atomic="true"
+      ></p>
+    </div>
+    <button class="subscribeForm_submit button" type="submit">
+      Notify Me
+    </button>
+  </form>
 </main>
 <div class="background"></div>
 <footer class="footer">
@@ -45,6 +45,7 @@ includeJs: true
       <a
         href="https://facebook.com"
         target="_blank"
+        rel="noreferrer"
         class="socialLinks_link"
         aria-label="Facebook"
       >
@@ -66,6 +67,7 @@ includeJs: true
       <a
         href="https://twitter.com"
         target="_blank"
+        rel="noreferrer"
         class="socialLinks_link"
         aria-label="Twitter"
       >
@@ -87,6 +89,7 @@ includeJs: true
       <a
         href="https://instagram.com"
         target="_blank"
+        rel="noreferrer"
         class="socialLinks_link"
         aria-label="Instagram"
       >
