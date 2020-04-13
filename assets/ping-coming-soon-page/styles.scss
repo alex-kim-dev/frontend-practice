@@ -23,6 +23,7 @@ $color-secondary-pale-blue: hsl(223, 100%, 88%);
 $color-secondary-light-red: hsl(354, 100%, 66%);
 $color-neutral-gray: hsl(0, 0%, 59%);
 $color-neutral-very-dark-blue: hsl(209, 33%, 12%);
+$color-secondary-green: hsl(145, 64%, 49%);
 
 $button-shadow: 0 0.6rem 1rem rgba($color-primary-blue, 0.4);
 
@@ -78,15 +79,6 @@ body {
   &-secondary {
     color: $color-neutral-gray;
     font-size: 1rem;
-    @include smUp {
-      font-size: 1.2rem;
-    }
-  }
-  &-error {
-    color: $color-secondary-light-red;
-    font-size: 1rem;
-    font-style: italic;
-    letter-spacing: 0.015em;
     @include smUp {
       font-size: 1.2rem;
     }
@@ -159,13 +151,14 @@ body {
     }
   }
   &_feedback {
-    max-height: 0;
+    height: 0;
     padding: 0 3.2rem;
     overflow: hidden;
     text-align: center;
     border: 0;
     opacity: 0;
-    transition: 0.2s ease-in-out;
+    transition: height 0.2s ease-in-out, padding 0.2s ease-in-out,
+      opacity 0.2s ease-in-out;
     @include smUp {
       text-align: left;
     }
@@ -184,12 +177,30 @@ body {
       border-color: $color-secondary-light-red;
     }
     .subscribeForm_feedback {
-      max-height: 5em;
+      color: $color-secondary-light-red;
+      font-style: italic;
+      letter-spacing: 0.015em;
+    }
+  }
+  &-success {
+    .emailField_input {
+      border-color: $color-secondary-green;
+    }
+    .subscribeForm_feedback {
+      color: $color-secondary-green;
+    }
+  }
+  &-error,
+  &-success {
+    .subscribeForm_feedback {
+      height: 2.4em;
       padding-top: 0.6rem;
-      padding-bottom: 1.4rem;
+      padding-bottom: 0.2rem;
+      font-size: 1rem;
       opacity: 1;
       @include smUp {
         padding-top: 0.8rem;
+        font-size: 1.2rem;
       }
     }
   }
