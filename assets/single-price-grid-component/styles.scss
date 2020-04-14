@@ -22,9 +22,8 @@ $color-neutral-light-gray: hsl(204, 43%, 93%);
 $color-neutral-grayish-blue: hsl(218, 22%, 67%);
 $color-light: white;
 
-body {
+.wrapper {
   font-size: 1.6rem;
-  font-family: Karla, sans-serif;
   background: $color-neutral-light-gray;
   @include smUp {
     display: flex;
@@ -34,27 +33,15 @@ body {
   }
 }
 
-h2,
-h3,
-p,
-ul {
-  margin: 0;
-}
-
-ul {
-  padding: 0;
-  list-style: none;
-}
-
 .offer {
   margin: 7.2rem 3.2rem 7.6rem;
   overflow: hidden;
+  font-family: Karla, sans-serif;
   border-radius: 0.4rem;
   box-shadow: 0 2rem 2.4rem hsla(0, 0, 0, 0.1);
   @include smUp {
     width: 63.5rem;
-    margin: 0;
-    margin-top: 0.1rem;
+    margin: 0.1rem 0 0;
     border-radius: 0.8rem;
   }
 
@@ -91,6 +78,7 @@ ul {
     }
   }
   &_heading {
+    margin: 0;
     padding: 2.8rem 2.4rem 0;
     background: $color-light;
     @include smUp {
@@ -99,18 +87,20 @@ ul {
     }
   }
   &_productText {
-    margin-top: 1.7rem;
+    margin: 1.7rem 0 0;
     @include smUp {
       margin-top: 0.7rem;
     }
   }
   &_subscriptionText {
-    margin-top: 0.7rem;
+    margin: 0.7rem 0 0;
   }
   &_benefitsList {
-    margin-top: 1.6rem;
-    @include smUp {
-      margin-top: 1.6rem;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    list-style: none;
+    p {
+      margin: 0;
     }
   }
   &_price {
@@ -139,6 +129,7 @@ ul {
 }
 
 .subheading {
+  margin: 0;
   color: $color-light;
   font-weight: 700;
   font-size: 1.9rem;

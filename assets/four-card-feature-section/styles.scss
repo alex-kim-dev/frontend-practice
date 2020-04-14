@@ -25,12 +25,6 @@ $icons: "{{ '/assets/four-card-feature-section/icon-supervisor.svg' | relative_u
   "{{ '/assets/four-card-feature-section/icon-karma.svg' | relative_url }}",
   "{{ '/assets/four-card-feature-section/icon-calculator.svg' | relative_url }}";
 
-h2,
-h3,
-p {
-  margin: 0;
-}
-
 .feature {
   padding: 8.8rem 3.2rem 8rem;
   font-family: Poppins, sans-serif;
@@ -45,18 +39,19 @@ p {
   }
   &_heading {
     order: -1;
+    margin: 0;
     color: $color-neutral-very-dark-blue;
     font-weight: 200;
     font-size: 2.4rem;
   }
   &_poweredby {
-    margin-top: 1rem;
+    margin: 1rem 0 0;
     color: $color-neutral-very-dark-blue;
     font-weight: 600;
     font-size: 2.4rem;
   }
   &_caption {
-    margin-top: 2rem;
+    margin: 2rem 0 0;
     color: $color-neutral-grayish-blue;
     font-size: 1.5rem;
     line-height: 1.68em;
@@ -65,7 +60,7 @@ p {
     display: grid;
     grid-gap: 2.4rem;
     justify-content: center;
-    margin-top: 7.4rem;
+    margin: 7.4rem 0 0;
     padding: 0;
     list-style: none;
   }
@@ -91,12 +86,13 @@ p {
     transform: translateX(-50%);
   }
   &_heading {
+    margin: 0;
     color: $color-neutral-very-dark-blue;
     font-size: 2rem;
   }
   &_text {
     flex: 1;
-    margin-top: 0.6rem;
+    margin: 0.6rem 0 0;
     color: $color-neutral-grayish-blue;
     font-size: 1.3rem;
     line-height: 1.8em;
@@ -160,7 +156,7 @@ p {
       grid-area: 2 / 3 / span 2;
     }
     &_text {
-      margin-top: 1rem;
+      margin: 1rem;
     }
     &_icon {
       width: 6.4rem;

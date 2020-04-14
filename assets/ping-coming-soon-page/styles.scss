@@ -30,18 +30,7 @@ $back: "{{ '/assets/ping-coming-soon-page/illustration-dashboard.png' | relative
   }
 }
 
-h1,
-p {
-  margin: 0;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-body {
+.wrapper {
   max-width: 40rem;
   margin: auto;
   padding: 3.6rem 2.4rem;
@@ -91,7 +80,6 @@ body {
   margin-top: 4.8rem;
   &_logo {
     margin: 0 auto;
-    margin-top: 2rem;
   }
 }
 
@@ -109,14 +97,14 @@ body {
 .content {
   position: relative;
   &_heading {
-    margin-top: 4rem;
+    margin: 4rem 0 0;
     text-align: center;
     @include smUp {
       margin-top: 4.8rem;
     }
   }
   &_paragraph {
-    margin-top: 1.8rem;
+    margin: 1.8rem 0 0;
     text-align: center;
     @include smUp {
       font-size: 2rem;
@@ -148,6 +136,7 @@ body {
   }
   &_feedback {
     height: 0;
+    margin: 0;
     padding: 0 3.2rem;
     overflow: hidden;
     text-align: center;
@@ -285,7 +274,7 @@ body {
     margin-top: 7rem;
   }
   &_copyright {
-    margin-top: 2.6rem;
+    margin: 2.6rem 0 0;
     text-align: center;
   }
 }
@@ -293,7 +282,10 @@ body {
 .socialLinks {
   display: flex;
   justify-content: center;
+  margin: 0;
+  padding: 0;
   text-align: center;
+  list-style: none;
   &_item {
     display: block;
     &:not(:first-child) {

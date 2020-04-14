@@ -63,18 +63,10 @@ $bg-pattern-desktop: "{{ '/assets/base-apparel-coming-soon-page/bg-pattern-deskt
   }
 }
 
-body {
+.wrapper {
   font-size: 1.6rem;
   font-family: Josefin Sans, sans-serif;
   background: $gradient-bg;
-}
-
-h1,
-p {
-  margin: 0;
-}
-
-.wrapper {
   @include smLandscapeUp {
     position: relative;
     display: grid;
@@ -131,6 +123,7 @@ p {
     text-align: left;
   }
   &_heading {
+    margin: 0;
     font-weight: 300;
     font-size: 4rem;
     line-height: 1.05em;
@@ -146,7 +139,7 @@ p {
     }
   }
   &_text {
-    margin-top: 1.6rem;
+    margin: 1.6rem 0 0;
     font-size: 1.4rem;
     line-height: 1.6em;
     @include lgUp {
