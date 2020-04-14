@@ -5,12 +5,13 @@
 } // fixes Unknown word (CssSyntaxError) on frontmatter by stylelint
 
 @import 'normalize';
+@import 'defaults';
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
 
-$breakpoint-mobile: 375px;
-$breakpoint-tablet: 768px;
-$breakpoint-desktop: 1440px;
+$breakpoint-mobile: rem(375px);
+$breakpoint-tablet: rem(768px);
+$breakpoint-desktop: rem(1440px);
 
 $colors-primary: hsl(180, 62%, 55%), hsl(0, 78%, 62%), hsl(34, 97%, 64%),
   hsl(212, 86%, 64%);
@@ -23,10 +24,6 @@ $icons: "{{ '/assets/four-card-feature-section/icon-supervisor.svg' | relative_u
   "{{ '/assets/four-card-feature-section/icon-team-builder.svg' | relative_url }}",
   "{{ '/assets/four-card-feature-section/icon-karma.svg' | relative_url }}",
   "{{ '/assets/four-card-feature-section/icon-calculator.svg' | relative_url }}";
-
-html {
-  font-size: 62.5%;
-}
 
 h2,
 h3,

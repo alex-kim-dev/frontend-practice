@@ -5,6 +5,7 @@
 } // fixes Unknown word (CssSyntaxError) on frontmatter by stylelint
 
 @import 'normalize';
+@import 'defaults';
 
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap&text=WE%27RE');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400&display=swap&');
@@ -51,19 +52,15 @@ $icon-error: "{{ '/assets/base-apparel-coming-soon-page/icon-error.svg' | relati
 $bg-pattern-desktop: "{{ '/assets/base-apparel-coming-soon-page/bg-pattern-desktop.svg' | relative_url }}";
 
 @mixin smLandscapeUp {
-  @media (min-width: 1024px) and (orientation: landscape) {
+  @media (min-width: rem(1024px)) and (orientation: landscape) {
     @content;
   }
 }
 
 @mixin lgUp {
-  @media (min-width: 1440px) {
+  @media (min-width: rem(1440px)) {
     @content;
   }
-}
-
-html {
-  font-size: 62.5%;
 }
 
 body {

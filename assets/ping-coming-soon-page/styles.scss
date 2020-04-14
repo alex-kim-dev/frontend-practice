@@ -5,17 +5,12 @@
 } // fixes Unknown word (CssSyntaxError) on frontmatter by stylelint
 
 @import 'normalize';
+@import 'defaults';
 
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600&display=swap&text=Notify%20Me');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700&display=swap&text=son%21');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@1,300&display=swap&text=Pleas%20providm');
-
-@mixin smUp {
-  @media (min-width: 690px / 16px * 1rem) {
-    @content;
-  }
-}
 
 $color-primary-blue: hsl(223, 87%, 63%);
 $color-secondary-pale-blue: hsl(223, 100%, 88%);
@@ -29,8 +24,10 @@ $button-shadow: 0 0.6rem 1rem rgba($color-primary-blue, 0.4);
 $logo: "{{ '/assets/ping-coming-soon-page/logo.svg' | relative_url }}";
 $back: "{{ '/assets/ping-coming-soon-page/illustration-dashboard.png' | relative_url }}";
 
-html {
-  font-size: 62.5%;
+@mixin smUp {
+  @media (min-width: rem(690px)) {
+    @content;
+  }
 }
 
 h1,

@@ -5,11 +5,12 @@
 } // fixes Unknown word (CssSyntaxError) on frontmatter by stylelint
 
 @import 'normalize';
+@import 'defaults';
 
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
 
 @mixin smUp {
-  @media (min-width: 768px) {
+  @media (min-width: rem(768px)) {
     @content;
   }
 }
@@ -20,10 +21,6 @@ $color-primary-bright-yellow: hsl(71, 73%, 54%);
 $color-neutral-light-gray: hsl(204, 43%, 93%);
 $color-neutral-grayish-blue: hsl(218, 22%, 67%);
 $color-light: white;
-
-html {
-  font-size: 62.5%;
-}
 
 body {
   font-size: 1.6rem;

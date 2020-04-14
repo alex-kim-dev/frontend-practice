@@ -1,0 +1,8 @@
+@function rem($size) {
+  @return $size / 16px * 1rem;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
