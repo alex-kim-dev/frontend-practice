@@ -52,9 +52,11 @@ $back: "{{ '/assets/ping-coming-soon-page/illustration-dashboard.png' | relative
   &-h1 {
     color: $color-neutral-gray;
     font-size: 2.2rem;
+    line-height: 27px / 22px * 1em;
     letter-spacing: 0.005em;
     @include smUp {
       font-size: 4.8rem;
+      line-height: 58px / 48px * 1em;
     }
   }
   &-bold {
@@ -64,8 +66,10 @@ $back: "{{ '/assets/ping-coming-soon-page/illustration-dashboard.png' | relative
   &-secondary {
     color: $color-neutral-gray;
     font-size: 1rem;
+    line-height: 12px / 10px * 1em;
     @include smUp {
       font-size: 1.2rem;
+      line-height: 15px / 12px * 1em;
     }
   }
 }
@@ -100,14 +104,15 @@ $back: "{{ '/assets/ping-coming-soon-page/illustration-dashboard.png' | relative
     margin: 4rem 0 0;
     text-align: center;
     @include smUp {
-      margin-top: 4.8rem;
+      margin-top: 5rem;
     }
   }
   &_paragraph {
-    margin: 1.8rem 0 0;
+    margin: 1.6rem 0 0;
     text-align: center;
     @include smUp {
       font-size: 2rem;
+      line-height: 24px / 20px * 1em;
     }
   }
   &_form {
@@ -181,11 +186,9 @@ $back: "{{ '/assets/ping-coming-soon-page/illustration-dashboard.png' | relative
       height: 2.4em;
       padding-top: 0.6rem;
       padding-bottom: 0.2rem;
-      font-size: 1rem;
       opacity: 1;
       @include smUp {
         padding-top: 0.8rem;
-        font-size: 1.2rem;
       }
     }
   }

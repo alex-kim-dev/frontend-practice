@@ -126,7 +126,7 @@ $bg-pattern-desktop: "{{ '/assets/base-apparel-coming-soon-page/bg-pattern-deskt
     margin: 0;
     font-weight: 300;
     font-size: 4rem;
-    line-height: 1.05em;
+    line-height: 42px / 40px * 1em;
     letter-spacing: 0.27em;
     text-transform: uppercase;
     @include lgUp {
@@ -141,11 +141,12 @@ $bg-pattern-desktop: "{{ '/assets/base-apparel-coming-soon-page/bg-pattern-deskt
   &_text {
     margin: 1.6rem 0 0;
     font-size: 1.4rem;
-    line-height: 1.6em;
+    line-height: 22px / 14px * 1em;
     @include lgUp {
       margin-top: 2rem;
       font-size: 1.6rem;
-      line-height: 1.75em;
+      line-height: 28px / 16px * 1em;
+      letter-spacing: 0.004em;
     }
   }
 }
