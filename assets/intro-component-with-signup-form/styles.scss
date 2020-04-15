@@ -1,0 +1,22 @@
+---
+---
+
+#unknown {
+} // fixes Unknown word (CssSyntaxError) on frontmatter by stylelint
+
+@import 'normalize';
+@import 'defaults';
+
+@import 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap';
+
+:root {
+  // COLORS
+  // primary
+  --c-red: hsl(0, 100%, 74%);
+  --c-green: hsl(154, 59%, 51%);
+  // accent
+  --c-blue: hsl(248, 32%, 49%);
+  // neutral
+  --c-dark-blue: hsl(249, 10%, 26%);
+  --c-grayish-blue: hsl(246, 25%, 77%);
+}
