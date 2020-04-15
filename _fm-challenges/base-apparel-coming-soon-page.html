@@ -28,11 +28,7 @@ relative_url %}
       your email below to stay up-to-date with announcements and our launch
       deals.
     </p>
-    <form
-      class="subscribe"
-      novalidate
-      autocomplete="on"
-    >
+    <form class="subscribe" novalidate autocomplete="on">
       <label class="subscribe_label" for="email"
         >Enter email to subscribe</label
       >
@@ -45,6 +41,7 @@ relative_url %}
               type="email"
               name="email"
               placeholder="Email Address"
+              aria-describedby="feedback"
               required
             />
             <div class="subscribe_errorIcon"></div>
@@ -56,7 +53,13 @@ relative_url %}
           aria-label="Submit"
         ></button>
       </div>
-      <div class="subscribe_feedback" aria-live="polite"></div>
+      <div
+        id="feedback"
+        class="subscribe_feedback"
+        aria-live="polite"
+        aria-relevant="additions removals"
+        aria-atomic="true"
+      ></div>
     </form>
   </main>
 </div>

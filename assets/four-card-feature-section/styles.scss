@@ -9,9 +9,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
 
-$breakpoint-mobile: rem(375px);
 $breakpoint-tablet: rem(768px);
-$breakpoint-desktop: rem(1440px);
+$breakpoint-desktop: rem(1200px);
 
 $colors-primary: hsl(180, 62%, 55%), hsl(0, 78%, 62%), hsl(34, 97%, 64%),
   hsl(212, 86%, 64%);
