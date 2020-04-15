@@ -29,19 +29,19 @@ $icons: "{{ '/assets/four-card-feature-section/icon-supervisor.svg' | relative_u
   color: $color-neutral-grayish-blue;
   font-size: 1.6rem;
   font-family: Poppins, sans-serif;
-  line-height: 25px / 16px * 1em;
+  line-height: 160%;
   letter-spacing: -0.025em;
   &-h2 {
     color: $color-neutral-very-dark-blue;
     font-weight: 200;
     font-size: 2.4rem;
-    line-height: 36px / 24px * 1em;
+    line-height: 150%;
     letter-spacing: 0.01em;
   }
   &-h3 {
     color: $color-neutral-very-dark-blue;
     font-size: 2rem;
-    line-height: 27px / 20px * 1em;
+    line-height: 135%;
     letter-spacing: 0;
   }
   &-strong {
@@ -49,7 +49,7 @@ $icons: "{{ '/assets/four-card-feature-section/icon-supervisor.svg' | relative_u
   }
   &-sm {
     font-size: 1.3rem;
-    line-height: 23px / 13px * 1em;
+    line-height: 180%;
     letter-spacing: 0.01em;
   }
 }
@@ -140,7 +140,7 @@ $icons: "{{ '/assets/four-card-feature-section/icon-supervisor.svg' | relative_u
   .text {
     &-h2 {
       font-size: 3.6rem;
-      line-height: 1.425em;
+      line-height: 142.5%;
     }
   }
   .feature {

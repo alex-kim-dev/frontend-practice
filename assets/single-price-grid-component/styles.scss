@@ -113,7 +113,7 @@ $color-light: white;
       color: $color-light;
       font-weight: 700;
       font-size: 3.2rem;
-      line-height: 38px / 32px * 1em;
+      line-height: 120%;
     }
   }
 }
@@ -122,11 +122,11 @@ $color-light: white;
   color: $color-primary-cyan;
   font-weight: 700;
   font-size: 2rem;
-  line-height: 23px / 20px * 1em;
+  line-height: 115%;
   letter-spacing: -0.012em;
   @include smUp {
     font-size: 2.4rem;
-    line-height: 28px / 24px * 1em;
+    line-height: 120%;
   }
 }
 
@@ -135,16 +135,15 @@ $color-light: white;
   color: $color-light;
   font-weight: 700;
   font-size: 1.8rem;
-  line-height: 22px / 18px * 1em;
+  line-height: 125%;
   letter-spacing: -0.012em;
   &-accent {
     color: $color-primary-bright-yellow;
     font-size: 1.6rem;
-    line-height: 20px / 16px * 1em;
     letter-spacing: -0.044em;
     @include smUp {
       font-size: 1.8rem;
-      line-height: 24px / 18px * 1em;
+      line-height: 135%;
       letter-spacing: -0.012em;
     }
   }
@@ -153,23 +152,23 @@ $color-light: white;
 .text {
   color: $color-neutral-grayish-blue;
   font-size: 1.4rem;
-  line-height: 26px / 14px * 1em;
+  line-height: 190%;
   letter-spacing: -0.012em;
   @include smUp {
     font-size: 1.6rem;
-    line-height: 26px / 16px * 1em;
+    line-height: 165%;
   }
   &-light {
     color: $color-light;
   }
   &-lg {
     font-size: 1.6rem;
-    line-height: 30px / 16px * 1em;
+    line-height: 190%;
   }
   &-sm {
     color: $color-neutral-light-gray;
     font-size: 1.4rem;
-    line-height: 20px / 14px * 1em;
+    line-height: 145%;
   }
 }
 
