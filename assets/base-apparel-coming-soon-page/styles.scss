@@ -5,7 +5,7 @@
 } // fixes Unknown word (CssSyntaxError) on frontmatter by stylelint
 
 @import 'normalize';
-@import 'attribution';
+@import 'defaults';
 
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap&text=WE%27RE');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400&display=swap&');
@@ -51,49 +51,48 @@ $icon-arrow: "{{ '/assets/base-apparel-coming-soon-page/icon-arrow.svg' | relati
 $icon-error: "{{ '/assets/base-apparel-coming-soon-page/icon-error.svg' | relative_url }}";
 $bg-pattern-desktop: "{{ '/assets/base-apparel-coming-soon-page/bg-pattern-desktop.svg' | relative_url }}";
 
-@mixin smLandscapeUp {
-  @media (min-width: 1024px) and (orientation: landscape) {
+@mixin smUp {
+  @media (min-width: rem(768px)) {
+    @content;
+  }
+}
+
+@mixin mdUp {
+  @media (min-width: rem(1024px)) and (orientation: landscape) {
     @content;
   }
 }
 
 @mixin lgUp {
-  @media (min-width: 1440px) {
+  @media (min-width: rem(1200px)) {
     @content;
   }
 }
 
-html {
-  font-size: 62.5%;
-}
-
-body {
+.wrapper {
+  min-height: 100vh;
   font-size: 1.6rem;
   font-family: Josefin Sans, sans-serif;
   background: $gradient-bg;
-}
-
-h1,
-p {
-  margin: 0;
-}
-
-.wrapper {
-  @include smLandscapeUp {
+  @include mdUp {
     position: relative;
     display: grid;
+    grid-template: auto 1fr / 1fr 0 42.361111%;
+    grid-template-areas:
+      'header  . heroImage'
+      'content . heroImage';
+    background: transparent;
+  }
+  @include lgUp {
     grid-template: auto 1fr / 1fr 3.819444% 42.361111%;
-    height: 100vh;
   }
 }
 
 .header {
   display: flex;
   padding: 3.1rem 3.2rem 3.2rem;
-  @include smLandscapeUp {
-    grid-area: 1 / 1;
-  }
-  @include lgUp {
+  @include mdUp {
+    grid-area: header;
     width: 44.5rem;
     margin: auto;
     padding: 6.5rem 0;
@@ -102,6 +101,9 @@ p {
 
 .logo {
   height: 2.1rem;
+  @include smUp {
+    height: 2.8rem;
+  }
   @include lgUp {
     height: 3.3rem;
   }
@@ -112,8 +114,8 @@ p {
   height: 66.6667vw;
   background: url($hero-mobile) center no-repeat;
   background-size: cover;
-  @include smLandscapeUp {
-    grid-area: 1 / 3 / span 2;
+  @include mdUp {
+    grid-area: heroImage;
     width: 100%;
     height: 100%;
     background-image: url($hero-desktop);
@@ -126,23 +128,29 @@ p {
   padding: 6.4rem 3.2rem 3.2rem;
   color: $color-desaturated-red;
   text-align: center;
-  @include smLandscapeUp {
-    grid-area: 2 / 1;
-  }
-  @include lgUp {
+  @include smUp {
     max-width: 44.5rem;
-    padding: 6.5rem 0;
+  }
+  @include mdUp {
+    grid-area: content;
     text-align: left;
   }
+  @include lgUp {
+    padding: 6.5rem 0;
+  }
   &_heading {
+    margin: 0;
     font-weight: 300;
     font-size: 4rem;
-    line-height: 1.05em;
+    line-height: 105%;
     letter-spacing: 0.27em;
     text-transform: uppercase;
+    @include smUp {
+      font-size: 5.6rem;
+      line-height: 110%;
+    }
     @include lgUp {
       font-size: 6.4rem;
-      line-height: 1.1em;
     }
     &-accent {
       color: $color-dark-grayish-red;
@@ -150,23 +158,22 @@ p {
     }
   }
   &_text {
-    margin-top: 1.6rem;
+    margin: 1.6rem 0 0;
     font-size: 1.4rem;
-    line-height: 1.6em;
-    @include lgUp {
+    line-height: 160%;
+    @include smUp {
       margin-top: 2rem;
       font-size: 1.6rem;
-      line-height: 1.75em;
+      line-height: 175%;
+      letter-spacing: 0.004em;
     }
   }
 }
 
 .background {
-  @include smLandscapeUp {
-    grid-area: 1 / 1 / span 2 / span 2;
-  }
-  @include lgUp {
+  @include mdUp {
     z-index: -1;
+    grid-area: 1 / 1 / span 2 / span 2;
     background: url($bg-pattern-desktop) no-repeat;
     background-size: 100% 100%;
   }
@@ -174,7 +181,7 @@ p {
 
 .subscribe {
   margin-top: 3.2rem;
-  @include lgUp {
+  @include smUp {
     margin-top: 4rem;
   }
   &_label {
@@ -194,7 +201,7 @@ p {
     height: 4.8rem;
     border: $border-thin;
     border-radius: 2.4rem;
-    @include lgUp {
+    @include smUp {
       height: 5.6rem;
       border-radius: 2.8rem;
     }
@@ -211,7 +218,7 @@ p {
     align-items: center;
     width: calc(100% - #{$absWrapper-shrink-xs});
     transform: translateY(-50%);
-    @include lgUp {
+    @include smUp {
       left: $absWrapper-pl-lg;
       width: calc(100% - #{$absWrapper-shrink-lg});
     }
@@ -223,7 +230,7 @@ p {
     background: transparent;
     border: none;
     transition: width $feedback-transition-time;
-    @include lgUp {
+    @include smUp {
       left: $absWrapper-pl-lg;
       width: calc(100% - #{$absWrapper-shrink-lg});
       font-size: 1.6rem;
@@ -242,7 +249,7 @@ p {
     background-size: contain;
     opacity: 0;
     transition: all $feedback-transition-time;
-    @include lgUp {
+    @include smUp {
       height: 2.4rem;
     }
   }
@@ -258,7 +265,7 @@ p {
     border-radius: 2.4rem;
     box-shadow: $shadow-btn;
     transform: translateY(-50%);
-    @include lgUp {
+    @include smUp {
       width: $submit-width-lg;
       border-radius: 2.8rem;
     }
@@ -281,7 +288,7 @@ p {
     font-size: 1.3rem;
     text-align: left;
     transition: color $feedback-transition-time;
-    @include lgUp {
+    @include smUp {
       padding: 1.1rem $absWrapper-pl-lg;
     }
   }
@@ -290,7 +297,7 @@ p {
       width: 2rem;
       margin-left: 1rem;
       opacity: 1;
-      @include lgUp {
+      @include smUp {
         width: 2.4rem;
         margin-left: 1.6rem;
       }
