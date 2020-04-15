@@ -30,6 +30,10 @@ $back: "{{ '/assets/ping-coming-soon-page/illustration-dashboard.png' | relative
   }
 }
 
+body {
+  background: white;
+}
+
 .wrapper {
   max-width: 40rem;
   margin: auto;
