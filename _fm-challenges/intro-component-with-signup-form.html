@@ -25,40 +25,23 @@ difficulty: newbie
       </header>
       <div class="signupForm_body paper">
         <ul class="signupForm_fieldList">
-          <li class="field">
-            <label class="textInput">
-              <input
-                type="text"
-                class="textInput_input text text-input"
-                name="firstName"
-                placeholder="First Name"
-                aria-describedby="firstNameFeedback"
-              />
-              <span class="textInput_label">First name, required</span>
-            </label>
-            <svg
-              width="24"
-              height="24"
-              xmlns="http://www.w3.org/2000/svg"
-              class="field_errorIcon"
-              aria-hidden="true"
-            >
-              <g fill="none" fill-rule="evenodd">
-                <circle fill="#FF7979" cx="12" cy="12" r="12" />
-                <rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1" />
-                <rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1" />
-              </g>
-            </svg>
-            <p
-              id="firstNameFeedback"
-              class="field_feedback text text-error"
-              aria-live="polite"
-              aria-relevant="additions removals"
-              aria-atomic="true"
-            >
-              First Name cannot be empty
-            </p>
-          </li>
+          <!-- prettier-ignore -->
+          {% include field.html
+            type='text'
+            name='firstName'
+            placeholder='First Name' %}
+          {% include field.html
+            type='text'
+            name='lastName'
+            placeholder='Last Name' %}
+          {% include field.html
+            type='email'
+            name='email'
+            placeholder='Email Address' %}
+          {% include field.html
+            type='password'
+            name='password'
+            placeholder='Password' %}
         </ul>
         <button class="signupForm_submit button">Claim your free trial</button>
         <p class="signupForm_agreement text text-secondary">
