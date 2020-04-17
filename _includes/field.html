@@ -1,0 +1,32 @@
+<li class="signupForm_field field">
+  <label class="textInput">
+    <input
+      type="{{ include.type }}"
+      class="textInput_input text text-input"
+      name="{{ include.name }}"
+      placeholder="{{ include.placeholder }}"
+      aria-describedby="{{ include.name }}Feedback"
+    />
+    <span class="textInput_label">{{ include.placeholder }}, required</span>
+  </label>
+  <svg
+    width="24"
+    height="24"
+    xmlns="http://www.w3.org/2000/svg"
+    class="field_errorIcon"
+    aria-hidden="true"
+  >
+    <g fill="none" fill-rule="evenodd">
+      <circle fill="#FF7979" cx="12" cy="12" r="12" />
+      <rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1" />
+      <rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1" />
+    </g>
+  </svg>
+  <p
+    id="{{ include.name }}Feedback"
+    class="field_feedback text text-error"
+    aria-live="polite"
+    aria-relevant="additions removals"
+    aria-atomic="true"
+  ></p>
+</li>

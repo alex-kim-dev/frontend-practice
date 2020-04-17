@@ -1,0 +1,298 @@
+---
+---
+
+#unknown {
+} // fixes Unknown word (CssSyntaxError) on frontmatter by stylelint
+
+@import 'normalize';
+@import 'defaults';
+
+@import 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap';
+
+@mixin mdUp {
+  @media (min-width: rem(1024px)) {
+    @content;
+  }
+}
+
+$bg-mobile: "{{ '/assets/intro-component-with-signup-form/bg-intro-mobile.png' | relative_url }}";
+$bg-desktop: "{{ '/assets/intro-component-with-signup-form/bg-intro-desktop.png' | relative_url }}";
+$trs-time: 0.3s;
+
+:root {
+  // COLORS
+  // primary
+  --c-red: hsl(0, 100%, 74%);
+  --c-red-darker: hsl(0, 95%, 64%);
+  --c-green: hsl(154, 59%, 51%);
+  // accent
+  --c-blue: hsl(248, 32%, 49%);
+  // neutral
+  --c-dark-blue: hsl(249, 10%, 26%);
+  --c-grayish-blue: hsl(246, 25%, 77%);
+  // text
+  --c-text-light: white;
+  // button
+  --c-btn-hover: hsl(154, 65%, 68%);
+  --c-btn-border: hsl(154, 59%, 46%);
+  --c-btn-border-hover: hsl(154, 65%, 63%);
+}
+
+.text {
+  color: var(--c-text-light);
+  font: 500 1.6rem/165% Poppins, sans-serif;
+  &-h2 {
+    font-size: 2.8rem;
+    line-height: 125%;
+    letter-spacing: -0.01em;
+    @include mdUp {
+      font-size: 5rem;
+      line-height: 110%;
+    }
+  }
+  &-h3 {
+    font-weight: 400;
+    line-height: 165%;
+    letter-spacing: -0.02em;
+    @include mdUp {
+      line-height: 150%;
+    }
+  }
+  &-bold {
+    font-weight: 700;
+  }
+  &-input {
+    color: var(--c-dark-blue);
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: normal;
+    letter-spacing: 0.01em;
+    @include mdUp {
+      letter-spacing: 0.03em;
+    }
+  }
+  &-secondary {
+    color: var(--c-grayish-blue);
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 195%;
+  }
+  &-link {
+    color: var(--c-red);
+    font-weight: 600;
+    &:focus {
+      outline: 0.1rem solid var(--c-dark-blue);
+    }
+  }
+  &-error {
+    color: var(--c-red);
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 150%;
+  }
+}
+
+.paper {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 0.8rem 0 hsla(0, 0, 0, 0.2);
+}
+
+.textInput {
+  display: block;
+  &_input {
+    width: 100%;
+    padding: 1.8rem 1.9rem 1.7rem;
+    overflow: hidden;
+    background: transparent;
+    border: none;
+    border-radius: 0.4rem;
+    box-shadow: inset 0 0 0 0.1rem var(--c-grayish-blue);
+    transition: $trs-time;
+    @include mdUp {
+      padding-right: 3.2rem;
+      padding-left: 3.2rem;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: inset 0 0 0 0.1rem var(--c-dark-blue);
+    }
+  }
+  &_label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+}
+
+.field {
+  position: relative;
+  &_errorIcon {
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: $trs-time;
+    @include mdUp {
+      right: 2.7rem;
+    }
+  }
+  &_feedback {
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    opacity: 0;
+    transition: $trs-time;
+  }
+  &-error {
+    .textInput_input {
+      padding-right: 5.6rem;
+      color: var(--c-red);
+      box-shadow: inset 0 0 0 0.2rem var(--c-red);
+      @include mdUp {
+        padding-right: 7.8rem;
+      }
+      &:focus {
+        box-shadow: inset 0 0 0 0.2rem var(--c-red-darker);
+      }
+    }
+    .field_errorIcon {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity $trs-time, visibility 0s $trs-time;
+    }
+    .field_feedback {
+      max-height: 3.2rem;
+      padding-top: 0.6rem;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.button {
+  padding: 1.7rem 3.2rem 1.1rem;
+  overflow: hidden;
+  color: var(--c-text-light);
+  font: 600 1.6rem/150% Poppins, sans-serif;
+  letter-spacing: 0.03em;
+  text-align: center;
+  text-transform: uppercase;
+  background: var(--c-green);
+  border: none;
+  border-bottom: 0.4rem solid var(--c-btn-border);
+  border-radius: 0.6rem;
+  cursor: pointer;
+  transition: $trs-time;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.1rem var(--c-dark-blue);
+  }
+  &:hover {
+    background: var(--c-btn-hover);
+    border-color: var(--c-btn-border-hover);
+  }
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: url($bg-mobile) center top, var(--c-red);
+  @include mdUp {
+    background: url($bg-desktop) center top, var(--c-red);
+  }
+}
+
+.intro {
+  max-width: 54rem;
+  padding: 6.8rem 2.4rem;
+  @include mdUp {
+    display: flex;
+    max-width: 117rem;
+    padding: 3rem;
+  }
+}
+
+.header {
+  padding: 2.4rem 0 3.9rem;
+  text-align: center;
+  @include mdUp {
+    display: flex;
+    flex: 1;
+    flex-flow: column;
+    justify-content: center;
+    margin-right: 1.5rem;
+    padding: 0;
+    text-align: left;
+  }
+  &_heading {
+    margin: 0;
+    @include mdUp {
+      margin-top: 0.6rem;
+    }
+  }
+  &_text {
+    margin: 2.4rem 0 0;
+    @include mdUp {
+      margin-top: 2.8rem;
+    }
+  }
+}
+
+.signupForm {
+  margin-top: 2.4rem;
+  @include mdUp {
+    flex: 1;
+    margin-top: 0;
+    margin-left: 1.5rem;
+  }
+  &_header {
+    padding: 1.9rem 6.4rem 1.7rem;
+    background: var(--c-blue);
+  }
+  &_heading {
+    margin: 0;
+    text-align: center;
+  }
+  &_body {
+    margin-top: 2.4rem;
+    padding: 2.4rem;
+    @include mdUp {
+      padding: 4rem;
+    }
+  }
+  &_fieldList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  &_field:not(:first-child) {
+    margin-top: 1.6rem;
+    @include mdUp {
+      margin-top: 2rem;
+    }
+  }
+  &_submit {
+    width: 100%;
+    margin-top: 1.6rem;
+    @include mdUp {
+      margin-top: 2rem;
+    }
+  }
+  &_agreement {
+    margin: 0.8rem 0 0;
+    padding: 0 1.6rem;
+    text-align: center;
+    @include mdUp {
+      margin-top: 1.2rem;
+    }
+  }
+}
