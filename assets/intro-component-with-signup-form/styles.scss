@@ -9,7 +9,14 @@
 
 @import 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap';
 
+@mixin mdUp {
+  @media (min-width: rem(1024px)) {
+    @content;
+  }
+}
+
 $bg-mobile: "{{ '/assets/intro-component-with-signup-form/bg-intro-mobile.png' | relative_url }}";
+$bg-desktop: "{{ '/assets/intro-component-with-signup-form/bg-intro-desktop.png' | relative_url }}";
 $trs-time: 0.3s;
 
 :root {
@@ -38,11 +45,18 @@ $trs-time: 0.3s;
     font-size: 2.8rem;
     line-height: 125%;
     letter-spacing: -0.01em;
+    @include mdUp {
+      font-size: 5rem;
+      line-height: 110%;
+    }
   }
   &-h3 {
     font-weight: 400;
     line-height: 165%;
     letter-spacing: -0.02em;
+    @include mdUp {
+      line-height: 150%;
+    }
   }
   &-bold {
     font-weight: 700;
@@ -53,6 +67,9 @@ $trs-time: 0.3s;
     font-size: 1.4rem;
     line-height: normal;
     letter-spacing: 0.01em;
+    @include mdUp {
+      letter-spacing: 0.03em;
+    }
   }
   &-secondary {
     color: var(--c-grayish-blue);
@@ -72,7 +89,6 @@ $trs-time: 0.3s;
     font-size: 1.1rem;
     font-style: italic;
     line-height: 150%;
-    letter-spacing: -0.01em;
   }
 }
 
@@ -93,6 +109,10 @@ $trs-time: 0.3s;
     border-radius: 0.4rem;
     box-shadow: inset 0 0 0 0.1rem var(--c-grayish-blue);
     transition: $trs-time;
+    @include mdUp {
+      padding-right: 3.2rem;
+      padding-left: 3.2rem;
+    }
     &:focus {
       outline: none;
       box-shadow: inset 0 0 0 0.1rem var(--c-dark-blue);
@@ -111,9 +131,6 @@ $trs-time: 0.3s;
 
 .field {
   position: relative;
-  &:not(:first-child) {
-    margin-top: 1.6rem;
-  }
   &_errorIcon {
     position: absolute;
     top: 1.6rem;
@@ -121,6 +138,9 @@ $trs-time: 0.3s;
     visibility: hidden;
     opacity: 0;
     transition: $trs-time;
+    @include mdUp {
+      right: 2.7rem;
+    }
   }
   &_feedback {
     max-height: 0;
@@ -133,7 +153,11 @@ $trs-time: 0.3s;
   &-error {
     .textInput_input {
       padding-right: 5.6rem;
+      color: var(--c-red);
       box-shadow: inset 0 0 0 0.2rem var(--c-red);
+      @include mdUp {
+        padding-right: 7.8rem;
+      }
       &:focus {
         box-shadow: inset 0 0 0 0.2rem var(--c-red-darker);
       }
@@ -145,7 +169,7 @@ $trs-time: 0.3s;
     }
     .field_feedback {
       max-height: 3.2rem;
-      padding: 0.6rem 0 0.4rem;
+      padding-top: 0.6rem;
       visibility: visible;
       opacity: 1;
     }
@@ -177,27 +201,59 @@ $trs-time: 0.3s;
 }
 
 .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-height: 100vh;
   background: url($bg-mobile) center top, var(--c-red);
+  @include mdUp {
+    background: url($bg-desktop) center top, var(--c-red);
+  }
 }
 
 .intro {
+  max-width: 54rem;
   padding: 6.8rem 2.4rem;
+  @include mdUp {
+    display: flex;
+    max-width: 117rem;
+    padding: 3rem;
+  }
 }
 
 .header {
   padding: 2.4rem 0 3.9rem;
   text-align: center;
+  @include mdUp {
+    display: flex;
+    flex: 1;
+    flex-flow: column;
+    justify-content: center;
+    margin-right: 1.5rem;
+    padding: 0;
+    text-align: left;
+  }
   &_heading {
     margin: 0;
+    @include mdUp {
+      margin-top: 0.6rem;
+    }
   }
   &_text {
     margin: 2.4rem 0 0;
+    @include mdUp {
+      margin-top: 2.8rem;
+    }
   }
 }
 
 .signupForm {
   margin-top: 2.4rem;
+  @include mdUp {
+    flex: 1;
+    margin-top: 0;
+    margin-left: 1.5rem;
+  }
   &_header {
     padding: 1.9rem 6.4rem 1.7rem;
     background: var(--c-blue);
@@ -209,19 +265,34 @@ $trs-time: 0.3s;
   &_body {
     margin-top: 2.4rem;
     padding: 2.4rem;
+    @include mdUp {
+      padding: 4rem;
+    }
   }
   &_fieldList {
     margin: 0;
     padding: 0;
     list-style: none;
   }
+  &_field:not(:first-child) {
+    margin-top: 1.6rem;
+    @include mdUp {
+      margin-top: 2rem;
+    }
+  }
   &_submit {
     width: 100%;
     margin-top: 1.6rem;
+    @include mdUp {
+      margin-top: 2rem;
+    }
   }
   &_agreement {
     margin: 0.8rem 0 0;
     padding: 0 1.6rem;
     text-align: center;
+    @include mdUp {
+      margin-top: 1.2rem;
+    }
   }
 }
