@@ -12,7 +12,7 @@
     };
 
     const validate = formData => {
-      const emailRegExp = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/;
+      const emailRegExp = /^\w+([.-]\w+)*@\w+([.-]\w+)*\.\w{2,}$/;
       const email = formData.get('email').trim();
 
       if (email === '') return 'empty';

@@ -8,7 +8,7 @@
     const feedbackEl = document.querySelector('.subscribe_feedback');
 
     const isValidEmail = str =>
-      str.trim().match(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/);
+      str.trim().match(/^\w+([.-]\w+)*@\w+([.-]\w+)*\.\w{2,}$/);
 
     const showFeedback = () => {
       if (isValidEmail(emailInput.value)) {
