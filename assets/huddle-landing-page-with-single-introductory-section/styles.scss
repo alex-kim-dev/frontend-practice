@@ -16,4 +16,128 @@ $img-mockups: "{{ '/assets/huddle-landing-page-with-single-introductory-section/
 
 :root {
   --c-violet: hsl(257, 40%, 49%);
+  --c-violet-light: hsl(257, 40%, 79%);
+  --c-violet-darker: hsl(257, 40%, 29%);
+  --c-white: white;
+}
+
+.wrapper {
+  min-height: 100vh;
+  background: url($bg-mobile) center top no-repeat, var(--c-violet);
+}
+
+.container {
+  padding: 3.8rem 3.8rem 4rem;
+}
+
+.header {
+}
+
+.logo {
+  width: 12rem;
+  height: 1.9rem;
+  margin-left: 0.2rem;
+  background: url($logo) center no-repeat;
+  background-size: contain;
+}
+
+.heroImage {
+  width: 100%;
+  height: 0;
+  margin-top: 6.8rem;
+  padding-top: 70.9%;
+  background: url($img-mockups) center no-repeat;
+  background-size: 100% 100%;
+  transform: scale(1.01);
+}
+
+.content {
+  margin-top: 6.1rem;
+  text-align: center;
+}
+
+.heading {
+  margin: 0;
+  color: var(--c-white);
+  font: 700 2.4rem Poppins, san-serif;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+  text-transform: capitalize;
+}
+
+.text {
+  margin: 1.3rem 0 0;
+  color: var(--c-white);
+  font: 400 1.6rem/150% Open Sans, sans-serif;
+}
+
+.button {
+  width: 66.9%;
+  margin-top: 2.4rem;
+  padding: 1.2rem 3.2rem 0.8rem;
+  color: var(--c-violet);
+  font: 400 1.3rem Poppins, sans-serif;
+  letter-spacing: -0.05em;
+  background: var(--c-white);
+  border: none;
+  border-radius: 2rem;
+  box-shadow: 0.1rem 0.3rem 0.5rem hsla(0, 0%, 0%, 0.3);
+  cursor: pointer;
+  transition: 0.2s;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.4rem var(--c-violet-darker);
+  }
+  &:hover {
+    box-shadow: 0.2rem 0.4rem 0.6rem hsla(0, 0%, 0%, 0.4);
+  }
+  &:active {
+    background: var(--c-violet-light);
+  }
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  margin: 6.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: block;
+  &:not(:first-child) {
+    margin-left: 1rem;
+  }
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  background: transparent;
+  border: 0.1rem solid var(--c-white);
+  border-radius: 50%;
+  transition: 0.2s ease-in-out;
+  &:focus,
+  &:hover {
+    background: var(--c-white);
+    outline: none;
+    .icon {
+      color: var(--c-violet);
+    }
+  }
+  &:active {
+    background: var(--c-violet-light);
+    border-color: var(--c-violet-light);
+  }
+}
+
+.icon {
+  display: block;
+  width: 1.4rem;
+  height: 1.4rem;
+  color: var(--c-white);
 }
