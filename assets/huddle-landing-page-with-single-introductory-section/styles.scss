@@ -1,0 +1,19 @@
+---
+---
+
+#unknown {
+} // fixes Unknown word (CssSyntaxError) on frontmatter by stylelint
+
+@import 'normalize';
+@import 'defaults';
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;700&display=swap');
+
+$bg-mobile: "{{ '/assets/huddle-landing-page-with-single-introductory-section/bg-mobile.svg' | relative_url }}";
+$bg-desktop: "{{ '/assets/huddle-landing-page-with-single-introductory-section/bg-desktop.svg' | relative_url }}";
+$logo: "{{ '/assets/huddle-landing-page-with-single-introductory-section/logo.svg' | relative_url }}";
+$img-mockups: "{{ '/assets/huddle-landing-page-with-single-introductory-section/illustration-mockups.svg' | relative_url }}";
+
+:root {
+  --c-violet: hsl(257, 40%, 49%);
+}
