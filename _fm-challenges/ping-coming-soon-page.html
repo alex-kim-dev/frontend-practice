@@ -41,41 +41,12 @@ includeJs: true
   </main>
   <div class="background"></div>
   <footer class="footer">
-    <ul class="socialLinks">
-      <li class="socialLinks_item">
-        <a
-          href="https://facebook.com"
-          target="_blank"
-          rel="noreferrer"
-          class="socialLinks_link"
-          aria-label="Facebook"
-        >
-          {% include icons/facebook.html class='icon' %}
-        </a>
-      </li>
-      <li class="socialLinks_item">
-        <a
-          href="https://twitter.com"
-          target="_blank"
-          rel="noreferrer"
-          class="socialLinks_link"
-          aria-label="Twitter"
-        >
-          {% include icons/twitter.html class='icon' %}
-        </a>
-      </li>
-      <li class="socialLinks_item">
-        <a
-          href="https://instagram.com"
-          target="_blank"
-          rel="noreferrer"
-          class="socialLinks_link"
-          aria-label="Instagram"
-        >
-          {% include icons/instagram.html class='icon' %}
-        </a>
-      </li>
-    </ul>
+    <!-- prettier-ignore -->
+    {% include socialLinks.html
+      listClass='socialLinks'
+      itemClass='socialLinks_item'
+      linkClass='socialLinks_link'
+      iconClass='icon' %}
     <p class="footer_copyright text text-secondary">
       &copy; Copyright Ping. All rights reserved.
     </p>

@@ -20,41 +20,12 @@ difficulty: newbie
       <button class="button">Register</button>
     </main>
     <footer class="footer">
-      <ul class="list">
-        <li class="item">
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noreferrer"
-            class="socialLink"
-            aria-label="Facebook"
-          >
-            {% include icons/facebook.html class='icon' %}
-          </a>
-        </li>
-        <li class="item">
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noreferrer"
-            class="socialLink"
-            aria-label="Twitter"
-          >
-            {% include icons/twitter.html class='icon' %}
-          </a>
-        </li>
-        <li class="item">
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noreferrer"
-            class="socialLink"
-            aria-label="Instagram"
-          >
-            {% include icons/instagram.html class='icon' %}
-          </a>
-        </li>
-      </ul>
+      <!-- prettier-ignore -->
+      {% include socialLinks.html
+        listClass='list'
+        itemClass='item'
+        linkClass='socialLink'
+        iconClass='icon' %}
     </footer>
   </div>
 </div>
