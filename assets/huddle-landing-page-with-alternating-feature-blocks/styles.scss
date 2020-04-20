@@ -20,3 +20,108 @@ $bg-mobile: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/bg-
   --c-veryDarkCyan: hsl(192, 100%, 9%);
   --c-grayishBlue: hsl(208, 11%, 55%);
 }
+
+// #region Components
+
+.heading {
+  font: 600 2rem Poppins, sans-serif;
+  &-sm {
+    font-size: 1.8rem;
+  }
+  &-lg {
+    font-size: 2.4rem;
+  }
+}
+
+.text {
+  font: 400 1.6rem/150% Open Sans, sans-serif;
+  &-sm {
+    font-size: 1.4rem;
+  }
+  &-lg {
+    font-size: 1.8rem;
+  }
+}
+
+.light {
+  color: var(--c-veryPaleCyan);
+}
+
+.dark {
+  color: var(--c-veryDarkCyan);
+}
+
+.gray {
+  color: var(--c-grayishBlue);
+}
+
+.logo {
+  // colored
+  &-white {
+  }
+  &-lg {
+  }
+}
+
+.button {
+  // white, em sizes
+  &_label {
+  }
+  &-cta {
+  }
+  &-textSm {
+  }
+}
+
+.image {
+}
+
+.paper {
+}
+
+.card {
+  &-reverse {
+  }
+}
+
+.contacts {
+}
+
+.navSecondary {
+}
+
+.social {
+  &_item {
+  }
+  &_link {
+  }
+}
+
+.copyright {
+}
+
+// #endregion Components
+
+// #region Layout
+
+.header {
+  &_container {
+  }
+}
+
+.hero {
+  &_container {
+  }
+}
+
+.features {
+  &_container {
+  }
+}
+
+.footer {
+  &_container {
+  }
+}
+
+// #endregion Layout
