@@ -10,21 +10,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap&text=Get%20sardfoTyIF');
 
-$bg-mobile: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/bg-mobile.svg' | relative_url }}";
+$logo: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/logo.svg' | relative_url }}";
+$bgHeroMobile: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/bg-hero-mobile.svg' | relative_url }}";
+$imgMockups: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/illustration-mockups.svg' | relative_url }}";
 
 :root {
-  // primary
   --c-pink: hsl(322, 100%, 66%);
-  // neutral
   --c-veryPaleCyan: hsl(193, 100%, 96%);
   --c-veryDarkCyan: hsl(192, 100%, 9%);
   --c-grayishBlue: hsl(208, 11%, 55%);
+  --c-light: white;
 }
 
 // #region Components
 
 .heading {
-  font: 600 2rem Poppins, sans-serif;
+  margin: 0;
+  font: 600 2rem/150% Poppins, sans-serif;
   &-sm {
     font-size: 1.8rem;
   }
@@ -34,6 +36,7 @@ $bg-mobile: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/bg-
 }
 
 .text {
+  margin: 0;
   font: 400 1.6rem/150% Open Sans, sans-serif;
   &-sm {
     font-size: 1.4rem;
@@ -43,20 +46,23 @@ $bg-mobile: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/bg-
   }
 }
 
-.light {
+.colorLight {
   color: var(--c-veryPaleCyan);
 }
 
-.dark {
+.colorDark {
   color: var(--c-veryDarkCyan);
 }
 
-.gray {
+.colorGray {
   color: var(--c-grayishBlue);
 }
 
 .logo {
-  // colored
+  width: 10.4rem;
+  height: 1.6rem;
+  background: url($logo) left center no-repeat;
+  background-size: 100% 100%;
   &-white {
   }
   &-lg {
@@ -64,16 +70,50 @@ $bg-mobile: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/bg-
 }
 
 .button {
-  // white, em sizes
+  padding: 0.3em 2.1em 0.5em;
+  color: var(--c-veryDarkCyan);
+  font-size: 1rem;
+  text-transform: capitalize;
+  background: var(--c-light);
+  border: 0.1em solid var(--c-light);
+  border-radius: 1.1em;
+  box-shadow: 0 0.4em 0.6em hsla(0, 0%, 0%, 0.2);
+  cursor: pointer;
+  transition: 0.2s;
+  &:focus {
+    border: 0.1em solid var(--c-veryDarkCyan);
+    outline: none;
+  }
+  &:hover {
+    box-shadow: 0 0.5em 0.8em hsla(0, 0%, 0%, 0.3);
+  }
+  &:active {
+    transform: scale(0.98);
+    filter: brightness(0.9);
+  }
   &_label {
+    font: 700 1em/140% Open Sans, sans-serif;
   }
   &-cta {
+    padding: 0.9em 4.9em 1.3em;
+    color: var(--c-light);
+    background: var(--c-pink);
+    border: 0.1em solid var(--c-pink);
+    border-radius: 2em;
+    > .button_label {
+      font-size: 1.2em;
+    }
   }
   &-textSm {
   }
 }
 
-.image {
+.illustration {
+  width: 100%;
+  padding-bottom: 82.1%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
 }
 
 .paper {
@@ -105,12 +145,43 @@ $bg-mobile: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/bg-
 // #region Layout
 
 .header {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  width: 100%;
   &_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.4rem 1.6rem 0;
   }
 }
 
 .hero {
+  position: relative;
+  padding: 13rem 3.6rem 3.2rem;
+  background: url($bgHeroMobile) top center no-repeat, var(--c-veryPaleCyan);
+  background-size: 100%;
   &_container {
+    display: grid;
+    grid-gap: 5.2rem;
+  }
+  &_content {
+    text-align: center;
+    :nth-child(2) {
+      margin-top: 2.2rem;
+    }
+    :nth-child(3) {
+      margin-top: 3.2rem;
+    }
+  }
+  &_button {
+    padding-right: 5.9em;
+    padding-left: 5.9em;
+  }
+  &_image {
+    padding-bottom: 71.3%;
+    background-image: url($imgMockups);
   }
 }
 
