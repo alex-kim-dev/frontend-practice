@@ -109,6 +109,10 @@ $illustrations: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
     }
   }
   &-textSm {
+    > .button_label {
+      font-size: 1em;
+      line-height: 160%;
+    }
   }
 }
 
@@ -161,6 +165,10 @@ $illustrations: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
 // #endregion Components
 
 // #region Layout
+
+.content {
+  position: relative;
+}
 
 .header {
   position: absolute;
@@ -222,6 +230,19 @@ $illustrations: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
       padding-right: 4.4rem;
       padding-left: 4.4rem;
     }
+  }
+}
+
+.cta {
+  position: absolute;
+  bottom: -6.8rem;
+  left: 50%;
+  width: 35.1rem; // 93.6vw;
+  padding: 4.4rem 1.6rem 4rem;
+  text-align: center;
+  transform: translateX(-50%);
+  &_button {
+    margin-top: 2.4rem;
   }
 }
 
