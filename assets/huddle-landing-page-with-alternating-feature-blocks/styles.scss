@@ -13,6 +13,9 @@
 $logo: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/logo.svg' | relative_url }}";
 $bgHeroMobile: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/bg-hero-mobile.svg' | relative_url }}";
 $imgMockups: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/illustration-mockups.svg' | relative_url }}";
+$illustrations: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/illustration-grow-together.svg' | relative_url }}",
+  "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/illustration-flowing-conversation.svg' | relative_url }}",
+  "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/illustration-your-users.svg' | relative_url }}";
 
 :root {
   --c-pink: hsl(322, 100%, 66%);
@@ -27,6 +30,7 @@ $imgMockups: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/il
 .heading {
   margin: 0;
   font: 600 2rem/150% Poppins, sans-serif;
+  text-transform: capitalize;
   &-sm {
     font-size: 1.8rem;
   }
@@ -110,16 +114,30 @@ $imgMockups: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/il
 
 .illustration {
   width: 100%;
-  padding-bottom: 82.1%;
+  padding-bottom: 81.3%;
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
+  background-position: center center;
+  background-size: 100% auto;
 }
 
 .paper {
+  background: var(--c-light);
+  border-radius: 1.4rem;
+  box-shadow: 0 0 1.4rem hsla(0, 0%, 0%, 0.1);
 }
 
-.card {
+.feature {
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  &_image {
+    padding: 5.6rem 4.8rem;
+  }
+  &_content {
+    display: grid;
+    grid-gap: 1.4rem;
+    padding: 0 4rem 3.2rem;
+  }
   &-reverse {
   }
 }
@@ -159,7 +177,7 @@ $imgMockups: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/il
 
 .hero {
   position: relative;
-  padding: 13rem 3.6rem 3.2rem;
+  padding: 13rem 3.6rem 3.3rem;
   background: url($bgHeroMobile) top center no-repeat, var(--c-veryPaleCyan);
   background-size: 100%;
   &_container {
@@ -186,7 +204,24 @@ $imgMockups: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/il
 }
 
 .features {
+  padding: 6rem 2rem 23rem;
+  background: var(--c-light);
   &_container {
+    display: grid;
+    grid-gap: 4rem;
+    grid-template-rows: repeat(3, 1fr);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    @for $i from 1 through length($illustrations) {
+      :nth-child(#{$i}) .illustration {
+        background-image: url(#{nth($illustrations, $i)});
+      }
+    }
+    :nth-child(3) .feature_content {
+      padding-right: 4.4rem;
+      padding-left: 4.4rem;
+    }
   }
 }
 
