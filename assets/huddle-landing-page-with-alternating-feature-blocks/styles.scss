@@ -16,6 +16,9 @@ $imgMockups: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/il
 $illustrations: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/illustration-grow-together.svg' | relative_url }}",
   "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/illustration-flowing-conversation.svg' | relative_url }}",
   "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/illustration-your-users.svg' | relative_url }}";
+$contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/icon-location.svg' | relative_url }}",
+  "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/icon-phone.svg' | relative_url }}",
+  "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/icon-email.svg' | relative_url }}";
 
 :root {
   --c-pink: hsl(322, 100%, 66%);
@@ -48,6 +51,16 @@ $illustrations: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   &-lg {
     font-size: 1.8rem;
   }
+  &-link {
+    color: inherit;
+    text-decoration: none;
+    &:focus {
+      outline: 0.1rem solid var(--c-pink);
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .colorLight {
@@ -67,9 +80,16 @@ $illustrations: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   height: 1.6rem;
   background: url($logo) left center no-repeat;
   background-size: 100% 100%;
-  &-white {
+  &-light {
+    background: var(--c-light);
+    -webkit-mask: url($logo) no-repeat 50% 50%;
+    mask: url($logo) no-repeat 50% 50%;
+    -webkit-mask-size: contain;
+    mask-size: contain;
   }
   &-lg {
+    width: 16.8rem;
+    height: 2.7rem;
   }
 }
 
@@ -147,19 +167,86 @@ $illustrations: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
 }
 
 .contacts {
+  padding-left: 4rem;
+  &_list {
+    display: grid;
+    grid-gap: 2.4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    @for $i from 1 through length($contactsIcons) {
+      :nth-child(#{$i})::before {
+        background: url(#{nth($contactsIcons, $i)}) left center no-repeat;
+        background-size: contain;
+      }
+    }
+  }
+  &_item {
+    position: relative;
+    padding-right: 0.1rem;
+    &::before {
+      position: absolute;
+      top: 0.3rem;
+      left: -3.8rem;
+      display: block;
+      width: 2rem;
+      height: 2rem;
+      content: '';
+    }
+  }
 }
 
-.navSecondary {
+.nav {
+  &_list {
+    display: grid;
+    grid-gap: 1.6rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 }
 
 .social {
+  display: grid;
+  grid-gap: 1.2em;
+  grid-template-columns: repeat(3, auto);
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  list-style: none;
   &_item {
+    display: block;
   }
   &_link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.2em;
+    height: 3.2em;
+    color: var(--c-light);
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 0.1em var(--c-light);
+    transition: 0.2s;
+    &:focus,
+    &:hover {
+      color: var(--c-veryDarkCyan);
+      background: var(--c-light);
+      outline: none;
+    }
   }
 }
 
+.icon {
+  width: 50%;
+  height: 50%;
+}
+
 .copyright {
+  font: 600 1.2rem Poppins, sans-serif;
+  letter-spacing: -0.05em;
+  text-align: center;
 }
 
 // #endregion Components
@@ -235,7 +322,7 @@ $illustrations: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
 
 .cta {
   position: absolute;
-  bottom: -6.8rem;
+  bottom: -6.7rem;
   left: 50%;
   width: 35.1rem; // 93.6vw;
   padding: 4.4rem 1.6rem 4rem;
@@ -247,7 +334,21 @@ $illustrations: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
 }
 
 .footer {
+  padding: 13.8rem 1.6rem 4.6rem;
+  background: var(--c-veryDarkCyan);
   &_container {
+  }
+  .contacts {
+    margin-top: 2.4rem;
+  }
+  .nav {
+    margin-top: 5.6rem;
+  }
+  .social {
+    margin-top: 5.3rem;
+  }
+  .copyright {
+    margin-top: 2.3rem;
   }
 }
 

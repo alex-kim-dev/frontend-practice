@@ -4,6 +4,17 @@ challenge: Huddle landing page with alternating feature blocks
 difficulty: newbie
 ---
 
+<!-- prettier-ignore -->
+{% capture navText %}
+About Us,
+What We Do,
+FAQ,
+Career,
+Blog,
+Contact Us,
+{% endcapture %}
+{% assign nav = navText | strip_newlines | split: ',' %}
+
 <header class="header">
   <div class="header_container">
     <div class="logo"></div>
@@ -87,28 +98,42 @@ difficulty: newbie
     </button>
   </div>
 </main>
-<footer class="footer">
-  <div class="footer_container"></div>
+<footer class="footer colorLight">
+  <div class="footer_container">
+    <div class="logo logo-lg logo-light"></div>
+    <address class="contacts text">
+      <ul class="contacts_list">
+        <li class="contacts_item">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua
+        </li>
+        <li class="contacts_item">
+          <a href="tel:+15431234567" class="text-link">+1-543-123-4567</a>
+        </li>
+        <li class="contacts_item">
+          <a href="mailto:example@fylo.com" class="text-link">
+            example@fylo.com
+          </a>
+        </li>
+      </ul>
+    </address>
+    <nav class="nav text text-lg">
+      <ul class="nav_list">
+        {% for label in nav %}
+        <li>
+          <a href="#" class="text-link">{{ label }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+      <!-- prettier-ignore -->
+      {% include socialLinks.html
+        listClass='social'
+        itemClass='social_item'
+        linkClass='social_link'
+        iconClass='icon' %}
+    </nav>
+    <p class="copyright">
+      &copy; Copyright 2018 Huddle. All rights reserved.
+    </p>
+  </div>
 </footer>
-
-<pre style="display: none;">
-Ready To Build Your Community?
-
-Get Started For Free
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua
-
-+1-543-123-4567
-example@huddle.com
-
-About Us
-What We Do
-FAQ
-
-Career
-Blog
-Contact Us
-
-&copy; Copyright 2018 Huddle. All rights reserved.
-</pre>
