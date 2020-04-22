@@ -21,6 +21,12 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/icon-phone.svg' | relative_url }}",
   "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/icon-email.svg' | relative_url }}";
 
+@mixin xsOnly {
+  @media (max-width: rem(767px)) {
+    @content;
+  }
+}
+
 @mixin lgUp {
   @media (min-width: rem(1200px)) {
     @content;
@@ -44,12 +50,6 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   @include lgUp {
     font-size: 2.8rem;
   }
-  &-sm {
-    font-size: 1.8rem;
-    @include lgUp {
-      font-size: 3.2rem;
-    }
-  }
   &-lg {
     font-size: 2.4rem;
     @include lgUp {
@@ -62,15 +62,6 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   margin: 0;
   font: 400 1.6rem/150% Open Sans, sans-serif;
   @include lgUp {
-    font-size: 1.8rem;
-  }
-  &-sm {
-    font-size: 1.4rem;
-    @include lgUp {
-      font-size: 1.8rem;
-    }
-  }
-  &-lg {
     font-size: 1.8rem;
   }
   &-link {
@@ -155,30 +146,20 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
       font-size: 1.4em;
     }
   }
-  &-cta {
-    padding: 0.9em 4.9em 1.3em;
+  &-accent {
+    padding: 0.9em 3.1em 1.3em;
     color: var(--c-light);
     background: var(--c-pink);
     border: 0.1em solid var(--c-pink);
     border-radius: 2em;
     @include lgUp {
-      padding: 1.6em 6.9em 1.9em;
+      padding: 1.6em 3.1em 1.9em;
       border-radius: 2.8em;
     }
     > .button_label {
       font-size: 1.2em;
       @include lgUp {
         font-size: 1.4em;
-      }
-    }
-  }
-  &-textSm {
-    > .button_label {
-      font-size: 1em;
-      line-height: 160%;
-      @include lgUp {
-        font-size: 1.4em;
-        line-height: 140%;
       }
     }
   }
@@ -228,6 +209,11 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
       grid-gap: 1.2rem;
     }
   }
+  &_text {
+    @include xsOnly {
+      font-size: 1.4rem;
+    }
+  }
 }
 
 .contacts {
@@ -275,6 +261,9 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
       grid-template: repeat(3, auto) / repeat(2, 1fr);
     }
   }
+  &_link {
+    font-size: 1.8rem;
+  }
 }
 
 .social {
@@ -315,6 +304,7 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
 }
 
 .copyright {
+  margin: 0;
   font: 600 1.2rem/140% Poppins, sans-serif;
   letter-spacing: -0.01em;
   text-align: center;
@@ -387,11 +377,9 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
     }
   }
   &_button {
-    padding-right: 5.9em;
-    padding-left: 5.9em;
+    width: 24rem;
     @include lgUp {
-      padding-right: 6.9em;
-      padding-left: 6.9em;
+      width: 28rem;
     }
   }
   &_image {
@@ -441,11 +429,25 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
     width: 80rem;
     padding: 6.4rem 13.2rem 5.2rem;
   }
-  &_button {
-    margin-top: 2.4rem;
-    font-size: 1.4rem;
+  &_heading {
+    font-size: 1.8rem;
     @include lgUp {
+      font-size: 3.2rem;
+    }
+  }
+  &_button {
+    width: 20rem;
+    margin-top: 2.4rem;
+    @include xsOnly {
+      > .button_label {
+        font-size: 1em;
+        line-height: 160%;
+      }
+    }
+    @include lgUp {
+      width: 40rem;
       margin-top: 3.6rem;
+      font-size: 1.4rem;
     }
   }
 }
@@ -471,37 +473,41 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
       margin: 0 auto;
     }
   }
-  .logo {
+  &_logo {
     grid-area: footer_logo;
   }
-  .contacts {
-    margin-top: 2.4rem;
+  &_contacts {
+    @include xsOnly {
+      margin-top: 2.4rem;
+    }
     @include lgUp {
       grid-area: footer_contacts;
-      margin: 0;
       font-size: 1.6rem;
     }
   }
-  .nav {
-    margin-top: 5.6rem;
+  &_nav {
+    @include xsOnly {
+      margin-top: 5.6rem;
+    }
     @include lgUp {
       grid-area: footer_nav;
-      margin: 0;
     }
   }
-  .social {
-    margin-top: 5.3rem;
+  &_social {
+    @include xsOnly {
+      margin-top: 5.3rem;
+    }
     @include lgUp {
       grid-area: footer_social;
-      margin: 0;
     }
   }
-  .copyright {
-    margin-top: 2.4rem;
+  &_copyright {
+    @include xsOnly {
+      margin-top: 2.4rem;
+    }
     @include lgUp {
       grid-area: footer_copyright;
       justify-self: end;
-      margin: 0;
     }
   }
 }

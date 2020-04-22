@@ -35,7 +35,7 @@ Contact Us,
           so does your audience. Create connections with your users as you
           engage in genuine discussion.
         </p>
-        <button class="hero_button button button-cta">
+        <button class="hero_button button button-accent">
           <span class="button_label">Get Started For Free</span>
         </button>
       </div>
@@ -52,7 +52,7 @@ Contact Us,
           <h2 class="heading colorDark">
             Grow together
           </h2>
-          <p class="text text-sm colorGray">
+          <p class="feature_text text colorGray">
             Generate meaningful discussions with your audience and build a
             strong, loyal community. Think of the insightful conversations you
             miss out on with a feedback form.
@@ -67,7 +67,7 @@ Contact Us,
           <h2 class="heading colorDark">
             Flowing conversations
           </h2>
-          <p class="text text-sm colorGray">
+          <p class="feature_text text colorGray">
             You wouldn't paginate a conversation in real life, so why do it
             online? Our threads have just-in-time loading for a more natural
             flow.
@@ -82,7 +82,7 @@ Contact Us,
           <h2 class="heading colorDark">
             Your users
           </h2>
-          <p class="text text-sm colorGray">
+          <p class="feature_text text colorGray">
             It takes no time at all to integrate Huddle with your app's
             authentication solution. This means, once signed in to<br />your
             app, your users can start chatting immediately.
@@ -92,16 +92,18 @@ Contact Us,
     </ul>
   </div>
   <div class="cta paper colorDark">
-    <h2 class="heading heading-sm">Ready to build your community?</h2>
-    <button class="cta_button button button-cta button-textSm">
+    <h2 class="cta_heading heading heading-sm">
+      Ready to build your community?
+    </h2>
+    <button class="cta_button button button-accent">
       <span class="button_label">Get started for free</span>
     </button>
   </div>
 </main>
 <footer class="footer colorLight">
   <div class="footer_container">
-    <div class="logo logo-lg logo-light"></div>
-    <address class="contacts text">
+    <div class="footer_logo logo logo-lg logo-light"></div>
+    <address class="footer_contacts contacts text">
       <ul class="contacts_list">
         <li class="contacts_item">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -117,22 +119,22 @@ Contact Us,
         </li>
       </ul>
     </address>
-    <nav class="nav text text-lg">
+    <nav class="footer_nav nav">
       <ul class="nav_list">
         {% for label in nav %}
         <li>
-          <a href="#" class="text-link">{{ label }}</a>
+          <a href="#" class="nav_link text text-link">{{ label }}</a>
         </li>
         {% endfor %}
       </ul>
     </nav>
     <!-- prettier-ignore -->
     {% include socialLinks.html
-      listClass='social'
+      listClass='footer_social social'
       itemClass='social_item'
       linkClass='social_link'
       iconClass='icon' %}
-    <p class="copyright">
+    <p class="footer_copyright copyright">
       &copy; Copyright 2018 Huddle. All rights reserved.
     </p>
   </div>
