@@ -27,6 +27,12 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   }
 }
 
+@mixin smUp {
+  @media (min-width: rem(768px)) {
+    @content;
+  }
+}
+
 @mixin lgUp {
   @media (min-width: rem(1200px)) {
     @content;
@@ -47,11 +53,17 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   margin: 0;
   font: 600 2rem/150% Poppins, sans-serif;
   text-transform: capitalize;
+  @include smUp {
+    font-size: 2.4rem;
+  }
   @include lgUp {
     font-size: 2.8rem;
   }
   &-lg {
     font-size: 2.4rem;
+    @include smUp {
+      font-size: 3.2rem;
+    }
     @include lgUp {
       font-size: 4rem;
     }
@@ -93,6 +105,10 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   height: 1.6rem;
   background: url($logo) left center no-repeat;
   background-size: 100% 100%;
+  @include smUp {
+    width: 15.2rem;
+    height: 2.4rem;
+  }
   @include lgUp {
     width: 20rem;
     height: 3.2rem;
@@ -125,6 +141,10 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   box-shadow: 0 0.4em 0.6em hsla(0, 0%, 0%, 0.1);
   cursor: pointer;
   transition: 0.2s;
+  @include smUp {
+    padding: 0.9em 3.1em 1.3em;
+    border-radius: 2em;
+  }
   @include lgUp {
     padding: 1.2em 6.3em 1.5em;
     border-radius: 2.4em;
@@ -142,6 +162,9 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   }
   &_label {
     font: 700 1em/140% Open Sans, sans-serif;
+    @include smUp {
+      font-size: 1.2em;
+    }
     @include lgUp {
       font-size: 1.4em;
     }
@@ -188,15 +211,21 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   align-content: start;
   padding: 3.2rem 4rem;
   text-align: center;
+  @include smUp {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    text-align: left;
+  }
   @include lgUp {
     grid-gap: 16.6rem;
     grid-template-columns: auto auto;
-    align-items: center;
     padding: 5.2rem 2.6rem 5.2rem 12rem;
-    text-align: left;
   }
   &_image {
     padding: 2.4rem 0.8rem;
+    @include smUp {
+      padding: 2.4rem 0;
+    }
     @include lgUp {
       width: 41.8rem;
       padding: 0;
@@ -324,6 +353,9 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   z-index: 1;
   width: 100%;
   padding: 2.4rem 1.6rem 0;
+  @include smUp {
+    padding: 3.2rem 3.2rem 0;
+  }
   @include lgUp {
     padding: 4.8rem 8rem 0;
   }
@@ -343,6 +375,9 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   padding: 13rem 3.6rem 3.3rem;
   background: url($bgHeroMobile) top center no-repeat, var(--c-veryPaleCyan);
   background-size: 100%;
+  @include smUp {
+    padding-bottom: 5rem;
+  }
   @include lgUp {
     padding: 16rem 8rem 6.6rem;
     background-image: url($bgHeroDesktop);
@@ -350,18 +385,25 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   &_container {
     display: grid;
     grid-gap: 5.2rem;
+    @include smUp {
+      max-width: 54rem;
+      margin: 0 auto;
+    }
     @include lgUp {
       grid-gap: 6.4rem;
       grid-template-columns: 52rem 1fr;
       align-items: start;
       max-width: 128rem;
-      margin: 0 auto;
     }
   }
   &_content {
     text-align: center;
+    @include smUp {
+      padding: 0 7.8rem;
+    }
     @include lgUp {
       margin-top: 9.6rem;
+      padding: 0;
       text-align: left;
     }
     :nth-child(2) {
@@ -391,6 +433,9 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
 .features {
   padding: 6rem 2rem 23rem;
   background: var(--c-light);
+  @include smUp {
+    padding-top: 10rem;
+  }
   @include lgUp {
     padding: 16rem 10.4rem 34.3rem;
   }
@@ -401,7 +446,7 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
     margin: 0;
     padding: 0;
     list-style: none;
-    @include lgUp {
+    @include smUp {
       max-width: 123.2rem;
       margin: 0 auto;
       :nth-child(odd) .feature_image {
@@ -420,10 +465,14 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   position: absolute;
   bottom: -6.7rem;
   left: 50%;
-  width: 35.1rem; // 93.6vw;
+  width: 35.1rem;
   padding: 4.4rem 1.6rem 4rem;
   text-align: center;
   transform: translateX(-50%);
+  @include smUp {
+    width: 48rem;
+    padding: 5rem 3rem;
+  }
   @include lgUp {
     bottom: -9.5rem;
     width: 80rem;
@@ -431,6 +480,9 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   }
   &_heading {
     font-size: 1.8rem;
+    @include smUp {
+      font-size: 2.4rem;
+    }
     @include lgUp {
       font-size: 3.2rem;
     }
@@ -444,6 +496,10 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
         line-height: 160%;
       }
     }
+    @include smUp {
+      width: 24rem;
+      margin-top: 3rem;
+    }
     @include lgUp {
       width: 40rem;
       margin-top: 3.6rem;
@@ -455,12 +511,26 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
 .footer {
   padding: 13.8rem 1.6rem 4.6rem;
   background: var(--c-veryDarkCyan);
+  @include smUp {
+    padding-right: 8rem;
+    padding-left: 8rem;
+  }
   @include lgUp {
     padding: 19rem 8rem 6.4rem 12rem;
   }
   &_container {
-    @include lgUp {
+    @include smUp {
       display: grid;
+      grid-row-gap: 2.4rem;
+      grid-column-gap: 8rem;
+      grid-template:
+        'footer_logo      footer_logo' auto
+        'footer_contacts  footer_nav' auto
+        'footer_social    footer_social' auto
+        'footer_copyright footer_copyright' auto
+        / 2fr 1fr;
+    }
+    @include lgUp {
       grid-row-gap: 4rem;
       grid-column-gap: 12rem;
       grid-template:
@@ -477,36 +547,32 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
     grid-area: footer_logo;
   }
   &_contacts {
+    grid-area: footer_contacts;
     @include xsOnly {
       margin-top: 2.4rem;
     }
     @include lgUp {
-      grid-area: footer_contacts;
       font-size: 1.6rem;
     }
   }
   &_nav {
+    grid-area: footer_nav;
     @include xsOnly {
       margin-top: 5.6rem;
     }
-    @include lgUp {
-      grid-area: footer_nav;
-    }
   }
   &_social {
+    grid-area: footer_social;
     @include xsOnly {
       margin-top: 5.3rem;
     }
-    @include lgUp {
-      grid-area: footer_social;
-    }
   }
   &_copyright {
+    grid-area: footer_copyright;
     @include xsOnly {
       margin-top: 2.4rem;
     }
     @include lgUp {
-      grid-area: footer_copyright;
       justify-self: end;
     }
   }
