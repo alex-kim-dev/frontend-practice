@@ -12,6 +12,7 @@
 
 $logo: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/logo.svg' | relative_url }}";
 $bgHeroMobile: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/bg-hero-mobile.svg' | relative_url }}";
+$bgHeroDesktop: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/bg-hero-desktop.svg' | relative_url }}";
 $imgMockups: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/illustration-mockups.svg' | relative_url }}";
 $illustrations: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/illustration-grow-together.svg' | relative_url }}",
   "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/illustration-flowing-conversation.svg' | relative_url }}",
@@ -19,6 +20,12 @@ $illustrations: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
 $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/icon-location.svg' | relative_url }}",
   "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/icon-phone.svg' | relative_url }}",
   "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks/icon-email.svg' | relative_url }}";
+
+@mixin lgUp {
+  @media (min-width: rem(1200px)) {
+    @content;
+  }
+}
 
 :root {
   --c-pink: hsl(322, 100%, 66%);
@@ -34,19 +41,34 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   margin: 0;
   font: 600 2rem/150% Poppins, sans-serif;
   text-transform: capitalize;
+  @include lgUp {
+    font-size: 2.8rem;
+  }
   &-sm {
     font-size: 1.8rem;
+    @include lgUp {
+      font-size: 3.2rem;
+    }
   }
   &-lg {
     font-size: 2.4rem;
+    @include lgUp {
+      font-size: 4rem;
+    }
   }
 }
 
 .text {
   margin: 0;
   font: 400 1.6rem/150% Open Sans, sans-serif;
+  @include lgUp {
+    font-size: 1.8rem;
+  }
   &-sm {
     font-size: 1.4rem;
+    @include lgUp {
+      font-size: 1.8rem;
+    }
   }
   &-lg {
     font-size: 1.8rem;
@@ -80,6 +102,10 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   height: 1.6rem;
   background: url($logo) left center no-repeat;
   background-size: 100% 100%;
+  @include lgUp {
+    width: 20rem;
+    height: 3.2rem;
+  }
   &-light {
     background: var(--c-light);
     -webkit-mask: url($logo) no-repeat 50% 50%;
@@ -90,6 +116,10 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   &-lg {
     width: 16.8rem;
     height: 2.7rem;
+    @include lgUp {
+      width: 24rem;
+      height: 4rem;
+    }
   }
 }
 
@@ -101,9 +131,13 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   background: var(--c-light);
   border: 0.1em solid var(--c-light);
   border-radius: 1.1em;
-  box-shadow: 0 0.4em 0.6em hsla(0, 0%, 0%, 0.2);
+  box-shadow: 0 0.4em 0.6em hsla(0, 0%, 0%, 0.1);
   cursor: pointer;
   transition: 0.2s;
+  @include lgUp {
+    padding: 1.2em 6.3em 1.5em;
+    border-radius: 2.4em;
+  }
   &:focus {
     border: 0.1em solid var(--c-veryDarkCyan);
     outline: none;
@@ -117,6 +151,9 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   }
   &_label {
     font: 700 1em/140% Open Sans, sans-serif;
+    @include lgUp {
+      font-size: 1.4em;
+    }
   }
   &-cta {
     padding: 0.9em 4.9em 1.3em;
@@ -124,14 +161,25 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
     background: var(--c-pink);
     border: 0.1em solid var(--c-pink);
     border-radius: 2em;
+    @include lgUp {
+      padding: 1.6em 6.9em 1.9em;
+      border-radius: 2.8em;
+    }
     > .button_label {
       font-size: 1.2em;
+      @include lgUp {
+        font-size: 1.4em;
+      }
     }
   }
   &-textSm {
     > .button_label {
       font-size: 1em;
       line-height: 160%;
+      @include lgUp {
+        font-size: 1.4em;
+        line-height: 140%;
+      }
     }
   }
 }
@@ -141,7 +189,10 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   padding-bottom: 81.3%;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 100% auto;
+  background-size: contain;
+  @include lgUp {
+    padding-bottom: 80.5%;
+  }
 }
 
 .paper {
@@ -151,18 +202,31 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
 }
 
 .feature {
-  display: flex;
-  flex-flow: column;
+  display: grid;
+  grid-gap: 3.2rem;
+  align-content: start;
+  padding: 3.2rem 4rem;
   text-align: center;
+  @include lgUp {
+    grid-gap: 16.6rem;
+    grid-template-columns: auto auto;
+    align-items: center;
+    padding: 5.2rem 2.6rem 5.2rem 12rem;
+    text-align: left;
+  }
   &_image {
-    padding: 5.6rem 4.8rem;
+    padding: 2.4rem 0.8rem;
+    @include lgUp {
+      width: 41.8rem;
+      padding: 0;
+    }
   }
   &_content {
     display: grid;
     grid-gap: 1.4rem;
-    padding: 0 4rem 3.2rem;
-  }
-  &-reverse {
+    @include lgUp {
+      grid-gap: 1.2rem;
+    }
   }
 }
 
@@ -197,12 +261,19 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
 }
 
 .nav {
+  justify-self: stretch;
   &_list {
     display: grid;
     grid-gap: 1.6rem;
     margin: 0;
     padding: 0;
     list-style: none;
+    @include lgUp {
+      grid-auto-flow: column;
+      grid-row-gap: 1.6rem;
+      grid-column-gap: 10rem;
+      grid-template: repeat(3, auto) / repeat(2, 1fr);
+    }
   }
 }
 
@@ -244,8 +315,8 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
 }
 
 .copyright {
-  font: 600 1.2rem Poppins, sans-serif;
-  letter-spacing: -0.05em;
+  font: 600 1.2rem/140% Poppins, sans-serif;
+  letter-spacing: -0.01em;
   text-align: center;
 }
 
@@ -262,11 +333,18 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   top: 0;
   z-index: 1;
   width: 100%;
+  padding: 2.4rem 1.6rem 0;
+  @include lgUp {
+    padding: 4.8rem 8rem 0;
+  }
   &_container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2.4rem 1.6rem 0;
+    @include lgUp {
+      max-width: 128rem;
+      margin: 0 auto;
+    }
   }
 }
 
@@ -275,22 +353,46 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   padding: 13rem 3.6rem 3.3rem;
   background: url($bgHeroMobile) top center no-repeat, var(--c-veryPaleCyan);
   background-size: 100%;
+  @include lgUp {
+    padding: 16rem 8rem 6.6rem;
+    background-image: url($bgHeroDesktop);
+  }
   &_container {
     display: grid;
     grid-gap: 5.2rem;
+    @include lgUp {
+      grid-gap: 6.4rem;
+      grid-template-columns: 52rem 1fr;
+      align-items: start;
+      max-width: 128rem;
+      margin: 0 auto;
+    }
   }
   &_content {
     text-align: center;
+    @include lgUp {
+      margin-top: 9.6rem;
+      text-align: left;
+    }
     :nth-child(2) {
       margin-top: 2.2rem;
     }
     :nth-child(3) {
       margin-top: 3.2rem;
     }
+    @include lgUp {
+      :not(:first-child) {
+        margin-top: 3rem;
+      }
+    }
   }
   &_button {
     padding-right: 5.9em;
     padding-left: 5.9em;
+    @include lgUp {
+      padding-right: 6.9em;
+      padding-left: 6.9em;
+    }
   }
   &_image {
     padding-bottom: 71.3%;
@@ -301,21 +403,27 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
 .features {
   padding: 6rem 2rem 23rem;
   background: var(--c-light);
+  @include lgUp {
+    padding: 16rem 10.4rem 34.3rem;
+  }
   &_container {
     display: grid;
+    grid-auto-rows: 1fr;
     grid-gap: 4rem;
-    grid-template-rows: repeat(3, 1fr);
     margin: 0;
     padding: 0;
     list-style: none;
+    @include lgUp {
+      max-width: 123.2rem;
+      margin: 0 auto;
+      :nth-child(odd) .feature_image {
+        order: 1;
+      }
+    }
     @for $i from 1 through length($illustrations) {
       :nth-child(#{$i}) .illustration {
         background-image: url(#{nth($illustrations, $i)});
       }
-    }
-    :nth-child(3) .feature_content {
-      padding-right: 4.4rem;
-      padding-left: 4.4rem;
     }
   }
 }
@@ -328,27 +436,73 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   padding: 4.4rem 1.6rem 4rem;
   text-align: center;
   transform: translateX(-50%);
+  @include lgUp {
+    bottom: -9.5rem;
+    width: 80rem;
+    padding: 6.4rem 13.2rem 5.2rem;
+  }
   &_button {
     margin-top: 2.4rem;
+    font-size: 1.4rem;
+    @include lgUp {
+      margin-top: 3.6rem;
+    }
   }
 }
 
 .footer {
   padding: 13.8rem 1.6rem 4.6rem;
   background: var(--c-veryDarkCyan);
+  @include lgUp {
+    padding: 19rem 8rem 6.4rem 12rem;
+  }
   &_container {
+    @include lgUp {
+      display: grid;
+      grid-row-gap: 4rem;
+      grid-column-gap: 12rem;
+      grid-template:
+        'footer_logo footer_logo footer_logo' auto
+        'footer_contacts footer_nav footer_social' auto
+        'footer_copyright footer_copyright footer_copyright' auto
+        / 39fr 35fr 26fr;
+      justify-items: start;
+      max-width: 124rem;
+      margin: 0 auto;
+    }
+  }
+  .logo {
+    grid-area: footer_logo;
   }
   .contacts {
     margin-top: 2.4rem;
+    @include lgUp {
+      grid-area: footer_contacts;
+      margin: 0;
+      font-size: 1.6rem;
+    }
   }
   .nav {
     margin-top: 5.6rem;
+    @include lgUp {
+      grid-area: footer_nav;
+      margin: 0;
+    }
   }
   .social {
     margin-top: 5.3rem;
+    @include lgUp {
+      grid-area: footer_social;
+      margin: 0;
+    }
   }
   .copyright {
-    margin-top: 2.3rem;
+    margin-top: 2.4rem;
+    @include lgUp {
+      grid-area: footer_copyright;
+      justify-self: end;
+      margin: 0;
+    }
   }
 }
 
