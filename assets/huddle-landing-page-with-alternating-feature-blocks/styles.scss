@@ -286,13 +286,14 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   &_list {
     display: grid;
     grid-gap: 1.6rem;
+    align-items: start;
     margin: 0;
     padding: 0;
     list-style: none;
     @include lgUp {
       grid-auto-flow: column;
       grid-row-gap: 1.6rem;
-      grid-column-gap: 10rem;
+      grid-column-gap: 28.57%;
       grid-template: repeat(3, auto) / repeat(2, 1fr);
     }
   }
@@ -402,8 +403,8 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
     }
     @include lgUp {
       grid-gap: 6.4rem;
-      grid-template-columns: 52rem 1fr;
-      align-items: start;
+      grid-template-columns: 65fr 87fr;
+      align-items: center;
       max-width: 128rem;
     }
   }
@@ -417,7 +418,7 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
       text-align: left;
     }
     @include lgUp {
-      margin-top: 9.6rem;
+      margin-top: 1.4rem;
     }
     :nth-child(2) {
       margin-top: 2.2rem;
@@ -552,7 +553,7 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
     }
     @include lgUp {
       grid-row-gap: 4rem;
-      grid-column-gap: 12rem;
+      grid-column-gap: 9.68%;
       grid-template:
         'footer_logo      footer_logo      footer_logo' auto
         'footer_contacts  footer_nav       footer_social' auto
