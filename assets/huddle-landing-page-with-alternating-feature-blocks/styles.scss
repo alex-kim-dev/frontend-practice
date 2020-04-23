@@ -33,6 +33,12 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   }
 }
 
+@mixin mdUp {
+  @media (min-width: rem(1024px)) {
+    @content;
+  }
+}
+
 @mixin lgUp {
   @media (min-width: rem(1200px)) {
     @content;
@@ -378,7 +384,7 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   @include smUp {
     padding-bottom: 5rem;
   }
-  @include lgUp {
+  @include mdUp {
     padding: 16rem 8rem 6.6rem;
     background-image: url($bgHeroDesktop);
   }
@@ -388,6 +394,11 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
     @include smUp {
       max-width: 54rem;
       margin: 0 auto;
+    }
+    @include mdUp {
+      grid-gap: 3.2rem;
+      grid-template-columns: 1fr 1fr;
+      max-width: unset;
     }
     @include lgUp {
       grid-gap: 6.4rem;
@@ -401,10 +412,12 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
     @include smUp {
       padding: 0 7.8rem;
     }
-    @include lgUp {
-      margin-top: 9.6rem;
+    @include mdUp {
       padding: 0;
       text-align: left;
+    }
+    @include lgUp {
+      margin-top: 9.6rem;
     }
     :nth-child(2) {
       margin-top: 2.2rem;
@@ -436,7 +449,7 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
   @include smUp {
     padding-top: 10rem;
   }
-  @include lgUp {
+  @include mdUp {
     padding: 16rem 10.4rem 34.3rem;
   }
   &_container {
@@ -515,7 +528,7 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
     padding-right: 8rem;
     padding-left: 8rem;
   }
-  @include lgUp {
+  @include mdUp {
     padding: 19rem 8rem 6.4rem 12rem;
   }
   &_container {
@@ -530,12 +543,19 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
         'footer_copyright footer_copyright' auto
         / 2fr 1fr;
     }
+    @include mdUp {
+      grid-template:
+        'footer_logo      footer_logo      footer_logo' auto
+        'footer_contacts  footer_nav       footer_social' auto
+        'footer_copyright footer_copyright footer_copyright' auto
+        / 2fr 1fr 1fr;
+    }
     @include lgUp {
       grid-row-gap: 4rem;
       grid-column-gap: 12rem;
       grid-template:
-        'footer_logo footer_logo footer_logo' auto
-        'footer_contacts footer_nav footer_social' auto
+        'footer_logo      footer_logo      footer_logo' auto
+        'footer_contacts  footer_nav       footer_social' auto
         'footer_copyright footer_copyright footer_copyright' auto
         / 39fr 35fr 26fr;
       justify-items: start;
@@ -572,7 +592,7 @@ $contactsIcons: "{{ '/assets/huddle-landing-page-with-alternating-feature-blocks
     @include xsOnly {
       margin-top: 2.4rem;
     }
-    @include lgUp {
+    @include mdUp {
       justify-self: end;
     }
   }
