@@ -1,0 +1,22 @@
+---
+---
+
+#unknown {
+} // fixes Unknown word (CssSyntaxError) on frontmatter by stylelint
+
+@import 'normalize';
+@import 'defaults';
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wgth@700&display=swap&text=Kyle%20Burton');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap&text=Featurs%20TmSignI');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap&text=Al%20yourfiesncat%2Cbwh.GSdpvF');
+
+:root {
+  --c-VeryDarkBlue: hsl(243, 87%, 12%);
+  --c-DesaturatedBlue: hsl(238, 22%, 44%);
+  --c-BrightBlue: hsl(224, 93%, 58%);
+  --c-ModerateCyan: hsl(170, 45%, 43%);
+  --c-LightGrayishBlue: hsl(240, 75%, 98%);
+  --c-LightGray: hsl(0, 0%, 75%);
+}
