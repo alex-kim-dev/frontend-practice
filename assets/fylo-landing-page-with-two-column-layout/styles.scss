@@ -8,9 +8,15 @@
 @import 'defaults';
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wgth@700&display=swap&text=Kyle%20Burton');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap&text=Kyle%20Burton');
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap&text=Featurs%20TmSignI');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap&text=Al%20yourfiesncat%2Cbwh.GSdpvF');
+
+$logo: "{{ '/assets/fylo-landing-page-with-two-column-layout/logo.svg' | relative_url }}";
+$illustration1: "{{ '/assets/fylo-landing-page-with-two-column-layout/illustration-1.svg' | relative_url }}";
+
+$controlShadow: 0 0.6rem 0.4rem hsla(0, 0, 0, 0.1);
+$controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
 
 :root {
   --c-VeryDarkBlue: hsl(243, 87%, 12%);
@@ -19,4 +25,157 @@
   --c-ModerateCyan: hsl(170, 45%, 43%);
   --c-LightGrayishBlue: hsl(240, 75%, 98%);
   --c-LightGray: hsl(0, 0%, 75%);
+  --c-light: hsl(0, 0%, 100%);
 }
+
+// #region Components
+
+.logo {
+  width: 8rem;
+  height: 2.4rem;
+  background: url($logo) left center no-repeat;
+  background-size: contain;
+}
+
+.nav {
+  &_list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 2.4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  &_link {
+    color: var(--c-VeryDarkBlue);
+    font: 1.2rem Raleway, sans-serif;
+    text-decoration: none;
+    &:focus {
+      outline: 0.2rem solid var(--c-ModerateCyan);
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.illustration {
+  width: 100%;
+  padding-bottom: 74.26%;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.heading {
+  margin: 0;
+  color: var(--c-VeryDarkBlue);
+  font: 700 2.4rem/150% Raleway, sans-serif;
+}
+
+.text {
+  margin: 0;
+  color: var(--c-VeryDarkBlue);
+  font: 1.4rem/150% Open Sans, sans-serif;
+}
+
+.emailField {
+  display: block;
+  &_input {
+    width: 100%;
+    padding: 1.2rem 2.2rem;
+    font: 1.2rem Open Sans, sans-serif;
+    background: var(--c-light);
+    border: 0.1rem solid var(--c-DesaturatedBlue);
+    border-radius: 0.3rem;
+    box-shadow: $controlShadow;
+    transition: 0.2s;
+    &::placeholder {
+      color: var(--c-LightGray);
+    }
+    &:focus {
+      border-color: var(--c-BrightBlue);
+      outline: none;
+      box-shadow: $controlActiveShadow;
+    }
+  }
+}
+
+.button {
+  padding: 1.2rem 3.2rem;
+  color: var(--c-light);
+  font: 700 1.4rem Raleway, sans-serif;
+  background: var(--c-BrightBlue);
+  border: none;
+  border-radius: 0.3rem;
+  box-shadow: $controlShadow;
+  transition: 0.2s;
+  &:focus,
+  &:hover {
+    outline: none;
+    box-shadow: $controlActiveShadow;
+    filter: brightness(1.2);
+  }
+  &:active {
+    filter: brightness(0.8);
+  }
+}
+
+.signupForm {
+  display: grid;
+  grid-gap: 1.6rem;
+}
+
+// #endregion Components
+
+// #region Utilities
+
+// * link hover & focus styles?
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+// #endregion Utilities
+
+// #region Layout
+
+.wrapper {
+  background: var(--c-light);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.4rem;
+}
+
+.intro {
+  display: grid;
+  grid-gap: 4rem;
+  padding: 7.4rem 2.4rem 9rem;
+  &_image {
+    padding: 0 1.2rem;
+    > .illustration {
+      background-image: url($illustration1);
+    }
+  }
+  &_content {
+    text-align: center;
+  }
+  &_text {
+    margin-top: 2.4rem;
+    padding: 0 0.8rem;
+  }
+  &_signup {
+    margin-top: 3.2rem;
+  }
+}
+
+// #endregion Layout
