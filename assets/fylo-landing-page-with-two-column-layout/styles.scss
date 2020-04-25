@@ -14,6 +14,12 @@
 
 $logo: "{{ '/assets/fylo-landing-page-with-two-column-layout/logo.svg' | relative_url }}";
 $illustration1: "{{ '/assets/fylo-landing-page-with-two-column-layout/illustration-1.svg' | relative_url }}";
+$illustration2: "{{ '/assets/fylo-landing-page-with-two-column-layout/illustration-2.svg' | relative_url }}";
+$bgCurveMobile: "{{ '/assets/fylo-landing-page-with-two-column-layout/bg-curve-mobile.svg' | relative_url }}";
+$iconArrow: "{{ '/assets/fylo-landing-page-with-two-column-layout/icon-arrow.svg' | relative_url }}";
+$iconPhone: "{{ '/assets/fylo-landing-page-with-two-column-layout/icon-phone.svg' | relative_url }}";
+$iconEmail: "{{ '/assets/fylo-landing-page-with-two-column-layout/icon-email.svg' | relative_url }}";
+$quotes: "{{ '/assets/fylo-landing-page-with-two-column-layout/icon-quotes.svg' | relative_url }}";
 
 $controlShadow: 0 0.6rem 0.4rem hsla(0, 0, 0, 0.1);
 $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
@@ -49,6 +55,7 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
   &_link {
     color: var(--c-VeryDarkBlue);
     font: 1.2rem Raleway, sans-serif;
+    font-kerning: none;
     text-decoration: none;
     &:focus {
       outline: 0.2rem solid var(--c-ModerateCyan);
@@ -61,7 +68,7 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
 
 .illustration {
   width: 100%;
-  padding-bottom: 74.26%;
+  padding-bottom: 75.46%;
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -70,6 +77,7 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
   margin: 0;
   color: var(--c-VeryDarkBlue);
   font: 700 2.4rem/150% Raleway, sans-serif;
+  font-kerning: none;
 }
 
 .text {
@@ -78,12 +86,24 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
   font: 1.4rem/150% Open Sans, sans-serif;
 }
 
+.link {
+  color: inherit;
+  font: 1.6rem Open Sans, sans-serif;
+  text-decoration: none;
+  &:focus {
+    outline: 0.1rem solid var(--c-ModerateCyan);
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .emailField {
   display: block;
   &_input {
     width: 100%;
-    padding: 1.2rem 2.2rem;
-    font: 1.2rem Open Sans, sans-serif;
+    padding: 1.1rem 2.1rem;
+    font: 1.2rem/140% Open Sans, sans-serif;
     background: var(--c-light);
     border: 0.1rem solid var(--c-DesaturatedBlue);
     border-radius: 0.3rem;
@@ -125,11 +145,174 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
   grid-gap: 1.6rem;
 }
 
-// #endregion Components
+.curvedTop {
+  width: 100%;
+  height: 5.3rem;
+  background: var(--c-LightGrayishBlue);
+  -webkit-mask: url($bgCurveMobile) no-repeat 50% 50%;
+  mask: url($bgCurveMobile) no-repeat 50% 50%;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
 
-// #region Utilities
+.standoutLink {
+  display: inline-block;
+  text-decoration: none;
+  &:hover > .standoutLink_underline {
+    transform: scaleY(2);
+  }
+  &_label {
+    color: var(--c-ModerateCyan);
+    font: 1.2rem Open Sans, sans-serif;
+    &:after {
+      display: inline-block;
+      width: 1.6rem;
+      height: 1.6rem;
+      margin-left: 0.6rem;
+      vertical-align: middle;
+      background: url($iconArrow) center no-repeat;
+      background-size: contain;
+      content: '';
+    }
+  }
+  &_underline {
+    display: block;
+    width: 100%;
+    height: 0.1rem;
+    margin-top: 0.4rem;
+    background: var(--c-ModerateCyan);
+    transition: 0.2s;
+    content: '';
+  }
+}
 
-// * link hover & focus styles?
+.testimonials {
+  max-width: 28rem;
+  padding: 2rem 1.2rem 2.1rem 2.6rem;
+  color: var(--c-VeryDarkBlue);
+  background: var(--c-light);
+  border-radius: 0.3rem;
+  box-shadow: 0 0.2rem 1rem hsla(0, 0, 0, 0.05);
+  &_quote {
+    margin: 0;
+    font: 1rem/185% Open Sans, sans-serif;
+    letter-spacing: 0.04em;
+    &:before {
+      display: block;
+      width: 1.3rem;
+      height: 1.2rem;
+      margin-bottom: 0.8rem;
+      background: url($quotes) center no-repeat;
+      background-size: contain;
+      content: '';
+    }
+  }
+  &_author {
+    margin: 1.2rem 0 0;
+  }
+}
+
+.person {
+  display: grid;
+  grid-gap: 0.2rem 0.8rem;
+  grid-template:
+    'person_avatar person_name' auto
+    'person_avatar person_position' auto
+    / auto 1fr;
+  &_avatar {
+    grid-area: person_avatar;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+  }
+  &_name {
+    grid-area: person_name;
+    margin: 0;
+    font: 700 1rem Open Sans, sans-serif;
+  }
+  &_position {
+    grid-area: person_position;
+    margin: 0;
+    font: 0.6rem Open Sans, sans-serif;
+    letter-spacing: 0.05em;
+  }
+}
+
+.contacts {
+  display: grid;
+  grid-gap: 1.6rem;
+  padding-left: 4rem;
+  [href^='tel']::before {
+    background: url($iconPhone) left center no-repeat;
+    background-size: contain;
+  }
+  [href^='mailto']::before {
+    background: url($iconEmail) left center no-repeat;
+    background-size: contain;
+  }
+  &_text {
+    position: relative;
+    &::before {
+      position: absolute;
+      top: 0.3rem;
+      left: -3.8rem;
+      display: block;
+      width: 2rem;
+      height: 1.8rem;
+      content: '';
+    }
+  }
+}
+
+.sitemap {
+  &_list {
+    display: grid;
+    grid-gap: 1.6rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    .sitemap_item:nth-child(5) {
+      margin-top: 3.2rem;
+    }
+  }
+}
+
+.social {
+  display: grid;
+  grid-gap: 1.2em;
+  grid-template-columns: repeat(3, auto);
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  list-style: none;
+  &_item {
+    display: block;
+  }
+  &_link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.8em;
+    height: 2.8em;
+    color: var(--c-light);
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 0.1em var(--c-light);
+    transition: 0.2s;
+    &:focus,
+    &:hover {
+      color: var(--c-VeryDarkBlue);
+      background: var(--c-light);
+      outline: none;
+    }
+  }
+}
+
+.icon {
+  width: 50%;
+  height: 50%;
+}
 
 .srOnly {
   position: absolute;
@@ -141,7 +324,7 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
   clip: rect(1px, 1px, 1px, 1px);
 }
 
-// #endregion Utilities
+// #endregion Components
 
 // #region Layout
 
@@ -158,7 +341,7 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
 
 .intro {
   display: grid;
-  grid-gap: 4rem;
+  grid-gap: 3.6rem;
   padding: 7.4rem 2.4rem 9rem;
   &_image {
     padding: 0 1.2rem;
@@ -167,14 +350,117 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
     }
   }
   &_content {
+    padding: 0 0.8rem;
     text-align: center;
   }
   &_text {
     margin-top: 2.4rem;
-    padding: 0 0.8rem;
   }
   &_signup {
     margin-top: 3.2rem;
+  }
+}
+
+.benefits {
+  position: relative;
+  display: grid;
+  grid-gap: 8.8rem;
+  padding: 4rem 2.4rem 8.2rem;
+  background: var(--c-LightGrayishBlue);
+  &_image {
+    padding: 0 0.4rem;
+    > .illustration {
+      background-image: url($illustration2);
+    }
+  }
+  &_content {
+  }
+  &_heading {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+  &_text:nth-child(2) {
+    margin-top: 2.4rem;
+  }
+  &_text:nth-child(3) {
+    margin-top: 1.6rem;
+  }
+  &_link {
+    display: flex;
+    justify-content: center;
+    margin-top: 3.5rem;
+  }
+  &_card {
+    margin: 4rem auto 0;
+  }
+}
+
+.promo {
+  padding: 5.3rem 4.4rem 7.1rem;
+  background: var(--c-DesaturatedBlue);
+  &_content {
+    text-align: center;
+  }
+  &_heading {
+    color: var(--c-light);
+    font-size: 1.8rem;
+  }
+  &_text {
+    margin-top: 1.5rem;
+    color: var(--c-light);
+  }
+  &_signup {
+    grid-gap: 0.8rem;
+    width: 24rem;
+    margin: 2.4rem auto 0;
+    .emailField_input {
+      padding: 0.8rem 0.7rem;
+      font-size: 1rem;
+      border-color: var(--c-light);
+      &:focus {
+        border-color: var(--c-VeryDarkBlue);
+      }
+    }
+    .button {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      font-size: 1rem;
+      line-height: 120%;
+    }
+  }
+}
+
+.footer {
+  display: grid;
+  grid-template:
+    'footer_logo' auto
+    '.' 4rem
+    'footer_contacts' auto
+    '.' 5.8rem
+    'footer_sitemap' auto
+    '.' 5.1rem
+    'footer_social' auto;
+  padding: 6.5rem 4rem 4.7rem;
+  color: var(--c-light);
+  background: var(--c-VeryDarkBlue);
+  &_logo {
+    grid-area: footer_logo;
+    width: 17.6rem;
+    height: 5.2rem;
+    background: var(--c-light);
+    -webkit-mask: url($logo) no-repeat 50% 50%;
+    mask: url($logo) no-repeat 50% 50%;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+  &_contacts {
+    grid-area: footer_contacts;
+  }
+  &_sitemap {
+    grid-area: footer_sitemap;
+  }
+  &_social {
+    grid-area: footer_social;
   }
 }
 

@@ -43,7 +43,11 @@ Privacy,
           them wherever you need, share and collaborate with friends, family,
           and co-workers.
         </p>
-        <form class="intro_signup signupForm" onsubmit="return false" novalidate>
+        <form
+          class="intro_signup signupForm"
+          onsubmit="return false"
+          novalidate
+        >
           <label class="emailField">
             <input
               type="email"
@@ -58,11 +62,11 @@ Privacy,
         </form>
       </div>
     </section>
+    <div class="curvedTop"></div>
     <section class="benefits">
       <div class="benefits_image">
         <div class="illustration"></div>
       </div>
-      <div class="benefits_curvedTop"></div>
       <div class="benefits_content">
         <h2 class="benefits_heading heading">
           Stay productive, wherever you are
@@ -75,18 +79,24 @@ Privacy,
           Securely share files and folders with friends, family and colleagues
           for live collaboration. No email attachments required!
         </p>
-        <a href="#" class="standoutLink">
-          <span class="standoutLink_label">See how Fylo works</span>
-          <div class="standoutLink_underline"></div>
-        </a>
-        <article class="testimonials">
-          <blockquote class="testimonials_quote text">
+        <div class="benefits_link">
+          <a href="#" class="standoutLink">
+            <span class="standoutLink_label">See how Fylo works</span>
+            <div class="standoutLink_underline"></div>
+          </a>
+        </div>
+        <article class="benefits_card testimonials">
+          <blockquote class="testimonials_quote">
             Fylo has improved our team productivity by an order of magnitude.
             Since making the switch our team has become a well-oiled
             collaboration machine.
           </blockquote>
           <figure class="testimonials_author person">
-            <img src="{{ avatar }}" alt="Kyle Burton's avatar" />
+            <img
+              class="person_avatar"
+              src="{{ avatar }}"
+              alt="Kyle Burton's avatar"
+            />
             <p class="person_name">Kyle Burton</p>
             <p class="person_position">Founder & CEO, Huddle</p>
           </figure>
@@ -122,19 +132,23 @@ Privacy,
   <footer class="footer">
     <div class="footer_logo logo"></div>
     <address class="footer_contacts contacts">
-      <a href="tel:+15431234567">Phone: +1-543-123-4567</a>
-      <a href="mailto:example@fylo.com">example@fylo.com</a>
+      <a href="tel:+15431234567" class="contacts_text link">Phone: +1-543-123-4567</a>
+      <a href="mailto:example@fylo.com" class="contacts_text link">example@fylo.com</a>
     </address>
     <nav class="footer_sitemap sitemap">
       <ul class="sitemap_list">
         {% for label in sitemap %}
         <li class="sitemap_item">
-          <a href="#" class="sitemap_link">{{ label }}</a>
+          <a href="#" class="sitemap_link link">{{ label }}</a>
         </li>
         {% endfor %}
       </ul>
     </nav>
-    {% include socialLinks.html listClass='footer_social social'
-    itemClass='social_item' linkClass='social_link' iconClass='icon' %}
+    <!-- prettier-ignore -->
+    {% include socialLinks.html
+      listClass='footer_social social'
+      itemClass='social_item'
+      linkClass='social_link'
+      iconClass='icon' %}
   </footer>
 </div>
