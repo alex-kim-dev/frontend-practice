@@ -23,6 +23,13 @@ $quotes: "{{ '/assets/fylo-landing-page-with-two-column-layout/icon-quotes.svg' 
 
 $controlShadow: 0 0.6rem 0.4rem hsla(0, 0, 0, 0.1);
 $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
+$containerSm: 60rem;
+
+@mixin smUp {
+  @media (min-width: rem(560px)) {
+    @content;
+  }
+}
 
 :root {
   --c-VeryDarkBlue: hsl(243, 87%, 12%);
@@ -41,6 +48,10 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
   height: 2.4rem;
   background: url($logo) left center no-repeat;
   background-size: contain;
+  @include smUp {
+    width: 10rem;
+    height: 3rem;
+  }
 }
 
 .nav {
@@ -57,6 +68,9 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
     font: 1.2rem Raleway, sans-serif;
     font-kerning: none;
     text-decoration: none;
+    @include smUp {
+      font-size: 1.4rem;
+    }
     &:focus {
       outline: 0.2rem solid var(--c-ModerateCyan);
     }
@@ -78,12 +92,18 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
   color: var(--c-VeryDarkBlue);
   font: 700 2.4rem/150% Raleway, sans-serif;
   font-kerning: none;
+  @include smUp {
+    font-size: 3rem;
+  }
 }
 
 .text {
   margin: 0;
   color: var(--c-VeryDarkBlue);
   font: 1.4rem/150% Open Sans, sans-serif;
+  @include smUp {
+    font-size: 1.6rem;
+  }
 }
 
 .link {
@@ -109,6 +129,10 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
     border-radius: 0.3rem;
     box-shadow: $controlShadow;
     transition: 0.2s;
+    @include smUp {
+      font-size: 1.4rem;
+      line-height: 130%;
+    }
     &::placeholder {
       color: var(--c-LightGray);
     }
@@ -129,6 +153,10 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
   border-radius: 0.3rem;
   box-shadow: $controlShadow;
   transition: 0.2s;
+  @include smUp {
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
+  }
   &:focus,
   &:hover {
     outline: none;
@@ -145,16 +173,6 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
   grid-gap: 1.6rem;
 }
 
-.curvedTop {
-  width: 100%;
-  height: 5.3rem;
-  background: var(--c-LightGrayishBlue);
-  -webkit-mask: url($bgCurveMobile) no-repeat 50% 50%;
-  mask: url($bgCurveMobile) no-repeat 50% 50%;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-}
-
 .standoutLink {
   display: inline-block;
   text-decoration: none;
@@ -164,6 +182,9 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
   &_label {
     color: var(--c-ModerateCyan);
     font: 1.2rem Open Sans, sans-serif;
+    @include smUp {
+      font-size: 1.4rem;
+    }
     &:after {
       display: inline-block;
       width: 1.6rem;
@@ -193,10 +214,16 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
   background: var(--c-light);
   border-radius: 0.3rem;
   box-shadow: 0 0.2rem 1rem hsla(0, 0, 0, 0.05);
+  @include smUp {
+    max-width: 33rem;
+  }
   &_quote {
     margin: 0;
     font: 1rem/185% Open Sans, sans-serif;
     letter-spacing: 0.04em;
+    @include smUp {
+      font-size: 1.2rem;
+    }
     &:before {
       display: block;
       width: 1.3rem;
@@ -271,8 +298,15 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
     margin: 0;
     padding: 0;
     list-style: none;
+    @include smUp {
+      grid-gap: 1.6rem 4rem;
+      grid-template-columns: repeat(2, 1fr);
+    }
     .sitemap_item:nth-child(5) {
       margin-top: 3.2rem;
+      @include smUp {
+        margin: 0;
+      }
     }
   }
 }
@@ -328,21 +362,25 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
 
 // #region Layout
 
-.wrapper {
-  background: var(--c-light);
-}
-
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2.4rem;
+  background: var(--c-light);
+  &_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.4rem;
+  }
 }
 
 .intro {
-  display: grid;
-  grid-gap: 3.6rem;
-  padding: 7.4rem 2.4rem 9rem;
+  background: var(--c-light);
+  &_container {
+    display: grid;
+    grid-gap: 3.6rem;
+    max-width: $containerSm;
+    margin: 0 auto;
+    padding: 7.4rem 2.4rem 9rem;
+  }
   &_image {
     padding: 0 1.2rem;
     > .illustration {
@@ -355,18 +393,39 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
   }
   &_text {
     margin-top: 2.4rem;
+    @include smUp {
+      padding: 0 6.4rem;
+    }
   }
   &_signup {
     margin-top: 3.2rem;
+    @include smUp {
+      padding: 0 8rem;
+    }
   }
 }
 
-.benefits {
+.curvedTop {
   position: relative;
-  display: grid;
-  grid-gap: 8.8rem;
-  padding: 4rem 2.4rem 8.2rem;
+  width: 100%;
+  height: 5.3rem;
   background: var(--c-LightGrayishBlue);
+  -webkit-mask: url($bgCurveMobile) no-repeat 50% 50%;
+  mask: url($bgCurveMobile) no-repeat 50% 50%;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.benefits {
+  background: var(--c-LightGrayishBlue);
+  &_container {
+    position: relative;
+    display: grid;
+    grid-gap: 8.8rem;
+    max-width: $containerSm;
+    margin: 0 auto;
+    padding: 4rem 2.4rem 8.2rem;
+  }
   &_image {
     padding: 0 0.4rem;
     > .illustration {
@@ -378,6 +437,9 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
   &_heading {
     font-size: 1.6rem;
     text-align: center;
+    @include smUp {
+      font-size: 2.4rem;
+    }
   }
   &_text:nth-child(2) {
     margin-top: 2.4rem;
@@ -400,10 +462,17 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
   background: var(--c-DesaturatedBlue);
   &_content {
     text-align: center;
+    @include smUp {
+      max-width: 40rem;
+      margin: 0 auto;
+    }
   }
   &_heading {
     color: var(--c-light);
     font-size: 1.8rem;
+    @include smUp {
+      font-size: 2.4rem;
+    }
   }
   &_text {
     margin-top: 1.5rem;
@@ -417,6 +486,9 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
       padding: 0.8rem 0.7rem;
       font-size: 1rem;
       border-color: var(--c-light);
+      @include smUp {
+        font-size: 1.2rem;
+      }
       &:focus {
         border-color: var(--c-VeryDarkBlue);
       }
@@ -426,23 +498,38 @@ $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
       padding-bottom: 1rem;
       font-size: 1rem;
       line-height: 120%;
+      @include smUp {
+        font-size: 1.2rem;
+      }
     }
   }
 }
 
 .footer {
-  display: grid;
-  grid-template:
-    'footer_logo' auto
-    '.' 4rem
-    'footer_contacts' auto
-    '.' 5.8rem
-    'footer_sitemap' auto
-    '.' 5.1rem
-    'footer_social' auto;
-  padding: 6.5rem 4rem 4.7rem;
   color: var(--c-light);
   background: var(--c-VeryDarkBlue);
+  &_container {
+    display: grid;
+    grid-template:
+      'footer_logo' auto
+      '.' 4rem
+      'footer_contacts' auto
+      '.' 5.8rem
+      'footer_sitemap' auto
+      '.' 5.1rem
+      'footer_social' auto;
+    padding: 6.5rem 4rem 4.7rem;
+    @include smUp {
+      grid-gap: 6rem 4rem;
+      grid-template:
+        'footer_logo footer_contacts' auto
+        'footer_sitemap footer_sitemap' auto
+        'footer_social footer_social' auto
+        / 1fr 1fr;
+      max-width: $containerSm;
+      margin: 0 auto;
+    }
+  }
   &_logo {
     grid-area: footer_logo;
     width: 17.6rem;

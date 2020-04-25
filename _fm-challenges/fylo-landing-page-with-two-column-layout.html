@@ -17,8 +17,8 @@ Privacy,
 {% assign sitemap = sitemapText | strip_newlines | split: ',' %}
 {% assign avatar = '/assets/' | append: page.slug | append: '/avatar-testimonial.jpg' | relative_url %}
 
-<div class="wrapper">
-  <header class="header">
+<header class="header">
+  <div class="header_container">
     <div class="logo"></div>
     <nav class="nav">
       <ul class="nav_list">
@@ -27,10 +27,12 @@ Privacy,
         <li><a href="#" class="nav_link">Sign In</a></li>
       </ul>
     </nav>
-  </header>
-  <main>
-    <h1 class="srOnly">Fylo - a cloud file storage</h1>
-    <section class="intro">
+  </div>
+</header>
+<main>
+  <h1 class="srOnly">Fylo - a cloud file storage</h1>
+  <section class="intro">
+    <div class="intro_container">
       <div class="intro_image">
         <div class="illustration"></div>
       </div>
@@ -40,14 +42,10 @@ Privacy,
         </h2>
         <p class="intro_text text">
           Fylo stores your most important files in one secure location. Access
-          them wherever you need, share and collaborate with friends, family,
-          and co-workers.
+          them wherever you need, share and collaborate with friends, family, and
+          co-workers.
         </p>
-        <form
-          class="intro_signup signupForm"
-          onsubmit="return false"
-          novalidate
-        >
+        <form class="intro_signup signupForm" onsubmit="return false" novalidate>
           <label class="emailField">
             <input
               type="email"
@@ -61,9 +59,11 @@ Privacy,
           <button type="submit" class="button">Get Started</button>
         </form>
       </div>
-    </section>
-    <div class="curvedTop"></div>
-    <section class="benefits">
+    </div>
+  </section>
+  <div class="curvedTop"></div>
+  <section class="benefits">
+    <div class="benefits_container">
       <div class="benefits_image">
         <div class="illustration"></div>
       </div>
@@ -76,8 +76,8 @@ Privacy,
           covered for all of your file storage needs.
         </p>
         <p class="benefits_text text">
-          Securely share files and folders with friends, family and colleagues
-          for live collaboration. No email attachments required!
+          Securely share files and folders with friends, family and colleagues for
+          live collaboration. No email attachments required!
         </p>
         <div class="benefits_link">
           <a href="#" class="standoutLink">
@@ -88,8 +88,8 @@ Privacy,
         <article class="benefits_card testimonials">
           <blockquote class="testimonials_quote">
             Fylo has improved our team productivity by an order of magnitude.
-            Since making the switch our team has become a well-oiled
-            collaboration machine.
+            Since making the switch our team has become a well-oiled collaboration
+            machine.
           </blockquote>
           <figure class="testimonials_author person">
             <img
@@ -102,16 +102,18 @@ Privacy,
           </figure>
         </article>
       </div>
-    </section>
-    <section class="promo">
+    </div>
+  </section>
+  <section class="promo">
+    <div class="promo_container">
       <div class="promo_content">
         <h2 class="promo_heading heading">
           Get early access today
         </h2>
         <p class="promo_text text">
-          It only takes a minute to sign up and our free starter tier is
-          extremely generous. If you have any questions, our support team would
-          be happy to help you.
+          It only takes a minute to sign up and our free starter tier is extremely
+          generous. If you have any questions, our support team would be happy to
+          help you.
         </p>
       </div>
       <form class="promo_signup signupForm" onsubmit="return false" novalidate>
@@ -127,13 +129,19 @@ Privacy,
         </label>
         <button type="submit" class="button">Get Started For Free</button>
       </form>
-    </section>
-  </main>
-  <footer class="footer">
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="footer_container">
     <div class="footer_logo logo"></div>
     <address class="footer_contacts contacts">
-      <a href="tel:+15431234567" class="contacts_text link">Phone: +1-543-123-4567</a>
-      <a href="mailto:example@fylo.com" class="contacts_text link">example@fylo.com</a>
+      <a href="tel:+15431234567" class="contacts_text link"
+        >Phone: +1-543-123-4567</a
+      >
+      <a href="mailto:example@fylo.com" class="contacts_text link"
+        >example@fylo.com</a
+      >
     </address>
     <nav class="footer_sitemap sitemap">
       <ul class="sitemap_list">
@@ -146,9 +154,9 @@ Privacy,
     </nav>
     <!-- prettier-ignore -->
     {% include socialLinks.html
-      listClass='footer_social social'
-      itemClass='social_item'
-      linkClass='social_link'
-      iconClass='icon' %}
-  </footer>
-</div>
+        listClass='footer_social social'
+        itemClass='social_item'
+        linkClass='social_link'
+        iconClass='icon' %}
+  </div>
+</footer>
