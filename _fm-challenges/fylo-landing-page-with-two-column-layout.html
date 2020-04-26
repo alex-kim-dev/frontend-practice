@@ -1,0 +1,164 @@
+---
+title: Fylo landing page
+challenge: Fylo landing page with two column layout
+difficulty: newbie
+---
+
+<!-- prettier-ignore -->
+{% capture sitemapText %}
+About Us,
+Jobs,
+Press,
+Blog,
+Contact Us,
+Terms,
+Privacy,
+{% endcapture %}
+{% assign sitemap = sitemapText | strip_newlines | split: ',' %}
+{% assign avatar = '/assets/' | append: page.slug | append: '/avatar-testimonial.jpg' | relative_url %}
+
+<header class="header">
+  <div class="header_container">
+    <div class="logo"></div>
+    <nav class="nav">
+      <ul class="nav_list">
+        <li><a href="#" class="nav_link">Features</a></li>
+        <li><a href="#" class="nav_link">Team</a></li>
+        <li><a href="#" class="nav_link">Sign In</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main>
+  <h1 class="srOnly">Fylo - a cloud file storage</h1>
+  <section class="intro">
+    <div class="intro_container">
+      <div class="intro_image">
+        <div class="illustration"></div>
+      </div>
+      <div class="intro_content">
+        <h2 class="intro_heading heading">
+          All your files in one secure location, accessible anywhere.
+        </h2>
+        <p class="intro_text text">
+          Fylo stores your most important files in one secure location. Access
+          them wherever you need, share and collaborate with friends, family,
+          and co-workers.
+        </p>
+        <form
+          class="intro_signup signupForm"
+          onsubmit="return false"
+          novalidate
+        >
+          <label class="emailField">
+            <input
+              type="email"
+              class="emailField_input"
+              name="email"
+              placeholder="Enter your email..."
+            />
+            <span class="srOnly">Email, required</span>
+          </label>
+          <button type="submit" class="button">Get Started</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  <div class="curvedTop"></div>
+  <section class="benefits">
+    <div class="benefits_container">
+      <div class="benefits_image">
+        <div class="illustration"></div>
+      </div>
+      <div class="benefits_content">
+        <h2 class="benefits_heading heading">
+          Stay productive, wherever you are
+        </h2>
+        <p class="benefits_text text">
+          Never let location be an issue when accessing your files. Fylo has you
+          covered for all of your file storage needs.
+        </p>
+        <p class="benefits_text text">
+          Securely share files and folders with friends, family and colleagues
+          for live collaboration. No email attachments required!
+        </p>
+        <div class="benefits_link">
+          <a href="#" class="standoutLink">
+            <span class="standoutLink_label">See how Fylo works</span>
+            <div class="standoutLink_underline"></div>
+          </a>
+        </div>
+        <article class="benefits_card testimonials">
+          <blockquote class="testimonials_quote">
+            Fylo has improved our team productivity by an order of magnitude.
+            Since making the switch our team has become a well-oiled
+            collaboration machine.
+          </blockquote>
+          <figure class="testimonials_author person">
+            <img
+              class="person_avatar"
+              src="{{ avatar }}"
+              alt="Kyle Burton's avatar"
+            />
+            <p class="person_name">Kyle Burton</p>
+            <p class="person_position">Founder & CEO, Huddle</p>
+          </figure>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="promo">
+    <div class="promo_container">
+      <div class="promo_content">
+        <h2 class="promo_heading heading">
+          Get early access today
+        </h2>
+        <p class="promo_text text">
+          It only takes a minute to sign up and our free starter tier is
+          extremely generous. If you have any questions, our support team would
+          be happy to help you.
+        </p>
+      </div>
+      <form class="promo_signup signupForm" onsubmit="return false" novalidate>
+        <label class="emailField">
+          <input
+            type="email"
+            class="emailField_input"
+            name="email"
+            placeholder="email@example.com"
+          />
+          <span class="srOnly">Email, required</span>
+        </label>
+        <button type="submit" class="button">Get Started For Free</button>
+      </form>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="footer_container">
+    <div class="footer_logo logo"></div>
+    <address class="footer_contacts contacts">
+      <a href="tel:+15431234567" class="contacts_text link"
+        >Phone: +1-543-123-4567</a
+      >
+      <a href="mailto:example@fylo.com" class="contacts_text link"
+        >example@fylo.com</a
+      >
+    </address>
+    <nav class="footer_sitemap sitemap">
+      <ul class="sitemap_list">
+        {% for label in sitemap %}
+        <li class="sitemap_item">
+          <a href="#" class="sitemap_link link">{{ label }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <!-- prettier-ignore -->
+    {% include socialLinks.html
+        listClass='footer_social social'
+        itemClass='social_item'
+        linkClass='social_link'
+        iconClass='icon' %}
+  </div>
+</footer>
