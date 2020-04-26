@@ -16,17 +16,31 @@ $logo: "{{ '/assets/fylo-landing-page-with-two-column-layout/logo.svg' | relativ
 $illustration1: "{{ '/assets/fylo-landing-page-with-two-column-layout/illustration-1.svg' | relative_url }}";
 $illustration2: "{{ '/assets/fylo-landing-page-with-two-column-layout/illustration-2.svg' | relative_url }}";
 $bgCurveMobile: "{{ '/assets/fylo-landing-page-with-two-column-layout/bg-curve-mobile.svg' | relative_url }}";
+$bgCurveDesktop: "{{ '/assets/fylo-landing-page-with-two-column-layout/bg-curve-desktop.svg' | relative_url }}";
 $iconArrow: "{{ '/assets/fylo-landing-page-with-two-column-layout/icon-arrow.svg' | relative_url }}";
 $iconPhone: "{{ '/assets/fylo-landing-page-with-two-column-layout/icon-phone.svg' | relative_url }}";
 $iconEmail: "{{ '/assets/fylo-landing-page-with-two-column-layout/icon-email.svg' | relative_url }}";
 $quotes: "{{ '/assets/fylo-landing-page-with-two-column-layout/icon-quotes.svg' | relative_url }}";
 
-$controlShadow: 0 0.6rem 0.4rem hsla(0, 0, 0, 0.1);
+$controlShadow: 0 0.6rem 0.4rem hsla(0, 0, 0, 0.05);
 $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
 $containerSm: 60rem;
+$containerLg: 144rem;
 
 @mixin smUp {
   @media (min-width: rem(560px)) {
+    @content;
+  }
+}
+
+@mixin mdUp {
+  @media (min-width: rem(1024px)) {
+    @content;
+  }
+}
+
+@mixin lgUp {
+  @media (min-width: rem(1200px)) {
     @content;
   }
 }
@@ -52,6 +66,10 @@ $containerSm: 60rem;
     width: 10rem;
     height: 3rem;
   }
+  @include mdUp {
+    width: 16.6rem;
+    height: 4.9rem;
+  }
 }
 
 .nav {
@@ -62,6 +80,12 @@ $containerSm: 60rem;
     margin: 0;
     padding: 0;
     list-style: none;
+    @include smUp {
+      grid-gap: 4rem;
+    }
+    @include mdUp {
+      grid-gap: 5.6rem;
+    }
   }
   &_link {
     color: var(--c-VeryDarkBlue);
@@ -70,6 +94,9 @@ $containerSm: 60rem;
     text-decoration: none;
     @include smUp {
       font-size: 1.4rem;
+    }
+    @include mdUp {
+      font-size: 1.6rem;
     }
     &:focus {
       outline: 0.2rem solid var(--c-ModerateCyan);
@@ -95,6 +122,9 @@ $containerSm: 60rem;
   @include smUp {
     font-size: 3rem;
   }
+  @include lgUp {
+    font-size: 4rem;
+  }
 }
 
 .text {
@@ -103,6 +133,10 @@ $containerSm: 60rem;
   font: 1.4rem/150% Open Sans, sans-serif;
   @include smUp {
     font-size: 1.6rem;
+  }
+  @include lgUp {
+    font-size: 1.8rem;
+    line-height: normal;
   }
 }
 
@@ -133,6 +167,11 @@ $containerSm: 60rem;
       font-size: 1.4rem;
       line-height: 130%;
     }
+    @include mdUp {
+      padding: 1.3rem 2rem 1.1rem;
+      line-height: 140%;
+      letter-spacing: 0.03em;
+    }
     &::placeholder {
       color: var(--c-LightGray);
     }
@@ -157,6 +196,10 @@ $containerSm: 60rem;
     padding-top: 1.3rem;
     padding-bottom: 1.3rem;
   }
+  @include smUp {
+    padding-top: 1.5rem;
+    padding-bottom: 1.4rem;
+  }
   &:focus,
   &:hover {
     outline: none;
@@ -171,6 +214,12 @@ $containerSm: 60rem;
 .signupForm {
   display: grid;
   grid-gap: 1.6rem;
+  @include mdUp {
+    grid-template-columns: 2fr 1fr;
+  }
+  @include lgUp {
+    grid-template-columns: 32rem 20rem;
+  }
 }
 
 .standoutLink {
@@ -184,6 +233,9 @@ $containerSm: 60rem;
     font: 1.2rem Open Sans, sans-serif;
     @include smUp {
       font-size: 1.4rem;
+    }
+    @include mdUp {
+      font-size: 1.6rem;
     }
     &:after {
       display: inline-block;
@@ -217,12 +269,21 @@ $containerSm: 60rem;
   @include smUp {
     max-width: 33rem;
   }
+  @include mdUp {
+    max-width: 35.6rem;
+    padding: 2.4rem 3.2rem 2.7rem;
+  }
   &_quote {
     margin: 0;
     font: 1rem/185% Open Sans, sans-serif;
     letter-spacing: 0.04em;
     @include smUp {
       font-size: 1.2rem;
+    }
+    @include mdUp {
+      font-size: 1.4rem;
+      line-height: 170%;
+      letter-spacing: normal;
     }
     &:before {
       display: block;
@@ -232,10 +293,18 @@ $containerSm: 60rem;
       background: url($quotes) center no-repeat;
       background-size: contain;
       content: '';
+      @include mdUp {
+        width: 1.6rem;
+        height: 1.6rem;
+        margin-bottom: 0.9rem;
+      }
     }
   }
   &_author {
     margin: 1.2rem 0 0;
+    @include mdUp {
+      margin-top: 1.6rem;
+    }
   }
 }
 
@@ -251,17 +320,31 @@ $containerSm: 60rem;
     width: 2.4rem;
     height: 2.4rem;
     border-radius: 50%;
+    @include smUp {
+      width: 3.2rem;
+      height: 3.2rem;
+    }
   }
   &_name {
     grid-area: person_name;
+    align-self: end;
     margin: 0;
     font: 700 1rem Open Sans, sans-serif;
+    @include mdUp {
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+    }
   }
   &_position {
     grid-area: person_position;
+    align-self: start;
     margin: 0;
     font: 0.6rem Open Sans, sans-serif;
     letter-spacing: 0.05em;
+    @include mdUp {
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
   }
 }
 
@@ -299,8 +382,12 @@ $containerSm: 60rem;
     padding: 0;
     list-style: none;
     @include smUp {
+      grid-auto-flow: column;
       grid-gap: 1.6rem 4rem;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template: repeat(4, 1fr) / repeat(2, 1fr);
+    }
+    @include lgUp {
+      grid-gap: 1.6rem 14.6rem;
     }
     .sitemap_item:nth-child(5) {
       margin-top: 3.2rem;
@@ -334,6 +421,10 @@ $containerSm: 60rem;
     border-radius: 50%;
     box-shadow: inset 0 0 0 0.1em var(--c-light);
     transition: 0.2s;
+    @include mdUp {
+      width: 3.2em;
+      height: 3.2em;
+    }
     &:focus,
     &:hover {
       color: var(--c-VeryDarkBlue);
@@ -369,6 +460,14 @@ $containerSm: 60rem;
     align-items: center;
     justify-content: space-between;
     padding: 2.4rem;
+    @include mdUp {
+      max-width: $containerLg;
+      margin: 0 auto;
+      padding: 4rem;
+    }
+    @include lgUp {
+      padding: 6.4rem 8rem;
+    }
   }
 }
 
@@ -380,9 +479,23 @@ $containerSm: 60rem;
     max-width: $containerSm;
     margin: 0 auto;
     padding: 7.4rem 2.4rem 9rem;
+    @include mdUp {
+      grid-gap: 2.4rem;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      max-width: $containerLg;
+      padding: 8rem 4rem 12rem;
+    }
+    @include lgUp {
+      grid-gap: 0;
+      padding: 2.4rem 8rem 15.4rem;
+    }
   }
   &_image {
     padding: 0 1.2rem;
+    @include mdUp {
+      padding: 0;
+    }
     > .illustration {
       background-image: url($illustration1);
     }
@@ -390,17 +503,34 @@ $containerSm: 60rem;
   &_content {
     padding: 0 0.8rem;
     text-align: center;
+    @include mdUp {
+      order: -1;
+      padding: 0;
+      text-align: left;
+    }
+    @include lgUp {
+      margin-bottom: 5.4rem;
+      padding-right: 4rem;
+    }
   }
   &_text {
     margin-top: 2.4rem;
     @include smUp {
       padding: 0 6.4rem;
     }
+    @include mdUp {
+      margin-top: 1.5rem;
+      padding: 0;
+    }
   }
   &_signup {
     margin-top: 3.2rem;
     @include smUp {
+      margin-top: 2.5rem;
       padding: 0 8rem;
+    }
+    @include mdUp {
+      padding: 0;
     }
   }
 }
@@ -414,6 +544,11 @@ $containerSm: 60rem;
   mask: url($bgCurveMobile) no-repeat 50% 50%;
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
+  @include mdUp {
+    -webkit-mask-image: url($bgCurveDesktop);
+    mask-image: url($bgCurveDesktop);
+    height: 11.4rem;
+  }
 }
 
 .benefits {
@@ -425,14 +560,30 @@ $containerSm: 60rem;
     max-width: $containerSm;
     margin: 0 auto;
     padding: 4rem 2.4rem 8.2rem;
+    @include mdUp {
+      grid-gap: 4rem;
+      grid-template-columns: 1fr 42.34%;
+      max-width: $containerLg;
+      padding: 4rem 4rem 9rem;
+    }
+    @include lgUp {
+      grid-gap: 8rem;
+      padding: 6.4rem 8rem 10.5rem;
+    }
   }
   &_image {
     padding: 0 0.4rem;
+    @include mdUp {
+      padding: 2.4rem 0 0;
+    }
     > .illustration {
       background-image: url($illustration2);
     }
   }
   &_content {
+    @include mdUp {
+      order: -1;
+    }
   }
   &_heading {
     font-size: 1.6rem;
@@ -440,9 +591,27 @@ $containerSm: 60rem;
     @include smUp {
       font-size: 2.4rem;
     }
+    @include mdUp {
+      font-size: 3rem;
+      line-height: normal;
+      text-align: left;
+    }
+    @include lgUp {
+      font-size: 4rem;
+    }
+  }
+  &_text {
+    @include smUp {
+      max-width: 52rem;
+      font-size: 1.6rem;
+      line-height: 150%;
+    }
   }
   &_text:nth-child(2) {
     margin-top: 2.4rem;
+    @include mdUp {
+      margin-top: 3.7rem;
+    }
   }
   &_text:nth-child(3) {
     margin-top: 1.6rem;
@@ -451,20 +620,48 @@ $containerSm: 60rem;
     display: flex;
     justify-content: center;
     margin-top: 3.5rem;
+    @include mdUp {
+      justify-content: flex-start;
+      margin-top: 1.6rem;
+    }
   }
   &_card {
     margin: 4rem auto 0;
+    @include mdUp {
+      margin: 4.5rem 0 0;
+    }
   }
 }
 
 .promo {
-  padding: 5.3rem 4.4rem 7.1rem;
   background: var(--c-DesaturatedBlue);
+  &_container {
+    padding: 5.3rem 4.4rem 7.1rem;
+    @include mdUp {
+      display: grid;
+      grid-gap: 8rem;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      max-width: $containerLg;
+      margin: 0 auto;
+      text-align: left;
+    }
+    @include lgUp {
+      grid-gap: 16rem;
+      padding: 10.2rem 8rem 8.6rem;
+    }
+  }
   &_content {
     text-align: center;
     @include smUp {
       max-width: 40rem;
       margin: 0 auto;
+    }
+    @include mdUp {
+      max-width: unset;
+      margin: 0;
+      padding-right: 2rem;
+      text-align: left;
     }
   }
   &_heading {
@@ -473,21 +670,41 @@ $containerSm: 60rem;
     @include smUp {
       font-size: 2.4rem;
     }
+    @include mdUp {
+      font-size: 3.2rem;
+    }
   }
   &_text {
     margin-top: 1.5rem;
     color: var(--c-light);
+    @include mdUp {
+      font-size: 1.6rem;
+      line-height: 150%;
+      letter-spacing: 0.03em;
+    }
   }
   &_signup {
     grid-gap: 0.8rem;
     width: 24rem;
     margin: 2.4rem auto 0;
+    @include mdUp {
+      grid-gap: 1.6rem;
+      grid-template: repeat(2, 1fr) / auto;
+      align-content: center;
+      width: 100%;
+      margin: 0;
+      padding: 0 4rem;
+    }
     .emailField_input {
       padding: 0.8rem 0.7rem;
       font-size: 1rem;
       border-color: var(--c-light);
       @include smUp {
         font-size: 1.2rem;
+      }
+      @include mdUp {
+        padding: 1.5rem 2.1rem;
+        letter-spacing: normal;
       }
       &:focus {
         border-color: var(--c-VeryDarkBlue);
@@ -500,6 +717,11 @@ $containerSm: 60rem;
       line-height: 120%;
       @include smUp {
         font-size: 1.2rem;
+      }
+      @include mdUp {
+        width: 20rem;
+        padding: 1.6rem 3.2rem;
+        font-size: 1.4rem;
       }
     }
   }
@@ -529,6 +751,26 @@ $containerSm: 60rem;
       max-width: $containerSm;
       margin: 0 auto;
     }
+    @include mdUp {
+      grid-gap: 6rem 4rem;
+      grid-template:
+        'footer_logo footer_logo' auto
+        'footer_contacts footer_sitemap' auto
+        'footer_social footer_social' auto
+        / 3fr 4fr;
+      align-items: start;
+      max-width: $containerLg;
+    }
+    @include lgUp {
+      grid-gap: 2.4rem 11.09%;
+      grid-template:
+        'footer_logo footer_logo footer_logo' auto
+        'footer_contacts footer_sitemap footer_social' auto
+        / 23.59% 30.625% 23.59%;
+      align-items: start;
+      max-width: $containerLg;
+      padding: 10.8rem 8rem 7.2rem;
+    }
   }
   &_logo {
     grid-area: footer_logo;
@@ -548,6 +790,9 @@ $containerSm: 60rem;
   }
   &_social {
     grid-area: footer_social;
+    @include lgUp {
+      justify-self: start;
+    }
   }
 }
 
