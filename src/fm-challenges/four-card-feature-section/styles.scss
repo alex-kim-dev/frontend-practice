@@ -1,11 +1,5 @@
----
----
-
-#unknown {
-} // fixes Unknown word (CssSyntaxError) on frontmatter by stylelint
-
-@import 'normalize';
-@import 'defaults';
+@import '../../sass/normalize';
+@import '../../sass/defaults';
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
 
@@ -19,10 +13,8 @@ $color-neutral-grayish-blue: hsl(229, 6%, 66%);
 $color-neutral-very-light-gray: hsl(0, 0%, 98%);
 $color-back: hsl(0, 0, 100%);
 
-$icons: "{{ '/assets/four-card-feature-section/icon-supervisor.svg' | relative_url }}",
-  "{{ '/assets/four-card-feature-section/icon-team-builder.svg' | relative_url }}",
-  "{{ '/assets/four-card-feature-section/icon-karma.svg' | relative_url }}",
-  "{{ '/assets/four-card-feature-section/icon-calculator.svg' | relative_url }}";
+$icons: 'icon-supervisor.svg', 'icon-team-builder.svg', 'icon-karma.svg',
+  'icon-calculator.svg';
 
 .text {
   color: $color-neutral-grayish-blue;

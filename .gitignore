@@ -12,3 +12,5 @@ npm-debug.log*
 .eslintcache
 .node_repl_history
 .env*
+dist
+.cache

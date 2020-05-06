@@ -1,0 +1,26 @@
+include ../siteMeta
+
+block variables
+
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title #{title} | #{site.title}
+    meta(
+      name='description',
+      content=`A frontendmentor.io "${challenge}" challenge solution by Alex Kim`
+    )
+    meta(name='author', content='Alex Kim, https://github.com/Alex-K1m')
+    link(
+      rel='icon',
+      type='image/png',
+      sizes='32x32',
+      href='../../assets/favicon-32x32.png'
+    )
+    link(rel='stylesheet', href='/styles.scss')
+    if includeJs
+      script(src='/script.js', async)
+  body
+    block content
