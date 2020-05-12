@@ -17,10 +17,10 @@ html(lang='en')
       rel='icon',
       type='image/png',
       sizes='32x32',
-      href='../../assets/favicon-32x32.png'
+      href='../assets/favicon-32x32.png'
     )
-    link(rel='stylesheet', href='/styles.scss')
+    link(rel='stylesheet', href=`/${slug}/styles.css`)
     if includeJs
-      script(src='/script.js', async)
+      script(src=`/${slug}/script.js`, async)
   body
     block content
