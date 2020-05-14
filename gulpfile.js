@@ -9,6 +9,8 @@ const pug = require('gulp-pug');
 const sass = require('gulp-sass');
 sass.compiler = require('node-sass');
 
+const siteMeta = require('./src/siteMeta');
+
 const outputDir = 'dist';
 const fmGlob = 'src/fm-challenges/*/**';
 const assetsGlob = '!(*.pug|*.scss|*.js)';
@@ -34,7 +36,7 @@ const clean = done => del([`${outputDir}/**`], done);
 
 const devMarkup = () =>
   src(['src/index.pug', `${fmGlob}/index.pug`])
-    .pipe(pug())
+    .pipe(pug({ locals: siteMeta }))
     .pipe(dest(outputDir))
     .pipe(browserSync.stream());
 
