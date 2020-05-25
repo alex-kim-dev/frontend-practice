@@ -36,7 +36,7 @@ const serverStart = done => {
 const clean = done => del([`${outputDir}/**`], done);
 
 const fmChallenges = glob
-  .sync('src/fm-challenges/*/')
+  .sync('src/fm-challenges/*/*/')
   .map(path => {
     try {
       const name = path.match(/\/([^/]+)\/$/)[1];
