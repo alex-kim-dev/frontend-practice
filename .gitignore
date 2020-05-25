@@ -13,4 +13,6 @@ npm-debug.log*
 .node_repl_history
 .env*
 dist
+dev
+prod
 .cache
