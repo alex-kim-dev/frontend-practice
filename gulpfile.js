@@ -26,6 +26,9 @@ const serverStart = done => {
       baseDir: outputDir,
     },
     port: 3000,
+    logLevel: 'silent',
+    open: false,
+    notify: false,
   });
   done();
 };
