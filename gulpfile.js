@@ -6,6 +6,7 @@ const glob = require('glob');
 const browserSync = require('browser-sync').create();
 const { series, parallel, src, dest, watch } = require('gulp');
 const del = require('delete');
+const sourcemaps = require('gulp-sourcemaps');
 const pug = require('gulp-pug');
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
@@ -58,13 +59,16 @@ const fmChallenges = glob
       },
       [`${name}_styles`]() {
         return src(`${path}/styles.scss`, { allowEmpty: true })
+          .pipe(sourcemaps.init())
           .pipe(sass().on('error', sass.logError))
+          .pipe(sourcemaps.write())
           .pipe(dest(`${outputDir}/${name}`))
           .pipe(browserSync.stream());
       },
       [`${name}_script`]() {
         return browserify({
           entries: `${path}/script.js`,
+          debug: true,
         })
           .bundle()
           .pipe(source('script.js'))
