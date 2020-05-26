@@ -27,6 +27,7 @@
   "homepage": "https://alex-k1m.github.io/html-templates/",
   "devDependencies": {
     "browser-sync": "^2.26.7",
+    "browserify": "^16.5.1",
     "delete": "^1.1.0",
     "eslint": "^7.1.0",
     "eslint-config-airbnb-base": "^14.1.0",
@@ -45,7 +46,7 @@
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.0.0",
     "stylelint-prettier": "^1.1.2",
-    "webpack-stream": "^5.2.1"
+    "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {}
 }

@@ -7,7 +7,8 @@ const browserSync = require('browser-sync').create();
 const { series, parallel, src, dest, watch } = require('gulp');
 const del = require('delete');
 const pug = require('gulp-pug');
-const webpack = require('webpack-stream');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
 const sass = require('gulp-sass');
 sass.compiler = require('node-sass');
 
@@ -62,10 +63,11 @@ const fmChallenges = glob
           .pipe(browserSync.stream());
       },
       [`${name}_script`]() {
-        return src(`${path}/script.js`, { allowEmpty: true })
-          .pipe(
-            webpack({ mode: 'development', output: { filename: 'script.js' } }),
-          )
+        return browserify({
+          entries: `${path}/script.js`,
+        })
+          .bundle()
+          .pipe(source('script.js'))
           .pipe(dest(`${outputDir}/${name}`))
           .pipe(browserSync.stream());
       },

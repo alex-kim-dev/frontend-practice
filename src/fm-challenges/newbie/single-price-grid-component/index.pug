@@ -1,0 +1,43 @@
+extends ../../../includes/layout
+
+block variables
+  -
+    const title = 'Single price grid component using flexbox';
+    const slug = 'single-price-grid-component';
+
+block content
+  -
+    const benefits = [
+      'Tutorials by industry experts',
+      'Peer &amp; expert code review',
+      'Coding exercises',
+      'Access to our GitHub repos',
+      'Community forum',
+      'Flashcard decks',
+      'New videos every week',
+    ];
+  .wrapper
+    .offer
+      h2.offer_heading.heading Join our community
+      section.offer_product
+        h3.subheading.subheading-accent
+          | 30-day, hassle-free money back guarantee
+        p.offer_productText.text
+          | Gain access to our full library of tutorials along with expert code
+          | reviews. Perfect for any developers who are serious about honing their
+          | skills.
+      .offer_container
+        section.offer_subscription
+          h3.subheading Monthly Subscription
+          div
+            .offer_price
+              span $29
+              | per month
+          p.offer_subscriptionText.text.text-light.text-lg
+            | Full access for less than $1 a day
+          button.button Sign Up
+        section.offer_benefits
+          h3.subheading Why Us
+          ul.offer_benefitsList.text.text-light.text-sm
+            each benefit in benefits
+              li: p= benefit

@@ -1,0 +1,34 @@
+extends ../../../includes/layout
+
+block variables
+  -
+    const title = 'Ping coming soon page with accessible subscription form';
+    const slug = 'ping-coming-soon-page';
+    const includeJs = true;
+
+block content
+  .wrapper
+    header.header
+      .header_logo.logo
+    main.content
+      h1.content_heading.text.text-h1
+        | We are launching
+        span.text-bold soon!
+      p.content_paragraph.text Subscribe and get notified
+      form.content_form.subscribeForm(novalidate='' onsubmit='return false')
+        div
+          label.emailField.text
+            input.emailField_input(type='email' name='email' placeholder='Your email address...' aria-describedby='feedback')
+            span.srOnly Enter email to subscribe
+          p#feedback.subscribeForm_feedback.text.text-secondary(aria-live='polite' aria-relevant='additions removals' aria-atomic='true')
+        button.subscribeForm_submit.button(type='submit')
+          | Notify Me
+    .background
+    footer.footer
+      - const listClass = 'socialLinks';
+      - const itemClass = 'socialLinks_item';
+      - const linkClass = 'socialLinks_link';
+      - const iconClass = 'icon';
+      include ../../../includes/socialLinks
+      p.footer_copyright.text.text-secondary
+        | &copy; Copyright Ping. All rights reserved.

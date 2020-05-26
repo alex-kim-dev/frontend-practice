@@ -1,0 +1,32 @@
+extends ../../../includes/layout
+
+block variables
+  -
+    const title = 'Coming soon page with accessible & interactive subscription form';
+    const slug = 'base-apparel-coming-soon-page';
+    const includeJs = true;
+
+block content
+  .wrapper
+    header.header
+      img.logo(src='logo.svg' alt='Base Apparel logo' role='presentation')
+    .background
+    .heroImage
+    main.content
+      h1.content_heading
+        | We&apos;re
+        br
+        span.content_heading-accent coming soon
+      p.content_text
+        | Hello fellow shoppers! We&apos;re currently building our new fashion store. Add
+        | your email below to stay up-to-date with announcements and our launch
+        | deals.
+      form.subscribe(novalidate='' autocomplete='on')
+        label.subscribe_label(for='email') Enter email to subscribe
+        .subscribe_container
+          .subscribe_border
+            .subscribe_absWrapper
+              input#email.subscribe_email(type='email' name='email' placeholder='Email Address' aria-describedby='feedback' required='')
+              .subscribe_errorIcon
+          button.subscribe_submit(type='submit' aria-label='Submit')
+        #feedback.subscribe_feedback(aria-live='polite' aria-relevant='additions removals' aria-atomic='true')

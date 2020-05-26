@@ -1,0 +1,29 @@
+extends ../../../includes/layout
+
+block variables
+  -
+    const title = 'Single section landing page using viewport units and grid';
+    const slug = 'huddle-landing-page-with-single-introductory-section';
+
+block content
+  .wrapper
+    .container
+      header.header
+        .logo
+      .heroImage
+      main.content
+        h1.heading
+          | Build the community
+          br
+          | your fans will love
+        p.text
+          | Huddle re-imagines the way we build communities. You have a voice, but
+          | so does your audience. Create connections with your users as you engage
+          | in genuine discussion.
+        button.button Register
+      footer.footer
+        - const listClass = 'list';
+        - const itemClass = 'item';
+        - const linkClass = 'socialLink';
+        - const iconClass = 'icon';
+        include ../../../includes/socialLinks
