@@ -1,9 +1,8 @@
 extends ../../../includes/layout
 
 block variables
-  -
-    const title = 'Fylo landing page';
-    const slug = 'fylo-landing-page-with-two-column-layout';
+  - const title = "Fylo landing page";
+  - const slug = "fylo-landing-page-with-two-column-layout";
 
 block content
   header.header
@@ -28,7 +27,11 @@ block content
             | and co-workers.
           form.intro_signup.signupForm(onsubmit='return false' novalidate='')
             label.emailField
-              input.emailField_input(type='email' name='email' placeholder='Enter your email...')
+              input.emailField_input(
+                type='email'
+                name='email'
+                placeholder='Enter your email...'
+              )
               span.srOnly Email, required
             button.button(type='submit') Get Started
     .curvedTop
@@ -55,7 +58,10 @@ block content
               | Since making the switch our team has become a well-oiled
               | collaboration machine.
             figure.testimonials_author.person
-              img.person_avatar(src='avatar-testimonial.jpg' alt="Kyle Burton's avatar")
+              img.person_avatar(
+                src='avatar-testimonial.jpg'
+                alt='Kyle Burton\'s avatar'
+              )
               p.person_name Kyle Burton
               p.person_position Founder &amp; CEO, Huddle
     section.promo
@@ -69,7 +75,11 @@ block content
             | be happy to help you.
         form.promo_signup.signupForm(onsubmit='return false' novalidate='')
           label.emailField
-            input.emailField_input(type='email' name='email' placeholder='email@example.com')
+            input.emailField_input(
+              type='email'
+              name='email'
+              placeholder='email@example.com'
+            )
             span.srOnly Email, required
           button.button(type='submit') Get Started For Free
   footer.footer
@@ -83,8 +93,8 @@ block content
           each label in ['About Us', 'Jobs', 'Press', 'Blog', 'Contact Us', 'Terms', 'Privacy']
             li.sitemap_item
               a.sitemap_link.link(href='#')= label
-      - const listClass = 'footer_social social';
-      - const itemClass = 'social_item';
-      - const linkClass = 'social_link';
-      - const iconClass = 'icon';
+      - const listClass = "footer_social social";
+      - const itemClass = "social_item";
+      - const linkClass = "social_link";
+      - const iconClass = "icon";
       include ../../../includes/socialLinks

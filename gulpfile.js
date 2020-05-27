@@ -1,7 +1,4 @@
 /* eslint-env node */
-
-'use strict';
-
 const glob = require('glob');
 const browserSync = require('browser-sync').create();
 const { series, parallel, src, dest, watch } = require('gulp');

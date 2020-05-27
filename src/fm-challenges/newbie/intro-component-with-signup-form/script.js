@@ -23,12 +23,14 @@ const inputChecks = {
 };
 
 const showFeedback = ({ input, field, feedback, error }) => {
+  // eslint-disable-next-line no-param-reassign
   feedback.textContent = error;
   field.classList.add('field-error');
   input.setAttribute('aria-invalid', true);
 };
 
 const hideFeedback = ({ input, field, feedback }) => {
+  // eslint-disable-next-line no-param-reassign
   feedback.textContent = '';
   field.classList.remove('field-error');
   input.removeAttribute('aria-invalid');

@@ -1,10 +1,9 @@
 extends ../../../includes/layout
 
 block variables
-  -
-    const title = 'Coming soon page with accessible & interactive subscription form';
-    const slug = 'base-apparel-coming-soon-page';
-    const includeJs = true;
+  - const title = "Coming soon page with accessible & interactivesubscriptioform";
+  - const slug = "base-apparel-coming-soon-page";
+  - const includeJs = true;
 
 block content
   .wrapper
@@ -26,7 +25,17 @@ block content
         .subscribe_container
           .subscribe_border
             .subscribe_absWrapper
-              input#email.subscribe_email(type='email' name='email' placeholder='Email Address' aria-describedby='feedback' required='')
+              input#email.subscribe_email(
+                type='email'
+                name='email'
+                placeholder='Email Address'
+                aria-describedby='feedback'
+                required=''
+              )
               .subscribe_errorIcon
           button.subscribe_submit(type='submit' aria-label='Submit')
-        #feedback.subscribe_feedback(aria-live='polite' aria-relevant='additions removals' aria-atomic='true')
+        #feedback.subscribe_feedback(
+          aria-live='polite'
+          aria-relevant='additions removals'
+          aria-atomic='true'
+        )

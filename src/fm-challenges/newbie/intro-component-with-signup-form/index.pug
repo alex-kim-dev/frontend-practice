@@ -1,10 +1,9 @@
 extends ../../../includes/layout
 
 block variables
-  -
-    const title = 'Intro component with signup form';
-    const slug = 'intro-component-with-signup-form';
-    const includeJs = true;
+  - const title = "Intro component with signup form";
+  - const slug = "intro-component-with-signup-form";
+  - const includeJs = true;
 
 block content
   .wrapper
@@ -20,24 +19,25 @@ block content
         header.signupForm_header.paper
           h3.signupForm_heading.text.text-h3
             span.text-bold Try it free 7 days
-            |           then $20/mo. thereafter
+            |
+            | then $20/mo. thereafter
         .signupForm_body.paper
           ul.signupForm_fieldList
-            - let type = 'text';
-            - let name = 'firstName';
-            - let placeholder = 'First Name';
+            - let type = "text";
+            - let name = "firstName";
+            - let placeholder = "First Name";
             include ../../../includes/field
-            - type = 'text';
-            - name = 'lastName';
-            - placeholder = 'Last Name';
+            - type = "text";
+            - name = "lastName";
+            - placeholder = "Last Name";
             include ../../../includes/field
-            - type = 'email';
-            - name = 'email';
-            - placeholder = 'Email Address';
+            - type = "email";
+            - name = "email";
+            - placeholder = "Email Address";
             include ../../../includes/field
-            - type = 'password';
-            - name = 'password';
-            - placeholder = 'Password';
+            - type = "password";
+            - name = "password";
+            - placeholder = "Password";
             include ../../../includes/field
           button.signupForm_submit.button Claim your free trial
           p.signupForm_agreement.text.text-secondary

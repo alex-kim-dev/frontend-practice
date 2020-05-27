@@ -1,9 +1,8 @@
 extends ../../../includes/layout
 
 block variables
-  -
-    const title = 'Landing page responding to 4 different screen sizes';
-    const slug = 'huddle-landing-page-with-alternating-feature-blocks';
+  - const title = "Landing page responding to 4 different screen sizes";
+  - const slug = "huddle-landing-page-with-alternating-feature-blocks";
 
 block content
   header.header
@@ -57,7 +56,8 @@ block content
               | authentication solution. This means, once signed in to
               br
               | your
-              |             app, your users can start chatting immediately.
+              |
+              | app, your users can start chatting immediately.
     .cta.paper.colorDark
       h2.cta_heading.heading.heading-sm
         | Ready to build your community?
@@ -80,10 +80,10 @@ block content
         ul.nav_list
           each label in ['About Us', 'What We Do', 'FAQ', 'Career', 'Blog', 'Contact Us']
             li: a.nav_link.text.text-link(href='#')= label
-      - const listClass = 'footer_social social';
-      - const itemClass = 'social_item';
-      - const linkClass = 'social_link';
-      - const iconClass = 'icon';
+      - const listClass = "footer_social social";
+      - const itemClass = "social_item";
+      - const linkClass = "social_link";
+      - const iconClass = "icon";
       include ../../../includes/socialLinks
       p.footer_copyright.copyright
         | &copy; Copyright 2018 Huddle. All rights reserved.

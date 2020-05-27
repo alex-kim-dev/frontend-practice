@@ -3,4 +3,7 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
-_sass/normalize.scss
+src/includes/normalize.scss
+dist
+dev
+prod

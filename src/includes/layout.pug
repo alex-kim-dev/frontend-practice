@@ -4,20 +4,20 @@ doctype html
 html(lang='en')
   head
     meta(charset='UTF-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
     title #{title} | #{site.title}
     meta(
-      name='description',
+      name='description'
       content=`A frontendmentor.io "${challenge}" challenge solution by Alex Kim`
     )
-    meta(name='author', content='Alex Kim, https://github.com/Alex-K1m')
+    meta(name='author' content='Alex Kim, https://github.com/Alex-K1m')
     link(
-      rel='icon',
-      type='image/png',
-      sizes='32x32',
+      rel='icon'
+      type='image/png'
+      sizes='32x32'
       href='../assets/favicon-32x32.png'
     )
-    link(rel='stylesheet', href=`/${slug}/styles.css`)
+    link(rel='stylesheet' href=`/${slug}/styles.css`)
   body
     block content
     if includeJs
