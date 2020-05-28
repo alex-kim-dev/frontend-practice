@@ -1,26 +1,37 @@
 /* eslint-env node */
 const glob = require('glob');
+const eventStream = require('event-stream');
 const browserSync = require('browser-sync').create();
 const { series, parallel, src, dest, watch } = require('gulp');
 const del = require('delete');
+const rename = require('gulp-rename');
 const sourcemaps = require('gulp-sourcemaps');
 const pug = require('gulp-pug');
 const browserify = require('browserify');
+const babelify = require('babelify');
 const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const combineMediaQuery = require('postcss-combine-media-query');
+const cssnano = require('cssnano');
+const terser = require('gulp-terser');
+const inline = require('gulp-inline-source');
 const sass = require('gulp-sass');
 sass.compiler = require('node-sass');
 
 const siteMeta = require('./src/siteMeta');
 
-const outputDir = 'dev';
+const output = {
+  dev: 'dev',
+  prod: 'prod',
+};
 const assetsGlob = '!(*.pug|*.scss|*.js)';
 
-// private tasks
-
-const serverStart = done => {
+const devServerStart = done => {
   browserSync.init({
     server: {
-      baseDir: outputDir,
+      baseDir: output.dev,
     },
     port: 3000,
     logLevel: 'silent',
@@ -30,12 +41,20 @@ const serverStart = done => {
   done();
 };
 
-// const serverReload = done => {
-//   browserSync.reload();
-//   done();
-// };
+const prodServerStart = done => {
+  browserSync.init({
+    server: {
+      baseDir: output.prod,
+    },
+    port: 3001,
+    logLevel: 'silent',
+    notify: false,
+  });
+  done();
+};
 
-const clean = done => del([`${outputDir}/**`], done);
+const cleanDev = done => del([`${output.dev}/**`], done);
+const cleanProd = done => del([`${output.prod}/**`], done);
 
 const fmChallenges = glob
   .sync('src/fm-challenges/*/*/')
@@ -54,7 +73,7 @@ const fmChallenges = glob
       [`${name}_markup`]() {
         return src(`${path}/index.pug`)
           .pipe(pug({ locals: siteMeta }))
-          .pipe(dest(`${outputDir}/${name}`))
+          .pipe(dest(`${output.dev}/${name}`))
           .pipe(browserSync.stream());
       },
       [`${name}_styles`]() {
@@ -62,7 +81,7 @@ const fmChallenges = glob
           .pipe(sourcemaps.init())
           .pipe(sass().on('error', sass.logError))
           .pipe(sourcemaps.write())
-          .pipe(dest(`${outputDir}/${name}`))
+          .pipe(dest(`${output.dev}/${name}`))
           .pipe(browserSync.stream());
       },
       [`${name}_script`]() {
@@ -72,12 +91,12 @@ const fmChallenges = glob
         })
           .bundle()
           .pipe(source('script.js'))
-          .pipe(dest(`${outputDir}/${name}`))
+          .pipe(dest(`${output.dev}/${name}`))
           .pipe(browserSync.stream());
       },
       [`${name}_assets`]() {
         return src(`${path}/${assetsGlob}`, { allowEmpty: true })
-          .pipe(dest(`${outputDir}/${name}`))
+          .pipe(dest(`${output.dev}/${name}`))
           .pipe(browserSync.stream());
       },
     },
@@ -86,12 +105,12 @@ const fmChallenges = glob
 const devHomepage = () =>
   src('src/index.pug')
     .pipe(pug({ locals: siteMeta }))
-    .pipe(dest(outputDir))
+    .pipe(dest(output.dev))
     .pipe(browserSync.stream());
 
 const devAssets = () =>
   src('src/assets/**/*', { allowEmpty: true })
-    .pipe(dest(`${outputDir}/assets`))
+    .pipe(dest(`${output.dev}/assets`))
     .pipe(browserSync.stream());
 
 const watchFiles = () => {
@@ -127,7 +146,83 @@ const watchFiles = () => {
   });
 };
 
-// public tasks
+const changeFmChallengePath = path => {
+  const { dirname: dir } = path;
+  if (!dir.includes('fm-challenges')) return path;
+  const dirname = dir.slice(dir.lastIndexOf('/') + 1);
+  return { ...path, dirname };
+};
 
-exports.clean = clean;
-exports.default = series(clean, parallel(watchFiles, serverStart));
+const prodMarkup = () =>
+  src(['src/index.pug', 'src/!(includes)/**/*.pug'])
+    .pipe(pug({ locals: siteMeta }))
+    .pipe(rename(changeFmChallengePath))
+    .pipe(dest(output.prod));
+
+const prodStyles = () =>
+  src('src/!(includes)/**/*.scss', { allowEmpty: true })
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss([combineMediaQuery(), autoprefixer(), cssnano()]))
+    .pipe(sourcemaps.write('./'))
+    .pipe(rename(changeFmChallengePath))
+    .pipe(dest(output.prod));
+
+const inlineStyles = () =>
+  src(`${output.prod}/**/*.html`)
+    .pipe(inline({ compress: false }))
+    .pipe(dest(output.prod));
+
+const removeStyleFiles = done => del([`${output.prod}/**/*.css`], done);
+
+const prodScripts = done => {
+  glob('src/!(includes)/**/*.js', (err, files) => {
+    if (err) done(err);
+    const tasks = files.map(entry =>
+      browserify({
+        entries: [entry],
+        transform: [babelify.configure({ presets: ['@babel/preset-env'] })],
+        sourceMaps: true,
+      })
+        .bundle()
+        .pipe(source(entry))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({ loadMaps: true }))
+        .pipe(terser())
+        .pipe(rename(changeFmChallengePath))
+        .pipe(sourcemaps.write('./'))
+        .pipe(dest(output.prod)),
+    );
+    eventStream.merge(tasks).on('end', done);
+  });
+};
+
+const prodFmAssets = () =>
+  src(`src/fm-challenges/*/*/${assetsGlob}`, { allowEmpty: true })
+    .pipe(
+      rename(path => {
+        const { dirname: dir } = path;
+        const dirname = dir.slice(dir.lastIndexOf('/') + 1);
+        return { ...path, dirname };
+      }),
+    )
+    .pipe(dest(output.prod));
+
+const prodAssets = () =>
+  src(`src/assets/**/*`, { allowEmpty: true }).pipe(
+    dest(`${output.prod}/assets`),
+  );
+
+exports.cleanDev = cleanDev;
+exports.cleanProd = cleanProd;
+exports.default = series(cleanDev, parallel(watchFiles, devServerStart));
+exports.build = series(
+  cleanProd,
+  parallel(
+    series(parallel(prodMarkup, prodStyles), inlineStyles, removeStyleFiles),
+    prodScripts,
+    prodFmAssets,
+    prodAssets,
+  ),
+);
+exports.serve = prodServerStart;

@@ -17,8 +17,8 @@ html(lang='en')
       sizes='32x32'
       href='../assets/favicon-32x32.png'
     )
-    link(rel='stylesheet' href=`/${slug}/styles.css`)
+    link(rel='stylesheet' href='styles.css' inline)
   body
     block content
     if includeJs
-      script(src=`/${slug}/script.js`)
+      script(src='script.js')
