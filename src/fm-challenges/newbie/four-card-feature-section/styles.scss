@@ -1,7 +1,5 @@
-@import '../../../includes/normalize';
+@import '../../../../node_modules/reset-css/sass/reset';
 @import '../../../includes/defaults';
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
 
 $breakpoint-tablet: rem(768px);
 $breakpoint-desktop: rem(1200px);
@@ -91,6 +89,7 @@ $icons: 'icon-supervisor.svg', 'icon-team-builder.svg', 'icon-karma.svg',
   }
   &_heading {
     margin: 0;
+    font-weight: 600;
   }
   &_text {
     flex: 1;
