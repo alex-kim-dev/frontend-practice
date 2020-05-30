@@ -1,20 +1,5 @@
-@import '../../../includes/normalize';
+@import '../../../../node_modules/reset-css/sass/reset';
 @import '../../../includes/defaults';
-
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap&text=Kyle%20Burton');
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap&text=Featurs%20TmSignI');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap&text=Al%20yourfiesncat%2Cbwh.GSdpvF');
-
-$logo: 'logo.svg';
-$illustration1: 'illustration-1.svg';
-$illustration2: 'illustration-2.svg';
-$bgCurveMobile: 'bg-curve-mobile.svg';
-$bgCurveDesktop: 'bg-curve-desktop.svg';
-$iconArrow: 'icon-arrow.svg';
-$iconPhone: 'icon-phone.svg';
-$iconEmail: 'icon-email.svg';
-$quotes: 'icon-quotes.svg';
 
 $controlShadow: 0 0.6rem 0.4rem hsla(0, 0, 0, 0.05);
 $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
@@ -54,7 +39,7 @@ $containerLg: 144rem;
 .logo {
   width: 8rem;
   height: 2.4rem;
-  background: url($logo) left center no-repeat;
+  background: url(logo.svg) left center no-repeat;
   background-size: contain;
   @include smUp {
     width: 10rem;
@@ -237,7 +222,7 @@ $containerLg: 144rem;
       height: 1.6rem;
       margin-left: 0.6rem;
       vertical-align: middle;
-      background: url($iconArrow) center no-repeat;
+      background: url(icon-arrow.svg) center no-repeat;
       background-size: contain;
       content: '';
     }
@@ -284,7 +269,7 @@ $containerLg: 144rem;
       width: 1.3rem;
       height: 1.2rem;
       margin-bottom: 0.8rem;
-      background: url($quotes) center no-repeat;
+      background: url(icon-quotes.svg) center no-repeat;
       background-size: contain;
       content: '';
       @include mdUp {
@@ -347,11 +332,11 @@ $containerLg: 144rem;
   grid-gap: 1.6rem;
   padding-left: 4rem;
   [href^='tel']::before {
-    background: url($iconPhone) left center no-repeat;
+    background: url(icon-phone.svg) left center no-repeat;
     background-size: contain;
   }
   [href^='mailto']::before {
-    background: url($iconEmail) left center no-repeat;
+    background: url(icon-email.svg) left center no-repeat;
     background-size: contain;
   }
   &_text {
@@ -491,7 +476,7 @@ $containerLg: 144rem;
       padding: 0;
     }
     > .illustration {
-      background-image: url($illustration1);
+      background-image: url(illustration-1.svg);
     }
   }
   &_content {
@@ -534,13 +519,13 @@ $containerLg: 144rem;
   width: 100%;
   height: 5.3rem;
   background: var(--c-LightGrayishBlue);
-  -webkit-mask: url($bgCurveMobile) no-repeat 50% 50%;
-  mask: url($bgCurveMobile) no-repeat 50% 50%;
+  -webkit-mask: url(bg-curve-mobile.svg) no-repeat 50% 50%;
+  mask: url(bg-curve-mobile.svg) no-repeat 50% 50%;
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
   @include mdUp {
-    -webkit-mask-image: url($bgCurveDesktop);
-    mask-image: url($bgCurveDesktop);
+    -webkit-mask-image: url(bg-curve-desktop.svg);
+    mask-image: url(bg-curve-desktop.svg);
     height: 11.4rem;
   }
 }
@@ -571,7 +556,7 @@ $containerLg: 144rem;
       padding: 2.4rem 0 0;
     }
     > .illustration {
-      background-image: url($illustration2);
+      background-image: url(illustration-2.svg);
     }
   }
   &_content {
@@ -771,8 +756,8 @@ $containerLg: 144rem;
     width: 17.6rem;
     height: 5.2rem;
     background: var(--c-light);
-    -webkit-mask: url($logo) no-repeat 50% 50%;
-    mask: url($logo) no-repeat 50% 50%;
+    -webkit-mask: url(logo.svg) no-repeat 50% 50%;
+    mask: url(logo.svg) no-repeat 50% 50%;
     -webkit-mask-size: contain;
     mask-size: contain;
   }
