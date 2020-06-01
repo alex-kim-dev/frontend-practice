@@ -1,14 +1,5 @@
-@import '../../../includes/normalize';
+@import '../../../../node_modules/reset-css/sass/reset';
 @import '../../../includes/defaults';
-
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap&text=Registr');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap&text=Build%20TheComntyYrFasWLv');
-
-$bg-mobile: 'bg-mobile.svg';
-$bg-desktop: 'bg-desktop.svg';
-$logo: 'logo.svg';
-$img-mockups: 'illustration-mockups.svg';
 
 @mixin smUp {
   @media (min-width: rem(768px)) {
@@ -37,10 +28,10 @@ $img-mockups: 'illustration-mockups.svg';
 
 .wrapper {
   min-height: 100vh;
-  background: url($bg-mobile) center top no-repeat, var(--c-violet);
+  background: url(bg-mobile.svg) center top no-repeat, var(--c-violet);
   background-size: 100%;
   @include lgUp {
-    background: url($bg-desktop) left center no-repeat, var(--c-violet);
+    background: url(bg-desktop.svg) left center no-repeat, var(--c-violet);
     background-size: auto 100%;
   }
 }
@@ -78,7 +69,7 @@ $img-mockups: 'illustration-mockups.svg';
   width: 12rem;
   height: 1.9rem;
   margin-left: 0.2rem;
-  background: url($logo) center no-repeat;
+  background: url(logo.svg) center no-repeat;
   background-size: contain;
   @include smUp {
     width: 16.4rem;
@@ -96,7 +87,7 @@ $img-mockups: 'illustration-mockups.svg';
   height: 0;
   margin-top: 6.8rem;
   padding-top: 70.9%;
-  background: url($img-mockups) center no-repeat;
+  background: url(illustration-mockups.svg) center no-repeat;
   background-size: 100% 100%;
   transform: scale(1.02);
   @include lgUp {

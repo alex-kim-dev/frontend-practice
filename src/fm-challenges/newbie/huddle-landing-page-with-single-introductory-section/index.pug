@@ -1,7 +1,11 @@
 extends ../../../includes/layout
+include ../../../includes/socialLinks
 
 block variables
   - const title = "Single section landing page using viewport units and grid";
+
+block fonts
+  +googleFonts([ 'family=Open+Sans&display=swap&text=Hudle%20r-imagnsthwybco.Yv%2CC', 'family=Poppins&display=swap&text=Registr', 'family=Poppins:wght@700&display=swap&text=Build%20TheComntyYrFasWLv' ])
 
 block content
   .wrapper
@@ -14,14 +18,10 @@ block content
           | Build the community
           br
           | your fans will love
-        p.text
-          | Huddle re-imagines the way we build communities. You have a voice, but
-          | so does your audience. Create connections with your users as you engage
-          | in genuine discussion.
+        p.text.
+          Huddle re-imagines the way we build communities. You have a voice, but
+          so does your audience. Create connections with your users as you
+          engage in genuine discussion.
         button.button Register
       footer.footer
-        - const listClass = "list";
-        - const itemClass = "item";
-        - const linkClass = "socialLink";
-        - const iconClass = "icon";
-        include ../../../includes/socialLinks
+        +socialLinks('list', 'item', 'socialLink', 'icon')
