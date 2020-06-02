@@ -3,6 +3,9 @@ extends ../../../includes/layout
 block variables
   - const title = "Feature section using css grid";
 
+block fonts
+  +googleFonts([ 'family=Poppins:wght@200&display=swap&text=Reliab%2C%20fcntdvry', 'family=Poppins&display=swap&text=Our%20AtifcalInegpowdsmjhyMvbkSRqU', 'family=Poppins:wght@600&display=swap&text=Powerd%20byTchnlgSupvisamBKCt' ])
+
 block content
   section.feature
     header.feature_header
@@ -10,27 +13,27 @@ block content
         | Reliable, efficient delivery
         br
         span.text-strong Powered by Technology
-      p.feature_caption.text
-        | Our Artificial Intelligence powered tools use millions of project data
-        | points to ensure that your project is successful
+      p.feature_caption.text.
+        Our Artificial Intelligence powered tools use millions of project data
+        points to ensure that your project is successful
     ul.feature_list
       li.card
         h3.card_heading.text.text-h3 Supervisor
-        p.card_text.text.text-sm
-          | Monitors activity to identify project roadblocks
+        p.card_text.text.text-sm.
+          Monitors activity to identify project roadblocks
         .card_icon
       li.card
         h3.card_heading.text.text-h3 Team Builder
-        p.card_text.text.text-sm
-          | Scans our talent network to create the optimal team for your project
+        p.card_text.text.text-sm.
+          Scans our talent network to create the optimal team for your project
         .card_icon
       li.card
         h3.card_heading.text.text-h3 Karma
-        p.card_text.text.text-sm
-          | Regularly evaluates our talent to ensure quality
+        p.card_text.text.text-sm.
+          Regularly evaluates our talent to ensure quality
         .card_icon
       li.card
         h3.card_heading.text.text-h3 Calculator
-        p.card_text.text.text-sm
-          | Uses data from past projects to provide better delivery estimates
+        p.card_text.text.text-sm.
+          Uses data from past projects to provide better delivery estimates
         .card_icon

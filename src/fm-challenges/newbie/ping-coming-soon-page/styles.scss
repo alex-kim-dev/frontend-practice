@@ -1,10 +1,5 @@
-@import '../../../includes/normalize';
+@import '../../../../node_modules/reset-css/sass/reset';
 @import '../../../includes/defaults';
-
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600&display=swap&text=Notify%20Me');
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700&display=swap&text=son%21');
-@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@1,300&display=swap&text=Pleas%20providm');
 
 $color-primary-blue: hsl(223, 87%, 63%);
 $color-secondary-pale-blue: hsl(223, 100%, 88%);
@@ -14,9 +9,6 @@ $color-neutral-very-dark-blue: hsl(209, 33%, 12%);
 $color-secondary-green: hsl(145, 64%, 49%);
 
 $button-shadow: 0 0.6rem 1rem rgba($color-primary-blue, 0.4);
-
-$logo: 'logo.svg';
-$back: 'illustration-dashboard.png';
 
 @mixin smUp {
   @media (min-width: rem(690px)) {
@@ -87,7 +79,7 @@ body {
 .logo {
   width: 5.2rem;
   height: 1.6rem;
-  background: url($logo) center no-repeat;
+  background: url(logo.svg) center no-repeat;
   background-size: contain;
   @include smUp {
     width: 8.45rem;
@@ -130,6 +122,7 @@ body {
   @include smUp {
     display: flex;
     align-items: flex-start;
+    width: 100%;
   }
   :first-child {
     @include smUp {
@@ -137,6 +130,7 @@ body {
     }
   }
   &_feedback {
+    box-sizing: content-box;
     height: 0;
     margin: 0;
     padding: 0 3.2rem;
@@ -180,7 +174,7 @@ body {
   &-error,
   &-success {
     .subscribeForm_feedback {
-      height: 2.4em;
+      height: 2.4rem;
       padding-top: 0.6rem;
       padding-bottom: 0.2rem;
       opacity: 1;
@@ -198,12 +192,14 @@ body {
     width: 100%;
     height: 4rem;
     padding: 0 3.2rem;
+    font: 300 1.2rem Libre Franklin, sans-serif;
     background: white;
     border: 0.1rem solid $color-secondary-pale-blue;
     border-radius: 2rem;
     transition: border-color 0.2s;
     @include smUp {
       height: 5.6rem;
+      font-size: 1.6rem;
       border-radius: 2.8rem;
     }
     &::placeholder {
@@ -260,7 +256,7 @@ body {
 .background {
   height: 19.6rem;
   margin-top: 19rem;
-  background: url($back) center no-repeat;
+  background: url(illustration-dashboard.png) center no-repeat;
   background-size: contain;
   @include smUp {
     height: 39rem;
@@ -274,7 +270,7 @@ body {
     margin-top: 7rem;
   }
   &_copyright {
-    margin: 2.6rem 0 0;
+    margin: 2.4rem 0 0;
     text-align: center;
   }
 }

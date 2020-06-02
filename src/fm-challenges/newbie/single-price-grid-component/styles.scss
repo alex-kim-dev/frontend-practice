@@ -1,7 +1,5 @@
-@import '../../../includes/normalize';
+@import '../../../../node_modules/reset-css/sass/reset';
 @import '../../../includes/defaults';
-
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
 
 @mixin smUp {
   @media (min-width: rem(768px)) {
@@ -171,8 +169,8 @@ $color-light: white;
   margin-top: 2.4rem;
   padding: 1.3rem;
   color: $color-light;
+  font: 700 1.6rem Karla, sans-serif;
   background: $color-primary-bright-yellow;
-  border: none;
   border: 0.2rem solid $color-primary-bright-yellow;
   border-radius: 0.4rem;
   box-shadow: 0 1rem 0.8rem hsla(0, 0, 0, 0.1);

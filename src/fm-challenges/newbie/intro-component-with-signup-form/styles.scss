@@ -1,9 +1,5 @@
-@import '../../../includes/normalize';
+@import '../../../../node_modules/reset-css/sass/reset';
 @import '../../../includes/defaults';
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap&text=By%20clikngthebuo%2Car%2420%2Fm.f');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap&text=Learn%20tocdbywhigsTf7');
 
 @mixin mdUp {
   @media (min-width: rem(1024px)) {
@@ -11,8 +7,6 @@
   }
 }
 
-$bg-mobile: 'bg-intro-mobile.png';
-$bg-desktop: 'bg-intro-desktop.png';
 $trs-time: 0.3s;
 
 :root {
@@ -201,9 +195,9 @@ $trs-time: 0.3s;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: url($bg-mobile) center top, var(--c-red);
+  background: url(bg-intro-mobile.png) center top, var(--c-red);
   @include mdUp {
-    background: url($bg-desktop) center top, var(--c-red);
+    background: url(bg-intro-desktop.png) center top, var(--c-red);
   }
 }
 

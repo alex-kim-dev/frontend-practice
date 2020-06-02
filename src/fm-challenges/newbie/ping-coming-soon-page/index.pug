@@ -1,8 +1,12 @@
 extends ../../../includes/layout
+include ../../../includes/socialLinks
 
 block variables
   - const title = "Ping coming soon page with accessible subscription form";
   - const includeJs = true;
+
+block fonts
+  +googleFonts([ 'family=Libre+Franklin:wght@300&display=swap', 'family=Libre+Franklin:wght@600&display=swap&text=Notify%20Me', 'family=Libre+Franklin:wght@700&display=swap&text=son%21', 'family=Libre+Franklin:ital,wght@1,300&display=swap&text=Pleas%20providm' ])
 
 block content
   .wrapper
@@ -10,10 +14,10 @@ block content
       .header_logo.logo
     main.content
       h1.content_heading.text.text-h1
-        | We are launching
+        | We are launching #{''}
         span.text-bold soon!
       p.content_paragraph.text Subscribe and get notified
-      form.content_form.subscribeForm(novalidate='' onsubmit='return false')
+      form.content_form.subscribeForm(novalidate)
         div
           label.emailField.text
             input.emailField_input(
@@ -28,14 +32,9 @@ block content
             aria-relevant='additions removals'
             aria-atomic='true'
           )
-        button.subscribeForm_submit.button(type='submit')
-          | Notify Me
+        button.subscribeForm_submit.button(type='submit') Notify Me
     .background
     footer.footer
-      - const listClass = "socialLinks";
-      - const itemClass = "socialLinks_item";
-      - const linkClass = "socialLinks_link";
-      - const iconClass = "icon";
-      include ../../../includes/socialLinks
-      p.footer_copyright.text.text-secondary
-        | &copy; Copyright Ping. All rights reserved.
+      +socialLinks('socialLinks', 'socialLinks_item', 'socialLinks_link', 'icon')
+      p.footer_copyright.text.text-secondary.
+        © Copyright Ping. All rights reserved.

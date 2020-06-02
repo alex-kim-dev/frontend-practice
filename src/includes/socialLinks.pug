@@ -1,29 +1,33 @@
-- const iconCls = iconClass;
-ul(class=`${listClass}`)
-  li(class=`${itemClass}`)
-    a(
-      href='https://facebook.com'
-      target='_blank'
-      rel='noreferrer'
-      class=`${linkClass}`
-      aria-label='Facebook'
-    )
-      include icons/facebook
-  li(class=`${itemClass}`)
-    a(
-      href='https://twitter.com'
-      target='_blank'
-      rel='noreferrer'
-      class=`${linkClass}`
-      aria-label='Twitter'
-    )
-      include icons/twitter
-  li(class=`${itemClass}`)
-    a(
-      href='https://instagram.com'
-      target='_blank'
-      rel='noreferrer'
-      class=`${linkClass}`
-      aria-label='Instagram'
-    )
-      include icons/instagram
+include icons/facebook
+include icons/twitter
+include icons/instagram
+
+mixin socialLinks(listCls, itemCls, linkCls, iconCls)
+  ul(class=listCls)
+    li(class=itemCls)
+      a(
+        href='https://facebook.com'
+        target='_blank'
+        rel='noreferrer'
+        class=linkCls
+        aria-label='Facebook'
+      )
+        +facebookIcon(iconCls)
+    li(class=itemCls)
+      a(
+        href='https://twitter.com'
+        target='_blank'
+        rel='noreferrer'
+        class=linkCls
+        aria-label='Twitter'
+      )
+        +twitterIcon(iconCls)
+    li(class=itemCls)
+      a(
+        href='https://instagram.com'
+        target='_blank'
+        rel='noreferrer'
+        class=linkCls
+        aria-label='Instagram'
+      )
+        +instagramIcon(iconCls)

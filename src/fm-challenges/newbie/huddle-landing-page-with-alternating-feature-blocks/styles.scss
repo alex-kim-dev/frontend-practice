@@ -1,13 +1,6 @@
-@import '../../../includes/normalize';
+@import '../../../../node_modules/reset-css/sass/reset';
 @import '../../../includes/defaults';
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap&text=Get%20sardfoTyIF');
-
-$logo: 'logo.svg';
-$bgHeroMobile: 'bg-hero-mobile.svg';
-$bgHeroDesktop: 'bg-hero-desktop.svg';
-$imgMockups: 'illustration-mockups.svg';
 $illustrations: 'illustration-grow-together.svg',
   'illustration-flowing-conversation.svg', 'illustration-your-users.svg';
 $contactsIcons: 'icon-location.svg', 'icon-phone.svg', 'icon-email.svg';
@@ -100,7 +93,7 @@ $contactsIcons: 'icon-location.svg', 'icon-phone.svg', 'icon-email.svg';
 .logo {
   width: 10.4rem;
   height: 1.6rem;
-  background: url($logo) left center no-repeat;
+  background: url(logo.svg) left center no-repeat;
   background-size: 100% 100%;
   @include smUp {
     width: 15.2rem;
@@ -112,8 +105,8 @@ $contactsIcons: 'icon-location.svg', 'icon-phone.svg', 'icon-email.svg';
   }
   &-light {
     background: var(--c-light);
-    -webkit-mask: url($logo) no-repeat 50% 50%;
-    mask: url($logo) no-repeat 50% 50%;
+    -webkit-mask: url(logo.svg) no-repeat 50% 50%;
+    mask: url(logo.svg) no-repeat 50% 50%;
     -webkit-mask-size: contain;
     mask-size: contain;
   }
@@ -371,14 +364,15 @@ $contactsIcons: 'icon-location.svg', 'icon-phone.svg', 'icon-email.svg';
 .hero {
   position: relative;
   padding: 13rem 3.6rem 3.3rem;
-  background: url($bgHeroMobile) top center no-repeat, var(--c-veryPaleCyan);
+  background: url(bg-hero-mobile.svg) top center no-repeat,
+    var(--c-veryPaleCyan);
   background-size: 100%;
   @include smUp {
     padding-bottom: 5rem;
   }
   @include mdUp {
     padding: 16rem 8rem 6.6rem;
-    background-image: url($bgHeroDesktop);
+    background-image: url(bg-hero-desktop.svg);
   }
   &_container {
     display: grid;
@@ -431,7 +425,7 @@ $contactsIcons: 'icon-location.svg', 'icon-phone.svg', 'icon-email.svg';
   }
   &_image {
     padding-bottom: 71.3%;
-    background-image: url($imgMockups);
+    background-image: url(illustration-mockups.svg);
   }
 }
 

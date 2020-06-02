@@ -1,7 +1,11 @@
 extends ../../../includes/layout
+include ../../../includes/socialLinks
 
 block variables
   - const title = "Fylo landing page";
+
+block fonts
+  +googleFonts([ 'family=Open+Sans&display=swap', 'family=Open+Sans:wght@700&display=swap&text=Kyle%20Burton', 'family=Raleway&display=swap&text=Featurs%20TmSignI', 'family=Raleway:wght@700&display=swap&text=Al%20yourfiesncat%2Cbwh.GSdpvF' ])
 
 block content
   header.header
@@ -20,11 +24,11 @@ block content
         .intro_content
           h2.intro_heading.heading
             | All your files in one secure location, accessible anywhere.
-          p.intro_text.text
-            | Fylo stores your most important files in one secure location. Access
-            | them wherever you need, share and collaborate with friends, family,
-            | and co-workers.
-          form.intro_signup.signupForm(onsubmit='return false' novalidate='')
+          p.intro_text.text.
+            Fylo stores your most important files in one secure location. Access
+            them wherever you need, share and collaborate with friends, family,
+            and co-workers.
+          form.intro_signup.signupForm(onsubmit='return false' novalidate)
             label.emailField
               input.emailField_input(
                 type='email'
@@ -41,38 +45,37 @@ block content
         .benefits_content
           h2.benefits_heading.heading
             | Stay productive, wherever you are
-          p.benefits_text.text
-            | Never let location be an issue when accessing your files. Fylo has you
-            | covered for all of your file storage needs.
-          p.benefits_text.text
-            | Securely share files and folders with friends, family and colleagues
-            | for live collaboration. No email attachments required!
+          p.benefits_text.text.
+            Never let location be an issue when accessing your files. Fylo has you covered for all of your file storage needs.
+          p.benefits_text.text.
+            Securely share files and folders with friends, family and colleagues
+            for live collaboration. No email attachments required!
           .benefits_link
             a.standoutLink(href='#')
               span.standoutLink_label See how Fylo works
               .standoutLink_underline
           .benefits_card.testimonials
-            blockquote.testimonials_quote
-              | Fylo has improved our team productivity by an order of magnitude.
-              | Since making the switch our team has become a well-oiled
-              | collaboration machine.
+            blockquote.testimonials_quote.
+              Fylo has improved our team productivity by an order of magnitude.
+              Since making the switch our team has become a well-oiled
+              collaboration machine.
             figure.testimonials_author.person
               img.person_avatar(
                 src='avatar-testimonial.jpg'
                 alt='Kyle Burton\'s avatar'
               )
               p.person_name Kyle Burton
-              p.person_position Founder &amp; CEO, Huddle
+              p.person_position Founder & CEO, Huddle
     section.promo
       .promo_container
         .promo_content
           h2.promo_heading.heading
             | Get early access today
-          p.promo_text.text
-            | It only takes a minute to sign up and our free starter tier is
-            | extremely generous. If you have any questions, our support team would
-            | be happy to help you.
-        form.promo_signup.signupForm(onsubmit='return false' novalidate='')
+          p.promo_text.text.
+            It only takes a minute to sign up and our free starter tier is
+            extremely generous. If you have any questions, our support
+            would be happy to help you.
+        form.promo_signup.signupForm(onsubmit='return false' novalidate)
           label.emailField
             input.emailField_input(
               type='email'
@@ -92,8 +95,4 @@ block content
           each label in ['About Us', 'Jobs', 'Press', 'Blog', 'Contact Us', 'Terms', 'Privacy']
             li.sitemap_item
               a.sitemap_link.link(href='#')= label
-      - const listClass = "footer_social social";
-      - const itemClass = "social_item";
-      - const linkClass = "social_link";
-      - const iconClass = "icon";
-      include ../../../includes/socialLinks
+      +socialLinks('footer_social social', 'social_item', 'social_link', 'icon')

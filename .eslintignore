@@ -4,3 +4,4 @@ _site
 dist
 prod
 dev
+.cache
