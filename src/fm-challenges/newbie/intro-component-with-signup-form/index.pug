@@ -1,0 +1,35 @@
+extends ../../../includes/layout
+include ./field
+
+block variables
+  - const title = "Intro component with signup form";
+  - const includeJs = true;
+
+block fonts
+  +googleFonts([ 'family=Poppins&display=swap&text=By%20clikngthebuo%2Car%2420%2Fm.f', 'family=Poppins:wght@500&display=swap', 'family=Poppins:wght@600&display=swap&text=Se%20howxprincsdvlbma-t.Wgu%2CkCLAIMYOURFET', 'family=Poppins:wght@700&display=swap&text=Learn%20tocdbywhigsTf7' ])
+
+block content
+  .wrapper
+    section.intro
+      header.header
+        h2.header_heading.text.text-h2.text-bold.
+          Learn to code by watching others
+        p.header_text.text.
+          See how experienced developers solve problems in real-time. Watching
+          scripted tutorials is great, but understanding how developers think is
+          invaluable.
+      form.signupForm(novalidate)
+        header.signupForm_header.paper
+          h3.signupForm_heading.text.text-h3
+            span.text-bold Try it free 7 days
+            | #{''} then $20/mo. thereafter
+        .signupForm_body.paper
+          ul.signupForm_fieldList
+            +field('text', 'firstName', 'First Name')
+            +field('text', 'lastName', 'Last Name')
+            +field('email', 'email', 'Email Address')
+            +field('password', 'password', 'Password')
+          button.signupForm_submit.button Claim your free trial
+          p.signupForm_agreement.text.text-secondary
+            | By clicking the button, you are agreeing to our #{''}
+            a.text-link(href='#') Terms and Services

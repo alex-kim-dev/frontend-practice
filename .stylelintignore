@@ -4,4 +4,7 @@ _site
 .jekyll-metadata
 vendor
 node_modules
-_sass/normalize.scss
+dist
+dev
+prod
+.cache

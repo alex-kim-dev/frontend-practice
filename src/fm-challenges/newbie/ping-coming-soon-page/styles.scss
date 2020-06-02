@@ -1,0 +1,316 @@
+@import '../../../../node_modules/reset-css/sass/reset';
+@import '../../../includes/defaults';
+
+$color-primary-blue: hsl(223, 87%, 63%);
+$color-secondary-pale-blue: hsl(223, 100%, 88%);
+$color-secondary-light-red: hsl(354, 100%, 66%);
+$color-neutral-gray: hsl(0, 0%, 59%);
+$color-neutral-very-dark-blue: hsl(209, 33%, 12%);
+$color-secondary-green: hsl(145, 64%, 49%);
+
+$button-shadow: 0 0.6rem 1rem rgba($color-primary-blue, 0.4);
+
+@mixin smUp {
+  @media (min-width: rem(690px)) {
+    @content;
+  }
+}
+
+body {
+  background: white;
+}
+
+.wrapper {
+  max-width: 40rem;
+  margin: auto;
+  padding: 3.6rem 2.4rem;
+  background: white;
+  @include smUp {
+    max-width: 69rem;
+  }
+}
+
+.text {
+  color: $color-neutral-very-dark-blue;
+  font-weight: 300;
+  font-size: 1.2rem;
+  font-family: Libre Franklin, sans-serif;
+  line-height: normal;
+  @include smUp {
+    font-size: 1.6rem;
+  }
+  &-h1 {
+    color: $color-neutral-gray;
+    font-size: 2.2rem;
+    line-height: 125%;
+    letter-spacing: 0.005em;
+    @include smUp {
+      font-size: 4.8rem;
+    }
+  }
+  &-bold {
+    color: $color-neutral-very-dark-blue;
+    font-weight: 700;
+  }
+  &-secondary {
+    color: $color-neutral-gray;
+    font-size: 1rem;
+    line-height: 120%;
+    @include smUp {
+      font-size: 1.2rem;
+      line-height: 125%;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.header {
+  margin-top: 4.8rem;
+  &_logo {
+    margin: 0 auto;
+  }
+}
+
+.logo {
+  width: 5.2rem;
+  height: 1.6rem;
+  background: url(logo.svg) center no-repeat;
+  background-size: contain;
+  @include smUp {
+    width: 8.45rem;
+    height: 2.6rem;
+  }
+}
+
+.content {
+  position: relative;
+  &_heading {
+    margin: 4rem 0 0;
+    text-align: center;
+    @include smUp {
+      margin-top: 5rem;
+    }
+  }
+  &_paragraph {
+    margin: 1.6rem 0 0;
+    text-align: center;
+    @include smUp {
+      font-size: 2rem;
+      line-height: 120%;
+    }
+  }
+  &_form {
+    margin-top: 3.2rem;
+    @include smUp {
+      margin-top: 4rem;
+    }
+  }
+}
+
+.subscribeForm {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: calc(100% - 4.8rem);
+  max-width: 69rem;
+  transform: translateX(-50%);
+  @include smUp {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+  }
+  :first-child {
+    @include smUp {
+      flex: 1;
+    }
+  }
+  &_feedback {
+    box-sizing: content-box;
+    height: 0;
+    margin: 0;
+    padding: 0 3.2rem;
+    overflow: hidden;
+    text-align: center;
+    border: 0;
+    opacity: 0;
+    transition: height 0.2s ease-in-out, padding 0.2s ease-in-out,
+      opacity 0.2s ease-in-out;
+    @include smUp {
+      text-align: left;
+    }
+  }
+  &_submit {
+    width: 100%;
+    margin-top: 1rem;
+    @include smUp {
+      width: unset;
+      margin-top: 0;
+      margin-left: 1.6rem;
+    }
+  }
+  &-error {
+    .emailField_input {
+      border-color: $color-secondary-light-red;
+    }
+    .subscribeForm_feedback {
+      color: $color-secondary-light-red;
+      font-style: italic;
+      letter-spacing: 0.015em;
+    }
+  }
+  &-success {
+    .emailField_input {
+      border-color: $color-secondary-green;
+    }
+    .subscribeForm_feedback {
+      color: $color-secondary-green;
+    }
+  }
+  &-error,
+  &-success {
+    .subscribeForm_feedback {
+      height: 2.4rem;
+      padding-top: 0.6rem;
+      padding-bottom: 0.2rem;
+      opacity: 1;
+      @include smUp {
+        padding-top: 0.8rem;
+      }
+    }
+  }
+}
+
+.emailField {
+  display: block;
+  &_input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 4rem;
+    padding: 0 3.2rem;
+    font: 300 1.2rem Libre Franklin, sans-serif;
+    background: white;
+    border: 0.1rem solid $color-secondary-pale-blue;
+    border-radius: 2rem;
+    transition: border-color 0.2s;
+    @include smUp {
+      height: 5.6rem;
+      font-size: 1.6rem;
+      border-radius: 2.8rem;
+    }
+    &::placeholder {
+      color: $color-secondary-pale-blue;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 0.3rem $color-secondary-pale-blue;
+    }
+  }
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.button {
+  box-sizing: border-box;
+  height: 4rem;
+  padding: 0 3.2rem;
+  color: white;
+  font-weight: 600;
+  font-size: 1.2rem;
+  font-family: Libre Franklin, sans-serif;
+  background: $color-primary-blue;
+  border: none;
+  border-radius: 2rem;
+  box-shadow: $button-shadow;
+  transition: 0.2s;
+  @include smUp {
+    height: 5.6rem;
+    padding: 0 6.25rem;
+    font-size: 1.6rem;
+    border-radius: 2.8rem;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: $button-shadow, 0 0 0 0.3rem $color-secondary-pale-blue;
+  }
+  &:hover {
+    background: lighten($color-primary-blue, 7%);
+  }
+  &:active {
+    background: darken($color-primary-blue, 7%);
+  }
+}
+
+.background {
+  height: 19.6rem;
+  margin-top: 19rem;
+  background: url(illustration-dashboard.png) center no-repeat;
+  background-size: contain;
+  @include smUp {
+    height: 39rem;
+    margin-top: 18.4rem;
+  }
+}
+
+.footer {
+  margin-top: 12rem;
+  @include smUp {
+    margin-top: 7rem;
+  }
+  &_copyright {
+    margin: 2.4rem 0 0;
+    text-align: center;
+  }
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  list-style: none;
+  &_item {
+    display: block;
+    &:not(:first-child) {
+      margin-left: 1.2rem;
+    }
+  }
+  &_link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 3.2rem;
+    height: 3.2rem;
+    color: $color-primary-blue;
+    border: 0.1rem solid $color-secondary-pale-blue;
+    border-radius: 50%;
+    transition: 0.2s;
+    &:focus {
+      border: 0.1rem solid $color-primary-blue;
+      outline: none;
+    }
+    &:hover {
+      color: white;
+      background: $color-primary-blue;
+      border-color: $color-primary-blue;
+    }
+    &:active {
+      background: darken($color-primary-blue, 7%);
+      border-color: darken($color-primary-blue, 7%);
+    }
+  }
+}

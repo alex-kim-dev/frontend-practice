@@ -6,29 +6,43 @@ Currently i am doing [Frontend Mentor](https://www.frontendmentor.io/) challenge
 
 ### Tech stack
 
-- jekyll
-- sass
-- linters: eslint, styleling
-- formatter: prettier
+- Task runner: Gulp
+- Dev server: BrowserSync + hot reloading
+- Template engine: Pug
+- Stylesheets: Sass + combining media queries, autoprefixer, minification, inlining into html file
+- Javascript: Browserify + Babel + minification
+- Keeping code tidy: Eslint, Stylelint, Prettier + Husky & LintStaged for linting before every commit
 
-### Directory structure
+### Directories
 
-- `_fm-challenges/`: html templates
-- `_includes/`: some frequently used html markup
-- `_layouts/`: html wrapper for each page
-- `assets/<challengeName>/`: styles & other assets
+- `src/fm-challenges/<level>/<challenge>/`: FrontendMentor solutions
+- `src/includes/`: some reusable parts (markup, styles, anything)
+  - `/layout.pug`: wrapper for each fm challenge
 
-### Install & run
+### Run locally
 
-If you want to run this locally, after cloning the repo install the dependencies:
+1. Clone repo
+  ```bash
+  git clone https://github.com/Alex-K1m/html-templates.git
+  ```
+
+2. Install dependencies
+  ```bash
+  npm install
+  ```
+
+3. Run dev server
+  ```bash
+  npm start
+  ```
+
+#### Other commands
 
 ```bash
-bundle install
-npm install
-```
-
-To start a server run:
-
-```bash
-make start
+npm run build
+npm run serve # starts up a local web server for hosting production build
+npm run clean:dev # deletes development build
+npm run clean:prod # deletes production build
+npm run lint # checks for code styling issues
+npm run fix # fixes all fixable code styling issues (changes files)
 ```

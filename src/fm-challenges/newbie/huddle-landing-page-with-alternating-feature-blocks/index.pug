@@ -1,0 +1,78 @@
+extends ../../../includes/layout
+include ../../../includes/socialLinks
+
+block variables
+  - const title = "Landing page responding to 4 different screen sizes";
+
+block fonts
+  +googleFonts([ 'family=Open+Sans&display=swap', '&family=Poppins:wght@600&display=swap&text=Build%20thecomnyrfaswvGTgFCYUR%3F%C2%A9p2018H.A', 'family=Open+Sans:wght@700&display=swap&text=Get%20sardfoTyIF' ])
+
+block content
+  header.header
+    .header_container
+      .logo
+      button.button
+        span.button_label Try it free
+  main.content
+    .hero
+      .hero_container
+        .hero_content.colorDark
+          h1.heading.heading-lg Build the community your fans will love
+          p.text.
+            Huddle re-imagines the way we build communities. You have a voice,
+            but so does your audience. Create connections with your users as you
+            engage in genuine discussion.
+          button.hero_button.button.button-accent
+            span.button_label Get Started For Free
+        .hero_image.illustration
+    .features
+      ul.features_container
+        li.feature.paper
+          .feature_image
+            .illustration
+          .feature_content
+            h2.heading.colorDark Grow together
+            p.feature_text.text.colorGray.
+              Generate meaningful discussions with your audience and build a
+              strong, loyal community. Think of the insightful conversations you
+              miss out on with a feedback form.
+        li.feature.paper
+          .feature_image
+            .illustration
+          .feature_content
+            h2.heading.colorDark Flowing conversations
+            p.feature_text.text.colorGray.
+              You wouldn't paginate a conversation in real life, so why do it
+              online? Our threads have just-in-time loading for a more natural
+              flow.
+        li.feature.paper
+          .feature_image
+            .illustration
+          .feature_content
+            h2.heading.colorDark Your users
+            p.feature_text.text.colorGray.
+              It takes no time at all to integrate Huddle with your app's
+              authentication solution. This means, once signed in to your app,
+              your users can start chatting immediately.
+    .cta.paper.colorDark
+      h2.cta_heading.heading.heading-sm Ready to build your community?
+      button.cta_button.button.button-accent
+        span.button_label Get started for free
+  footer.footer.colorLight
+    .footer_container
+      .footer_logo.logo.logo-lg.logo-light
+      address.footer_contacts.contacts.text
+        ul.contacts_list
+          li.contacts_item.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua
+          li.contacts_item
+            a.text-link(href='tel:+15431234567') +1-543-123-4567
+          li.contacts_item
+            a.text-link(href='mailto:example@huddle.com') example@huddle.com
+      nav.footer_nav.nav
+        ul.nav_list
+          each label in ['About Us', 'What We Do', 'FAQ', 'Career', 'Blog', 'Contact Us']
+            li: a.nav_link.text.text-link(href='#')= label
+      +socialLinks('footer_social social', 'social_item', 'social_link', 'icon')
+      p.footer_copyright.copyright © Copyright 2018 Huddle. All rights reserved.
