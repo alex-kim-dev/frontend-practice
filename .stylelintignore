@@ -4,7 +4,7 @@ _site
 .jekyll-metadata
 vendor
 node_modules
-src/includes/normalize.scss
 dist
 dev
 prod
+.cache
