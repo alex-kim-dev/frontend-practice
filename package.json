@@ -5,7 +5,8 @@
   "version": "0.1.0",
   "author": "Alex Kim",
   "scripts": {
-    "clean": "gulp clean",
+    "clean:dev": "gulp cleanDev",
+    "clean:prod": "gulp cleanProd",
     "start": "gulp",
     "build": "gulp build",
     "serve": "gulp serve",
