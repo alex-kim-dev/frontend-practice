@@ -1,2 +1,50 @@
 @import '../../../../node_modules/reset-css/sass/reset';
 @import '../../../includes/defaults';
+
+@mixin smUp {
+  @media (min-width: rem(768px)) {
+    @content;
+  }
+}
+
+@mixin mdUp {
+  @media (min-width: rem(1024px)) {
+    @content;
+  }
+}
+
+:root {
+  --c-pale-blue: hsl(243, 100%, 93%);
+  --c-grayish-blue: hsl(229, 7%, 55%);
+  --c-dark-blue: hsl(228, 56%, 26%);
+  --c-very-dark-blue: hsl(229, 57%, 11%);
+  --c-peach: hsl(6, 100%, 80%);
+  --c-magenta: hsl(335, 100%, 65%);
+}
+
+.content {
+  display: grid;
+  grid-auto-columns: minmax(0, 54rem);
+  grid-gap: 1.6rem;
+  grid-template-columns: minmax(0, 35rem);
+  align-content: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 6.4vmin;
+  background: center / 100% 100% url(bg-mobile.svg);
+  @include smUp {
+    grid-auto-flow: column;
+    grid-gap: 3rem;
+  }
+  @include mdUp {
+    background: bottom / 100% 52.5% no-repeat url(bg-desktop.svg),
+      var(--c-very-dark-blue);
+  }
+}
+
+.control,
+.status {
+  height: 20rem;
+  background: var(--c-dark-blue);
+  border-radius: 1rem;
+}
