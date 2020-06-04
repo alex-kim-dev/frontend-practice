@@ -9,6 +9,11 @@ block fonts
 block content
   main.content
     .control
+      img(src='logo.svg' alt='Fylo logo')
+      ul.toolbar
+        li: button.iconBtn.newFile(aria-label='Create new file')
+        li: button.iconBtn.newDir(aria-label='Create new directory')
+        li: button.iconBtn.upload(aria-label='Upload')
     .status
 
 //- You’ve used 815 GB of your storage

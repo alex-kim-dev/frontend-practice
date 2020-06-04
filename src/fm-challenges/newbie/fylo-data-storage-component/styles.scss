@@ -42,7 +42,62 @@
   }
 }
 
-.control,
+.control {
+  padding: 4rem;
+  background: var(--c-dark-blue);
+  border-radius: 1rem;
+  border-top-right-radius: 10rem;
+  > * + * {
+    margin-top: 3.2rem;
+  }
+}
+
+.toolbar {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 1.6rem;
+  justify-content: start;
+  > li {
+    display: flex;
+  }
+}
+
+.iconBtn {
+  width: 4.8rem;
+  height: 4.8rem;
+  padding: 0;
+  padding: 0;
+  background-color: var(--c-very-dark-blue);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  &:hover {
+    filter: brightness(1.3);
+  }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem var(--c-grayish-blue);
+  }
+  &:active {
+    transform: translateY(0.2rem);
+  }
+}
+
+.newFile {
+  background-image: url(icon-document.svg);
+}
+
+.newDir {
+  background-image: url(icon-folder.svg);
+}
+
+.upload {
+  background-image: url(icon-upload.svg);
+}
+
 .status {
   height: 20rem;
   background: var(--c-dark-blue);
