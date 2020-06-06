@@ -40,6 +40,9 @@
   @include mdUp {
     background: bottom / 100% 52.5% no-repeat url(bg-desktop.svg),
       var(--c-very-dark-blue);
+    > * {
+      margin-bottom: 2.1rem;
+    }
   }
 }
 
@@ -81,7 +84,7 @@
     box-shadow: 0 0 0 0.2rem var(--c-grayish-blue);
   }
   &:active {
-    transform: translateY(0.2rem);
+    // transform: translateY(0.2rem);
   }
 }
 
@@ -104,23 +107,38 @@
     'badge' 1fr
     'badge' 1fr
     / 1fr;
+  @include smUp {
+    grid-template:
+      'badge' 1fr
+      'badge' 1fr
+      'label' auto
+      / 1fr;
+  }
 }
 
 .bg {
   grid-area: 1 / 1 / span 2;
   background: var(--c-dark-blue);
   border-radius: 1rem;
+  @include smUp {
+    grid-row-start: 2;
+  }
 }
 
 .stats {
   display: block;
   grid-area: label;
-  padding: 3.2rem 3.2rem 1.6rem 3.2rem;
+  margin-top: -0.7rem;
+  padding: 3.2rem 3.2rem 1.6rem;
   color: var(--c-light);
   font: 1.4rem Raleway, sans-serif;
   text-align: center;
   > span {
     font-weight: 700;
+  }
+  @include smUp {
+    padding: 0 4rem 4rem;
+    text-align: left;
   }
 }
 
@@ -164,19 +182,39 @@
 }
 
 .badge {
-  display: flex;
   grid-area: badge;
-  align-items: center;
   justify-self: center;
-  padding: 1.2rem 2.4rem;
-  color: var(--c-very-dark-blue);
-  font: 700 1.3rem Raleway, sans-serif;
-  text-transform: uppercase;
-  background: var(--c-light);
-  border-radius: 1rem;
-  > span {
-    margin-right: 0.8rem;
-    font-size: 4rem;
+  > div {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem 2.4rem;
+    color: var(--c-very-dark-blue);
+    font: 700 1.3rem Raleway, sans-serif;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: var(--c-light);
+    border-radius: 1rem;
+    > span {
+      margin-right: 0.8rem;
+      font-size: 4rem;
+      line-height: 120%;
+    }
+    @include smUp {
+      border-bottom-right-radius: 0;
+    }
+  }
+  @include smUp {
+    justify-self: end;
+    margin-right: 4rem;
+    &::after {
+      display: block;
+      width: 0;
+      margin-top: -0.1rem;
+      margin-left: auto;
+      border-top: 2.3rem solid var(--c-light);
+      border-left: 2.3rem solid transparent;
+      content: '';
+    }
   }
 }
 

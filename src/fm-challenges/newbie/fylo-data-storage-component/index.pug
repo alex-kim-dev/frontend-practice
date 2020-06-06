@@ -7,13 +7,15 @@ block fonts
   +googleFonts([ 'family=Raleway&display=swap&text=You%E2%80%99ve%20sdfyrtag', 'family=Raleway:wght@700&display=swap&text=815%20GB0LEFT' ])
 
 block content
+  //- article? + menu
   main.content
-    .control
+    header.control
+      h1.hidden Fylo data storage widget
       img(src='logo.svg' alt='Fylo logo')
-      ul.toolbar
-        li: button.iconBtn.newFile(aria-label='Create new file')
-        li: button.iconBtn.newDir(aria-label='Create new directory')
-        li: button.iconBtn.upload(aria-label='Upload')
+      menu.toolbar(type='toolbar')
+        button.iconBtn.newFile(aria-label='Create new file')
+        button.iconBtn.newDir(aria-label='Create new directory')
+        button.iconBtn.upload(aria-label='Upload')
     .status
       .bg
       label.stats
@@ -27,5 +29,6 @@ block content
           .label 0 GB
           .label 1000 GB
       .badge
-        span 185
-        | GB Left
+        div
+          span 185
+          | GB Left
