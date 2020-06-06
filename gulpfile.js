@@ -18,7 +18,7 @@ const cssnano = require('cssnano');
 const terser = require('gulp-terser');
 const inline = require('gulp-inline-source');
 const sass = require('gulp-sass');
-sass.compiler = require('node-sass');
+sass.compiler = require('sass');
 
 const siteMeta = require('./src/siteMeta');
 
