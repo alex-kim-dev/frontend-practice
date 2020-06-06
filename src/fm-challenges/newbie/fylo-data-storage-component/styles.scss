@@ -59,9 +59,6 @@
   grid-gap: 1.6rem;
   justify-content: start;
   margin-top: 3.2rem;
-  > li {
-    display: flex;
-  }
 }
 
 .iconBtn {
@@ -84,7 +81,7 @@
     box-shadow: 0 0 0 0.2rem var(--c-grayish-blue);
   }
   &:active {
-    // transform: translateY(0.2rem);
+    transform: translateY(0.2rem);
   }
 }
 

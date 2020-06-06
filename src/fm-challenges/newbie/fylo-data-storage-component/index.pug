@@ -7,16 +7,15 @@ block fonts
   +googleFonts([ 'family=Raleway&display=swap&text=You%E2%80%99ve%20sdfyrtag', 'family=Raleway:wght@700&display=swap&text=815%20GB0LEFT' ])
 
 block content
-  //- article? + menu
   main.content
-    header.control
+    section.control
       h1.hidden Fylo data storage widget
       img(src='logo.svg' alt='Fylo logo')
       menu.toolbar(type='toolbar')
         button.iconBtn.newFile(aria-label='Create new file')
         button.iconBtn.newDir(aria-label='Create new directory')
         button.iconBtn.upload(aria-label='Upload')
-    .status
+    section.status
       .bg
       label.stats
         | You’ve used #{''}
