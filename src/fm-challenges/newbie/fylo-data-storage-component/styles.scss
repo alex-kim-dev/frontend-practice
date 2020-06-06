@@ -23,6 +23,10 @@
   --c-light: white;
 }
 
+$c-very-dark-blue: hsl(229, 57%, 11%);
+$c-peach: hsl(6, 100%, 80%);
+$c-magenta: hsl(335, 100%, 65%);
+
 .content {
   display: grid;
   grid-auto-columns: minmax(0, 54rem);
@@ -39,7 +43,7 @@
   }
   @include mdUp {
     background: bottom / 100% 52.5% no-repeat url(bg-desktop.svg),
-      var(--c-very-dark-blue);
+      $c-very-dark-blue;
     > * {
       margin-bottom: 2.1rem;
     }
@@ -59,6 +63,9 @@
   grid-gap: 1.6rem;
   justify-content: start;
   margin-top: 3.2rem;
+  > li {
+    display: flex;
+  }
 }
 
 .iconBtn {
@@ -100,7 +107,7 @@
 .status {
   display: grid;
   grid-template:
-    'label' auto
+    'stats' auto
     'badge' 1fr
     'badge' 1fr
     / 1fr;
@@ -108,7 +115,7 @@
     grid-template:
       'badge' 1fr
       'badge' 1fr
-      'label' auto
+      'stats' auto
       / 1fr;
   }
 }
@@ -124,18 +131,21 @@
 
 .stats {
   display: block;
-  grid-area: label;
+  grid-area: stats;
   margin-top: -0.7rem;
   padding: 3.2rem 3.2rem 1.6rem;
-  color: var(--c-light);
-  font: 1.4rem Raleway, sans-serif;
   text-align: center;
-  > span {
-    font-weight: 700;
-  }
   @include smUp {
     padding: 0 4rem 4rem;
     text-align: left;
+  }
+}
+
+.label {
+  color: var(--c-light);
+  font: 1.4rem Raleway, sans-serif;
+  > span {
+    font-weight: 700;
   }
 }
 
@@ -157,7 +167,7 @@
     position: relative;
     width: calc(1.4rem + (100% - 1.4rem) * var(--value));
     height: 100%;
-    background: linear-gradient(to right, var(--c-peach), var(--c-magenta));
+    background: linear-gradient(to right, $c-peach, $c-magenta);
     border-radius: 0.7rem;
     &::after {
       position: absolute;
@@ -172,7 +182,7 @@
   }
 }
 
-.label {
+.limit {
   margin-top: 0.8rem;
   color: var(--c-light);
   font: 700 1.2rem Raleway, sans-serif;
@@ -185,7 +195,7 @@
     display: flex;
     align-items: center;
     padding: 1.2rem 2.4rem;
-    color: var(--c-very-dark-blue);
+    color: var(--c-grayish-blue);
     font: 700 1.3rem Raleway, sans-serif;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -193,6 +203,7 @@
     border-radius: 1rem;
     > span {
       margin-right: 0.8rem;
+      color: var(--c-very-dark-blue);
       font-size: 4rem;
       line-height: 120%;
     }

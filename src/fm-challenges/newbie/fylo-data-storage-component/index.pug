@@ -8,25 +8,28 @@ block fonts
 
 block content
   main.content
+    h1.hidden Fylo data storage widget
     section.control
-      h1.hidden Fylo data storage widget
+      h2.hidden Storage control
       img(src='logo.svg' alt='Fylo logo')
-      menu.toolbar(type='toolbar')
-        button.iconBtn.newFile(aria-label='Create new file')
-        button.iconBtn.newDir(aria-label='Create new directory')
-        button.iconBtn.upload(aria-label='Upload')
+      ul.toolbar
+        li: button.iconBtn.newFile(aria-label='Create new file')
+        li: button.iconBtn.newDir(aria-label='Create new directory')
+        li: button.iconBtn.upload(aria-label='Upload')
     section.status
+      h2.hidden Storage status
       .bg
-      label.stats
-        | You’ve used #{''}
-        span 815 GB #{''}
-        | of your storage
+      .stats
+        label.label(for='meter')
+          | You’ve used #{''}
+          span 815 GB #{''}
+          | of your storage
         .meter
-          meter.hidden(value='815' min='0' max='1000' title='GB')
+          meter#meter.hidden(value='815' min='0' max='1000' title='GB')
           .bar
             div
-          .label 0 GB
-          .label 1000 GB
+          .limit 0 GB
+          .limit 1000 GB
       .badge
         div
           span 185
