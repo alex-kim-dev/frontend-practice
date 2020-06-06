@@ -15,8 +15,17 @@ block content
         li: button.iconBtn.newDir(aria-label='Create new directory')
         li: button.iconBtn.upload(aria-label='Upload')
     .status
-
-//- You’ve used 815 GB of your storage
-//- 185 GB Left
-//- 0 GB
-//- 1000 GB
+      .bg
+      label.stats
+        | You’ve used #{''}
+        span 815 GB #{''}
+        | of your storage
+        .meter
+          meter.hidden(value='815' min='0' max='1000' title='GB')
+          .bar
+            div
+          .label 0 GB
+          .label 1000 GB
+      .badge
+        span 185
+        | GB Left

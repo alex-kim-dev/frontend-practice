@@ -20,6 +20,7 @@
   --c-very-dark-blue: hsl(229, 57%, 11%);
   --c-peach: hsl(6, 100%, 80%);
   --c-magenta: hsl(335, 100%, 65%);
+  --c-light: white;
 }
 
 .content {
@@ -47,9 +48,6 @@
   background: var(--c-dark-blue);
   border-radius: 1rem;
   border-top-right-radius: 10rem;
-  > * + * {
-    margin-top: 3.2rem;
-  }
 }
 
 .toolbar {
@@ -57,6 +55,7 @@
   grid-auto-flow: column;
   grid-gap: 1.6rem;
   justify-content: start;
+  margin-top: 3.2rem;
   > li {
     display: flex;
   }
@@ -99,7 +98,94 @@
 }
 
 .status {
-  height: 20rem;
+  display: grid;
+  grid-template:
+    'label' auto
+    'badge' 1fr
+    'badge' 1fr
+    / 1fr;
+}
+
+.bg {
+  grid-area: 1 / 1 / span 2;
   background: var(--c-dark-blue);
   border-radius: 1rem;
+}
+
+.stats {
+  display: block;
+  grid-area: label;
+  padding: 3.2rem 3.2rem 1.6rem 3.2rem;
+  color: var(--c-light);
+  font: 1.4rem Raleway, sans-serif;
+  text-align: center;
+  > span {
+    font-weight: 700;
+  }
+}
+
+.meter {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  margin-top: 1.6rem;
+}
+
+.bar {
+  --value: 0.815;
+  width: 100%;
+  height: 2rem;
+  padding: 0.3rem;
+  background: var(--c-very-dark-blue);
+  border-radius: 1rem;
+  > div {
+    position: relative;
+    width: calc(1.4rem + (100% - 1.4rem) * var(--value));
+    height: 100%;
+    background: linear-gradient(to right, var(--c-peach), var(--c-magenta));
+    border-radius: 0.7rem;
+    &::after {
+      position: absolute;
+      top: 0.2rem;
+      right: 0.2rem;
+      width: 1rem;
+      height: 1rem;
+      background: var(--c-light);
+      border-radius: 50%;
+      content: '';
+    }
+  }
+}
+
+.label {
+  margin-top: 0.8rem;
+  color: var(--c-light);
+  font: 700 1.2rem Raleway, sans-serif;
+}
+
+.badge {
+  display: flex;
+  grid-area: badge;
+  align-items: center;
+  justify-self: center;
+  padding: 1.2rem 2.4rem;
+  color: var(--c-very-dark-blue);
+  font: 700 1.3rem Raleway, sans-serif;
+  text-transform: uppercase;
+  background: var(--c-light);
+  border-radius: 1rem;
+  > span {
+    margin-right: 0.8rem;
+    font-size: 4rem;
+  }
+}
+
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
 }
