@@ -19,19 +19,17 @@
   }
 }
 
-:root {
-  --c-violet: hsl(257, 40%, 49%);
-  --c-violet-light: hsl(257, 40%, 79%);
-  --c-violet-darker: hsl(257, 40%, 29%);
-  --c-white: white;
-}
+$c-violet: hsl(257, 40%, 49%);
+$c-violet-light: hsl(257, 40%, 79%);
+$c-violet-darker: hsl(257, 40%, 29%);
+$c-white: white;
 
 .wrapper {
   min-height: 100vh;
-  background: url(bg-mobile.svg) center top no-repeat, var(--c-violet);
+  background: url(bg-mobile.svg) center top no-repeat, $c-violet;
   background-size: 100%;
   @include lgUp {
-    background: url(bg-desktop.svg) left center no-repeat, var(--c-violet);
+    background: url(bg-desktop.svg) left center no-repeat, $c-violet;
     background-size: auto 100%;
   }
 }
@@ -108,7 +106,7 @@
 
 .heading {
   margin: 0;
-  color: var(--c-white);
+  color: $c-white;
   font: 700 2.4rem Poppins, san-serif;
   line-height: 150%;
   letter-spacing: -0.01em;
@@ -123,7 +121,7 @@
 
 .text {
   margin: 1.3rem 0 0;
-  color: var(--c-white);
+  color: $c-white;
   font: 400 1.6rem/150% Open Sans, sans-serif;
   @include mdUp {
     margin-top: 2rem;
@@ -135,10 +133,10 @@
   width: 66.9%;
   margin-top: 2.4rem;
   padding: 1.1rem 3.2rem 0.9rem;
-  color: var(--c-violet);
+  color: $c-violet;
   font: 400 1.3rem Poppins, sans-serif;
   letter-spacing: -0.05em;
-  background: var(--c-white);
+  background: $c-white;
   border: none;
   border-radius: 2rem;
   box-shadow: 0.1rem 0.3rem 0.5rem hsla(0, 0%, 0%, 0.3);
@@ -157,13 +155,13 @@
   }
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 0.4rem var(--c-violet-darker);
+    box-shadow: 0 0 0 0.4rem $c-violet-darker;
   }
   &:hover {
     box-shadow: 0.2rem 0.4rem 0.6rem hsla(0, 0%, 0%, 0.4);
   }
   &:active {
-    background: var(--c-violet-light);
+    background: $c-violet-light;
   }
 }
 
@@ -204,7 +202,7 @@
   height: 2.8rem;
   background: transparent;
   border-radius: 50%;
-  box-shadow: inset 0 0 0 0.1rem var(--c-white);
+  box-shadow: inset 0 0 0 0.1rem $c-white;
   transition: 0.2s ease-in-out;
   @include smUp {
     width: 4rem;
@@ -212,14 +210,14 @@
   }
   &:focus,
   &:hover {
-    background: var(--c-white);
+    background: $c-white;
     outline: none;
     .icon {
-      color: var(--c-violet);
+      color: $c-violet;
     }
   }
   &:active {
-    background: var(--c-violet-light);
+    background: $c-violet-light;
   }
 }
 
@@ -227,5 +225,5 @@
   display: block;
   width: 50%;
   height: 50%;
-  color: var(--c-white);
+  color: $c-white;
 }

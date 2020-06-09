@@ -29,13 +29,11 @@ $contactsIcons: 'icon-location.svg', 'icon-phone.svg', 'icon-email.svg';
   }
 }
 
-:root {
-  --c-pink: hsl(322, 100%, 66%);
-  --c-veryPaleCyan: hsl(193, 100%, 96%);
-  --c-veryDarkCyan: hsl(192, 100%, 9%);
-  --c-grayishBlue: hsl(208, 11%, 55%);
-  --c-light: white;
-}
+$c-pink: hsl(322, 100%, 66%);
+$c-veryPaleCyan: hsl(193, 100%, 96%);
+$c-veryDarkCyan: hsl(192, 100%, 9%);
+$c-grayishBlue: hsl(208, 11%, 55%);
+$c-light: white;
 
 // #region Components
 
@@ -70,7 +68,7 @@ $contactsIcons: 'icon-location.svg', 'icon-phone.svg', 'icon-email.svg';
     color: inherit;
     text-decoration: none;
     &:focus {
-      outline: 0.1rem solid var(--c-pink);
+      outline: 0.1rem solid $c-pink;
     }
     &:hover {
       text-decoration: underline;
@@ -79,15 +77,15 @@ $contactsIcons: 'icon-location.svg', 'icon-phone.svg', 'icon-email.svg';
 }
 
 .colorLight {
-  color: var(--c-veryPaleCyan);
+  color: $c-veryPaleCyan;
 }
 
 .colorDark {
-  color: var(--c-veryDarkCyan);
+  color: $c-veryDarkCyan;
 }
 
 .colorGray {
-  color: var(--c-grayishBlue);
+  color: $c-grayishBlue;
 }
 
 .logo {
@@ -104,11 +102,8 @@ $contactsIcons: 'icon-location.svg', 'icon-phone.svg', 'icon-email.svg';
     height: 3.2rem;
   }
   &-light {
-    background: var(--c-light);
-    -webkit-mask: url(logo.svg) no-repeat 50% 50%;
-    mask: url(logo.svg) no-repeat 50% 50%;
-    -webkit-mask-size: contain;
-    mask-size: contain;
+    background: $c-light;
+    -webkit-mask: url(logo.svg) no-repeat center / contain;
   }
   &-lg {
     width: 16.8rem;
@@ -122,11 +117,11 @@ $contactsIcons: 'icon-location.svg', 'icon-phone.svg', 'icon-email.svg';
 
 .button {
   padding: 0.3em 2.1em 0.5em;
-  color: var(--c-veryDarkCyan);
+  color: $c-veryDarkCyan;
   font-size: 1rem;
   text-transform: capitalize;
-  background: var(--c-light);
-  border: 0.1em solid var(--c-light);
+  background: $c-light;
+  border: 0.1em solid $c-light;
   border-radius: 1.1em;
   box-shadow: 0 0.4em 0.6em hsla(0, 0%, 0%, 0.1);
   cursor: pointer;
@@ -140,7 +135,7 @@ $contactsIcons: 'icon-location.svg', 'icon-phone.svg', 'icon-email.svg';
     border-radius: 2.4em;
   }
   &:focus {
-    border: 0.1em solid var(--c-veryDarkCyan);
+    border: 0.1em solid $c-veryDarkCyan;
     outline: none;
   }
   &:hover {
@@ -161,9 +156,9 @@ $contactsIcons: 'icon-location.svg', 'icon-phone.svg', 'icon-email.svg';
   }
   &-accent {
     padding: 0.9em 3.1em 1.3em;
-    color: var(--c-light);
-    background: var(--c-pink);
-    border: 0.1em solid var(--c-pink);
+    color: $c-light;
+    background: $c-pink;
+    border: 0.1em solid $c-pink;
     border-radius: 2em;
     @include lgUp {
       padding: 1.6em 3.1em 1.9em;
@@ -190,7 +185,7 @@ $contactsIcons: 'icon-location.svg', 'icon-phone.svg', 'icon-email.svg';
 }
 
 .paper {
-  background: var(--c-light);
+  background: $c-light;
   border-radius: 1.4rem;
   box-shadow: 0 0 1.4rem hsla(0, 0%, 0%, 0.1);
 }
@@ -304,15 +299,15 @@ $contactsIcons: 'icon-location.svg', 'icon-phone.svg', 'icon-email.svg';
     justify-content: center;
     width: 3.2em;
     height: 3.2em;
-    color: var(--c-light);
+    color: $c-light;
     background: transparent;
     border-radius: 50%;
-    box-shadow: inset 0 0 0 0.1em var(--c-light);
+    box-shadow: inset 0 0 0 0.1em $c-light;
     transition: 0.2s;
     &:focus,
     &:hover {
-      color: var(--c-veryDarkCyan);
-      background: var(--c-light);
+      color: $c-veryDarkCyan;
+      background: $c-light;
       outline: none;
     }
   }
@@ -364,8 +359,7 @@ $contactsIcons: 'icon-location.svg', 'icon-phone.svg', 'icon-email.svg';
 .hero {
   position: relative;
   padding: 13rem 3.6rem 3.3rem;
-  background: url(bg-hero-mobile.svg) top center no-repeat,
-    var(--c-veryPaleCyan);
+  background: url(bg-hero-mobile.svg) top center no-repeat, $c-veryPaleCyan;
   background-size: 100%;
   @include smUp {
     padding-bottom: 5rem;
@@ -431,7 +425,7 @@ $contactsIcons: 'icon-location.svg', 'icon-phone.svg', 'icon-email.svg';
 
 .features {
   padding: 6rem 2rem 23rem;
-  background: var(--c-light);
+  background: $c-light;
   @include smUp {
     padding-top: 10rem;
   }
@@ -509,7 +503,7 @@ $contactsIcons: 'icon-location.svg', 'icon-phone.svg', 'icon-email.svg';
 
 .footer {
   padding: 13.8rem 1.6rem 4.6rem;
-  background: var(--c-veryDarkCyan);
+  background: $c-veryDarkCyan;
   @include smUp {
     padding-right: 8rem;
     padding-left: 8rem;

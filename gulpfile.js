@@ -154,13 +154,13 @@ const changeFmChallengePath = path => {
 };
 
 const prodMarkup = () =>
-  src(['src/index.pug', 'src/!(includes)/**/*.pug'])
+  src(['src/index.pug', 'src/!(includes)/**/!(_)*.pug'])
     .pipe(pug({ locals: siteMeta }))
     .pipe(rename(changeFmChallengePath))
     .pipe(dest(output.prod));
 
 const prodStyles = () =>
-  src('src/!(includes)/**/*.scss', { allowEmpty: true })
+  src('src/!(includes)/**/!(_)*.scss', { allowEmpty: true })
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss([combineMediaQuery(), autoprefixer(), cssnano()]))
@@ -176,7 +176,7 @@ const inlineStyles = () =>
 const removeStyleFiles = done => del([`${output.prod}/**/*.css`], done);
 
 const prodScripts = done => {
-  glob('src/!(includes)/**/*.js', (err, files) => {
+  glob('src/!(includes)/**/!(_)*.js', (err, files) => {
     if (err) done(err);
     const tasks = files.map(entry =>
       browserify({

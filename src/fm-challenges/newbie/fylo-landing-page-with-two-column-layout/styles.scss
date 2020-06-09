@@ -24,15 +24,13 @@ $containerLg: 144rem;
   }
 }
 
-:root {
-  --c-VeryDarkBlue: hsl(243, 87%, 12%);
-  --c-DesaturatedBlue: hsl(238, 22%, 44%);
-  --c-BrightBlue: hsl(224, 93%, 58%);
-  --c-ModerateCyan: hsl(170, 45%, 43%);
-  --c-LightGrayishBlue: hsl(240, 75%, 98%);
-  --c-LightGray: hsl(0, 0%, 75%);
-  --c-light: hsl(0, 0%, 100%);
-}
+$c-VeryDarkBlue: hsl(243, 87%, 12%);
+$c-DesaturatedBlue: hsl(238, 22%, 44%);
+$c-BrightBlue: hsl(224, 93%, 58%);
+$c-ModerateCyan: hsl(170, 45%, 43%);
+$c-LightGrayishBlue: hsl(240, 75%, 98%);
+$c-LightGray: hsl(0, 0%, 75%);
+$c-light: hsl(0, 0%, 100%);
 
 // #region Components
 
@@ -67,7 +65,7 @@ $containerLg: 144rem;
     }
   }
   &_link {
-    color: var(--c-VeryDarkBlue);
+    color: $c-VeryDarkBlue;
     font: 1.2rem Raleway, sans-serif;
     font-kerning: none;
     text-decoration: none;
@@ -78,7 +76,7 @@ $containerLg: 144rem;
       font-size: 1.6rem;
     }
     &:focus {
-      outline: 0.2rem solid var(--c-ModerateCyan);
+      outline: 0.2rem solid $c-ModerateCyan;
     }
     &:hover {
       text-decoration: underline;
@@ -95,7 +93,7 @@ $containerLg: 144rem;
 
 .heading {
   margin: 0;
-  color: var(--c-VeryDarkBlue);
+  color: $c-VeryDarkBlue;
   font: 700 2.4rem/150% Raleway, sans-serif;
   font-kerning: none;
   @include smUp {
@@ -108,7 +106,7 @@ $containerLg: 144rem;
 
 .text {
   margin: 0;
-  color: var(--c-VeryDarkBlue);
+  color: $c-VeryDarkBlue;
   font: 1.4rem/150% Open Sans, sans-serif;
   @include smUp {
     font-size: 1.6rem;
@@ -124,7 +122,7 @@ $containerLg: 144rem;
   font: 1.6rem Open Sans, sans-serif;
   text-decoration: none;
   &:focus {
-    outline: 0.1rem solid var(--c-ModerateCyan);
+    outline: 0.1rem solid $c-ModerateCyan;
   }
   &:hover {
     text-decoration: underline;
@@ -137,8 +135,8 @@ $containerLg: 144rem;
     width: 100%;
     padding: 1.1rem 2.1rem;
     font: 1.2rem/140% Open Sans, sans-serif;
-    background: var(--c-light);
-    border: 0.1rem solid var(--c-DesaturatedBlue);
+    background: $c-light;
+    border: 0.1rem solid $c-DesaturatedBlue;
     border-radius: 0.3rem;
     box-shadow: $controlShadow;
     transition: 0.2s;
@@ -152,10 +150,10 @@ $containerLg: 144rem;
       letter-spacing: 0.03em;
     }
     &::placeholder {
-      color: var(--c-LightGray);
+      color: $c-LightGray;
     }
     &:focus {
-      border-color: var(--c-BrightBlue);
+      border-color: $c-BrightBlue;
       outline: none;
       box-shadow: $controlActiveShadow;
     }
@@ -164,9 +162,9 @@ $containerLg: 144rem;
 
 .button {
   padding: 1.2rem 3.2rem;
-  color: var(--c-light);
+  color: $c-light;
   font: 700 1.4rem Raleway, sans-serif;
-  background: var(--c-BrightBlue);
+  background: $c-BrightBlue;
   border: none;
   border-radius: 0.3rem;
   box-shadow: $controlShadow;
@@ -208,7 +206,7 @@ $containerLg: 144rem;
     transform: scaleY(2);
   }
   &_label {
-    color: var(--c-ModerateCyan);
+    color: $c-ModerateCyan;
     font: 1.2rem Open Sans, sans-serif;
     @include smUp {
       font-size: 1.4rem;
@@ -232,7 +230,7 @@ $containerLg: 144rem;
     width: 100%;
     height: 0.1rem;
     margin-top: 0.4rem;
-    background: var(--c-ModerateCyan);
+    background: $c-ModerateCyan;
     transition: 0.2s;
     content: '';
   }
@@ -241,8 +239,8 @@ $containerLg: 144rem;
 .testimonials {
   max-width: 28rem;
   padding: 2rem 1.2rem 2.1rem 2.6rem;
-  color: var(--c-VeryDarkBlue);
-  background: var(--c-light);
+  color: $c-VeryDarkBlue;
+  background: $c-light;
   border-radius: 0.3rem;
   box-shadow: 0 0.2rem 1rem hsla(0, 0, 0, 0.05);
   @include smUp {
@@ -395,10 +393,10 @@ $containerLg: 144rem;
     justify-content: center;
     width: 2.8em;
     height: 2.8em;
-    color: var(--c-light);
+    color: $c-light;
     background: transparent;
     border-radius: 50%;
-    box-shadow: inset 0 0 0 0.1em var(--c-light);
+    box-shadow: inset 0 0 0 0.1em $c-light;
     transition: 0.2s;
     @include mdUp {
       width: 3.2em;
@@ -406,8 +404,8 @@ $containerLg: 144rem;
     }
     &:focus,
     &:hover {
-      color: var(--c-VeryDarkBlue);
-      background: var(--c-light);
+      color: $c-VeryDarkBlue;
+      background: $c-light;
       outline: none;
     }
   }
@@ -433,7 +431,7 @@ $containerLg: 144rem;
 // #region Layout
 
 .header {
-  background: var(--c-light);
+  background: $c-light;
   &_container {
     display: flex;
     align-items: center;
@@ -451,7 +449,7 @@ $containerLg: 144rem;
 }
 
 .intro {
-  background: var(--c-light);
+  background: $c-light;
   &_container {
     display: grid;
     grid-gap: 3.6rem;
@@ -518,20 +516,16 @@ $containerLg: 144rem;
   position: relative;
   width: 100%;
   height: 5.3rem;
-  background: var(--c-LightGrayishBlue);
-  -webkit-mask: url(bg-curve-mobile.svg) no-repeat 50% 50%;
-  mask: url(bg-curve-mobile.svg) no-repeat 50% 50%;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
+  background: $c-LightGrayishBlue;
+  -webkit-mask: url(bg-curve-mobile.svg) no-repeat center / 100% 100%;
   @include mdUp {
     -webkit-mask-image: url(bg-curve-desktop.svg);
-    mask-image: url(bg-curve-desktop.svg);
     height: 11.4rem;
   }
 }
 
 .benefits {
-  background: var(--c-LightGrayishBlue);
+  background: $c-LightGrayishBlue;
   &_container {
     position: relative;
     display: grid;
@@ -613,7 +607,7 @@ $containerLg: 144rem;
 }
 
 .promo {
-  background: var(--c-DesaturatedBlue);
+  background: $c-DesaturatedBlue;
   &_container {
     padding: 5.3rem 4.4rem 7.1rem;
     @include mdUp {
@@ -644,7 +638,7 @@ $containerLg: 144rem;
     }
   }
   &_heading {
-    color: var(--c-light);
+    color: $c-light;
     font-size: 1.8rem;
     @include smUp {
       font-size: 2.4rem;
@@ -655,7 +649,7 @@ $containerLg: 144rem;
   }
   &_text {
     margin-top: 1.5rem;
-    color: var(--c-light);
+    color: $c-light;
     @include mdUp {
       font-size: 1.6rem;
       line-height: 150%;
@@ -677,7 +671,7 @@ $containerLg: 144rem;
     .emailField_input {
       padding: 0.8rem 0.7rem;
       font-size: 1rem;
-      border-color: var(--c-light);
+      border-color: $c-light;
       @include smUp {
         font-size: 1.2rem;
       }
@@ -686,7 +680,7 @@ $containerLg: 144rem;
         letter-spacing: normal;
       }
       &:focus {
-        border-color: var(--c-VeryDarkBlue);
+        border-color: $c-VeryDarkBlue;
       }
     }
     .button {
@@ -707,8 +701,8 @@ $containerLg: 144rem;
 }
 
 .footer {
-  color: var(--c-light);
-  background: var(--c-VeryDarkBlue);
+  color: $c-light;
+  background: $c-VeryDarkBlue;
   &_container {
     display: grid;
     grid-template:
@@ -755,11 +749,8 @@ $containerLg: 144rem;
     grid-area: footer_logo;
     width: 17.6rem;
     height: 5.2rem;
-    background: var(--c-light);
-    -webkit-mask: url(logo.svg) no-repeat 50% 50%;
-    mask: url(logo.svg) no-repeat 50% 50%;
-    -webkit-mask-size: contain;
-    mask-size: contain;
+    background: $c-light;
+    -webkit-mask: url(logo.svg) no-repeat center / contain;
   }
   &_contacts {
     grid-area: footer_contacts;
