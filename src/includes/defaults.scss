@@ -2,6 +2,13 @@
   @return $size / 16px * 1rem;
 }
 
+@function fluidFont($min, $max, $minVw, $maxVw, $unit) {
+  @return calc(
+    #{$min}#{$unit} + #{$max - $min} *
+      ((100vw - #{$minVw}#{$unit}) / #{$maxVw - $minVw})
+  );
+}
+
 html {
   font-size: 62.5%;
 }
