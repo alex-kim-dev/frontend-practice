@@ -2,6 +2,7 @@ extends ../../../includes/layout
 
 block variables
   - const title = "Coding bootcamp testimonials slider";
+  - const includeJs = "true";
 
 block fonts
   +googleFonts([ 'family=Inter:wght@300&display=swap&text=%E2%80%9C%20I%E2%80%99vebnitrsdcogfawhlukjmp%2C.yx%E2%80%9DT', 'family=Inter:wght@500&display=swap&text=Junior%20Ft-edDvlpUXEg', 'family=Inter:wght@700&display=swap&text=Tany%20SiclrJohkp' ])
@@ -12,8 +13,8 @@ block content
       .slide
         img(src='image-tanya.jpg' alt='Member photo - Tanya Sinclair')
         .controls
-          button(aria-label='Previous testimonial')
-          button(aria-label='Next testimonial')
+          button(aria-label='Previous testimonial' data-slide='prev')
+          button(aria-label='Next testimonial' data-slide='next')
       blockquote.quote
         p.
           I’ve been interested in coding for a while but never taken the jump,
@@ -22,8 +23,3 @@ block content
         footer
           cite Tanya Sinclair
           cite UX Engineer
-
-//-
-  If you want to lay the best foundation possible I’d recommend taking this course. The depth the instructors go into is incredible. I now feel so confident about starting up as a professional developer.
-  John Tarkpor
-  Junior Front-end Developer
