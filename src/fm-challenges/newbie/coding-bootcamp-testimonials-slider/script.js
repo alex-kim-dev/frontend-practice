@@ -1,12 +1,24 @@
 const $testimonials = document.querySelector('.testimonials');
-const $quote = $testimonials.querySelector('.quote > p');
 const $photo = $testimonials.querySelector('.slide > img');
+const $quote = $testimonials.querySelector('.quote > p');
+const $cite = $testimonials.querySelector('.quote > footer');
 const $author = $testimonials.querySelector('.quote > footer > cite');
 const $position = $testimonials.querySelector(
   '.quote > footer > cite:nth-child(2)',
 );
 
+const elementsToAnimate = [$photo, $quote, $cite];
 const factor = { prev: -1, next: 1 };
+const animations = {
+  hide: {
+    prev: 'hide-reverse',
+    next: 'hide',
+  },
+  show: {
+    prev: 'show-reverse',
+    next: 'show',
+  },
+};
 
 let currentSlide = 0;
 
@@ -25,16 +37,40 @@ const preloadImage = url => {
   new Image().src = url;
 };
 
-const changeSlide = ({ testimonials }) => ({ target }) => {
-  const direction = target.dataset.slide;
+const animate = (elements, animationClass) =>
+  new Promise(resolve => {
+    const removeAnimation = () => {
+      elements.forEach(element => {
+        element.classList.remove(animationClass);
+      });
+      elements[0].removeEventListener('animationend', removeAnimation);
+      resolve();
+    };
+
+    elements.forEach(element => {
+      element.classList.add(animationClass);
+    });
+    elements[0].addEventListener('animationend', removeAnimation);
+  });
+
+const updateContent = testimonials => {
+  $photo.setAttribute('src', testimonials[currentSlide].photoUrl);
+  $quote.textContent = testimonials[currentSlide].quote;
+  $author.textContent = testimonials[currentSlide].author;
+  $position.textContent = testimonials[currentSlide].position;
+};
+
+const changeSlide = ({ testimonials }) => ({ target: btn }) => {
+  btn.setAttribute('disabled', true);
+  const direction = btn.dataset.slide;
 
   currentSlide =
     Math.abs(currentSlide + factor[direction]) % testimonials.length;
 
-  $quote.textContent = testimonials[currentSlide].quote;
-  $photo.setAttribute('src', testimonials[currentSlide].photoUrl);
-  $author.textContent = testimonials[currentSlide].author;
-  $position.textContent = testimonials[currentSlide].position;
+  animate(elementsToAnimate, animations.hide[direction])
+    .then(() => updateContent(testimonials))
+    .then(() => animate(elementsToAnimate, animations.show[direction]))
+    .then(() => btn.removeAttribute('disabled'));
 };
 
 (async () => {

@@ -58,6 +58,7 @@ $light: white;
     margin-left: 6.2rem;
   }
   > button {
+    z-index: 1;
     display: block;
     width: calc(2rem + 5.33vmin); // 4rem;
     height: calc(2rem + 5.33vmin); // 4rem;
@@ -156,5 +157,47 @@ $light: white;
         font-weight: 500;
       }
     }
+  }
+}
+
+@keyframes hide {
+  to {
+    transform: translateX(-3rem) scale(0.95);
+    opacity: 0;
+  }
+}
+
+@keyframes show {
+  from {
+    transform: translateX(3rem) scale(1.05);
+    opacity: 0;
+  }
+}
+
+@keyframes hide-reverse {
+  to {
+    transform: translateX(3rem) scale(1.05);
+    opacity: 0;
+  }
+}
+
+@keyframes show-reverse {
+  from {
+    transform: translateX(-3rem) scale(0.95);
+    opacity: 0;
+  }
+}
+
+.hide {
+  animation: hide 0.25s;
+  &-reverse {
+    animation: hide-reverse 0.25s;
+  }
+}
+
+.show {
+  animation: show 0.25s;
+  &-reverse {
+    animation: show-reverse 0.25s;
   }
 }
