@@ -1,0 +1,203 @@
+@import '../../../../node_modules/reset-css/sass/reset';
+@import '../../../includes/defaults';
+
+$dark-blue: hsl(240, 38%, 20%);
+$grayish-blue: hsl(240, 18%, 77%);
+$light: white;
+
+@mixin landscape {
+  @media (orientation: landscape) {
+    @content;
+  }
+}
+
+.content {
+  min-height: 100vh;
+  background: bottom left / 76vw no-repeat url(pattern-curve.svg), $light;
+  @include landscape {
+    background-size: 42.36vw;
+  }
+}
+
+.testimonials {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 3.6vh 6.4vw;
+  @include landscape {
+    display: flex;
+    flex-flow: row-reverse;
+    align-items: center;
+    max-width: none;
+    padding: 6.25vh 5.07vw 0 164px;
+  }
+}
+
+.slide {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 4.5vh 9.6vw 0;
+  background: center / contain no-repeat url(pattern-bg.svg);
+  @include landscape {
+    flex: 0 0 48.4vw;
+    align-items: flex-start;
+    padding: 8vh 6.39vw 3.25vh 4.44vw;
+  }
+  > img {
+    width: 100%;
+    border-radius: 0.4rem;
+    box-shadow: 0 1.6rem 4rem rgba($dark-blue, 0.2);
+  }
+}
+
+.controls {
+  display: flex;
+  margin-top: calc(-1rem - 2.7vmin);
+  @include landscape {
+    margin-top: -2.8rem;
+    margin-left: 6.2rem;
+  }
+  > button {
+    z-index: 1;
+    display: block;
+    width: calc(2rem + 5.33vmin); // 4rem;
+    height: calc(2rem + 5.33vmin); // 4rem;
+    padding: 0;
+    background: center / calc(0.4rem + 1.07vmin) calc(0.6rem + 1.6vmin)
+      no-repeat $light;
+    border: none;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    @include landscape {
+      width: 5.6rem;
+      height: 5.6rem;
+      background-size: auto;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: inset 0 0 0 0.1rem $grayish-blue;
+    }
+    &:hover,
+    &:active {
+      background-color: darken($light, 10%);
+    }
+    $radius-port: calc(1rem + 2.7vmin);
+    $radius-land: 2.8rem;
+    &:nth-child(1) {
+      background-image: url(icon-prev.svg);
+      border-top-left-radius: $radius-port;
+      border-bottom-left-radius: $radius-port;
+      @include landscape {
+        border-top-left-radius: $radius-land;
+        border-bottom-left-radius: $radius-land;
+      }
+    }
+    &:nth-child(2) {
+      background-image: url(icon-next.svg);
+      border-top-right-radius: $radius-port;
+      border-bottom-right-radius: $radius-port;
+      @include landscape {
+        border-top-right-radius: $radius-land;
+        border-bottom-right-radius: $radius-land;
+      }
+    }
+  }
+}
+
+.quote {
+  margin-top: 5.4vh;
+  padding: 3.6vh 2.66vw;
+  color: $dark-blue;
+  text-align: center;
+  background: top center / calc(3rem + 8vw) calc(2.5rem + 3.75vh) no-repeat
+    url(pattern-quotes.svg);
+  @include landscape {
+    flex: 0 0 44.375vw;
+    margin-top: 2vh;
+    margin-right: -9.375vw;
+    padding: 8vh 0 0;
+    text-align: left;
+    background-position: 6.66vw top;
+    background-size: calc(6rem + 4.17vw) calc(5rem + 3.47vw);
+  }
+  > p {
+    font: 300 4.8vmin/135% Inter, sans-serif;
+    font-size: fluidFont(1.8, 3.2, 37.5, 144, rem);
+    @include landscape {
+      line-height: 140%;
+      font-kerning: none;
+    }
+    &::before {
+      content: '“ ';
+    }
+    &::after {
+      content: ' ”';
+    }
+  }
+  > footer {
+    display: flex;
+    flex-flow: column;
+    margin-top: 3vh;
+    @include landscape {
+      flex-flow: row;
+      margin-top: 5vh;
+      > cite + cite {
+        margin-left: 0.8rem;
+      }
+    }
+    > cite {
+      font-size: fluidFont(1.5, 2, 37.5, 144, rem);
+      font-family: Inter, sans-serif;
+      font-kerning: none;
+      line-height: normal;
+      &:nth-child(1) {
+        font-weight: 700;
+      }
+      &:nth-child(2) {
+        color: $grayish-blue;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+@keyframes hide {
+  to {
+    transform: translateX(-3rem) scale(0.95);
+    opacity: 0;
+  }
+}
+
+@keyframes show {
+  from {
+    transform: translateX(3rem) scale(1.05);
+    opacity: 0;
+  }
+}
+
+@keyframes hide-reverse {
+  to {
+    transform: translateX(3rem) scale(1.05);
+    opacity: 0;
+  }
+}
+
+@keyframes show-reverse {
+  from {
+    transform: translateX(-3rem) scale(0.95);
+    opacity: 0;
+  }
+}
+
+.hide {
+  animation: hide 0.25s;
+  &-reverse {
+    animation: hide-reverse 0.25s;
+  }
+}
+
+.show {
+  animation: show 0.25s;
+  &-reverse {
+    animation: show-reverse 0.25s;
+  }
+}
