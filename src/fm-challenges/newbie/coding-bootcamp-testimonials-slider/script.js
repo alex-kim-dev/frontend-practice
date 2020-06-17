@@ -1,5 +1,5 @@
 const $testimonials = document.querySelector('.testimonials');
-const $photo = $testimonials.querySelector('.slide > img');
+const $photo = $testimonials.querySelector('.photo');
 const $quote = $testimonials.querySelector('.quote > p');
 const $cite = $testimonials.querySelector('.quote > footer');
 const $author = $testimonials.querySelector('.quote > footer > cite');
@@ -33,8 +33,11 @@ const getData = async url => {
   }
 };
 
-const preloadImage = url => {
-  new Image().src = url;
+const createImage = (url, alt) => {
+  const $img = new Image();
+  $img.src = url;
+  $img.alt = alt;
+  return $img;
 };
 
 const animate = (elements, animationClass) =>
@@ -53,14 +56,14 @@ const animate = (elements, animationClass) =>
     elements[0].addEventListener('animationend', removeAnimation);
   });
 
-const updateContent = testimonials => {
-  $photo.setAttribute('src', testimonials[currentSlide].photoUrl);
-  $quote.textContent = testimonials[currentSlide].quote;
-  $author.textContent = testimonials[currentSlide].author;
-  $position.textContent = testimonials[currentSlide].position;
+const updateContent = testimonial => {
+  $photo.firstElementChild.replaceWith(testimonial.$photo);
+  $quote.textContent = testimonial.quote;
+  $author.textContent = testimonial.author;
+  $position.textContent = testimonial.position;
 };
 
-const changeSlide = ({ testimonials }) => ({ target: btn }) => {
+const changeSlide = testimonials => ({ target: btn }) => {
   btn.setAttribute('disabled', true);
   const direction = btn.dataset.slide;
 
@@ -68,7 +71,7 @@ const changeSlide = ({ testimonials }) => ({ target: btn }) => {
     Math.abs(currentSlide + factor[direction]) % testimonials.length;
 
   animate(elementsToAnimate, animations.hide[direction])
-    .then(() => updateContent(testimonials))
+    .then(() => updateContent(testimonials[currentSlide]))
     .then(() => animate(elementsToAnimate, animations.show[direction]))
     .then(() => btn.removeAttribute('disabled'));
 };
@@ -77,9 +80,15 @@ const changeSlide = ({ testimonials }) => ({ target: btn }) => {
   const data = await getData('data.json');
   if (!data) return;
 
-  data.testimonials.forEach(({ photoUrl }) => preloadImage(photoUrl));
+  const testimonials = data.testimonials.map(testimonial => ({
+    ...testimonial,
+    $photo: createImage(
+      testimonial.photoUrl,
+      `Member photo - ${testimonial.author}`,
+    ),
+  }));
 
   document
     .querySelectorAll('[data-slide]')
-    .forEach(btn => btn.addEventListener('click', changeSlide(data)));
+    .forEach(btn => btn.addEventListener('click', changeSlide(testimonials)));
 })();
