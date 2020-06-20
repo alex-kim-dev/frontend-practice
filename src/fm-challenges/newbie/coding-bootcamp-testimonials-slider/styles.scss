@@ -66,6 +66,7 @@ $light: white;
     background: center / calc(0.4rem + 1.07vmin) calc(0.6rem + 1.6vmin)
       no-repeat $light;
     border: none;
+    cursor: pointer;
     transition: background-color 0.2s, box-shadow 0.2s;
     @include landscape {
       width: 5.6rem;
