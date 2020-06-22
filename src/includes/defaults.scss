@@ -1,3 +1,5 @@
+@use "sass:math" as math;
+
 @function rem($size) {
   @return $size / 16px * 1rem;
 }
@@ -7,6 +9,11 @@
     #{$min}#{$unit} + #{$max - $min} *
       ((100vw - #{$minVw}#{$unit}) / #{$maxVw - $minVw})
   );
+}
+
+@function roundTo($value, $digits: 2) {
+  $div: math.pow(10, $digits);
+  @return round($value * $div) / $div;
 }
 
 html {
