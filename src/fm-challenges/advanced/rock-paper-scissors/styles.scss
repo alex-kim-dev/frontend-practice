@@ -12,11 +12,18 @@ $c-header-outline: hsl(217, 16%, 45%);
 $c-light: white;
 
 // Gradients
-$g-scissors: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
-$g-paper: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
-$g-rock: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
-$g-lizard: linear-gradient(hsl(261, 73%, 60%), hsl(261, 72%, 63%));
-$g-cyan: linear-gradient(hsl(189, 59%, 53%), hsl(189, 58%, 57%));
+$gradients: (
+  scissors: [hsl(39, 89%, 49%),
+  hsl(40, 84%, 53%) ],
+  spock: [hsl(189, 59%, 53%),
+  hsl(189, 58%, 57%) ],
+  paper: [hsl(230, 89%, 62%),
+  hsl(230, 89%, 65%) ],
+  lizard: [hsl(261, 73%, 60%),
+  hsl(261, 72%, 63%) ],
+  rock: [hsl(349, 71%, 52%),
+  hsl(349, 70%, 56%) ],
+);
 $g-radial: radial-gradient(
   circle at top,
   hsl(214, 47%, 23%),
@@ -35,7 +42,7 @@ $g-radial: radial-gradient(
     width: calc(100% + 0.2rem);
     margin: -0.1rem;
   }
-  > .board {
+  > .playField {
   }
   > .footer {
   }
@@ -80,9 +87,89 @@ $g-radial: radial-gradient(
 }
 
 .playField {
+  position: relative;
   width: 100%;
-  height: vmin(305);
-  background: center/67% no-repeat url(bg-pentagon.svg);
+  height: 0;
+  margin-bottom: 3.2rem;
+  padding-top: 97.46%;
+  & > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template:
+      '  .     .      .    scissors scissors scissors  .     .     .  ' 129fr
+      'spock spock    .    scissors scissors scissors  .   paper paper' 16fr
+      'spock spock    .       .        .        .      .   paper paper' 129fr
+      '  .     .      .       .        .        .      .     .     .  ' 41fr
+      '  .   lizard lizard  lizard     .      rock    rock rock    .  ' 145fr
+      / 65fr 80fr 19fr 46fr 52fr 47fr 18fr 80fr 65fr;
+    width: 100%;
+    height: 100%;
+    background: center/70% no-repeat url(bg-pentagon.svg);
+  }
+}
+
+.option {
+  --gradient-start: hsl(0, 0%, 45%);
+  --gradient-end: hsl(0, 0%, 55%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background: linear-gradient(
+    to top,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
+  border: none;
+  border-radius: 50%;
+  box-shadow: inset 0 -0.2rem darken(gray, 10%), 0 0.2rem darken(gray, 10%);
+  cursor: pointer;
+  > span {
+    display: block;
+    width: 77%;
+    height: 77%;
+    background: $c-light;
+    border-radius: 50%;
+    box-shadow: inset 0 0.4rem rgba($c-dark-text, 0.2);
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+@each $option, $gradient in $gradients {
+  .#{$option} {
+    $g-end: nth($gradient, 2);
+    --gradient-start: #{nth($gradient, 1)};
+    --gradient-end: #{$g-end};
+    grid-area: #{$option};
+    box-shadow: inset 0 -0.2rem darken($g-end, 15%),
+      0 0.2rem darken($g-end, 15%);
+  }
+}
+
+.scissors > span {
+  padding: 20% 22.8% 16.6% 18.6%;
+}
+
+.spock > span {
+  padding: 18.6% 20.7% 17.2% 24.8%;
+}
+
+.paper > span {
+  padding: 20% 22.1% 15.9% 20.7%;
+}
+
+.lizard > span {
+  padding: 19.3% 16.6% 15.9% 16.6%;
+}
+
+.rock > span {
+  padding: 24.1% 21.4% 19.3% 22.1%;
 }
 
 .rules {
