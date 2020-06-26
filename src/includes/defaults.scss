@@ -16,6 +16,10 @@
   @return round($value * $div) / $div;
 }
 
+@function pct($value, $divider) {
+  @return roundTo($value / $divider * 100%);
+}
+
 html {
   font-size: 62.5%;
 }

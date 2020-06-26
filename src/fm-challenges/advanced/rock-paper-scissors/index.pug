@@ -16,16 +16,17 @@ block content
         div 12
     main.playField
       div
-        button.option.scissors(aria-label='Scissors')
-          span: include icon-scissors.svg
-        button.option.spock(aria-label='Spock')
-          span: include icon-spock.svg
-        button.option.paper(aria-label='Paper')
-          span: include icon-paper.svg
-        button.option.lizard(aria-label='Lizard')
-          span: include icon-lizard.svg
-        button.option.rock(aria-label='Rock')
-          span: include icon-rock.svg
+        .grid
+          button.option.scissors(aria-label='Scissors')
+            span: include icon-scissors.svg
+          button.option.spock(aria-label='Spock')
+            span: include icon-spock.svg
+          button.option.paper(aria-label='Paper')
+            span: include icon-paper.svg
+          button.option.lizard(aria-label='Lizard')
+            span: include icon-lizard.svg
+          button.option.rock(aria-label='Rock')
+            span: include icon-rock.svg
     footer.footer
       button.rules Rules
 

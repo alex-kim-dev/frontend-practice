@@ -1,8 +1,10 @@
 @import '../../../../node_modules/reset-css/sass/reset';
 @import '../../../includes/defaults';
 
-@function vmin($px) {
-  @return #{roundTo($px / 375 * 100)}vmin;
+@mixin smUp {
+  @media (min-width: rem(650px)) {
+    @content;
+  }
 }
 
 // Colors
@@ -36,15 +38,31 @@ $g-radial: radial-gradient(
   align-items: center;
   justify-content: space-between;
   height: 100vh;
-  padding: vmin(32) vmin(32) vmin(55);
+  padding: 3.2rem 3.2rem 5.5rem;
+  overflow: auto;
   background: $g-radial;
-  > .header {
+  @include smUp {
+    padding: 4.6rem 3.2rem 3.2rem;
+  }
+  .header {
     width: calc(100% + 0.2rem);
+    max-width: 70.2rem;
     margin: -0.1rem;
   }
-  > .playField {
+  .playField {
+    width: 100%;
+    max-width: 40rem;
+    margin-bottom: 3.2rem;
+    @include smUp {
+      max-width: 47.2rem;
+      margin-top: 4.5rem;
+      margin-bottom: -1.1rem;
+    }
   }
-  > .footer {
+  .footer {
+    @include smUp {
+      align-self: flex-end;
+    }
   }
 }
 
@@ -52,16 +70,22 @@ $g-radial: radial-gradient(
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: vmin(10);
+  padding: 1rem 1rem 1rem 2.1rem;
   border: 0.3rem solid $c-header-outline;
   border-radius: 0.6rem;
+  @include smUp {
+    padding: 2.1rem 2.2rem 1.5rem 2.8rem;
+    border-radius: 1.6rem;
+  }
 }
 
 .title {
   box-sizing: content-box;
-  width: vmin(50);
+  width: 5rem;
   height: auto;
-  padding-left: 1.1rem;
+  @include smUp {
+    width: 11.5rem;
+  }
 }
 
 .score {
@@ -69,44 +93,59 @@ $g-radial: radial-gradient(
   flex-flow: column;
   align-items: center;
   align-self: flex-start;
-  min-width: vmin(80);
-  padding: vmin(10) vmin(10);
+  min-width: 8rem;
+  padding: 1rem;
   background: $c-light;
   border-radius: 0.4rem;
+  @include smUp {
+    min-width: 15rem;
+    margin: -0.2rem 0;
+    padding: 1.5rem;
+    border-radius: 0.8rem;
+  }
   > div:nth-child(1) {
     color: $c-score-text;
-    font: 600 vmin(10) Barlow Semi Condensed, sans-serif;
+    font: 600 1rem Barlow Semi Condensed, sans-serif;
     letter-spacing: 0.16em;
     text-transform: uppercase;
+    @include smUp {
+      font-size: 1.7rem;
+      letter-spacing: 0.12em;
+    }
   }
   > div:nth-child(2) {
     color: $c-dark-text;
-    font: 700 vmin(40) / 100% Barlow Semi Condensed, sans-serif;
+    font: 700 4rem / 100% Barlow Semi Condensed, sans-serif;
     letter-spacing: -0.02em;
+    @include smUp {
+      font-size: 6.4rem;
+      letter-spacing: normal;
+    }
   }
 }
 
 .playField {
-  position: relative;
-  width: 100%;
-  height: 0;
-  margin-bottom: 3.2rem;
-  padding-top: 97.46%;
-  & > div {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: grid;
-    grid-template:
-      '  .     .      .    scissors scissors scissors  .     .     .  ' 129fr
-      'spock spock    .    scissors scissors scissors  .   paper paper' 16fr
-      'spock spock    .       .        .        .      .   paper paper' 129fr
-      '  .     .      .       .        .        .      .     .     .  ' 41fr
-      '  .   lizard lizard  lizard     .      rock    rock rock    .  ' 145fr
-      / 65fr 80fr 19fr 46fr 52fr 47fr 18fr 80fr 65fr;
+  > div {
+    position: relative;
     width: 100%;
-    height: 100%;
-    background: center/70% no-repeat url(bg-pentagon.svg);
+    height: 0;
+    padding-top: 97.46%;
+    > .grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: grid;
+      grid-template:
+        '  .     .      .    scissors scissors scissors  .     .     .  ' 129fr
+        'spock spock    .    scissors scissors scissors  .   paper paper' 16fr
+        'spock spock    .       .        .        .      .   paper paper' 129fr
+        '  .     .      .       .        .        .      .     .     .  ' 41fr
+        '  .   lizard lizard  lizard     .      rock    rock rock    .  ' 145fr
+        / 65fr 80fr 19fr 46fr 52fr 47fr 18fr 80fr 65fr;
+      width: 100%;
+      height: 100%;
+      background: center/70% no-repeat url(bg-pentagon.svg);
+    }
   }
 }
 
@@ -128,13 +167,19 @@ $g-radial: radial-gradient(
   border-radius: 50%;
   box-shadow: inset 0 -0.2rem darken(gray, 10%), 0 0.2rem darken(gray, 10%);
   cursor: pointer;
+  @include smUp {
+    box-shadow: inset 0 -0.3rem darken(gray, 10%), 0 0.3rem darken(gray, 10%);
+  }
   > span {
     display: block;
     width: 77%;
     height: 77%;
-    background: $c-light;
+    background: darken($c-light, 10%);
     border-radius: 50%;
     box-shadow: inset 0 0.4rem rgba($c-dark-text, 0.2);
+    @include smUp {
+      box-shadow: inset 0 0.6rem rgba($c-dark-text, 0.2);
+    }
   }
   &:focus {
     outline: none;
@@ -149,6 +194,10 @@ $g-radial: radial-gradient(
     grid-area: #{$option};
     box-shadow: inset 0 -0.2rem darken($g-end, 15%),
       0 0.2rem darken($g-end, 15%);
+    @include smUp {
+      box-shadow: inset 0 -0.3rem darken($g-end, 15%),
+        0 0.3rem darken($g-end, 15%);
+    }
   }
 }
 
