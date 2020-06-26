@@ -2,6 +2,12 @@
 @import '../../../includes/defaults';
 
 @mixin smUp {
+  @media (min-width: rem(450px)) {
+    @content;
+  }
+}
+
+@mixin mdUp {
   @media (min-width: rem(650px)) {
     @content;
   }
@@ -41,7 +47,7 @@ $g-radial: radial-gradient(
   padding: 3.2rem 3.2rem 5.5rem;
   overflow: auto;
   background: $g-radial;
-  @include smUp {
+  @include mdUp {
     padding: 4.6rem 3.2rem 3.2rem;
   }
   .header {
@@ -53,14 +59,14 @@ $g-radial: radial-gradient(
     width: 100%;
     max-width: 40rem;
     margin-bottom: 3.2rem;
-    @include smUp {
+    @include mdUp {
       max-width: 47.2rem;
       margin-top: 4.5rem;
       margin-bottom: -1.1rem;
     }
   }
   .footer {
-    @include smUp {
+    @include mdUp {
       align-self: flex-end;
     }
   }
@@ -73,7 +79,7 @@ $g-radial: radial-gradient(
   padding: 1rem 1rem 1rem 2.1rem;
   border: 0.3rem solid $c-header-outline;
   border-radius: 0.6rem;
-  @include smUp {
+  @include mdUp {
     padding: 2.1rem 2.2rem 1.5rem 2.8rem;
     border-radius: 1.6rem;
   }
@@ -83,7 +89,7 @@ $g-radial: radial-gradient(
   box-sizing: content-box;
   width: 5rem;
   height: auto;
-  @include smUp {
+  @include mdUp {
     width: 11.5rem;
   }
 }
@@ -97,7 +103,7 @@ $g-radial: radial-gradient(
   padding: 1rem;
   background: $c-light;
   border-radius: 0.4rem;
-  @include smUp {
+  @include mdUp {
     min-width: 15rem;
     margin: -0.2rem 0;
     padding: 1.5rem;
@@ -108,7 +114,7 @@ $g-radial: radial-gradient(
     font: 600 1rem Barlow Semi Condensed, sans-serif;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    @include smUp {
+    @include mdUp {
       font-size: 1.7rem;
       letter-spacing: 0.12em;
     }
@@ -117,7 +123,7 @@ $g-radial: radial-gradient(
     color: $c-dark-text;
     font: 700 4rem / 100% Barlow Semi Condensed, sans-serif;
     letter-spacing: -0.02em;
-    @include smUp {
+    @include mdUp {
       font-size: 6.4rem;
       letter-spacing: normal;
     }
@@ -167,7 +173,7 @@ $g-radial: radial-gradient(
   border-radius: 50%;
   box-shadow: inset 0 -0.2rem darken(gray, 10%), 0 0.2rem darken(gray, 10%);
   cursor: pointer;
-  @include smUp {
+  @include mdUp {
     box-shadow: inset 0 -0.3rem darken(gray, 10%), 0 0.3rem darken(gray, 10%);
   }
   > span {
@@ -177,7 +183,7 @@ $g-radial: radial-gradient(
     background: darken($c-light, 10%);
     border-radius: 50%;
     box-shadow: inset 0 0.4rem rgba($c-dark-text, 0.2);
-    @include smUp {
+    @include mdUp {
       box-shadow: inset 0 0.6rem rgba($c-dark-text, 0.2);
     }
   }
@@ -194,7 +200,7 @@ $g-radial: radial-gradient(
     grid-area: #{$option};
     box-shadow: inset 0 -0.2rem darken($g-end, 15%),
       0 0.2rem darken($g-end, 15%);
-    @include smUp {
+    @include mdUp {
       box-shadow: inset 0 -0.3rem darken($g-end, 15%),
         0 0.3rem darken($g-end, 15%);
     }
@@ -240,5 +246,83 @@ $g-radial: radial-gradient(
   &:hover,
   &:active {
     background-color: rgba(white, 0.1);
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(black, 0.5);
+  &.hidden {
+    display: none;
+  }
+}
+
+.modal {
+  z-index: 105;
+  display: grid;
+  grid-template-rows: auto 95fr auto 138fr auto;
+  justify-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 9.5rem 3.2rem 6.5rem;
+  background: $c-light;
+  border-radius: 0.8rem;
+  @include smUp {
+    grid-gap: 2rem;
+    grid-template: repeat(2, auto) / repeat(2, auto);
+    max-width: 40rem;
+    height: auto;
+    padding: 3.2rem 3.2rem 4.7rem;
+  }
+  > h2 {
+    color: $c-dark-text;
+    font: 700 3.2rem/100% Barlow Semi Condensed, sans-serif;
+    text-transform: uppercase;
+    @include smUp {
+      align-self: center;
+      justify-self: start;
+    }
+  }
+  > img {
+    grid-row: 3;
+    width: 100%;
+    height: auto;
+    @include smUp {
+      grid-area: 2 / 1 / -1 / -1;
+    }
+  }
+  > button {
+    display: inline-flex;
+    grid-row: 5;
+    margin: -1.4rem;
+    padding: 1.4rem;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.25s, box-shadow 0.25s;
+    @include smUp {
+      grid-area: 1 / 2;
+      align-self: center;
+      justify-self: end;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: inset 0 0 0 0.2rem #b8baca;
+    }
+    &:hover {
+      background-color: #e1e4ed;
+    }
+    &:active {
+      background-color: #b8baca;
+    }
   }
 }

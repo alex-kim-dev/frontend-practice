@@ -10,6 +10,7 @@ block fonts
 block content
   .game
     header.header
+      h1.srOnly #{title}
       img.title(src='logo-bonus.svg' alt=title)
       .score
         div Score
@@ -27,6 +28,11 @@ block content
             span: include icon-lizard.svg
           button.option.rock(aria-label='Rock')
             span: include icon-rock.svg
+    .overlay.hidden
+      section.modal
+        h2 Rules
+        img(src='image-rules-bonus.svg' alt='Scheme of the game rules')
+        button: include icon-close.svg
     footer.footer
       button.rules Rules
 
