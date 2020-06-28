@@ -260,9 +260,7 @@ $g-radial: radial-gradient(
   width: 100%;
   height: 100%;
   background: rgba(black, 0.5);
-  &.hidden {
-    display: none;
-  }
+  transition: opacity 1s;
 }
 
 .modal {
@@ -325,4 +323,25 @@ $g-radial: radial-gradient(
       background-color: #b8baca;
     }
   }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation: fade 0.3s;
+}
+
+.fadeOut {
+  animation: fade 0.3s reverse;
+}
+
+.hidden {
+  display: none;
 }
