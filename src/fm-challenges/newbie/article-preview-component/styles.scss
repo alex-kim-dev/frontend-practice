@@ -7,58 +7,97 @@ $grayish-blue: hsl(212, 23%, 69%);
 $light-grayish-blue: hsl(210, 46%, 95%);
 $light: white;
 
+@mixin mdUp {
+  @media (min-width: rem(794px)) {
+    @content;
+  }
+}
+
 main {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
   padding: 2.4rem;
+  overflow: auto;
   background: $light-grayish-blue;
   > .card {
+    max-width: 37.7rem;
     margin-bottom: 0.7rem;
+    @include mdUp {
+      max-width: 73rem;
+      margin-bottom: 0;
+    }
   }
 }
 
 .card {
   display: flex;
   flex-flow: column;
-  padding: 2rem 3.2rem;
   overflow: hidden;
   font-family: Manrope, sans-serif;
   letter-spacing: 0.01em;
   background: $light;
   border-radius: 0.8rem;
   box-shadow: 0 4rem 2.8rem rgba($grayish-blue, 0.2);
+  @include mdUp {
+    flex-flow: row;
+  }
   > header {
-    margin: -2rem -3.2rem 0;
+    position: relative;
+    height: 0;
+    padding-bottom: 61.15%;
+    @include mdUp {
+      flex: 1 0 28.5rem;
+      height: auto;
+      padding-bottom: 0;
+    }
     > img {
+      position: absolute;
+      top: 0;
+      left: 0;
       display: block;
       width: 100%;
-      height: 20rem;
+      height: 100%;
       object-fit: cover;
       object-position: 0 -16px;
+      @include mdUp {
+        object-position: left;
+      }
     }
   }
   > section {
-    margin-top: 3.6rem;
-    > * + * {
-      margin-top: 1.2rem;
+    padding: 3.6rem 3.2rem 2rem;
+    @include mdUp {
+      padding: 3.2rem 4rem;
     }
     > h2 {
       color: $very-dark-grayish-blue;
       font-weight: 700;
       font-size: 1.6rem;
       line-height: 1.5;
+      @include mdUp {
+        font-size: 2rem;
+        line-height: 1.4;
+        letter-spacing: 0.012em;
+      }
     }
     > p {
+      margin-top: 1.2rem;
       color: $desaturated-dark-blue;
       font-weight: 500;
       font-size: 1.3rem;
       line-height: 1.6;
+      @include mdUp {
+        letter-spacing: 0.008em;
+      }
     }
-  }
-  > footer {
-    margin-top: 3.2rem;
+    > .meta {
+      margin-top: 3.2rem;
+      @include mdUp {
+        margin-top: 2rem;
+      }
+    }
   }
 }
 
@@ -71,6 +110,7 @@ main {
     / auto 1fr auto;
   align-items: center;
   font-size: 1.3rem;
+  line-height: 1.2;
   letter-spacing: 0.01em;
   > img {
     grid-area: avatar;
@@ -101,7 +141,8 @@ main {
     background: $light-grayish-blue;
     border: none;
     border-radius: 50%;
-    transition: 0.2s;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
     > svg > path {
       transition: fill 0.2s;
     }
