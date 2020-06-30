@@ -8,14 +8,27 @@ block fonts
   +googleFonts([ 'family=Manrope:wght@500&display=swap&text=Ever%20bniaomdfltkshgw%3FPpyu.I%E2%80%99c28J0SHAR', 'family=Manrope:wght@700&display=swap&text=Shift%20eovralkndbygswucmMAp', ])
 
 block content
-  | Hello World!
-
-//-
-  Shift the overall look and feel by adding these wonderful
-  touches to furniture in your home
-  Ever been in a room and felt like something was missing? Perhaps
-  it felt slightly bare and uninviting. I’ve got some simple tips
-  to help you make any room feel complete.
-  Michelle Appleton
-  28 Jun 2020
-  Share
+  main
+    article.card
+      header
+        img(src='drawers.jpg' alt='Room furniture')
+      section
+        h2.
+          Shift the overall look and feel by adding these wonderful touches to
+          furniture in your home
+        p.
+          Ever been in a room and felt like something was missing? Perhaps it
+          felt slightly bare and uninviting. I’ve got some simple tips to help
+          you make any room feel complete.
+      footer.meta
+        img(src='avatar-michelle.jpg' alt='Michelle\'s avatar')
+        p Michelle Appleton
+        time(datetime='2020-06-28') 28 Jun 2020
+        button(aria-label='Share'): include icon-share.svg
+      //-
+        .popup
+          p Share
+          ul
+            li: button: include icon-facebook.svg
+            li: button: include icon-twitter.svg
+            li: button: include icon-pinterest.svg

@@ -5,3 +5,118 @@ $very-dark-grayish-blue: hsl(217, 19%, 35%);
 $desaturated-dark-blue: hsl(214, 17%, 51%);
 $grayish-blue: hsl(212, 23%, 69%);
 $light-grayish-blue: hsl(210, 46%, 95%);
+$light: white;
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 2.4rem;
+  background: $light-grayish-blue;
+  > .card {
+    margin-bottom: 0.7rem;
+  }
+}
+
+.card {
+  display: flex;
+  flex-flow: column;
+  padding: 2rem 3.2rem;
+  overflow: hidden;
+  font-family: Manrope, sans-serif;
+  letter-spacing: 0.01em;
+  background: $light;
+  border-radius: 0.8rem;
+  box-shadow: 0 4rem 2.8rem rgba($grayish-blue, 0.2);
+  > header {
+    margin: -2rem -3.2rem 0;
+    > img {
+      display: block;
+      width: 100%;
+      height: 20rem;
+      object-fit: cover;
+      object-position: 0 -16px;
+    }
+  }
+  > section {
+    margin-top: 3.6rem;
+    > * + * {
+      margin-top: 1.2rem;
+    }
+    > h2 {
+      color: $very-dark-grayish-blue;
+      font-weight: 700;
+      font-size: 1.6rem;
+      line-height: 1.5;
+    }
+    > p {
+      color: $desaturated-dark-blue;
+      font-weight: 500;
+      font-size: 1.3rem;
+      line-height: 1.6;
+    }
+  }
+  > footer {
+    margin-top: 3.2rem;
+  }
+}
+
+.meta {
+  display: grid;
+  grid-gap: 0.5rem 1.6rem;
+  grid-template:
+    'avatar name share' auto
+    'avatar date share' auto
+    / auto 1fr auto;
+  align-items: center;
+  font-size: 1.3rem;
+  letter-spacing: 0.01em;
+  > img {
+    grid-area: avatar;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+  > p {
+    grid-area: name;
+    align-self: end;
+    color: $very-dark-grayish-blue;
+    font-weight: 700;
+  }
+  > time {
+    grid-area: date;
+    align-self: start;
+    color: $grayish-blue;
+    font-weight: 500;
+  }
+  > button {
+    display: inline-flex;
+    grid-area: share;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    padding: 0.4rem;
+    background: $light-grayish-blue;
+    border: none;
+    border-radius: 50%;
+    transition: 0.2s;
+    > svg > path {
+      transition: fill 0.2s;
+    }
+    &:hover {
+      background: $very-dark-grayish-blue;
+      > svg > path {
+        fill: $light;
+      }
+    }
+    &:active {
+      transform: translateY(0.2rem);
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 0.2rem $very-dark-grayish-blue;
+    }
+  }
+}
