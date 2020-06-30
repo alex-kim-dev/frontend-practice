@@ -24,11 +24,10 @@ block content
           img(src='avatar-michelle.jpg' alt='Michelle\'s avatar')
           p Michelle Appleton
           time(datetime='2020-06-28') 28 Jun 2020
-          button(aria-label='Share'): include icon-share.svg
-      //-
-        .popup
+          button#share.iconBtn(aria-label='Share'): include icon-share.svg
+        .share.hidden
           p Share
           ul
-            li: button: include icon-facebook.svg
-            li: button: include icon-twitter.svg
-            li: button: include icon-pinterest.svg
+            li: button.iconBtn: include icon-facebook.svg
+            li: button.iconBtn: include icon-twitter.svg
+            li: button.iconBtn: include icon-pinterest.svg

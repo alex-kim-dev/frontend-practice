@@ -67,6 +67,7 @@ main {
     }
   }
   > section {
+    position: relative;
     padding: 3.6rem 3.2rem 2rem;
     @include mdUp {
       padding: 3.2rem 4rem;
@@ -131,33 +132,89 @@ main {
     font-weight: 500;
   }
   > button {
-    display: inline-flex;
+    z-index: 10;
     grid-area: share;
-    align-items: center;
-    justify-content: center;
-    width: 3.2rem;
-    height: 3.2rem;
-    padding: 0.4rem;
     background: $light-grayish-blue;
-    border: none;
     border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
-    > svg > path {
-      transition: fill 0.2s;
-    }
-    &:hover {
-      background: $very-dark-grayish-blue;
+    &.inverse {
+      background: $desaturated-dark-blue;
       > svg > path {
         fill: $light;
       }
+      &:hover {
+        background: $light-grayish-blue;
+        > svg > path {
+          fill: $desaturated-dark-blue;
+        }
+      }
     }
-    &:active {
-      transform: translateY(0.2rem);
+  }
+}
+
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  padding: 0.4rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  > svg > path {
+    transition: fill 0.2s;
+  }
+  &:hover {
+    background: $desaturated-dark-blue;
+    outline: none;
+    > svg > path {
+      fill: $light;
     }
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 0 0.2rem $very-dark-grayish-blue;
+  }
+  &:active {
+    transform: translateY(0.2rem);
+  }
+  &:focus {
+    outline: 0.1rem solid $grayish-blue;
+  }
+}
+
+.share {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 2.4rem 3.2rem;
+  background: $very-dark-grayish-blue;
+  transition: visibility 0s, bottom 0.3s ease-out;
+  &.hidden {
+    bottom: -8rem;
+    visibility: hidden;
+    transition: visibility 0s 0.3s, bottom 0.3s ease-out;
+  }
+  > p {
+    color: $grayish-blue;
+    font: 500 1.2rem Manrope, sans-serif;
+    letter-spacing: 0.48em;
+    text-transform: uppercase;
+  }
+  > ul {
+    display: flex;
+    margin: 0;
+    margin-left: 1rem;
+    padding: 0;
+    list-style: none;
+    > li {
+      display: block;
+      &:not(:first-child) {
+        margin-left: 0.4rem;
+      }
+      > button {
+        border-radius: 0.6rem;
+      }
     }
   }
 }
