@@ -1,9 +1,18 @@
 const $shareBtn = document.getElementById('share');
-const $shareUI = document.querySelector('.share');
+const $shareUi = document.querySelector('.share');
 
-const toggleShareUI = () => {
-  $shareUI.classList.toggle('hidden');
+const toggleShareUi = () => {
+  $shareUi.classList.toggle('hidden');
   $shareBtn.classList.toggle('inverse');
 };
 
-$shareBtn.addEventListener('click', toggleShareUI);
+const hideShareUiOnClickAway = ({ target }) => {
+  if (
+    !target.closest('.share, #share') &&
+    !$shareUi.classList.contains('hidden')
+  )
+    toggleShareUi();
+};
+
+$shareBtn.addEventListener('click', toggleShareUi);
+document.addEventListener('click', hideShareUiOnClickAway);
