@@ -28,6 +28,9 @@ block content
         .share.hidden
           p Share
           ul
-            li: button.iconBtn: include icon-facebook.svg
-            li: button.iconBtn: include icon-twitter.svg
-            li: button.iconBtn: include icon-pinterest.svg
+            li: button.iconBtn(aria-label='Facebook')
+              include icon-facebook.svg
+            li: button.iconBtn(aria-label='Twitter')
+              include icon-twitter.svg
+            li: button.iconBtn(aria-label='Pinterest')
+              include icon-pinterest.svg
