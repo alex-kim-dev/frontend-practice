@@ -42,6 +42,7 @@ main {
   box-shadow: 0 4rem 2.8rem rgba($grayish-blue, 0.2);
   @include mdUp {
     flex-flow: row;
+    overflow: visible;
   }
   > header {
     position: relative;
@@ -51,6 +52,9 @@ main {
       flex: 1 0 28.5rem;
       height: auto;
       padding-bottom: 0;
+      overflow: hidden;
+      border-top-left-radius: 0.8rem;
+      border-bottom-left-radius: 0.8rem;
     }
     > img {
       position: absolute;
@@ -189,11 +193,34 @@ main {
   width: 100%;
   padding: 2.4rem 3.2rem;
   background: $very-dark-grayish-blue;
-  transition: visibility 0s, bottom 0.3s ease-out;
+  transition: visibility 0s, bottom 0.3s ease-out, opacity 0.3s ease-out;
+  @include mdUp {
+    right: 5.6rem;
+    bottom: 9.6rem;
+    left: auto;
+    width: auto;
+    padding: 1.2rem 3.1rem 1.1rem 3.7rem;
+    border-radius: 0.8rem;
+    transform: translateX(50%);
+    &::after {
+      position: absolute;
+      bottom: -1.2rem;
+      left: 50%;
+      border-top: 1.2rem solid $very-dark-grayish-blue;
+      border-right: 1.2rem solid transparent;
+      border-left: 1.2rem solid transparent;
+      transform: translateX(-50%);
+      content: '';
+    }
+  }
   &.hidden {
     bottom: -8rem;
     visibility: hidden;
-    transition: visibility 0s 0.3s, bottom 0.3s ease-out;
+    opacity: 0;
+    transition: visibility 0s 0.3s, bottom 0.3s ease-out, opacity 0.3s ease-out;
+    @include mdUp {
+      bottom: 8rem;
+    }
   }
   > p {
     color: $grayish-blue;
