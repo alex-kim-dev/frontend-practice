@@ -1,7 +1,7 @@
 extends ../../../includes/layout
 
 block variables
-  - const title = "Article preview component";
+  - const title = "Article preview component with click away listener";
   - const includeJs = "true";
 
 block fonts
@@ -12,7 +12,7 @@ block content
     article.card
       header
         img(src='drawers.jpg' alt='Room furniture')
-      section
+      .card-body
         h2.
           Shift the overall look and feel by adding these wonderful touches to
           furniture in your home

@@ -70,7 +70,7 @@ main {
       }
     }
   }
-  > section {
+  > .card-body {
     position: relative;
     padding: 3.6rem 3.2rem 2rem;
     @include mdUp {
