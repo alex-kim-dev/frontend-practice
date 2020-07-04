@@ -17,6 +17,7 @@
 $c-dark-text: hsl(229, 25%, 31%);
 $c-score-text: hsl(229, 64%, 46%);
 $c-header-outline: hsl(217, 16%, 45%);
+$c-placeholder: hsl(224, 47%, 17%);
 $c-light: white;
 
 // Gradients
@@ -39,15 +40,15 @@ $g-radial: radial-gradient(
 );
 
 .game {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-rows: auto 12.5vh auto 1fr auto;
+  justify-items: center;
   height: 100vh;
   padding: 3.2rem 3.2rem 5.5rem;
   overflow: auto;
   background: $g-radial;
   @include mdUp {
+    grid-template-rows: auto 6vh auto 1fr auto;
     padding: 4.6rem 3.2rem 3.2rem;
   }
   .header {
@@ -56,18 +57,18 @@ $g-radial: radial-gradient(
     margin: -0.1rem;
   }
   .playField {
+    grid-row: 3;
     width: 100%;
     max-width: 40rem;
-    margin-bottom: 3.2rem;
     @include mdUp {
       max-width: 47.2rem;
-      margin-top: 4.5rem;
       margin-bottom: -1.1rem;
     }
   }
   .footer {
+    grid-row: 5;
     @include mdUp {
-      align-self: flex-end;
+      justify-self: end;
     }
   }
 }
@@ -131,7 +132,7 @@ $g-radial: radial-gradient(
 }
 
 .playField {
-  > div {
+  > .ratioBox {
     position: relative;
     width: 100%;
     height: 0;
@@ -322,6 +323,92 @@ $g-radial: radial-gradient(
     &:active {
       background-color: #b8baca;
     }
+  }
+}
+
+.result {
+  display: grid;
+  grid-gap: 6.8rem 5.7rem;
+  grid-template:
+    'left right' auto
+    'center center' auto
+    / 1fr 1fr;
+  margin: 0.6rem -0.3rem 0;
+  > * {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+  }
+  > .col {
+    min-width: 0;
+    > :nth-child(2) {
+      margin-top: 2.6rem;
+    }
+  }
+  > .center {
+    grid-area: center;
+    padding: 0 4.8rem;
+    > * + * {
+      margin-top: 1.6rem;
+    }
+  }
+}
+
+.square {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  > * {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.placeholder {
+  width: 77%;
+  height: 77%;
+  background: $c-placeholder;
+  border-radius: 50%;
+}
+
+.label {
+  color: $c-light;
+  font: 700 1.6rem Barlow Semi Condensed, sans-serif;
+  letter-spacing: 0.09em;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.status {
+  color: $c-light;
+  font: 700 5.6rem Barlow Semi Condensed, sans-serif;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.repeat {
+  width: 100%;
+  padding: 1.4rem;
+  color: $c-dark-text;
+  font: 600 1.7rem Barlow Semi Condensed, sans-serif;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+  background: $c-light;
+  border: none;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: box-shadow 0.15s, background-color 0.25s;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.3rem $c-score-text;
+  }
+  &:hover,
+  &:active {
+    background-color: rgba($c-light, 0.75);
   }
 }
 
