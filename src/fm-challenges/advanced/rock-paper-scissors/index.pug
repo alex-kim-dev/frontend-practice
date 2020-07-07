@@ -15,8 +15,8 @@ block content
       .score
         div Score
         div 12
-    main.playField
-      .ratioBox.hidden
+    main.playField.hidden
+      .box
         .grid
           button.option.scissors(aria-label='Scissors')
             span: include icon-scissors.svg
@@ -28,18 +28,18 @@ block content
             span: include icon-lizard.svg
           button.option.rock(aria-label='Rock')
             span: include icon-rock.svg
-      .result
-        .col
-          .square
-            .option.scissors: span: include icon-scissors.svg
-          p.label You Picked
-        .col
-          .square
-            .placeholder
-          p.label The House Picked
-        .center
-          p.status You Win
-          button.repeat Play Again
+    main.result.expanded
+      .col
+        .square
+          .option.scissors: span: include icon-scissors.svg
+        p.label You Picked
+      .col
+        .square
+          .placeholder
+        p.label The House Picked
+      .center
+        p.status You Lose
+        button.repeat Play Again
     .overlay.hidden
       section.modal
         h2 Rules
