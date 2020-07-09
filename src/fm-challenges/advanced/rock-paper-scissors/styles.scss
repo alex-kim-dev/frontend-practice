@@ -14,7 +14,7 @@
 }
 
 @mixin lgUp {
-  @media (min-width: rem(768px)) {
+  @media (min-width: rem(768px)) and (orientation: landscape) {
     @content;
   }
 }
@@ -47,14 +47,13 @@ $g-radial: radial-gradient(
 
 .game {
   display: grid;
-  grid-template-rows: auto 12.5vh auto 1fr auto;
+  grid-template-rows: auto minmax(3.2rem, 2fr) auto minmax(3.2rem, 1fr) auto;
   justify-items: center;
-  height: 100vh;
+  min-height: 100vh;
   padding: 3.2rem 3.2rem 5.5rem;
-  overflow: auto;
   background: $g-radial;
   @include mdUp {
-    grid-template-rows: auto 6vh auto 1fr auto;
+    grid-template-rows: auto 5.86vh auto 1fr auto;
     padding: 4.6rem 3.2rem 3.2rem;
   }
   .header {
@@ -143,9 +142,12 @@ $g-radial: radial-gradient(
 }
 
 .playField {
+  width: 100%;
   max-width: 40rem;
+  margin-bottom: 10.67vh;
   @include mdUp {
     max-width: 47.2rem;
+    margin-bottom: 0;
   }
   > .box {
     padding-bottom: 97.46%;
@@ -278,10 +280,9 @@ $g-radial: radial-gradient(
   left: 0;
   z-index: 100;
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: 100%;
+  overflow: auto;
   background: rgba(black, 0.5);
   transition: opacity 1s;
 }
@@ -293,6 +294,7 @@ $g-radial: radial-gradient(
   justify-items: center;
   width: 100%;
   height: 100%;
+  margin: auto;
   padding: 9.5rem 3.2rem 6.5rem;
   background: $c-light;
   border-radius: 0.8rem;
@@ -350,10 +352,10 @@ $g-radial: radial-gradient(
 
 .result {
   display: grid;
-  grid-gap: 6.8rem 5.7rem;
+  grid-gap: 9vh 5.7rem;
   grid-template:
     'left right' auto
-    'center center' auto
+    'center center' 13.1rem
     / 1fr 1fr;
   max-width: 40rem;
   margin: 0.6rem -0.3rem 0;
