@@ -139,6 +139,23 @@ $g-radial: radial-gradient(
   width: 100%;
   height: 0;
   padding-bottom: 100%;
+  > * {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+button {
+  display: inline-flex;
+  text-align: center;
+  text-transform: uppercase;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .playField {
@@ -152,9 +169,6 @@ $g-radial: radial-gradient(
   > .box {
     padding-bottom: 97.46%;
     > .grid {
-      position: absolute;
-      top: 0;
-      left: 0;
       display: grid;
       grid-template:
         '  .     .      .    scissors scissors scissors  .     .     .  ' 129fr
@@ -163,8 +177,6 @@ $g-radial: radial-gradient(
         '  .     .      .       .        .        .      .     .     .  ' 41fr
         '  .   lizard lizard  lizard     .      rock    rock rock    .  ' 145fr
         / 65fr 80fr 19fr 46fr 52fr 47fr 18fr 80fr 65fr;
-      width: 100%;
-      height: 100%;
       background: center/70% no-repeat url(bg-pentagon.svg);
     }
   }
@@ -177,8 +189,6 @@ $g-radial: radial-gradient(
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
   padding: 0;
   font-size: 1rem;
   background: linear-gradient(
@@ -186,11 +196,9 @@ $g-radial: radial-gradient(
     var(--gradient-start),
     var(--gradient-end)
   );
-  border: none;
   border-radius: 50%;
   box-shadow: inset 0 -0.2em var(--color-outer-shadow),
     0 0.2em var(--color-outer-shadow);
-  cursor: pointer;
   @include mdUp {
     font-size: 1.5rem;
   }
@@ -246,12 +254,8 @@ $g-radial: radial-gradient(
   color: $c-light;
   font: 600 1.7rem Barlow Semi Condensed, sans-serif;
   letter-spacing: 0.12em;
-  text-align: center;
-  text-transform: uppercase;
-  background: transparent;
   border: 0.2rem solid $c-light;
   border-radius: 0.8rem;
-  cursor: pointer;
   transition: box-shadow 0.15s, background-color 0.25s;
   &:focus {
     border-color: $c-score-text;
@@ -312,14 +316,10 @@ $g-radial: radial-gradient(
     }
   }
   > button {
-    display: inline-flex;
     grid-row: 5;
     margin: -1.4rem;
     padding: 1.4rem;
-    background: transparent;
-    border: none;
     border-radius: 50%;
-    cursor: pointer;
     transition: background-color 0.25s, box-shadow 0.25s;
     @include smUp {
       grid-area: 1 / 2;
@@ -445,17 +445,14 @@ $g-radial: radial-gradient(
 }
 
 .repeat {
+  display: block;
   width: 100%;
   padding: 1.4rem;
   color: $c-dark-text;
   font: 600 1.7rem Barlow Semi Condensed, sans-serif;
   letter-spacing: 0.12em;
-  text-align: center;
-  text-transform: uppercase;
   background: $c-light;
-  border: none;
   border-radius: 0.8rem;
-  cursor: pointer;
   transition: box-shadow 0.15s, background-color 0.25s;
   &:focus {
     outline: none;
