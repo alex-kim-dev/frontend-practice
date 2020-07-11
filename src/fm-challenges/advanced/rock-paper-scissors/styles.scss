@@ -23,7 +23,7 @@
 $c-dark-text: hsl(229, 25%, 31%);
 $c-score-text: hsl(229, 64%, 46%);
 $c-header-outline: hsl(217, 16%, 45%);
-$c-placeholder: hsl(224, 47%, 17%);
+$c-placeholder: hsla(0, 0%, 0%, 0.2);
 $c-light: white;
 
 // Gradients
@@ -173,12 +173,14 @@ $g-radial: radial-gradient(
 .option {
   --gradient-start: hsl(0, 0%, 45%);
   --gradient-end: hsl(0, 0%, 55%);
+  --color-outer-shadow: darken(gray, 10%);
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
   padding: 0;
+  font-size: 1rem;
   background: linear-gradient(
     to top,
     var(--gradient-start),
@@ -186,27 +188,19 @@ $g-radial: radial-gradient(
   );
   border: none;
   border-radius: 50%;
-  box-shadow: inset 0 -0.2rem darken(gray, 10%), 0 0.2rem darken(gray, 10%);
+  box-shadow: inset 0 -0.2em var(--color-outer-shadow),
+    0 0.2em var(--color-outer-shadow);
   cursor: pointer;
   @include mdUp {
-    box-shadow: inset 0 -0.3rem darken(gray, 10%), 0 0.3rem darken(gray, 10%);
+    font-size: 1.5rem;
   }
-  // @include lgUp {
-  //   box-shadow: inset 0 -0.7rem darken(gray, 10%), 0 0.7rem darken(gray, 10%);
-  // }
   > span {
     display: block;
     width: 77%;
     height: 77%;
     background: darken($c-light, 10%);
     border-radius: 50%;
-    box-shadow: inset 0 0.4rem rgba($c-dark-text, 0.2);
-    @include mdUp {
-      box-shadow: inset 0 0.6rem rgba($c-dark-text, 0.2);
-    }
-    // @include lgUp {
-    //   box-shadow: inset 0 1.2rem rgba($c-dark-text, 0.2);
-    // }
+    box-shadow: inset 0 0.4em rgba($c-dark-text, 0.2);
   }
   &:focus {
     outline: none;
@@ -218,17 +212,12 @@ $g-radial: radial-gradient(
     $g-end: nth($gradient, 2);
     --gradient-start: #{nth($gradient, 1)};
     --gradient-end: #{$g-end};
+    --color-outer-shadow: #{adjust-color(
+        $g-end,
+        $saturation: 10%,
+        $lightness: -15%
+      )};
     grid-area: #{$option};
-    box-shadow: inset 0 -0.2rem darken($g-end, 15%),
-      0 0.2rem darken($g-end, 15%);
-    @include mdUp {
-      box-shadow: inset 0 -0.3rem darken($g-end, 15%),
-        0 0.3rem darken($g-end, 15%);
-    }
-    // @include lgUp {
-    //   box-shadow: inset 0 -0.7rem darken($g-end, 15%),
-    //     0 0.7rem darken($g-end, 15%);
-    // }
   }
 }
 
@@ -358,7 +347,7 @@ $g-radial: radial-gradient(
     'center center' 13.1rem
     / 1fr 1fr;
   max-width: 40rem;
-  margin: 0.6rem -0.3rem 0;
+  margin: 0 -0.3rem;
   @include lgUp {
     grid-gap: 4.3rem;
     grid-template:
@@ -406,6 +395,12 @@ $g-radial: radial-gradient(
     }
     @include lgUp {
       max-width: 96rem;
+    }
+  }
+  .option {
+    font-size: 1.5rem;
+    @include mdUp {
+      font-size: 3rem;
     }
   }
 }
