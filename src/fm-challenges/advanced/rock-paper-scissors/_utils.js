@@ -1,0 +1,19 @@
+exports.$ = document.querySelector.bind(document);
+
+exports.$$ = document.querySelectorAll.bind(document);
+
+exports.animate = ($el, animation) =>
+  new Promise(resolve => {
+    const removeAnimation = () => {
+      $el.classList.remove(animation);
+      $el.removeEventListener('animationend', removeAnimation);
+      resolve($el);
+    };
+
+    $el.classList.add(animation);
+    $el.addEventListener('animationend', removeAnimation);
+  });
+
+exports.toggleDisplay = $el => {
+  $el.classList.toggle('hidden');
+};
