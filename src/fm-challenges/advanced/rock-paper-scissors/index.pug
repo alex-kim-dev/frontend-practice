@@ -15,7 +15,7 @@ block content
       .score
         div Score
         div 12
-    main.playField.hidden
+    main.playField
       .box
         .grid
           button.option.scissors(aria-label='Scissors')
@@ -28,9 +28,9 @@ block content
             span: include icon-lizard.svg
           button.option.rock(aria-label='Rock')
             span: include icon-rock.svg
-    main.result.expanded
+    main.result.hidden
       .col
-        .box: .option.scissors: span: include icon-scissors.svg
+        .box
         p.label You Picked
       .col
         .box: .placeholder

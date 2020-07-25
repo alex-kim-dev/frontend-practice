@@ -185,7 +185,7 @@ button {
 .option {
   --gradient-start: hsl(0, 0%, 45%);
   --gradient-end: hsl(0, 0%, 55%);
-  --color-outer-shadow: darken(gray, 10%);
+  --color-outer-shadow: #{darken(gray, 15%)};
   display: flex;
   align-items: center;
   justify-content: center;

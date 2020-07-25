@@ -17,3 +17,6 @@ exports.animate = ($el, animation) =>
 exports.toggleDisplay = $el => {
   $el.classList.toggle('hidden');
 };
+
+exports.genRandomNum = (min = 0, max = 1) =>
+  Math.floor(min + Math.random() * (max - min));
