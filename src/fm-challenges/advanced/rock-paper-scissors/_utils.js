@@ -14,6 +14,11 @@ exports.animate = ($el, animation) =>
     $el.addEventListener('animationend', removeAnimation);
   });
 
+exports.delay = (duration = 0) =>
+  new Promise(resolve => {
+    setTimeout(resolve, duration);
+  });
+
 exports.toggleDisplay = $el => {
   $el.classList.toggle('hidden');
 };

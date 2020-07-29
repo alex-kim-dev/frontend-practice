@@ -1,5 +1,6 @@
 @import '../../../../node_modules/reset-css/sass/reset';
 @import '../../../includes/defaults';
+@import 'animation';
 
 @mixin smUp {
   @media (min-width: rem(450px)) {
@@ -51,6 +52,7 @@ $g-radial: radial-gradient(
   justify-items: center;
   min-height: 100vh;
   padding: 3.2rem 3.2rem 5.5rem;
+  overflow: hidden;
   background: $g-radial;
   @include mdUp {
     grid-template-rows: auto 5.86vh auto 1fr auto;
@@ -166,6 +168,12 @@ button {
     max-width: 47.2rem;
     margin-bottom: 0;
   }
+  &.fadeIn {
+    animation: fade 0.5s;
+  }
+  &.fadeOut {
+    animation: fade 0.5s reverse;
+  }
   > .box {
     padding-bottom: 97.46%;
     > .grid {
@@ -199,6 +207,7 @@ button {
   border-radius: 50%;
   box-shadow: inset 0 -0.2em var(--color-outer-shadow),
     0 0.2em var(--color-outer-shadow);
+  transition: filter 0.15s, transform 0.2s;
   @include mdUp {
     font-size: 1.5rem;
   }
@@ -210,8 +219,16 @@ button {
     border-radius: 50%;
     box-shadow: inset 0 0.4em rgba($c-dark-text, 0.2);
   }
-  &:focus {
+}
+
+button.option {
+  &:focus,
+  &:hover {
     outline: none;
+    filter: drop-shadow(0 0 0.6rem var(--gradient-start));
+  }
+  &:active {
+    transform: scale(0.95);
   }
 }
 
@@ -278,6 +295,12 @@ button {
   overflow: auto;
   background: rgba(black, 0.5);
   transition: opacity 1s;
+  &.fadeIn {
+    animation: fade 0.3s;
+  }
+  &.fadeOut {
+    animation: fade 0.3s reverse;
+  }
 }
 
 .modal {
@@ -340,32 +363,41 @@ button {
 }
 
 .result {
-  display: grid;
-  grid-gap: 9vh 5.7rem;
-  grid-template:
-    'left right' auto
-    'center center' 13.1rem
-    / 1fr 1fr;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
   max-width: 40rem;
   margin: 0 -0.3rem;
   @include lgUp {
-    grid-gap: 4.3rem;
-    grid-template:
-      'left center right' auto
-      / minmax(10rem, 29.3rem) 1fr minmax(10rem, 29.3rem);
+    flex-flow: nowrap;
     max-width: 67.2rem;
     margin: 2.6rem 0 0;
   }
+  &.fadeIn {
+    animation: fade 0.6s ease-in;
+  }
+  &.fadeOut {
+    animation: fade 0.6s ease-in reverse;
+  }
   > .col {
+    --mx: 2.85rem;
     display: flex;
+    flex: 1 1 calc(50% - var(--mx));
     flex-flow: column;
     align-items: center;
     min-width: 0;
+    @include lgUp {
+      --mx: 4.3rem;
+      flex: 0 1 29.3rem;
+    }
     &:nth-child(1) {
-      grid-area: left;
+      margin-right: var(--mx);
     }
     &:nth-child(2) {
-      grid-area: right;
+      margin-left: var(--mx);
+      @include lgUp {
+        order: 1;
+      }
     }
     > .label {
       margin-top: 2.6rem;
@@ -375,23 +407,64 @@ button {
         margin-bottom: 6.4rem;
       }
     }
+    > .box {
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0%;
+        height: 0%;
+        background: center / contain no-repeat
+          radial-gradient(
+            circle at center,
+            rgba(white, 0.09) 0%,
+            rgba(white, 0.09) 40%,
+            rgba(white, 0.06) 40%,
+            rgba(white, 0.06) 54%,
+            rgba(white, 0.03) 54%,
+            rgba(white, 0.03) 100%
+          );
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 1s, height 1s;
+        content: '';
+      }
+      &.highlight::before {
+        width: 220%;
+        height: 220%;
+        @include lgUp {
+          width: 250%;
+          height: 250%;
+        }
+      }
+    }
   }
   > .center {
-    grid-area: center;
+    flex: 1;
     align-self: center;
-    justify-self: center;
-    max-width: 22rem;
-    @extend .hidden;
+    margin-top: 9vh;
+    visibility: hidden;
     @include lgUp {
+      flex: 0 1 0;
       margin-top: 6rem;
+      overflow: hidden;
     }
     > :nth-child(2) {
       margin-top: 1.6rem;
     }
+    > .status {
+      text-align: center;
+    }
+    > .repeat {
+      max-width: 22rem;
+      margin-right: auto;
+      margin-left: auto;
+    }
   }
   &.expanded {
     > .center {
-      display: block;
+      flex-grow: 1;
+      visibility: visible;
     }
     @include lgUp {
       max-width: 96rem;
@@ -464,23 +537,14 @@ button {
   }
 }
 
-@keyframes fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.fadeIn {
-  animation: fade 0.3s;
-}
-
-.fadeOut {
-  animation: fade 0.3s reverse;
-}
-
 .hidden {
   display: none;
+}
+
+.game,
+.result,
+.col {
+  > * {
+    z-index: 5;
+  }
 }

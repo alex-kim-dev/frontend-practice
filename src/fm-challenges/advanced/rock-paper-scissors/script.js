@@ -1,32 +1,12 @@
-const { $, $$, animate, toggleDisplay, genRandomNum } = require('./_utils');
-
-const $overlay = $('.overlay');
-const $rulesBtn = $('.rules');
-const $closeModalBtn = $('.modal > button');
-
-// animation classes
-const FADE_IN = 'fadeIn';
-const FADE_OUT = 'fadeOut';
-
-const hideModal = event => {
-  event.stopPropagation();
-  const { target } = event;
-
-  if (target === $overlay || $closeModalBtn.contains(target)) {
-    animate($overlay, FADE_OUT).then(toggleDisplay);
-  }
-};
-
-const showModal = () => {
-  toggleDisplay($overlay);
-  animate($overlay, FADE_IN);
-};
-
-$closeModalBtn.addEventListener('click', hideModal, true);
-$overlay.addEventListener('click', hideModal, true);
-$rulesBtn.addEventListener('click', showModal);
-
-// ---
+require('./_modal');
+const {
+  $,
+  $$,
+  animate,
+  delay,
+  toggleDisplay,
+  genRandomNum,
+} = require('./_utils');
 
 const $playField = $('.playField');
 const $result = $('.result');
@@ -34,8 +14,10 @@ const $leftCol = $('.result > .col:nth-child(1) > .box');
 const $rightCol = $('.result > .col:nth-child(2) > .box');
 const $status = $('.status');
 const $score = $('.score > div:nth-child(2)');
+const $center = $('.center');
 
 let score = 0;
+let isGameInProgress = false;
 
 const newOptionElement = className => {
   const $option = document.createElement('div');
@@ -59,20 +41,36 @@ const options = [
   $element: newOptionElement(opt.name.toLowerCase()),
 }));
 
-const render = (playerPick, housePick, isPlayerWon) => {
+const render = async (playerPick, housePick, isPlayerWon) => {
   $leftCol.append(options[playerPick].$element);
+  await animate($playField, 'fadeOut');
   toggleDisplay($playField);
+  await delay(300);
+
   toggleDisplay($result);
+  await animate($result, 'fadeIn');
+  await delay(800);
 
   $rightCol.append(options[housePick].$element);
+  await animate(options[housePick].$element, 'flip');
+  await delay(500);
+
+  (isPlayerWon ? $leftCol : $rightCol).classList.add('highlight');
+  await delay(1000);
 
   $status.textContent = isPlayerWon ? 'You win' : 'You lose';
   $result.classList.add('expanded');
+  await animate($center, 'expand');
 
+  animate($score, 'flip-scale');
+  await delay(300);
   $score.textContent = score;
 };
 
 const play = ({ currentTarget }) => {
+  if (isGameInProgress) return;
+  isGameInProgress = true;
+
   const clickedOptName = currentTarget.getAttribute('aria-label');
   const playerPick = options.findIndex(({ name }) => name === clickedOptName);
 
@@ -90,12 +88,24 @@ const play = ({ currentTarget }) => {
   render(playerPick, housePick, isPlayerWon);
 };
 
-const newRound = () => {
-  toggleDisplay($playField);
+const newRound = async () => {
+  if (!isGameInProgress) return;
+  isGameInProgress = false;
+
+  await animate($result, 'fadeOut');
   toggleDisplay($result);
+
+  toggleDisplay($playField);
+  animate($playField, 'fadeIn');
+
+  $('.highlight').classList.remove('highlight');
+
   $result.classList.remove('expanded');
+
   $leftCol.removeChild($leftCol.lastElementChild);
   $rightCol.removeChild($rightCol.lastElementChild);
+
+  isGameInProgress = false;
 };
 
 $$('.playField .option').forEach($option => {
