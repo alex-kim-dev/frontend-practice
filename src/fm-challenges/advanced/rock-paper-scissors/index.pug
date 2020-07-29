@@ -1,0 +1,47 @@
+extends ../../../includes/layout
+
+block variables
+  - const title = "Rock Paper Scissors Lizard Spock";
+  - const includeJs = "true";
+
+block fonts
+  +googleFonts([ 'family=Barlow+Semi+Condensed:wght@600&display=swap&text=SCORE%20ULYPIKDTHAGN', 'family=Barlow+Semi+Condensed:wght@700&display=swap&text=RULES%20YOWINDAPCKTH-0123456789' ])
+
+block content
+  .game
+    header.header
+      h1.srOnly #{title}
+      img.title(src='logo-bonus.svg' alt=title)
+      .score
+        div Score
+        div 0
+    .content.playField
+      .box
+        .grid
+          button.option.scissors(aria-label='Scissors')
+            span: include icon-scissors.svg
+          button.option.spock(aria-label='Spock')
+            span: include icon-spock.svg
+          button.option.paper(aria-label='Paper')
+            span: include icon-paper.svg
+          button.option.lizard(aria-label='Lizard')
+            span: include icon-lizard.svg
+          button.option.rock(aria-label='Rock')
+            span: include icon-rock.svg
+    .content.result.hidden
+      .col
+        .box
+        p.label You Picked
+      .col
+        .box: .placeholder
+        p.label The House Picked
+      .center
+        p.status You Lose
+        button.repeat Play Again
+    .overlay.hidden
+      section.modal
+        h2 Rules
+        img(src='image-rules-bonus.svg' alt='Scheme of the game rules')
+        button: include icon-close.svg
+    footer.footer
+      button.rules Rules
