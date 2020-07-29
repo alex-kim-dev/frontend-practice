@@ -16,8 +16,10 @@ const $status = $('.status');
 const $score = $('.score > div:nth-child(2)');
 const $center = $('.center');
 
-let score = 0;
+let score = Number(localStorage.getItem('score')) || 0;
 let isGameInProgress = false;
+
+$score.textContent = score;
 
 const newOptionElement = className => {
   const $option = document.createElement('div');
@@ -84,6 +86,7 @@ const play = ({ currentTarget }) => {
   const isPlayerWon = options[playerPick].beats.includes(housePick);
 
   score += isPlayerWon ? 1 : -1;
+  localStorage.setItem('score', score);
 
   render(playerPick, housePick, isPlayerWon);
 };
