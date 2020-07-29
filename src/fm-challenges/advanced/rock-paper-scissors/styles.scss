@@ -15,7 +15,7 @@
 }
 
 @mixin lgUp {
-  @media (min-width: rem(768px)) and (orientation: landscape) {
+  @media (min-width: rem(930px)) and (orientation: landscape) {
     @content;
   }
 }
@@ -63,7 +63,7 @@ $g-radial: radial-gradient(
     max-width: 70.2rem;
     margin: -0.1rem;
   }
-  main {
+  .content {
     grid-row: 3;
     @include mdUp {
       width: 100%;
@@ -472,7 +472,7 @@ button.option {
   }
   .option {
     font-size: 1.5rem;
-    @include mdUp {
+    @include lgUp {
       font-size: 3rem;
     }
   }
@@ -541,10 +541,9 @@ button.option {
   display: none;
 }
 
-.game,
-.result,
-.col {
-  > * {
-    z-index: 5;
-  }
+.header,
+.footer,
+.result > *,
+.col > * {
+  z-index: 5;
 }
