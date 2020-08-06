@@ -6,6 +6,8 @@ const {
   delay,
   toggleDisplay,
   genRandomNum,
+  getSavedItem,
+  saveItem,
 } = require('./_utils');
 
 const $playField = $('.playField');
@@ -16,7 +18,14 @@ const $status = $('.status');
 const $score = $('.score > div:nth-child(2)');
 const $center = $('.center');
 
-let score = (window.localStorage && Number(localStorage.getItem('score'))) || 0;
+const savedScore = getSavedItem('score');
+if (savedScore === null)
+  // eslint-disable-next-line no-console
+  console.warn(
+    "The score won't be saved between sessions as third party cookies are disabled in your browser.",
+  );
+
+let score = Number(savedScore) || 0;
 let isGameInProgress = false;
 
 $score.textContent = score;
@@ -86,7 +95,7 @@ const play = ({ currentTarget }) => {
   const isPlayerWon = options[playerPick].beats.includes(housePick);
 
   score += isPlayerWon ? 1 : -1;
-  if (window.localStorage) localStorage.setItem('score', score);
+  saveItem('score', score);
 
   render(playerPick, housePick, isPlayerWon);
 };
