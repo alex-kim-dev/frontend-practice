@@ -4,33 +4,33 @@ block variables
   - const title = "Pricing component with toggle";
 
 block fonts
-  +googleFonts([ 'family=Montserrat:wght@700&display=swap&text=Our%20PicngAalyMothBs%2419.50GSe2Uwdp3Lf4T', ])
+  +googleFonts([ 'family=Montserrat:wght@700&display=swap&text=Our%20PicngAalyMothBs%241950GSe2Uwdp3LERN4T.', ])
 
 block content
-  | Hello world!
-
-//-
-  Our Pricing
-  Annually
-  Monthly
-  Basic
-  $19.99
-  $199.99
-  500 GB Storage
-  2 Users Allowed
-  Send up to 3 GB
-  Learn More
-  Professional
-  $24.99
-  $249.99
-  1 TB Storage
-  5 Users Allowed
-  Send up to 10 GB
-  Learn More
-  Master
-  $39.99
-  $399.99
-  2 TB Storage
-  10 Users Allowed
-  Send up to 20 GB
-  Learn More
+  -
+    const plans = [
+      ['Basic',        19.99, '500 GB',  2,  3],
+      ['Professional', 24.99, '1 TB',    5, 10],
+      ['Master',       39.99, '2 TB',   10, 20],
+    ];
+  main.content
+    h1.heading Our pricing
+    input#pricing.srOnly(type='checkbox' checked)
+    label.switch(for='pricing')
+      span.switch_inner
+      span.srOnly Check for monthly, uncheck for annually prices
+    ul.plans
+      each offer, i in plans
+        - const [plan, monthly, storage, users, send] = offer;
+        - const annually = Math.floor(monthly * 10) + 0.99;
+        li.offer(class=`${i === 1 ? "offer-highlighted" : ""}`)
+          h2.offer_heading #{plan}
+          strong.offer_price(
+            data-monthly=`${monthly}`
+            data-annually=`${annually}`
+          )
+          ul.list
+            li.list_item: p #{storage} Storage
+            li.list_item: p #{users} Users Allowed
+            li.list_item: p Send up to #{send} GB
+          button.btn(class=`${i === 1 ? "btn-inverse" : ""}`) Learn more
