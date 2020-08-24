@@ -8,16 +8,19 @@ block fonts
   +googleFonts([ 'family=Inter&display=swap&text=FOLWERS%20UBCI', 'family=Inter:wght@700&display=swap&text=Social%20MedDshbrTtFw%3A%2Ck%40nfyN.Ov-PgVLR%250123456789', ])
 
 block content
-  | Hello
+  .wrapper
+    .container
+      header.header
+        .group
+          h1.h1 Social media dashboard
+          p.text Total followers: 23,004
+        hr.separator
+        label.label.text
+          | Dark mode
+          input.srOnly(type='checkbox')
+          span.switch
 
 //- 
-  Social Media Dashboard
-  Total Followers: 23,004
-  
-  Dark Mode
-  
-  
-  
   @nathanf
   1987
   Followers
