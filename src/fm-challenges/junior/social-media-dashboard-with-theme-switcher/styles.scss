@@ -10,10 +10,23 @@
   --text-secondary: #63687d;
   --switch-off: #aeb3cb;
   --switch-on: linear-gradient(225deg, #40db82 0%, #388fe7 98.02%);
-  --switch-thumb: #f1f3fa;
+  --switch-thumb: #f1f3fa; // +
   --switch-thumb-dark: #252b42;
   --separator: #848bab;
+  --cell: #f1f3fa; // +
+  --positive: #1eb589;
+  --negative: #dc414c;
 }
+
+$platforms: (
+  ('facebook', #178ff5),
+  ('twitter', #1da1f2),
+  (
+    'instagram',
+    linear-gradient(225deg, #df4896 0%, #ee877e 50.91%, #fdc366 100%)
+  ),
+  ('youtube', #c4032b)
+);
 
 @mixin smUp {
   @media (min-width: rem(600px)) {
@@ -26,7 +39,6 @@
 body {
   font-family: Inter, sans-serif;
   line-height: normal;
-  text-transform: capitalize;
 }
 
 // Components
@@ -35,12 +47,31 @@ body {
   color: var(--text-primary);
   font-weight: 700;
   font-size: fluidFont(2.4, 2.8, 37.5, 144, rem);
+  text-transform: capitalize;
 }
 
 .text {
   color: var(--text-secondary);
   font-weight: 700;
   font-size: 1.4rem;
+  text-transform: capitalize;
+  &-big {
+    font-weight: 700;
+    font-size: 5.6rem;
+    line-height: 4.8rem;
+    letter-spacing: -0.036em;
+  }
+  &-secondary {
+    color: var(--text-secondary);
+    font-weight: 400;
+    font-size: 1.2rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+  }
+  &-small {
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
 }
 
 .separator {
@@ -97,6 +128,29 @@ input[type='checkbox'] {
   }
 }
 
+.cell {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 3.2rem 3.2rem 2.4rem;
+  background: var(--cell);
+  border-radius: 0.5rem;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  color: var(--text-secondary);
+  font-weight: 700;
+  font-size: 1.2rem;
+  &::before {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.8rem;
+    content: '';
+  }
+}
+
 // Layout
 
 .wrapper {
@@ -136,8 +190,87 @@ input[type='checkbox'] {
   }
 }
 
-.group {
+.heading {
   > * + * {
     margin-top: 0.4rem;
+  }
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  > * + * {
+    margin-left: 0.8rem;
+  }
+}
+
+.summary {
+  margin-top: 4rem;
+  @include smUp {
+    margin-top: 4.6rem;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-gap: 2.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  @include smUp {
+    grid-gap: 3rem;
+  }
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.4rem;
+    background: gray;
+    content: '';
+  }
+  > .text-big {
+    margin-top: 2.8rem;
+  }
+  > .text-secondary {
+    margin-top: 0.9rem;
+  }
+  > .text-small {
+    display: flex;
+    align-items: center;
+    margin-top: 2.5rem;
+    &::before {
+      display: block;
+      width: 0.8rem;
+      height: 0.4rem;
+      margin-right: 0.4rem;
+      content: '';
+    }
+    &[data-change='up'] {
+      color: var(--positive);
+      &::before {
+        background: center / contain no-repeat url(icon-up.svg);
+      }
+    }
+    &[data-change='down'] {
+      color: var(--negative);
+      &::before {
+        background: center / contain no-repeat url(icon-down.svg);
+      }
+    }
+  }
+}
+
+@each $platform, $color in $platforms {
+  .card[data-platform='#{$platform}'] {
+    &::before {
+      background: $color;
+    }
+    > .account::before {
+      background: center / contain no-repeat url(icon-#{$platform}.svg);
+    }
   }
 }

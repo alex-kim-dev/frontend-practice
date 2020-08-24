@@ -8,10 +8,20 @@ block fonts
   +googleFonts([ 'family=Inter&display=swap&text=FOLWERS%20UBCI', 'family=Inter:wght@700&display=swap&text=Social%20MedDshbrTtFw%3A%2Ck%40nfyN.Ov-PgVLR%250123456789', ])
 
 block content
+  -
+    const format = num =>
+      num >= 10000 ? `${Math.floor(num / 1000)}k` : String(num);
+    const summaryData = [
+      ['facebook',  '@nathanf',      1987,   12],
+      ['twitter',   '@nathanf',      1044,   99],
+      ['instagram', '@realnathanf', 11111, 1099],
+      ['youtube',   'Nathan F.',     8239, -144],
+    ];
+    
   .wrapper
     .container
       header.header
-        .group
+        .heading
           h1.h1 Social media dashboard
           p.text Total followers: 23,004
         hr.separator
@@ -19,30 +29,20 @@ block content
           | Dark mode
           input.srOnly(type='checkbox')
           span.switch
-
-//- 
-  @nathanf
-  1987
-  Followers
-  12 Today
-  
-  @nathanf
-  1044
-  Followers
-  99 Today
-  
-  @realnathanf
-  11k
-  Followers
-  1099 Today
-  
-  Nathan F.
-  8239
-  Subscribers
-  144 Today
-  
-  
-  
+      main
+        section.summary
+          h2.srOnly Summary
+          ul.grid
+            each record in summaryData
+              - const [platform, account, total, today] = record;
+              li.cell.card(data-platform=`${platform}`)
+                h3.srOnly #{platform}
+                p.account #{account}
+                strong.text-big #{format(total)}
+                p.text-secondary #{platform === 'youtube' ? 'Subscribers' : 'Followers'}
+                p.text-small(data-change=`${today < 0 ? "down" : "up"}`)
+                  | #{Math.abs(today)} Today
+//-
   Overview - Today
   
   Page Views
