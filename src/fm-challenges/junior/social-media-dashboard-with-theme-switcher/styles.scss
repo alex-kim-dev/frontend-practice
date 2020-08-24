@@ -11,11 +11,25 @@
   --switch-off: #aeb3cb;
   --switch-on: linear-gradient(225deg, #40db82 0%, #388fe7 98.02%);
   --switch-thumb: #f1f3fa;
-  --switch-thumb-dark: #252b42;
+  --switch-focus: #252b42;
   --separator: #848bab;
   --cell: #f1f3fa;
+  --cell-hover: #e1e4f0;
   --positive: #1eb589;
   --negative: #dc414c;
+}
+
+body[theme='dark'] {
+  --bg: #1d1f29;
+  --bg-top: #20222f;
+  --text-primary: #fff;
+  --text-secondary: #8c98c6;
+  --switch-off: var(--switch-on);
+  --switch-thumb: #252b42;
+  --switch-focus: #f1f3fa;
+  --separator: #333a55;
+  --cell: #252b42;
+  --cell-hover: #333a55;
 }
 
 $platforms: (
@@ -57,12 +71,17 @@ body {
   text-transform: capitalize;
 }
 
+body[theme='dark'] .h2 {
+  color: var(--text-primary);
+}
+
 .text {
   color: var(--text-secondary);
   font-weight: 700;
   font-size: 1.4rem;
   text-transform: capitalize;
   &-big {
+    color: var(--text-primary);
     font-weight: 700;
     font-size: 5.6rem;
     line-height: 4.8rem;
@@ -121,7 +140,7 @@ body {
 
 input[type='checkbox'] {
   &:focus + .switch {
-    box-shadow: 0 0 0 0.2rem var(--switch-thumb-dark);
+    box-shadow: 0 0 0 0.2rem var(--switch-focus);
   }
   &:checked + .switch {
     background: var(--switch-on);
@@ -195,6 +214,7 @@ input[type='checkbox'] {
 
 .wrapper {
   position: relative;
+  min-height: 100vh;
   padding: 3.6rem 2.4rem 4.5rem;
   background: var(--bg);
   &::before {
