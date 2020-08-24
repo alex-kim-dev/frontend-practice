@@ -10,10 +10,10 @@
   --text-secondary: #63687d;
   --switch-off: #aeb3cb;
   --switch-on: linear-gradient(225deg, #40db82 0%, #388fe7 98.02%);
-  --switch-thumb: #f1f3fa; // +
+  --switch-thumb: #f1f3fa;
   --switch-thumb-dark: #252b42;
   --separator: #848bab;
-  --cell: #f1f3fa; // +
+  --cell: #f1f3fa;
   --positive: #1eb589;
   --negative: #dc414c;
 }
@@ -50,6 +50,13 @@ body {
   text-transform: capitalize;
 }
 
+.h2 {
+  color: var(--text-secondary);
+  font-weight: 700;
+  font-size: 2.4rem;
+  text-transform: capitalize;
+}
+
 .text {
   color: var(--text-secondary);
   font-weight: 700;
@@ -67,10 +74,6 @@ body {
     font-size: 1.2rem;
     letter-spacing: 0.42em;
     text-transform: uppercase;
-  }
-  &-small {
-    font-weight: 700;
-    font-size: 1.2rem;
   }
 }
 
@@ -151,6 +154,43 @@ input[type='checkbox'] {
   }
 }
 
+.change {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  &::before {
+    display: block;
+    width: 0.8rem;
+    height: 0.4rem;
+    margin-right: 0.4rem;
+    content: '';
+  }
+  &[data-change='up'] {
+    color: var(--positive);
+    &::before {
+      background: center / contain no-repeat url(icon-up.svg);
+    }
+  }
+  &[data-change='down'] {
+    color: var(--negative);
+    &::before {
+      background: center / contain no-repeat url(icon-down.svg);
+    }
+  }
+}
+
+.stat {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 3.2rem;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+}
+
 // Layout
 
 .wrapper {
@@ -188,19 +228,17 @@ input[type='checkbox'] {
       display: none;
     }
   }
+  > .label {
+    transform: translateY(-2px);
+  }
 }
 
 .heading {
   > * + * {
     margin-top: 0.4rem;
   }
-}
-
-.group {
-  display: flex;
-  align-items: center;
-  > * + * {
-    margin-left: 0.8rem;
+  > .h1 {
+    transform: translateX(-2px);
   }
 }
 
@@ -238,29 +276,8 @@ input[type='checkbox'] {
   > .text-secondary {
     margin-top: 0.9rem;
   }
-  > .text-small {
-    display: flex;
-    align-items: center;
+  > .change {
     margin-top: 2.5rem;
-    &::before {
-      display: block;
-      width: 0.8rem;
-      height: 0.4rem;
-      margin-right: 0.4rem;
-      content: '';
-    }
-    &[data-change='up'] {
-      color: var(--positive);
-      &::before {
-        background: center / contain no-repeat url(icon-up.svg);
-      }
-    }
-    &[data-change='down'] {
-      color: var(--negative);
-      &::before {
-        background: center / contain no-repeat url(icon-down.svg);
-      }
-    }
   }
 }
 
@@ -273,4 +290,37 @@ input[type='checkbox'] {
       background: center / contain no-repeat url(icon-#{$platform}.svg);
     }
   }
+  .icon[data-platform='#{$platform}'] {
+    background: center / contain no-repeat url(icon-#{$platform}.svg);
+  }
+}
+
+.overview {
+  margin-top: 4.6rem;
+  > .grid {
+    grid-gap: 1.6rem 2.4rem;
+    margin-top: 2.4rem;
+    @include smUp {
+      grid-gap: 2.4rem 3rem;
+    }
+  }
+  .cell {
+    padding: 2.6rem 3.1rem 1.9rem 2.4rem;
+    > * + * {
+      margin-top: 2.1rem;
+    }
+  }
+  .text {
+    transform: translateY(-2px);
+  }
+  .change {
+    transform: translateY(7px);
+  }
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }

@@ -11,11 +11,23 @@ block content
   -
     const format = num =>
       num >= 10000 ? `${Math.floor(num / 1000)}k` : String(num);
+    
     const summaryData = [
       ['facebook',  '@nathanf',      1987,   12],
       ['twitter',   '@nathanf',      1044,   99],
       ['instagram', '@realnathanf', 11111, 1099],
       ['youtube',   'Nathan F.',     8239, -144],
+    ];
+    
+    const overviewData = [
+      ['Page views',    'facebook',     87,    3],
+      ['Likes',         'facebook',     52,   -2],
+      ['Likes',         'instagram',  5462, 2257],
+      ['Profile views', 'instagram', 52100, 1375],
+      ['Retweets',      'twitter',     117,  303],
+      ['Likes',         'twitter',     507,  553],
+      ['Likes',         'youtube',     107,  -19],
+      ['Total views',   'youtube',    1407,  -12],
     ];
     
   .wrapper
@@ -40,39 +52,20 @@ block content
                 p.account #{account}
                 strong.text-big #{format(total)}
                 p.text-secondary #{platform === 'youtube' ? 'Subscribers' : 'Followers'}
-                p.text-small(data-change=`${today < 0 ? "down" : "up"}`)
+                p.change(data-change=`${today < 0 ? "down" : "up"}`)
                   | #{Math.abs(today)} Today
-//-
-  Overview - Today
-  
-  Page Views
-  87
-  3%
-  
-  Likes
-  52
-  2%
-  
-  Likes
-  5462
-  2257%
-  
-  Profile Views
-  52k
-  1375%
-  
-  Retweets
-  117
-  303%
-  
-  Likes
-  507
-  553%
-  
-  Likes
-  107
-  19%
-  
-  Total Views
-  1407
-  12%
+        section.overview
+          h2.h2 Overview - today
+          ul.grid
+            each record in overviewData
+              - const [heading, platform, stat, change] = record;
+              li.cell
+                .group
+                  h3.text
+                    | #{heading}
+                    span.srOnly for #{platform}
+                  .icon(data-platform=`${platform}`)
+                .group
+                  p.stat #{format(stat)}
+                  p.change(data-change=`${change < 0 ? "down" : "up"}`)
+                    | #{Math.abs(change)}%
