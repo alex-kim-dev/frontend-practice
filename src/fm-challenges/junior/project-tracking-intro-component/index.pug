@@ -1,7 +1,7 @@
 extends ../../../includes/layout
 
 block variables
-  - const title = "Project tracking intro component";
+  - const title = "Project tracking intro with css hamburger menu";
 
 block fonts
   +googleFonts([ 'family=Barlow&display=swap&text=Project%20planigdmkfs', 'family=Barlow+Condensed&display=swap&text=MONGRAPH%20DSBTEVIW', 'family=Barlow+Condensed:wght@700&display=swap&text=NEW%20PORFULISGHTYAMCD', ])
@@ -19,8 +19,8 @@ block content
         ul.menu_list
           each label in ['Product', 'Features', 'Pricing']
             li: a.menu_link(href='javascript:void(0)') #{label}
-          hr.menu_separator
-          li.menu_last: a.menu_link(href='javascript:void(0)') Login
+          li.menu_separator
+          li: a.menu_link(href='javascript:void(0)') Login
     section.intro
       .badge New
       h1.intro_h1 Monograph Dashboard
