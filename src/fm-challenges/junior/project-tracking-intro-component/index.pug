@@ -7,14 +7,22 @@ block fonts
   +googleFonts([ 'family=Barlow&display=swap&text=Project%20planigdmkfs', 'family=Barlow+Condensed&display=swap&text=MONGRAPH%20DSBTEVIW', 'family=Barlow+Condensed:wght@700&display=swap&text=NEW%20PORFULISGHTYAMCD', ])
 
 block content
-  | Hello world
+  .wrapper
+    header.header
+      img.logo(src='logo.svg' alt='Project tracker logo')
+      nav.menu
+        input#menuToggle.srOnly.menu_checkbox(type='checkbox')
+        label.menu_hamburger(for='menuToggle')
+          span
+          span
+          span
+        ul.menu_list
+          each label in ['Product', 'Features', 'Pricing']
+            li: a.menu_link(href='javascript:void(0)') #{label}
+          hr.menu_separator
+          li.menu_last: a.menu_link(href='javascript:void(0)') Login
 
 //- 
-  Product
-  Features
-  Pricing
-  Login
-  
   New
   Monograph Dashboard
   
