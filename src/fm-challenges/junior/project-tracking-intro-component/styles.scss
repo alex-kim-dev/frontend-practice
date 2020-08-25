@@ -132,3 +132,66 @@ $light-grayish-blue: hsl(207, 33%, 95%);
     border: none;
   }
 }
+
+.intro {
+  margin-top: 39rem;
+  > .badge {
+    margin-right: 1.6rem;
+  }
+  &_h1 {
+    display: inline-block;
+    color: $grayish-blue;
+    font: 1.6rem Barlow Condensed, sans-serif;
+    line-height: 160%;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
+  &_h2 {
+    max-width: 30rem;
+    margin-top: 1.6rem;
+    color: $very-dark-blue;
+    font: 700 4rem Barlow Condensed, sans-serif;
+    line-height: 100%;
+    text-transform: uppercase;
+  }
+  &_text {
+    max-width: 28rem;
+    margin-top: 1.6rem;
+    margin-bottom: 2.7rem;
+    color: $dark-grayish-blue;
+    font: 1.8rem Barlow, sans-serif;
+    line-height: 145%;
+  }
+  > .btn {
+    margin-right: 2rem;
+  }
+  &_label {
+    color: $grayish-blue;
+    font: 1.4rem Barlow Condensed, sans-serif;
+    line-height: 185%;
+    letter-spacing: 0.18em;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 1rem 0.4rem;
+  color: white;
+  font: 700 1.6rem Barlow Condensed, sans-serif;
+  text-transform: uppercase;
+  background: $very-dark-blue;
+  border-radius: 1.2rem;
+}
+
+.btn {
+  padding: 1.1rem 2.4rem 1rem;
+  color: white;
+  font: 700 1.6rem Barlow Condensed, sans-serif;
+  text-transform: uppercase;
+  background: $red;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
