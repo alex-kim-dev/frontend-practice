@@ -1,9 +1,9 @@
 {
-  "name": "html-templates",
+  "name": "@frontend/no-framework",
   "private": true,
   "description": "A set of html templates made while practicing core web coding skills.",
   "version": "0.1.0",
-  "author": "Alex Kim",
+  "author": "Alex Kim <45559664+Alex-K1m@users.noreply.github.com>",
   "scripts": {
     "clean:dev": "gulp cleanDev",
     "clean:prod": "gulp cleanProd",
@@ -11,35 +11,18 @@
     "build": "gulp build",
     "serve": "gulp serve",
     "lint": "run-p -c lint:*",
-    "lint:js": "eslint .",
+    "lint:js": "eslint --ext js .",
     "lint:css": "stylelint '**/*.scss'",
     "lint:html": "prettier -c '**/*.pug'",
-    "lint:xml": "prettier -c '**/*.*(svg|xml)'",
     "fix": "run-p -c fix:*",
-    "fix:js": "eslint --fix .",
+    "fix:js": "eslint --fix --ext js .",
     "fix:css": "stylelint --fix '**/*.scss'",
     "fix:html": "prettier --write '**/*.pug'",
-    "fix:xml": "prettier --write '**/*.*(svg|xml)'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": "eslint",
-    "*.scss": "stylelint",
-    "*.pug": "prettier -c"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Alex-K1m/html-templates.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Alex-K1m/html-templates/issues"
-  },
-  "homepage": "https://alex-k1m.github.io/html-templates/",
+  "repository": "git@github.com:Alex-K1m/frontend-practice.git",
+  "bugs": "https://github.com/Alex-K1m/frontend-practice/issues",
+  "homepage": "https://alex-k1m.github.io/frontend-practice/",
   "devDependencies": {
     "@babel/core": "^7.10.0",
     "@babel/preset-env": "^7.10.0",
@@ -65,8 +48,6 @@
     "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-terser": "^1.2.0",
-    "husky": "^4.2.5",
-    "lint-staged": "^10.2.6",
     "npm-run-all": "^4.1.5",
     "postcss-sort-media-queries": "^1.5.24",
     "prettier": "^2.0.5",

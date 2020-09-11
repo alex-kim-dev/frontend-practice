@@ -1,4 +1,4 @@
-@import '../../../../node_modules/reset-css/sass/reset';
+@import '../../../includes/reset';
 @import '../../../includes/defaults';
 
 $breakpoint-tablet: rem(768px);
@@ -106,7 +106,7 @@ $icons: 'icon-supervisor.svg', 'icon-team-builder.svg', 'icon-karma.svg',
       background: nth($colors-primary, $i);
     }
     &:nth-child(#{$i}) > .card_icon {
-      background: url(#{nth($icons, $i)}) center;
+      background: url(#{nth($icons $i)}) center;
       background-size: contain;
     }
   }

@@ -1,0 +1,33 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "description": "Frontend projects for practicing with various tech",
+  "repository": "git@github.com:Alex-K1m/frontend-practice.git",
+  "bugs": "https://github.com/Alex-K1m/frontend-practice/issues",
+  "homepage": "https://alex-k1m.github.io/frontend-practice/",
+  "author": "Alex Kim <45559664+Alex-K1m@users.noreply.github.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "no-framework",
+    "react"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "no-framework/**/*.js": "yarn nofr eslint --fix",
+    "no-framework/**/*.scss": "yarn nofr stylelint --fix",
+    "no-framework/**/*.pug": "yarn nofr prettier --write"
+  },
+  "scripts": {
+    "nofr": "yarn workspace @frontend/no-framework",
+    "react": "yarn workspace @frontend/react"
+  },
+  "devDependencies": {
+    "husky": "^4.3.0",
+    "lint-staged": "^10.3.0"
+  }
+}
