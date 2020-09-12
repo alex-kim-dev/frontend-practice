@@ -240,7 +240,7 @@ $c-light: white;
     list-style: none;
     @for $i from 1 through length($contactsIcons) {
       :nth-child(#{$i})::before {
-        background: url(#{nth($contactsIcons $i)}) left center no-repeat;
+        background: url(#{nth($contactsIcons, $i)}) left center no-repeat;
         background-size: contain;
       }
     }
@@ -448,7 +448,7 @@ $c-light: white;
     }
     @for $i from 1 through length($illustrations) {
       :nth-child(#{$i}) .illustration {
-        background-image: url(#{nth($illustrations $i)});
+        background-image: url(#{nth($illustrations, $i)});
       }
     }
   }
