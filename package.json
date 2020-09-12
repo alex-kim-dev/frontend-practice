@@ -20,7 +20,12 @@
   "lint-staged": {
     "no-framework/**/*.js": "yarn nofr eslint --fix",
     "no-framework/**/*.scss": "yarn nofr stylelint --fix",
-    "no-framework/**/*.pug": "yarn nofr prettier --write"
+    "no-framework/**/*.pug": "yarn nofr prettier --write",
+    "react/**/*.{js,jsx}": [
+      "yarn react eslint --fix",
+      "yarn react jest --findRelatedTests"
+    ],
+    "react/**/*.{json,yml,yaml,md}": "prettier --write"
   },
   "scripts": {
     "nofr": "yarn workspace @frontend/no-framework",

@@ -1,0 +1,22 @@
+parser: babel-eslint
+
+extends:
+  - airbnb
+  - airbnb/hooks
+  - plugin:jest/recommended
+  - plugin:jest/style
+  - plugin:prettier/recommended
+  - prettier/react
+
+env:
+  browser: true
+  node: true
+  jest: true
+
+plugins:
+  - simple-import-sort
+
+rules:
+  simple-import-sort/sort: error
+  sort-imports: off
+  import/order: off
