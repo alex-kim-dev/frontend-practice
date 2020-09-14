@@ -1,48 +1,43 @@
-# HTML templates
+# Frontend practice / no framework
 
-A set of html templates that i make for practicing core web coding skills.
+A set of html templates that I make for practicing core web coding skills.
 
-Currently i am doing [Frontend Mentor](https://www.frontendmentor.io/) challenges. You can find my solutions at [my profile](https://www.frontendmentor.io/profile/Alex-K1m). Feel free to leave a comment or give it a like.
-
-### Tech stack
+## Tech stack
 
 - Task runner: Gulp
 - Dev server: BrowserSync + hot reloading
 - Template engine: Pug
 - Stylesheets: Sass + combining media queries, autoprefixer, minification, inlining into html file
 - Javascript: Browserify + Babel + minification
-- Keeping code tidy: Eslint, Stylelint, Prettier + Husky & LintStaged for linting before every commit
+- Keeping code tidy: Eslint, Stylelint, Prettier + Husky & Lint Staged for linting before every commit
 
-### Directories
+## Directories
 
 - `src/fm-challenges/<level>/<challenge>/`: FrontendMentor solutions
 - `src/includes/`: some reusable parts (markup, styles, anything)
   - `/layout.pug`: wrapper for each fm challenge
 
-### Run locally
+## Run locally
 
-1. Clone repo
-  ```bash
-  git clone https://github.com/Alex-K1m/html-templates.git
-  ```
+```shell
+# clone
+git clone https://github.com/Alex-K1m/frontend-practice.git
 
-2. Install dependencies
-  ```bash
-  npm install
-  ```
+# install
+cd frontend-practice
+yarn
 
-3. Run dev server
-  ```bash
-  npm start
-  ```
+# start dev server
+yarn nofr start
+```
 
-#### Other commands
+## Scripts
 
-```bash
-npm run build
-npm run serve # starts up a local web server for hosting production build
-npm run clean:dev # deletes development build
-npm run clean:prod # deletes production build
-npm run lint # checks for code styling issues
-npm run fix # fixes all fixable code styling issues (changes files)
+```shell
+yarn nofr build
+yarn nofr serve # starts up a local web server for hosting production build
+yarn nofr clean:dev # deletes development build
+yarn nofr clean:prod # deletes production build
+yarn nofr lint # checks for code styling issues
+yarn nofr fix # fixes all fixable code styling issues (changes files)
 ```
