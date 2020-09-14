@@ -1,0 +1,247 @@
+@import '../../../includes/reset';
+@import '../../../includes/defaults';
+
+$very-dark-grayish-blue: hsl(217, 19%, 35%);
+$desaturated-dark-blue: hsl(214, 17%, 51%);
+$grayish-blue: hsl(212, 23%, 69%);
+$light-grayish-blue: hsl(210, 46%, 95%);
+$light: white;
+
+@mixin mdUp {
+  @media (min-width: rem(794px)) {
+    @content;
+  }
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 2.4rem;
+  overflow: auto;
+  background: $light-grayish-blue;
+  > .card {
+    max-width: 37.7rem;
+    margin-bottom: 0.7rem;
+    @include mdUp {
+      max-width: 73rem;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.card {
+  display: flex;
+  flex-flow: column;
+  overflow: hidden;
+  font-family: Manrope, sans-serif;
+  letter-spacing: 0.01em;
+  background: $light;
+  border-radius: 0.8rem;
+  box-shadow: 0 4rem 2.8rem rgba($grayish-blue, 0.2);
+  @include mdUp {
+    flex-flow: row;
+    overflow: visible;
+  }
+  > header {
+    position: relative;
+    height: 0;
+    padding-bottom: 61.15%;
+    @include mdUp {
+      flex: 1 0 28.5rem;
+      height: auto;
+      padding-bottom: 0;
+      overflow: hidden;
+      border-top-left-radius: 0.8rem;
+      border-bottom-left-radius: 0.8rem;
+    }
+    > img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 0 -16px;
+      @include mdUp {
+        object-position: left;
+      }
+    }
+  }
+  > .card-body {
+    position: relative;
+    padding: 3.6rem 3.2rem 2rem;
+    @include mdUp {
+      padding: 3.2rem 4rem;
+    }
+    > h2 {
+      color: $very-dark-grayish-blue;
+      font-weight: 700;
+      font-size: 1.6rem;
+      line-height: 1.5;
+      @include mdUp {
+        font-size: 2rem;
+        line-height: 1.4;
+        letter-spacing: 0.012em;
+      }
+    }
+    > p {
+      margin-top: 1.2rem;
+      color: $desaturated-dark-blue;
+      font-weight: 500;
+      font-size: 1.3rem;
+      line-height: 1.6;
+      @include mdUp {
+        letter-spacing: 0.008em;
+      }
+    }
+    > .meta {
+      margin-top: 3.2rem;
+      @include mdUp {
+        margin-top: 2rem;
+      }
+    }
+  }
+}
+
+.meta {
+  display: grid;
+  grid-gap: 0.5rem 1.6rem;
+  grid-template:
+    'avatar name share' auto
+    'avatar date share' auto
+    / auto 1fr auto;
+  align-items: center;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  > img {
+    grid-area: avatar;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+  > p {
+    grid-area: name;
+    align-self: end;
+    color: $very-dark-grayish-blue;
+    font-weight: 700;
+  }
+  > time {
+    grid-area: date;
+    align-self: start;
+    color: $grayish-blue;
+    font-weight: 500;
+  }
+  > button {
+    z-index: 10;
+    grid-area: share;
+    background: $light-grayish-blue;
+    border-radius: 50%;
+    &.inverse {
+      background: $desaturated-dark-blue;
+      > svg > path {
+        fill: $light;
+      }
+      &:hover {
+        background: $light-grayish-blue;
+        > svg > path {
+          fill: $desaturated-dark-blue;
+        }
+      }
+    }
+  }
+}
+
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  padding: 0.4rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  > svg > path {
+    transition: fill 0.2s;
+  }
+  &:hover {
+    background: $desaturated-dark-blue;
+    outline: none;
+    > svg > path {
+      fill: $light;
+    }
+  }
+  &:active {
+    transform: translateY(0.2rem);
+  }
+  &:focus {
+    outline: 0.1rem solid $grayish-blue;
+  }
+}
+
+.share {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 2.4rem 3.2rem;
+  background: $very-dark-grayish-blue;
+  transition: visibility 0s, bottom 0.3s ease-out, opacity 0.3s ease-out;
+  @include mdUp {
+    right: 5.6rem;
+    bottom: 9.6rem;
+    left: auto;
+    width: auto;
+    padding: 1.2rem 3.1rem 1.1rem 3.7rem;
+    border-radius: 0.8rem;
+    transform: translateX(50%);
+    &::after {
+      position: absolute;
+      bottom: -1.2rem;
+      left: 50%;
+      border-top: 1.2rem solid $very-dark-grayish-blue;
+      border-right: 1.2rem solid transparent;
+      border-left: 1.2rem solid transparent;
+      transform: translateX(-50%);
+      content: '';
+    }
+  }
+  &.hidden {
+    bottom: -8rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.3s, bottom 0.3s ease-out, opacity 0.3s ease-out;
+    @include mdUp {
+      bottom: 8rem;
+    }
+  }
+  > p {
+    color: $grayish-blue;
+    font: 500 1.2rem Manrope, sans-serif;
+    letter-spacing: 0.48em;
+    text-transform: uppercase;
+  }
+  > ul {
+    display: flex;
+    margin: 0;
+    margin-left: 1rem;
+    padding: 0;
+    list-style: none;
+    > li {
+      display: block;
+      &:not(:first-child) {
+        margin-left: 0.4rem;
+      }
+      > button {
+        border-radius: 0.6rem;
+      }
+    }
+  }
+}

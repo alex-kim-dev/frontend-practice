@@ -1,48 +1,40 @@
-# HTML templates
+# Frontend practice
 
-A set of html templates that i make for practicing core web coding skills.
+Currently I am doing [Frontend Mentor](https://www.frontendmentor.io/) challenges. You can find my solutions at [my profile](https://www.frontendmentor.io/profile/Alex-K1m). Feel free to leave a comment or give it a like.
 
-Currently i am doing [Frontend Mentor](https://www.frontendmentor.io/) challenges. You can find my solutions at [my profile](https://www.frontendmentor.io/profile/Alex-K1m). Feel free to leave a comment or give it a like.
+This is a monorepo that contains 2 sets of solutions:
 
-### Tech stack
+- **`/no-framework`**: built using Pug, SCSS, plain JS
+- **`/react`**: built using GatsbyJS, React, + libraries
 
-- Task runner: Gulp
-- Dev server: BrowserSync + hot reloading
-- Template engine: Pug
-- Stylesheets: Sass + combining media queries, autoprefixer, minification, inlining into html file
-- Javascript: Browserify + Babel + minification
-- Keeping code tidy: Eslint, Stylelint, Prettier + Husky & LintStaged for linting before every commit
+Each set is a workspace inside the monorepo, and it has its own `package.json` and a number of scripts included. To execute a script for a particular workspace use `yarn <workspace> <script>`. The workspace names are:
 
-### Directories
+- `nofr` for plain js solutions
+- `react` for gatsby-react solutions
 
-- `src/fm-challenges/<level>/<challenge>/`: FrontendMentor solutions
-- `src/includes/`: some reusable parts (markup, styles, anything)
-  - `/layout.pug`: wrapper for each fm challenge
+## Prerequisites
 
-### Run locally
+- [NodeJS](https://nodejs.org/en/)
+- [Yarn v1](https://classic.yarnpkg.com/en/):
 
-1. Clone repo
-  ```bash
-  git clone https://github.com/Alex-K1m/html-templates.git
-  ```
+## Run locally
+
+1. Get the repo
+
+```shell
+git clone https://github.com/Alex-K1m/frontend-practice.git
+```
 
 2. Install dependencies
-  ```bash
-  npm install
-  ```
 
-3. Run dev server
-  ```bash
-  npm start
-  ```
+```shell
+cd frontend-practice
+yarn
+```
 
-#### Other commands
+3. Run `start` script for a particular workpace
 
-```bash
-npm run build
-npm run serve # starts up a local web server for hosting production build
-npm run clean:dev # deletes development build
-npm run clean:prod # deletes production build
-npm run lint # checks for code styling issues
-npm run fix # fixes all fixable code styling issues (changes files)
+```shell
+yarn nofr start # no framework solutions
+yarn react start # gatsby react solutions
 ```

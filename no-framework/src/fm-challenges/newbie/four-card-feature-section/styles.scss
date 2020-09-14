@@ -1,0 +1,168 @@
+@import '../../../includes/reset';
+@import '../../../includes/defaults';
+
+$breakpoint-tablet: rem(768px);
+$breakpoint-desktop: rem(1200px);
+
+$colors-primary: hsl(180, 62%, 55%), hsl(0, 78%, 62%), hsl(34, 97%, 64%),
+  hsl(212, 86%, 64%);
+$color-neutral-very-dark-blue: hsl(234, 12%, 34%);
+$color-neutral-grayish-blue: hsl(229, 6%, 66%);
+$color-neutral-very-light-gray: hsl(0, 0%, 98%);
+$color-back: hsl(0, 0, 100%);
+
+$icons: 'icon-supervisor.svg', 'icon-team-builder.svg', 'icon-karma.svg',
+  'icon-calculator.svg';
+
+.text {
+  color: $color-neutral-grayish-blue;
+  font-size: 1.6rem;
+  font-family: Poppins, sans-serif;
+  line-height: 160%;
+  letter-spacing: -0.025em;
+  &-h2 {
+    color: $color-neutral-very-dark-blue;
+    font-weight: 200;
+    font-size: 2.4rem;
+    line-height: 150%;
+    letter-spacing: 0.01em;
+  }
+  &-h3 {
+    color: $color-neutral-very-dark-blue;
+    font-size: 2rem;
+    line-height: 135%;
+    letter-spacing: 0;
+  }
+  &-strong {
+    font-weight: 600;
+  }
+  &-sm {
+    font-size: 1.3rem;
+    line-height: 180%;
+    letter-spacing: 0.01em;
+  }
+}
+
+.feature {
+  padding: 8.4rem 3.2rem 8rem;
+  background: $color-neutral-very-light-gray;
+  &_header {
+    max-width: 52rem;
+    margin: auto;
+    text-align: center;
+  }
+  &_heading {
+    margin: 0;
+  }
+  &_caption {
+    margin: 1.6rem 0 0;
+  }
+  &_list {
+    display: grid;
+    grid-gap: 2.4rem;
+    justify-content: center;
+    margin-top: 7.5rem;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 2.8rem;
+  overflow: hidden;
+  background: $color-back;
+  border-radius: 0.8rem;
+  box-shadow: 0 1.6rem 1.6rem hsla(212, 86%, 64%, 0.1);
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    height: 0.4rem;
+    transform: translateX(-50%);
+    content: '';
+  }
+  &_heading {
+    margin: 0;
+    font-weight: 600;
+  }
+  &_text {
+    flex: 1;
+    margin: 0.4rem 0 0;
+  }
+  &_icon {
+    align-self: flex-end;
+    width: 5.7rem;
+    height: 5.7rem;
+    margin-top: 3.2rem;
+  }
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i})::before {
+      background: nth($colors-primary, $i);
+    }
+    &:nth-child(#{$i}) > .card_icon {
+      background: url(#{nth($icons, $i)}) center;
+      background-size: contain;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .text {
+    &-h2 {
+      font-size: 3rem;
+    }
+  }
+  .feature {
+    &_list {
+      grid-template-columns: repeat(2, 32rem);
+      margin: 7rem auto 0;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-desktop) {
+  .text {
+    &-h2 {
+      font-size: 3.6rem;
+      line-height: 142.5%;
+    }
+  }
+  .feature {
+    padding-top: 8rem;
+    &_list {
+      grid-gap: 3rem;
+      grid-template: repeat(4, 1fr) / repeat(3, 35rem);
+      margin: 6.4rem auto 0;
+    }
+  }
+
+  .card {
+    padding: 3.2rem;
+    &:nth-child(1) {
+      grid-area: 2 / 1 / span 2;
+    }
+    &:nth-child(2) {
+      grid-area: 1 / 2 / span 2;
+    }
+    &:nth-child(3) {
+      grid-area: 3 / 2 / span 2;
+    }
+    &:nth-child(4) {
+      grid-area: 2 / 3 / span 2;
+    }
+    &_text {
+      margin-top: 1rem;
+    }
+    &_icon {
+      width: 6.4rem;
+      height: 6.4rem;
+      margin-top: 3.9rem;
+    }
+  }
+}
