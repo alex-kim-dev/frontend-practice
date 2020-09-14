@@ -102,21 +102,13 @@ const fmChallenges = glob
     },
   }));
 
-const devHomepage = () =>
-  src('src/index.pug')
-    .pipe(pug({ locals: siteMeta }))
-    .pipe(dest(output.dev))
-    .pipe(browserSync.stream());
-
 const devAssets = () =>
   src('src/assets/**/*', { allowEmpty: true })
     .pipe(dest(`${output.dev}/assets`))
     .pipe(browserSync.stream());
 
 const watchFiles = () => {
-  watch('src/index.pug', { ignoreInitial: false }, devHomepage);
   watch('src/assets/**', { ignoreInitial: false }, devAssets);
-
   watch(
     'src/includes/**/*.pug',
     parallel(fmChallenges.map(({ name, tasks }) => tasks[`${name}_markup`])),
@@ -154,7 +146,7 @@ const changeFmChallengePath = path => {
 };
 
 const prodMarkup = () =>
-  src(['src/index.pug', 'src/!(includes)/**/!(_)*.pug'])
+  src('src/!(includes)/**/!(_)*.pug')
     .pipe(pug({ locals: siteMeta }))
     .pipe(rename(changeFmChallengePath))
     .pipe(dest(output.prod));
