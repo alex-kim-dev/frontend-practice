@@ -12,8 +12,13 @@
     "build": "run-p build:*",
     "build:nofr": "yarn nofr build",
     "build:react": "yarn react build",
+    "format": "yarn react format",
+    "lint": "run-p lint:*",
+    "lint:nofr": "yarn nofr lint",
+    "lint:react": "yarn react lint",
     "nofr": "yarn workspace @frontend/no-framework",
-    "react": "yarn workspace @frontend/react"
+    "react": "yarn workspace @frontend/react",
+    "test": "yarn react test"
   },
   "devDependencies": {
     "husky": "^4.3.0",
