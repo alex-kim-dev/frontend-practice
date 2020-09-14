@@ -1,5 +1,6 @@
 module.exports = {
   siteMetadata: {},
+  pathPrefix: '/frontend-practice',
   plugins: [
     { resolve: 'gatsby-plugin-react-helmet' },
     {
