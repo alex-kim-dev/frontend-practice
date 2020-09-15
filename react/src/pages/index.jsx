@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import React from 'react';
 
 const data = [
@@ -12,6 +13,7 @@ const data = [
   ['intro-component-with-signup-form', 'Intro component'],
   ['ping-coming-soon-page', 'Ping'],
   ['single-price-grid-component', 'Single price component'],
+  ['social-proof-section', 'Social proof section'],
   ['pricing-component-with-toggle', 'Pricing component'],
   ['social-media-dashboard-with-theme-switcher', 'Social media dashboard'],
   ['project-tracking-intro-component', 'Project tracking intro'],
@@ -23,7 +25,7 @@ const HomePage = () => (
     <h1>Index</h1>
     <ul>
       {data.map(([href, label]) => (
-        <li>
+        <li key={nanoid()}>
           <a href={href}>{label}</a>
         </li>
       ))}
