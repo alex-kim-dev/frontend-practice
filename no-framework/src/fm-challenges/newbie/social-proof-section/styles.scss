@@ -12,45 +12,97 @@
   --c-light: hsl(0, 0%, 100%);
 }
 
-@mixin xsOnly {
-  @media (max-width: rem(559.98px)) {
+@mixin xsDown {
+  @media (max-width: rem(767.98px)) {
+    @content;
+  }
+}
+
+@mixin smUp {
+  @media (min-width: rem(768px)) {
     @content;
   }
 }
 
 // layout
 
-.social-proof {
-  min-height: 100vh;
-  padding: 8.2rem 2.4rem 10rem;
+.wrapper {
   background:
     top / 100% auto no-repeat url(bg-pattern-top-mobile.svg),
     bottom / 100% auto no-repeat url(bg-pattern-bottom-mobile.svg);
-  background-color: var(--c-light);
+
+  @include smUp {
+    background:
+      top left no-repeat url(bg-pattern-top-desktop.svg),
+      bottom right no-repeat url(bg-pattern-bottom-desktop.svg);
+  }
+}
+
+.social-proof {
+  max-width: 44rem;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 8.2rem 2.4rem 10rem;
+
+  @include smUp {
+    display: grid;
+    grid-gap: 7rem 1.6rem;
+    grid-template:
+      'intro ratings' auto
+      'testimonials testimonials' auto
+      / 1fr 1fr;
+    align-items: center;
+    max-width: none;
+    padding-right: 4rem;
+    padding-left: 4rem;
+  }
 
   &__intro {
     display: grid;
+    grid-area: intro;
     grid-row-gap: 2.4rem;
     color: var(--c-primary);
-    text-align: center;
+
+    @include xsDown {
+      text-align: center;
+    }
   }
 
   &__ratings {
     display: grid;
+    grid-area: ratings;
     grid-row-gap: 1.6rem;
     color: var(--c-primary);
 
-    @include xsOnly {
+    @include xsDown {
       margin-top: 3.8rem;
     }
   }
 
   &__testimonials {
-    display: grid;
-    grid-row-gap: 1.6rem;
+    grid-area: testimonials;
 
-    @include xsOnly {
+    @include xsDown {
       margin-top: 5rem;
+    }
+  }
+}
+
+.grid {
+  display: flex;
+  flex-flow: column;
+  margin: -0.8rem;
+
+  @include smUp {
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+
+  &__item {
+    margin: 0.8rem;
+
+    @include smUp {
+      flex: 0 0 calc(50% - 1.6rem);
     }
   }
 }
@@ -58,6 +110,7 @@
 .card {
   display: grid;
   grid-gap: 2.6rem;
+  align-content: start;
   padding: 4rem 3.2rem 3.2rem;
   color: var(--c-light);
   background-color: var(--c-primary);
@@ -125,7 +178,10 @@
 // text
 
 .h2 {
-  font: 700 3.2rem/100% Spartan, sans-serif;
+  font-weight: 700;
+  font-size: fluidFont(3.2, 4.8, 37.5, 144, rem);
+  font-family: Spartan, sans-serif;
+  line-height: 100%;
   letter-spacing: -0.04em;
 }
 

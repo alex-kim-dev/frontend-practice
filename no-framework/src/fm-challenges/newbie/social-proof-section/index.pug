@@ -24,24 +24,29 @@ block content
       ],
     ];
 
-  section.social-proof
-    .social-proof__intro
-      h2.h2 10,000+ of our users love our products.
-      p.text.
-        We only provide great products combined with excellent customer service.
-        See what our satisfied customers are saying about our services.
-    .social-proof__ratings
-      each reviewer in reviewers
-        .rating
-          .stars
-          p.text-subtitle Rated 5 Stars in #{reviewer}
-    .social-proof__testimonials
-      each testimonial in testimonials
-        - const [author, quote] = testimonial;
-        - const str = author.split(" ")[0].toLowerCase();
-        .card
-          .person
-            img.person__avatar.avatar(src=`image-${str}.jpg`, alt=`${author}`)
-            p.person__name.text-subtitle #{author}
-            p.person__info.text-secondary Verified Buyer
-          blockquote.quote #{quote}
+  .wrapper
+    section.social-proof
+      .social-proof__intro
+        h2.h2 10,000+ of our users love our products.
+        p.text.
+          We only provide great products combined with excellent customer service.
+          See what our satisfied customers are saying about our services.
+      .social-proof__ratings
+        each reviewer in reviewers
+          .rating
+            .stars
+            p.text-subtitle Rated 5 Stars in #{reviewer}
+      .social-proof__testimonials
+        .grid
+          each testimonial in testimonials
+            - const [author, quote] = testimonial;
+            - const str = author.split(" ")[0].toLowerCase();
+            .card.grid__item
+              .person
+                img.person__avatar.avatar(
+                  src=`image-${str}.jpg`,
+                  alt=`${author}`
+                )
+                p.person__name.text-subtitle #{author}
+                p.person__info.text-secondary Verified Buyer
+              blockquote.quote #{quote}
