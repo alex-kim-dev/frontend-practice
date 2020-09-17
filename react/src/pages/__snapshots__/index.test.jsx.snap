@@ -85,6 +85,13 @@ Array [
     </li>
     <li>
       <a
+        href="social-proof-section"
+      >
+        Social proof section
+      </a>
+    </li>
+    <li>
+      <a
         href="pricing-component-with-toggle"
       >
         Pricing component

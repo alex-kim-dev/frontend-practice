@@ -2,3 +2,5 @@ singleQuote: true
 trailingComma: all
 arrowParens: avoid
 attributeSeparator: as-needed
+pluginSearchDirs:
+  - ../

@@ -38,7 +38,7 @@
       "yarn react eslint --fix",
       "yarn react jest --findRelatedTests"
     ],
-    "react/**/*.{json,yml,yaml,md}": "prettier --write"
+    "react/**/*.{json,yml,yaml,md}": "yarn react prettier --write"
   },
   "workspaces": [
     "no-framework",
