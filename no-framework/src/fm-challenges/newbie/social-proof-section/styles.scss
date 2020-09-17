@@ -24,6 +24,18 @@
   }
 }
 
+@mixin mdUp {
+  @media (min-width: rem(1024px)) {
+    @content;
+  }
+}
+
+@mixin lgUp {
+  @media (min-width: rem(1200px)) {
+    @content;
+  }
+}
+
 // layout
 
 .wrapper {
@@ -51,20 +63,38 @@
       'intro ratings' auto
       'testimonials testimonials' auto
       / 1fr 1fr;
+    align-content: start;
     align-items: center;
     max-width: none;
     padding-right: 4rem;
     padding-left: 4rem;
   }
 
+  @include mdUp {
+    grid-gap: 7.2rem 3rem;
+    padding-top: 13.1rem;
+    padding-right: 6rem;
+    padding-left: 6rem;
+  }
+
+  @include lgUp {
+    padding-right: 16.4rem;
+    padding-left: 16.4rem;
+  }
+
   &__intro {
     display: grid;
     grid-area: intro;
     grid-row-gap: 2.4rem;
+    max-width: 46rem;
     color: var(--c-primary);
 
     @include xsDown {
       text-align: center;
+    }
+
+    @include mdUp {
+      grid-row-gap: 1.3rem;
     }
   }
 
@@ -89,20 +119,46 @@
 }
 
 .grid {
+  --margin: 0.8rem;
   display: flex;
   flex-flow: column;
-  margin: -0.8rem;
+  margin: calc(var(--margin) * -1);
 
   @include smUp {
     flex-flow: row wrap;
     justify-content: center;
   }
 
+  @include lgUp {
+    margin: -1.5rem;
+  }
+
   &__item {
-    margin: 0.8rem;
+    margin: var(--margin);
 
     @include smUp {
-      flex: 0 0 calc(50% - 1.6rem);
+      flex: 0 0 calc(50% - var(--margin) * 2);
+    }
+
+    @include mdUp {
+      flex-basis: calc(33.33% - var(--margin) * 2);
+
+      &:nth-child(1) {
+        margin-bottom: calc(1.6rem * 2 + var(--margin));
+      }
+
+      &:nth-child(2) {
+        margin-top: calc(1.6rem + var(--margin));
+        margin-bottom: calc(1.6rem + var(--margin));
+      }
+
+      &:nth-child(3) {
+        margin-top: calc(1.6rem * 2 + var(--margin));
+      }
+    }
+
+    @include lgUp {
+      --margin: 1.5rem;
     }
   }
 }
@@ -115,17 +171,43 @@
   color: var(--c-light);
   background-color: var(--c-primary);
   border-radius: 0.8rem;
+
+  @include mdUp {
+    padding-bottom: 4rem;
+  }
 }
 
 // components
 
 .rating {
   display: grid;
-  grid-gap: 1.6rem;
+  grid-gap: 1.6rem 3.2rem;
   justify-items: center;
   padding: 1.6rem;
   background-color: var(--c-secondary-light);
   border-radius: 0.8rem;
+
+  @include mdUp {
+    &:nth-child(1) {
+      margin-right: 9.6rem;
+    }
+
+    &:nth-child(2) {
+      margin-right: 4.8rem;
+      margin-left: 4.8rem;
+    }
+
+    &:nth-child(3) {
+      margin-left: 9.6rem;
+    }
+  }
+
+  @include lgUp {
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: start;
+    padding: 2rem 3.2rem;
+  }
 }
 
 .stars {
