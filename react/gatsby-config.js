@@ -1,6 +1,11 @@
 module.exports = {
-  siteMetadata: {},
+  siteMetadata: {
+    title: 'Frontend practice',
+    description: 'Frontend projects for practicing with various tech.',
+    author: 'Alex Kim, https://github.com/Alex-K1m',
+  },
   pathPrefix: '/frontend-practice',
+
   plugins: [
     { resolve: 'gatsby-plugin-react-helmet' },
     {

@@ -1,7 +1,7 @@
 module.exports = {
   site: {
-    title: 'HTML Templates',
+    title: 'Frontend practice',
     url: 'https://alex-kim.github.io',
-    baseurl: '/html-templates',
+    baseurl: '/frontend-practice',
   },
 };
