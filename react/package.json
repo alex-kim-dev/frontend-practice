@@ -27,6 +27,7 @@
     "gatsby-plugin-manifest": "^2.4.27",
     "gatsby-plugin-offline": "^3.2.26",
     "gatsby-plugin-react-helmet": "^3.3.10",
+    "gatsby-plugin-sass": "^2.3.13",
     "gatsby-plugin-sharp": "^2.6.31",
     "gatsby-source-filesystem": "^2.3.27",
     "gatsby-transformer-sharp": "^2.5.14",
@@ -34,7 +35,10 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "reset-css": "^5.0.1",
+    "sass": "^1.26.11",
+    "typeface-spartan": "^1.1.4"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
@@ -53,6 +57,7 @@
     "jest-preset-gatsby": "^1.0.79",
     "prettier": "2.1.0",
     "prettier-plugin-package": "^1.0.0",
-    "react-test-renderer": "^16.13.1"
+    "react-test-renderer": "^16.13.1",
+    "resolve-url-loader": "^3.1.1"
   }
 }
