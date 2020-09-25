@@ -3,7 +3,7 @@ import 'typeface-spartan';
 
 import React from 'react';
 
-import Seo from '../../../components/Seo';
+import Seo from '../../../../../components/Seo';
 import styles from './JobListings.module.scss';
 
 const JobListings = () => (
