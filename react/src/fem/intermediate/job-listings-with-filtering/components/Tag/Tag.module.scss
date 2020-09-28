@@ -1,0 +1,47 @@
+@use '../colors' as c;
+
+.wrapper {
+  display: inline-flex;
+  height: 3.2rem;
+  border-radius: 0.4rem;
+  overflow: hidden;
+}
+
+.tag {
+  --bg-hover: #{c.$primary};
+  --color-hover: white;
+  display: flex;
+  align-items: center;
+  padding: 0 0.8rem;
+  height: 100%;
+  background-color: c.$secondary;
+  font: 700 1.3rem/185% Spartan, sans-serif;
+  letter-spacing: -0.0077em;
+  color: c.$primary;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.delete {
+  --bg-hover: #{c.$text};
+  height: 100%;
+  width: 3.2rem;
+  background: url(../../images/icon-remove.svg) center no-repeat;
+  background-color: c.$primary;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:focus {
+    outline: none;
+    filter: brightness(0.9);
+  }
+
+  &:hover {
+    color: var(--color-hover);
+    background-color: var(--bg-hover);
+  }
+}
