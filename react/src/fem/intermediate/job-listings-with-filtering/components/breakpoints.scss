@@ -1,0 +1,5 @@
+@mixin smUp {
+  @media (min-width: 48rem) {
+    @content;
+  }
+}
