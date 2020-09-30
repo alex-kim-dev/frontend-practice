@@ -74,6 +74,8 @@ $padding-xs: 2.4rem;
 .position {
   font: 700 1.5rem/160% Spartan, sans-serif;
   color: c.$text;
+  text-decoration: none;
+  display: block;
   margin-top: 0.8rem;
 
   &:hover {

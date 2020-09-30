@@ -10,11 +10,7 @@ exports[`JobItem renders correctly 1`] = `
     <img
       alt="Photosnap logo"
       className="logo"
-      src={
-        Object {
-          "process": [Function],
-        }
-      }
+      src="https://example.com"
     />
   </div>
   <div
@@ -45,11 +41,14 @@ exports[`JobItem renders correctly 1`] = `
         </span>
       </div>
     </div>
-    <h3
+    <a
       className="position"
+      href="#"
     >
-      Senior Frontend Developer
-    </h3>
+      <h3>
+        Senior Frontend Developer
+      </h3>
+    </a>
     <div
       className="details"
     >
@@ -60,7 +59,7 @@ exports[`JobItem renders correctly 1`] = `
         Full Time
       </span>
       <span>
-        USA only
+        USA Only
       </span>
     </div>
   </div>
