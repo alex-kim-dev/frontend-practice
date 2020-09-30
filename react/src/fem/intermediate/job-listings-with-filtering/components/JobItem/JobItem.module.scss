@@ -1,0 +1,90 @@
+@use '../colors' as c;
+
+$logo-size: 4.8rem;
+$padding: 2.4rem;
+
+.job {
+  padding: $padding;
+  background-color: white;
+  border-radius: 0.5rem;
+  margin-top: $logo-size / 2;
+
+  &Highlighted {
+    background-image: linear-gradient(
+      to right,
+      c.$primary 0.5rem,
+      transparent 0.5rem,
+    );
+  }
+}
+
+.logo {
+  width: $logo-size;
+  height: $logo-size;
+  margin-top: -$logo-size / 2 - $padding;
+}
+
+.body {
+  margin-top: 0.8rem;
+}
+
+.heading {
+  font: 700 1.3rem Spartan, sans-serif;
+  color: c.$primary;
+  display: flex;
+  align-items: center;
+  flex-flow: wrap;
+  margin: -0.2rem -0.4rem;
+
+  > :first-child {
+    margin: 0.2rem 1.2rem 0.2rem 0.4rem;
+  }
+
+  > :not(:first-child) {
+    margin: 0.2rem 0.4rem;
+  }
+}
+
+.position {
+  font: 700 1.5rem/160% Spartan, sans-serif;
+  color: c.$text;
+  margin-top: 0.8rem;
+}
+
+.details {
+  font: 500 1.3rem/185% Spartan, sans-serif;
+  letter-spacing: -0.0077em;
+  color: c.$text-secondary;
+  margin-top: 0.8rem;
+
+  > :not(:first-child) {
+    &::before {
+      content: '';
+      display: inline-block;
+      margin: 0 0.8rem;
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 50%;
+      background-color: c.$text-secondary;
+      vertical-align: middle;
+    }
+  }
+}
+
+.hr {
+  border: none;
+  height: 0.1rem;
+  background-color: c.$text-secondary;
+  width: 100%;
+  margin: 1.6rem 0;
+}
+
+.tagList {
+  margin: -0.8rem;
+  display: flex;
+  flex-flow: wrap;
+}
+
+.tagListItem {
+  margin: 0.8rem;
+}

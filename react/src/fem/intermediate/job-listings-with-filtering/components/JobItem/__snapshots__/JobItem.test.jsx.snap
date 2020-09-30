@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JobItem renders correctly 1`] = `
+<div
+  className="job jobHighlighted"
+>
+  <div
+    className="logo"
+  >
+    <img
+      alt="Photosnap logo"
+      className="logo"
+      src={
+        Object {
+          "process": [Function],
+        }
+      }
+    />
+  </div>
+  <div
+    className="body"
+  >
+    <div
+      className="heading"
+    >
+      <h2>
+        Photosnap
+      </h2>
+      <div
+        className="chip"
+      >
+        <span
+          className="label"
+        >
+          New!
+        </span>
+      </div>
+      <div
+        className="chip dark"
+      >
+        <span
+          className="label"
+        >
+          Featured
+        </span>
+      </div>
+    </div>
+    <h3
+      className="position"
+    >
+      Senior Frontend Developer
+    </h3>
+    <div
+      className="details"
+    >
+      <span>
+        1d ago
+      </span>
+      <span>
+        Full Time
+      </span>
+      <span>
+        USA only
+      </span>
+    </div>
+  </div>
+  <hr
+    className="hr"
+  />
+  <ul
+    className="tagList"
+  >
+    <li
+      className="tagListItem"
+    >
+      <div
+        className="wrapper"
+      >
+        <button
+          className="tag btn"
+          onClick={[Function]}
+          type="button"
+        >
+          Frontend
+        </button>
+      </div>
+    </li>
+    <li
+      className="tagListItem"
+    >
+      <div
+        className="wrapper"
+      >
+        <button
+          className="tag btn"
+          onClick={[Function]}
+          type="button"
+        >
+          Senior
+        </button>
+      </div>
+    </li>
+    <li
+      className="tagListItem"
+    >
+      <div
+        className="wrapper"
+      >
+        <button
+          className="tag btn"
+          onClick={[Function]}
+          type="button"
+        >
+          HTML
+        </button>
+      </div>
+    </li>
+    <li
+      className="tagListItem"
+    >
+      <div
+        className="wrapper"
+      >
+        <button
+          className="tag btn"
+          onClick={[Function]}
+          type="button"
+        >
+          CSS
+        </button>
+      </div>
+    </li>
+    <li
+      className="tagListItem"
+    >
+      <div
+        className="wrapper"
+      >
+        <button
+          className="tag btn"
+          onClick={[Function]}
+          type="button"
+        >
+          JavaScript
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
