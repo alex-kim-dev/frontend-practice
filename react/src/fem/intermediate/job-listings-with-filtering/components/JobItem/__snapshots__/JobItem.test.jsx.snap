@@ -59,7 +59,7 @@ exports[`JobItem renders correctly 1`] = `
         Full Time
       </span>
       <span>
-        USA Only
+        USA only
       </span>
     </div>
   </div>
