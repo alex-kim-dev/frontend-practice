@@ -1,6 +1,3 @@
-@use '../colors' as c;
-@use '../breakpoints' as brp;
-
 :global {
   html {
     font-size: 62.5%;
@@ -22,87 +19,5 @@
     overflow: hidden;
     border: 0;
     clip: rect(1px, 1px, 1px, 1px);
-  }
-}
-
-.wrapper {
-  min-height: 100vh;
-  background:
-    url(../../images/bg-header-mobile.svg) top / 100% 15.6rem no-repeat,
-    linear-gradient(to bottom, c.$primary 15.6rem, transparent 15.6rem),
-    c.$back;
-  padding: 15.6rem 2.4rem 3.4rem;
-
-  @include brp.smUp {
-    background-image:
-      url(../../images/bg-header-desktop.svg),
-      linear-gradient(to bottom, c.$primary 15.6rem, transparent 15.6rem);
-  }
-}
-
-.container {
-  margin: 0 auto;
-  max-width: 40rem;
-
-  @include brp.smUp {
-    max-width: 111rem;
-  }
-}
-
-.filter {
-  background-color: white;
-  border-radius: 0.5rem;
-  padding: 2rem 2.4rem 2rem 2rem;
-  margin-top: -3.6rem;
-  box-shadow: 0 1.5rem 2rem -0.5rem c.$shadow;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  @include brp.smUp {
-    padding: 2rem 4rem;
-  }
-
-  &List {
-    margin: -1rem -0.8rem;
-    display: flex;
-    flex-flow: wrap;
-  }
-
-  &Item {
-    margin: 1rem 0.8rem;
-  }
-}
-
-.clearBtn {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  font: 700 1.3rem/185% Spartan, sans-serif;
-  letter-spacing: -0.0077em;
-  color: c.$text-secondary;
-  margin-left: 1.2rem;
-
-  &:hover {
-    text-decoration: underline;
-    color: c.$primary;
-  }
-}
-
-.jobList {
-  margin-top: 3.2rem;
-  display: grid;
-  grid-gap: 1.6rem;
-
-  @include brp.smUp {
-    margin-top: 4rem;
-    grid-gap: 2.4rem;
-  }
-}
-
-.extraMargin {
-  @include brp.smUp {
-    margin-top: 7.6rem;
   }
 }

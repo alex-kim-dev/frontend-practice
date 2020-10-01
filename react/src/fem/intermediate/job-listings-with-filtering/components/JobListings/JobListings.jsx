@@ -1,15 +1,14 @@
 import 'reset-css';
 import 'typeface-spartan';
+import './JobListings.module.scss';
 
-import cn from 'classnames';
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { useState } from 'react';
 
-import Seo from '../../../../../components/Seo';
 import data from '../../data.json';
-import JobItem from '../JobItem';
-import Tag from '../Tag';
-import styles from './JobListings.module.scss';
+import Filter from '../Filter';
+import JobList from '../JobList';
+import Layout from '../Layout';
 
 const JobListings = () => {
   const {
@@ -60,47 +59,25 @@ const JobListings = () => {
     setTagFilter([]);
   };
 
+  const jobsToShow = jobs.filter(({ tags }) =>
+    tagFilter.every((tag) => tags.includes(tag)),
+  );
+
   return (
-    <>
-      <Seo title='Job Listings' />
-      <div className={styles.wrapper}>
-        <div className={styles.container}>
-          {isFilterOn && (
-            <div className={styles.filter}>
-              <ul className={styles.filterList}>
-                {tagFilter.map((tag) => (
-                  <li key={tag} className={styles.filterItem}>
-                    <Tag onDelete={removeTagFromFilter(tag)}>{tag}</Tag>
-                  </li>
-                ))}
-              </ul>
-              <button
-                type='button'
-                className={styles.clearBtn}
-                onClick={clearFilter}
-              >
-                Clear
-              </button>
-            </div>
-          )}
-          <ul
-            className={cn(styles.jobList, {
-              [styles.extraMargin]: !isFilterOn,
-            })}
-          >
-            {jobs
-              .filter(({ tags }) =>
-                tagFilter.every((tag) => tags.includes(tag)),
-              )
-              .map((job) => (
-                <li key={job.id}>
-                  <JobItem data={job} onTagClick={addTagToFilter} />
-                </li>
-              ))}
-          </ul>
-        </div>
-      </div>
-    </>
+    <Layout>
+      {isFilterOn && (
+        <Filter
+          tags={tagFilter}
+          onRemoveTag={removeTagFromFilter}
+          onClearTags={clearFilter}
+        />
+      )}
+      <JobList
+        jobs={jobsToShow}
+        onTagClick={addTagToFilter}
+        extraMargin={!isFilterOn}
+      />
+    </Layout>
   );
 };
 
