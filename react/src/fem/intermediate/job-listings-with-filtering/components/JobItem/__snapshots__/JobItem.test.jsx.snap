@@ -75,13 +75,11 @@ exports[`JobItem renders correctly 1`] = `
       <div
         className="wrapper"
       >
-        <button
-          className="tag btn"
-          onClick={[Function]}
-          type="button"
+        <div
+          className="tag"
         >
           Frontend
-        </button>
+        </div>
       </div>
     </li>
     <li
@@ -90,13 +88,11 @@ exports[`JobItem renders correctly 1`] = `
       <div
         className="wrapper"
       >
-        <button
-          className="tag btn"
-          onClick={[Function]}
-          type="button"
+        <div
+          className="tag"
         >
           Senior
-        </button>
+        </div>
       </div>
     </li>
     <li
@@ -105,13 +101,11 @@ exports[`JobItem renders correctly 1`] = `
       <div
         className="wrapper"
       >
-        <button
-          className="tag btn"
-          onClick={[Function]}
-          type="button"
+        <div
+          className="tag"
         >
           HTML
-        </button>
+        </div>
       </div>
     </li>
     <li
@@ -120,13 +114,11 @@ exports[`JobItem renders correctly 1`] = `
       <div
         className="wrapper"
       >
-        <button
-          className="tag btn"
-          onClick={[Function]}
-          type="button"
+        <div
+          className="tag"
         >
           CSS
-        </button>
+        </div>
       </div>
     </li>
     <li
@@ -135,13 +127,11 @@ exports[`JobItem renders correctly 1`] = `
       <div
         className="wrapper"
       >
-        <button
-          className="tag btn"
-          onClick={[Function]}
-          type="button"
+        <div
+          className="tag"
         >
           JavaScript
-        </button>
+        </div>
       </div>
     </li>
   </ul>

@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { nanoid } from 'nanoid';
-import { arrayOf, bool, shape, string } from 'prop-types';
+import { arrayOf, bool, func, shape, string } from 'prop-types';
 import React from 'react';
 
 import Chip from '../Chip';
@@ -8,23 +8,18 @@ import Logo from '../Logo';
 import Tag from '../Tag';
 import styles from './JobItem.module.scss';
 
-const JobItem = ({ data }) => {
+const JobItem = ({ data, onTagClick }) => {
   const {
     company,
     logoUrl,
     new: isNew,
     featured: isFeatured,
     position,
-    role,
-    level,
     postedAt,
     contract,
     location,
-    languages,
-    tools,
+    tags,
   } = data;
-
-  const tags = [role, level, ...languages, ...tools];
 
   return (
     <div className={cn(styles.job, { [styles.jobHighlighted]: isFeatured })}>
@@ -51,7 +46,7 @@ const JobItem = ({ data }) => {
       <ul className={styles.tagList}>
         {tags.map((label) => (
           <li className={styles.tagListItem} key={nanoid()}>
-            <Tag onClick={() => console.log(`clicked ${label}`)}>{label}</Tag>
+            <Tag onClick={onTagClick(label)}>{label}</Tag>
           </li>
         ))}
       </ul>
@@ -66,14 +61,12 @@ JobItem.propTypes = {
     new: bool,
     featured: bool,
     position: string.isRequired,
-    role: string.isRequired,
-    level: string.isRequired,
     postedAt: string.isRequired,
     contract: string.isRequired,
     location: string.isRequired,
-    languages: arrayOf(string).isRequired,
-    tools: arrayOf(string),
+    tags: arrayOf(string),
   }).isRequired,
+  onTagClick: func.isRequired,
 };
 
 export default JobItem;

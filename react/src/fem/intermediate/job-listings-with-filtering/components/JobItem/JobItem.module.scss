@@ -9,6 +9,7 @@ $padding-xs: 2.4rem;
   background-color: white;
   border-radius: 0.5rem;
   margin-top: $logo-size-xs / 2;
+  box-shadow: 0 1.5rem 2rem -0.5rem c.$shadow;
 
   @include brp.smUp {
     display: flex;
