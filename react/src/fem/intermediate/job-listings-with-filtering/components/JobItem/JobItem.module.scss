@@ -44,7 +44,7 @@ $padding-xs: 2.4rem;
   margin-top: 0.8rem;
 
   @include brp.smUp {
-    flex: 0 1 30rem;
+    flex: 0 1 31rem;
     margin-top: 0;
     margin-left: 2.4rem;
     margin-right: 1.6rem;
@@ -52,7 +52,7 @@ $padding-xs: 2.4rem;
 }
 
 .heading {
-  font: 700 1.3rem Spartan, sans-serif;
+  font: 700 1.3rem/190% Spartan, sans-serif;
   color: c.$primary;
   display: flex;
   align-items: center;
@@ -61,6 +61,7 @@ $padding-xs: 2.4rem;
 
   @include brp.smUp {
     font-size: 1.4rem;
+    line-height: 175%;
   }
 
   > :first-child {
@@ -85,7 +86,7 @@ $padding-xs: 2.4rem;
 
   @include brp.smUp {
     font-size: 1.8rem;
-    line-height: 133%;
+    line-height: 135%;
   }
 }
 
@@ -110,6 +111,10 @@ $padding-xs: 2.4rem;
       border-radius: 50%;
       background-color: c.$text-secondary;
       vertical-align: middle;
+
+      @include brp.smUp {
+        margin: 0 1.6rem;
+      }
     }
   }
 }
