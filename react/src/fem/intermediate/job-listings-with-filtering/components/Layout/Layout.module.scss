@@ -10,6 +10,7 @@
   padding: 15.6rem 2.4rem 3.4rem;
 
   @include brp.smUp {
+    padding-bottom: 12rem;
     background-image:
       url(../../images/bg-header-desktop.svg),
       linear-gradient(to bottom, c.$primary 15.6rem, transparent 15.6rem);
