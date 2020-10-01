@@ -1,0 +1,148 @@
+@use '../colors' as c;
+@use '../breakpoints' as brp;
+
+$logo-size-xs: 4.8rem;
+$padding-xs: 2.4rem;
+
+.job {
+  padding: $padding-xs;
+  background-color: white;
+  border-radius: 0.5rem;
+  margin-top: $logo-size-xs / 2;
+  box-shadow: 0 1.5rem 2rem -0.5rem c.$shadow;
+
+  @include brp.smUp {
+    display: flex;
+    align-items: center;
+    padding: 3.2rem 4rem;
+    margin-top: 0;
+  }
+
+  &Highlighted {
+    background-image: linear-gradient(
+      to right,
+      c.$primary 0.5rem,
+      transparent 0.5rem,
+    );
+  }
+}
+
+.logo {
+  width: $logo-size-xs;
+  height: $logo-size-xs;
+  margin-top: -$logo-size-xs / 2 - $padding-xs;
+
+  @include brp.smUp {
+    flex-shrink: 0;
+    width: 8.8rem;
+    height: 8.8rem;
+    margin-top: 0;
+  }
+}
+
+.body {
+  margin-top: 0.8rem;
+
+  @include brp.smUp {
+    flex: 0 1 31rem;
+    margin-top: 0;
+    margin-left: 2.4rem;
+    margin-right: 1.6rem;
+  }
+}
+
+.heading {
+  font: 700 1.3rem/190% Spartan, sans-serif;
+  color: c.$primary;
+  display: flex;
+  align-items: center;
+  flex-flow: wrap;
+  margin: -0.2rem -0.4rem;
+
+  @include brp.smUp {
+    font-size: 1.4rem;
+    line-height: 175%;
+  }
+
+  > :first-child {
+    margin: 0.2rem 1.2rem 0.2rem 0.4rem;
+  }
+
+  > :not(:first-child) {
+    margin: 0.2rem 0.4rem;
+  }
+}
+
+.position {
+  font: 700 1.5rem/160% Spartan, sans-serif;
+  color: c.$text;
+  text-decoration: none;
+  display: block;
+  margin-top: 0.8rem;
+
+  &:hover {
+    color: c.$primary;
+  }
+
+  @include brp.smUp {
+    font-size: 1.8rem;
+    line-height: 135%;
+  }
+}
+
+.details {
+  font: 500 1.3rem/185% Spartan, sans-serif;
+  letter-spacing: -0.0077em;
+  color: c.$text-secondary;
+  margin-top: 0.8rem;
+
+  @include brp.smUp {
+    font-size: 1.5rem;
+    line-height: 160%;
+  }
+
+  > :not(:first-child) {
+    &::before {
+      content: '';
+      display: inline-block;
+      margin: 0 0.8rem;
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 50%;
+      background-color: c.$text-secondary;
+      vertical-align: middle;
+
+      @include brp.smUp {
+        margin: 0 1.6rem;
+      }
+    }
+  }
+}
+
+.hr {
+  border: none;
+  height: 0.1rem;
+  background-color: c.$text-secondary;
+  width: 100%;
+  margin: 1.6rem 0;
+
+  @include brp.smUp {
+    display: none;
+  }
+}
+
+.tagList {
+  margin: -0.8rem;
+  display: flex;
+  flex-flow: wrap;
+
+  @include brp.smUp {
+    flex: 1 1 26rem;
+    justify-content: flex-end;
+    margin-left: auto;
+  }
+}
+
+.tagListItem {
+  margin: 0.8rem;
+}

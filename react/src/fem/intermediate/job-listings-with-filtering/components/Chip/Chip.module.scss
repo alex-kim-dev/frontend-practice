@@ -1,0 +1,24 @@
+@use '../colors' as c;
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.8rem;
+  height: 2.4rem;
+  border-radius: 1.2rem;
+  background-color: c.$primary;
+  font: 700 1.1rem/127% Spartan, sans-serif;
+  letter-spacing: -0.0072em;
+  text-transform: uppercase;
+  color: white;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dark {
+  background-color: c.$text;
+}
+
+.label {
+  transform: translateY(0.1rem);
+}

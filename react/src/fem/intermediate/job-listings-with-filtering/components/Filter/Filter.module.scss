@@ -1,0 +1,43 @@
+@use '../colors' as c;
+@use '../breakpoints' as brp;
+
+.filter {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 2rem 2.4rem 2rem 2rem;
+  margin-top: -3.6rem;
+  box-shadow: 0 1.5rem 2rem -0.5rem c.$shadow;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include brp.smUp {
+    padding: 2rem 4rem;
+  }
+
+  &List {
+    margin: -0.8rem;
+    display: flex;
+    flex-flow: wrap;
+  }
+
+  &Item {
+    margin: 0.8rem;
+  }
+}
+
+.clearBtn {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: 700 1.3rem/185% Spartan, sans-serif;
+  letter-spacing: -0.0077em;
+  color: c.$text-secondary;
+  margin-left: 1.2rem;
+
+  &:hover {
+    text-decoration: underline;
+    color: c.$primary;
+  }
+}

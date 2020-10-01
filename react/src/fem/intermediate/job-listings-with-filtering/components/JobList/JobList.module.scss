@@ -1,0 +1,18 @@
+@use '../breakpoints' as brp;
+
+.jobList {
+  margin-top: 3.2rem;
+  display: grid;
+  grid-gap: 1.6rem;
+
+  @include brp.smUp {
+    margin-top: 4rem;
+    grid-gap: 2.4rem;
+  }
+}
+
+.extraMargin {
+  @include brp.smUp {
+    margin-top: 7.6rem;
+  }
+}

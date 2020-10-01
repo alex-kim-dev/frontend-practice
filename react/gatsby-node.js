@@ -7,13 +7,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         allFile(
           filter: {
             sourceInstanceName: { eq: "fem" }
-            relativePath: { glob: "*/*/**/index.js" }
+            relativePath: { glob: "*/*/pages/**/*.{js,jsx}" }
           }
         ) {
           edges {
             node {
               absolutePath
               relativeDirectory
+              name
             }
           }
         }
@@ -27,8 +28,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   result.data.allFile.edges.forEach(({ node }) => {
-    const { absolutePath, relativeDirectory } = node;
-    const [, level, pagePath] = relativeDirectory.match(/^([^/]+)(.*)$/);
+    const { absolutePath, relativeDirectory, name } = node;
+    const [, level, pageDir] = relativeDirectory.match(/^([^/]+)(.*)$/);
+    const pathEnding = /index/i.test(name) ? '' : `/${name.toLowerCase()}`;
+    const pagePath = pageDir.replace('/pages', '').concat(pathEnding);
 
     createPage({
       path: pagePath,

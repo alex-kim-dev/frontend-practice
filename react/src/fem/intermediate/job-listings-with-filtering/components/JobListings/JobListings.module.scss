@@ -1,0 +1,23 @@
+:global {
+  html {
+    font-size: 62.5%;
+  }
+
+  body {
+    font-size: 1.6rem;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+}

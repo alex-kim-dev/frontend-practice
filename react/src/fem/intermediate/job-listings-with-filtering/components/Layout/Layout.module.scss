@@ -1,0 +1,26 @@
+@use '../colors' as c;
+@use '../breakpoints' as brp;
+
+.wrapper {
+  min-height: 100vh;
+  background:
+    url(../../images/bg-header-mobile.svg) top / 100% 15.6rem no-repeat,
+    linear-gradient(to bottom, c.$primary 15.6rem, transparent 15.6rem),
+    c.$back;
+  padding: 15.6rem 2.4rem 3.4rem;
+
+  @include brp.smUp {
+    background-image:
+      url(../../images/bg-header-desktop.svg),
+      linear-gradient(to bottom, c.$primary 15.6rem, transparent 15.6rem);
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 40rem;
+
+  @include brp.smUp {
+    max-width: 111rem;
+  }
+}
