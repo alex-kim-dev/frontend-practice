@@ -1,0 +1,8 @@
+{
+  "name": "browserslist-config-custom",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A custom config for browserslist",
+  "author": "Alex Kim",
+  "license": "ISC"
+}

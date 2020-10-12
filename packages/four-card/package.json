@@ -9,13 +9,19 @@
   "homepage": "https://alex-k1m.github.io/frontend-practice/",
   "bugs": "https://github.com/Alex-K1m/frontend-practice/issues",
   "scripts": {
-    "start": "parcel src/index.pug --cache-dir .cache",
-    "build": "parcel build src/index.pug --cache-dir .cache",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel src/index.pug --out-dir public",
+    "build": "parcel build src/index.pug --no-cache --out-dir public",
+    "clean:cache": "rimraf .cache"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
+    "parcel-plugin-clean-dist": "^0.0.6",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-sort-media-queries": "1.7.26",
     "pug": "^3.0.0",
     "sass": "^1.27.0"
-  }
+  },
+  "browserslist": [
+    "extends browserslist-config-custom"
+  ]
 }
