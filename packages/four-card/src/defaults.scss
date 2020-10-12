@@ -1,0 +1,43 @@
+@use "sass:math" as math;
+
+@function rem($size) {
+  @return $size / 16px * 1rem;
+}
+
+@function fluidFont($min, $max, $minVw, $maxVw, $unit) {
+  @return calc(
+    #{$min}#{$unit} + #{$max - $min} *
+      ((100vw - #{$minVw}#{$unit}) / #{$maxVw - $minVw})
+  );
+}
+
+@function roundTo($value, $digits: 2) {
+  $div: math.pow(10, $digits);
+  @return round($value * $div) / $div;
+}
+
+@function pct($value, $divider) {
+  @return roundTo($value / $divider * 100%);
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+}

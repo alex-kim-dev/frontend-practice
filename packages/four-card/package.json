@@ -1,20 +1,21 @@
 {
-  "name": "frontend",
+  "name": "four-card",
   "version": "0.1.0",
   "private": true,
-  "description": "Frontend projects for practicing with various tech",
+  "description": "A solution for \"Four card feature section\" challenge on frontendmentor.io",
   "license": "MIT",
   "repository": "git@github.com:Alex-K1m/frontend-practice.git",
   "author": "Alex Kim <45559664+Alex-K1m@users.noreply.github.com>",
   "homepage": "https://alex-k1m.github.io/frontend-practice/",
   "bugs": "https://github.com/Alex-K1m/frontend-practice/issues",
   "scripts": {
+    "start": "parcel src/index.pug --cache-dir .cache",
+    "build": "parcel build src/index.pug --cache-dir .cache",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "lerna": "^3.22.1"
-  },
-  "workspaces": [
-    "packages/*"
-  ]
+    "parcel-bundler": "^1.12.4",
+    "pug": "^3.0.0",
+    "sass": "^1.27.0"
+  }
 }
