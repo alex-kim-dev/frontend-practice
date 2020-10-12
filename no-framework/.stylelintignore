@@ -1,6 +1,0 @@
-node_modules
-dist
-dev
-prod
-.cache
-src/includes/_reset.scss
