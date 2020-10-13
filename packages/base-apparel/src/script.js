@@ -3,7 +3,7 @@ const subscribeForm = document.querySelector('.subscribe');
 const emailInput = document.querySelector('.subscribe_email');
 const feedbackEl = document.querySelector('.subscribe_feedback');
 
-const isValidEmail = str =>
+const isValidEmail = (str) =>
   str.trim().match(/^\w+([.-]\w+)*@\w+([.-]\w+)*\.\w{2,}$/);
 
 const showFeedback = () => {
@@ -16,7 +16,7 @@ const showFeedback = () => {
   }
 };
 
-const subscribe = e => {
+const subscribe = (e) => {
   e.preventDefault();
   if (subscribeForm.className.match(/subscribe-(success)|(error)/)) {
     subscribeForm.classList.remove('subscribe-success', 'subscribe-error');
