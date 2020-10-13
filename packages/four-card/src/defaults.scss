@@ -1,4 +1,4 @@
-@use "sass:math" as math;
+@use 'sass:math' as math;
 
 @function rem($size) {
   @return $size / 16px * 1rem;
@@ -7,7 +7,7 @@
 @function fluidFont($min, $max, $minVw, $maxVw, $unit) {
   @return calc(
     #{$min}#{$unit} + #{$max - $min} *
-      ((100vw - #{$minVw}#{$unit}) / #{$maxVw - $minVw})
+    ((100vw - #{$minVw}#{$unit}) / #{$maxVw - $minVw})
   );
 }
 
@@ -32,12 +32,13 @@ body {
   box-sizing: border-box;
 }
 
+/* stylelint-disable-next-line selector-class-pattern */
 .srOnly {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
