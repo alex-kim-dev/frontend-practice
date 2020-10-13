@@ -1,0 +1,6 @@
+extends:
+  - stylelint-config-sass-guidelines
+
+rules:
+  scss/dollar-variable-colon-space-after: always-single-line
+  scss/at-function-pattern: null
