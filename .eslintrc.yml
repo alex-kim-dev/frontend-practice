@@ -5,7 +5,7 @@ env:
   browser: true
 
 overrides:
-  - files: packages/job-listings/**/*.{js,jsx}
+  - files: projects/job-listings/**/*.{js,jsx}
     parser: babel-eslint
     extends:
       - airbnb

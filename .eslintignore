@@ -1,4 +1,4 @@
 /**/node_modules/
-/packages/*/public/
-/packages/*/.cache/
-/packages/*/coverage/
+/projects/*/public/
+/projects/*/.cache/
+/projects/*/coverage/

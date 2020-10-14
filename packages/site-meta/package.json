@@ -1,0 +1,8 @@
+{
+  "name": "@frontend/site-meta",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site meta information",
+  "license": "ISC",
+  "author": "Alex Kim"
+}

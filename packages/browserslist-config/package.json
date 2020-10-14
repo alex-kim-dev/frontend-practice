@@ -1,0 +1,8 @@
+{
+  "name": "@frontend/browserslist-config",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A custom config for browserslist",
+  "license": "ISC",
+  "author": "Alex Kim"
+}
