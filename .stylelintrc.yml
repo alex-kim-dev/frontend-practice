@@ -5,3 +5,4 @@ rules:
   scss/dollar-variable-colon-space-after: always-single-line
   scss/at-function-pattern: null
   scss/at-mixin-pattern: null
+  selector-class-pattern: null # TODO:
