@@ -9,9 +9,9 @@
   "homepage": "https://alex-k1m.github.io/frontend-practice/",
   "bugs": "https://github.com/Alex-K1m/frontend-practice/issues",
   "scripts": {
-    "start": "parcel src/index.pug --out-dir public",
     "build": "parcel build src/index.pug --no-cache --out-dir public",
-    "clean:cache": "rimraf .cache"
+    "clean:cache": "rimraf .cache",
+    "start": "parcel src/index.pug --out-dir public"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
@@ -26,7 +26,11 @@
     "extends browserslist-config-custom"
   ],
   "staticFiles": {
-    "staticPath": ["src/image-john.jpg", "src/image-tanya.jpg", "src/data.json"],
+    "staticPath": [
+      "src/image-john.jpg",
+      "src/image-tanya.jpg",
+      "src/data.json"
+    ],
     "watcherGlob": "**"
   }
 }

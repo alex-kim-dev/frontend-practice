@@ -1,8 +1,8 @@
 {
   "name": "site-settings",
-  "private": true,
   "version": "0.1.0",
+  "private": true,
   "description": "Site settings",
-  "author": "Alex Kim",
-  "license": "ISC"
+  "license": "ISC",
+  "author": "Alex Kim"
 }
