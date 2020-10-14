@@ -7,7 +7,7 @@ const feedbackText = {
   valid: 'You have been subscribed!',
 };
 
-const validate = formData => {
+const validate = (formData) => {
   const emailRegExp = /^\w+([.-]\w+)*@\w+([.-]\w+)*\.\w{2,}$/;
   const email = formData.get('email').trim();
 
@@ -15,7 +15,7 @@ const validate = formData => {
   return emailRegExp.test(email) ? 'valid' : 'invalid';
 };
 
-const showFeedback = status => {
+const showFeedback = (status) => {
   feedbackEl.textContent = feedbackText[status];
   if (status === 'valid') {
     emailInput.removeAttribute('aria-invalid');
@@ -29,7 +29,7 @@ const showFeedback = status => {
   }
 };
 
-const subscribe = e => {
+const subscribe = (e) => {
   e.preventDefault();
   const formData = new FormData(subscribeForm);
   showFeedback(validate(formData));
