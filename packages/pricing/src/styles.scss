@@ -1,12 +1,14 @@
+/* styleling-disable */
+
 // #region Base
 
-@import '../../../includes/reset';
-@import '../../../includes/defaults';
+@import 'reset';
+@import 'defaults';
 
 body,
 button {
-  font-weight: 700;
   font-family: Montserrat, sans-serif;
+  font-weight: 700;
   line-height: normal;
 }
 
@@ -54,44 +56,48 @@ $gradient: linear-gradient(to right, $light-blue, $blue);
 }
 
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 5.6rem;
-  height: 3.2rem;
-  color: $light-grayish-blue;
-  font-size: 1.5rem;
   background: $gradient;
   border-radius: 1.6rem;
-  transform: translateX(2px);
+  color: $light-grayish-blue;
   cursor: pointer;
+  display: inline-block;
+  font-size: 1.5rem;
+  height: 3.2rem;
+  position: relative;
+  transform: translateX(2px);
   transition: 0.25s;
+  width: 5.6rem;
+
   &_inner {
-    position: absolute;
-    top: 0.4rem;
-    left: 0.4rem;
-    width: 2.4rem;
-    height: 2.4rem;
     background: $light;
     border-radius: 50%;
+    height: 2.4rem;
+    left: 0.4rem;
+    position: absolute;
+    top: 0.4rem;
     transition: 0.25s;
+    width: 2.4rem;
   }
+
   &:hover {
     color: $blue;
     filter: brightness(1.3);
   }
+
   &::before {
-    position: absolute;
-    top: 0;
-    right: calc(100% + 2.4rem);
-    transform: translateY(30%);
     content: 'Annually';
+    position: absolute;
+    right: calc(100% + 2.4rem);
+    top: 0;
+    transform: translateY(30%);
   }
+
   &::after {
+    content: 'Monthly';
+    left: calc(100% + 2.4rem);
     position: absolute;
     top: 0;
-    left: calc(100% + 2.4rem);
     transform: translateY(30%);
-    content: 'Monthly';
   }
 }
 
@@ -99,6 +105,7 @@ input[type='checkbox'] {
   &:focus + .switch {
     box-shadow: 0 0 0 0.1rem $grayish-blue;
   }
+
   &:checked + .switch > .switch_inner {
     left: 2.8rem;
   }
@@ -107,27 +114,29 @@ input[type='checkbox'] {
 .offer {
   --c-primary: #{$dark-grayish-blue};
   --c-secondary: #{$grayish-blue};
-  padding: 3.4rem 2.9rem 3.1rem;
-  color: var(--c-secondary);
-  text-align: center;
   background: $light;
   border-radius: 0.8rem;
   box-shadow: 0 4rem 2.4rem rgba($blue, 0.1);
+  color: var(--c-secondary);
+  padding: 3.4rem 2.9rem 3.1rem;
+  text-align: center;
   @include mdUp {
-    padding-right: 3.1rem;
     padding-left: 3.1rem;
+    padding-right: 3.1rem;
   }
+
   &_heading {
     font-size: 1.8rem;
   }
+
   &_price {
+    align-items: center;
+    color: var(--c-primary);
     display: block;
     display: flex;
-    align-items: center;
+    font-size: 3rem;
     justify-content: center;
     margin: 1.8rem -0.7rem 0;
-    color: var(--c-primary);
-    font-size: 3rem;
     @include xsUp {
       font-size: 4rem;
     }
@@ -137,25 +146,30 @@ input[type='checkbox'] {
     @include mdUp {
       font-size: 4rem;
     }
+
     &::before {
       content: '$';
     }
+
     &::after {
-      margin-left: 0.4rem;
+      content: attr(data-monthly);
       font-size: 1.8em;
       letter-spacing: -0.03em;
-      content: attr(data-monthly);
+      margin-left: 0.4rem;
       @include mdUp {
         margin-left: 0.7rem;
       }
     }
   }
+
   > .list {
     margin-top: 2.4rem;
   }
+
   > .btn {
     margin-top: 3.2rem;
   }
+
   &-highlighted {
     --c-primary: #{$light};
     --c-secondary: #{$light};
@@ -169,12 +183,13 @@ input:not(:checked) ~ .plans .offer_price::after {
 
 .list {
   &_item {
-    padding: 1.7rem;
+    border-top: 0.1rem solid $gray;
     color: inherit;
     font-size: 1.5rem;
     line-height: 125%;
+    padding: 1.7rem;
     text-align: center;
-    border-top: 0.1rem solid $gray;
+
     &:last-child {
       border-bottom: 0.1rem solid $gray;
     }
@@ -182,68 +197,72 @@ input:not(:checked) ~ .plans .offer_price::after {
 }
 
 .btn {
-  position: relative;
-  width: 100%;
-  padding: 1.4rem;
-  color: $light;
-  font-size: 1.3rem;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
   background: right / 250% no-repeat
-    linear-gradient(
-      to right,
-      $light 0%,
-      $light 40%,
-      $light-blue 60%,
-      $blue 100%
-    );
+    linear-gradient(to right,
+    $light 0%,
+    $light 40%,
+    $light-blue 60%,
+    $blue 100%);
   border: none;
   border-radius: 0.5rem;
+  color: $light;
   cursor: pointer;
+  font-size: 1.3rem;
+  letter-spacing: 0.11em;
+  padding: 1.4rem;
+  position: relative;
+  text-transform: uppercase;
   transition: color 0.25s, box-shadow 0.25s, transform 0.15s,
     background-position 0.4s;
+  width: 100%;
+
   &::before {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: calc(100% - 1rem);
-    height: 0.2rem;
     background: $blue;
-    transform: translateX(0.5rem);
-    opacity: 0;
-    transition: 0.25s;
+    bottom: 0;
     content: '';
+    height: 0.2rem;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    transform: translateX(0.5rem);
+    transition: 0.25s;
+    width: calc(100% - 1rem);
   }
+
   &:focus {
     outline: none;
+
     &::before {
       bottom: -0.4rem;
       opacity: 1;
     }
   }
+
   &:hover {
-    color: $blue;
     background-position: left;
     box-shadow: inset 0 0 0 0.1rem $grayish-blue;
+    color: $blue;
   }
+
   &:active {
     transform: scale(0.97);
   }
+
   &-inverse {
+    background-image: linear-gradient(to right,
+    transparent 0%,
+    transparent 40%,
+    $light 60%,
+    $light 100%);
     color: $blue;
-    background-image: linear-gradient(
-      to right,
-      transparent 0%,
-      transparent 40%,
-      $light 60%,
-      $light 100%
-    );
+
     &::before {
       background: $light;
     }
+
     &:hover {
-      color: $light;
       box-shadow: inset 0 0 0 0.1rem $light;
+      color: $light;
     }
   }
 }
@@ -253,24 +272,26 @@ input:not(:checked) ~ .plans .offer_price::after {
 // #region Layout
 
 body {
-  min-height: 100vh;
-  padding: 6.4rem 2.4rem 7rem;
   background: top -3.6rem right -19.5rem no-repeat url(bg-top.svg),
     $very-light-grayish-blue;
+  min-height: 100vh;
+  padding: 6.4rem 2.4rem 7rem;
   @include smUp {
-    padding-top: 7.1rem;
     background: top right no-repeat url(bg-top.svg),
       bottom left no-repeat url(bg-bottom.svg), $very-light-grayish-blue;
+    padding-top: 7.1rem;
   }
 }
 
 .content {
+  align-items: center;
   display: flex;
   flex-flow: column;
-  align-items: center;
+
   > .switch {
     margin-top: 4rem;
   }
+
   > .plans {
     margin-top: 8rem;
     @include smUp {
@@ -282,24 +303,27 @@ body {
 .plans {
   display: grid;
   grid-gap: 3.2rem 0;
-  width: 100%;
   max-width: 40rem;
+  width: 100%;
   @include smUp {
+    align-items: center;
     grid-auto-columns: 1fr;
     grid-auto-flow: column;
-    align-items: center;
     max-width: 105rem;
+
     > .offer:nth-child(1) {
-      border-top-right-radius: 0;
       border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
     }
+
     > .offer:nth-child(2) {
-      padding-top: 5.7rem;
       padding-bottom: 5.4rem;
+      padding-top: 5.7rem;
     }
+
     > .offer:nth-child(3) {
-      border-top-left-radius: 0;
       border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
     }
   }
 }
