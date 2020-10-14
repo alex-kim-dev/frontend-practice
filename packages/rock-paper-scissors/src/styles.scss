@@ -1,5 +1,7 @@
-@import '../../../includes/reset';
-@import '../../../includes/defaults';
+/* stylelint-disable */
+
+@import 'reset';
+@import 'defaults';
 @import 'animation';
 
 @mixin smUp {
@@ -40,36 +42,37 @@ $gradients: (
   rock: [hsl(349, 71%, 52%),
   hsl(349, 70%, 56%) ],
 );
-$g-radial: radial-gradient(
-  circle at top,
-  hsl(214, 47%, 23%),
-  hsl(237, 49%, 15%)
-);
+$g-radial: radial-gradient(circle at top,
+hsl(214, 47%, 23%),
+hsl(237, 49%, 15%));
 
 .game {
+  background: $g-radial;
   display: grid;
   grid-template-rows: auto minmax(3.2rem, 2fr) auto minmax(3.2rem, 1fr) auto;
   justify-items: center;
   min-height: 100vh;
-  padding: 3.2rem 3.2rem 5.5rem;
   overflow: hidden;
-  background: $g-radial;
+  padding: 3.2rem 3.2rem 5.5rem;
   @include mdUp {
     grid-template-rows: auto 5.86vh auto 1fr auto;
     padding: 4.6rem 3.2rem 3.2rem;
   }
+
   .header {
-    width: calc(100% + 0.2rem);
-    max-width: 70.2rem;
     margin: -0.1rem;
+    max-width: 70.2rem;
+    width: calc(100% + 0.2rem);
   }
+
   .content {
     grid-row: 3;
     @include mdUp {
-      width: 100%;
       margin-bottom: -1.1rem;
+      width: 100%;
     }
   }
+
   .footer {
     grid-row: 5;
     @include mdUp {
@@ -79,42 +82,43 @@ $g-radial: radial-gradient(
 }
 
 .header {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1rem 1rem 2.1rem;
   border: 0.3rem solid $c-header-outline;
   border-radius: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem 1rem 2.1rem;
   @include mdUp {
-    padding: 2.1rem 2.2rem 1.5rem 2.8rem;
     border-radius: 1.6rem;
+    padding: 2.1rem 2.2rem 1.5rem 2.8rem;
   }
 }
 
 .title {
   box-sizing: content-box;
-  width: 5rem;
   height: auto;
+  width: 5rem;
   @include mdUp {
     width: 11.5rem;
   }
 }
 
 .score {
-  display: flex;
-  flex-flow: column;
   align-items: center;
   align-self: flex-start;
-  min-width: 8rem;
-  padding: 1rem;
   background: $c-light;
   border-radius: 0.4rem;
+  display: flex;
+  flex-flow: column;
+  min-width: 8rem;
+  padding: 1rem;
   @include mdUp {
-    min-width: 15rem;
-    margin: -0.2rem 0;
-    padding: 1.5rem;
     border-radius: 0.8rem;
+    margin: -0.2rem 0;
+    min-width: 15rem;
+    padding: 1.5rem;
   }
+
   > div:nth-child(1) {
     color: $c-score-text;
     font: 600 1rem Barlow Semi Condensed, sans-serif;
@@ -125,6 +129,7 @@ $g-radial: radial-gradient(
       letter-spacing: 0.12em;
     }
   }
+
   > div:nth-child(2) {
     color: $c-dark-text;
     font: 700 4rem / 100% Barlow Semi Condensed, sans-serif;
@@ -137,46 +142,52 @@ $g-radial: radial-gradient(
 }
 
 .box {
-  position: relative;
-  width: 100%;
   height: 0;
   padding-bottom: 100%;
+  position: relative;
+  width: 100%;
+
   > * {
+    height: 100%;
+    left: 50%;
     position: absolute;
     top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
     transform: translate(-50%, -50%);
+    width: 100%;
   }
 }
 
 button {
-  display: inline-flex;
-  text-align: center;
-  text-transform: uppercase;
   background: transparent;
   border: none;
   cursor: pointer;
+  display: inline-flex;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .playField {
-  width: 100%;
-  max-width: 40rem;
   margin-bottom: 10.67vh;
+  max-width: 40rem;
+  width: 100%;
   @include mdUp {
-    max-width: 47.2rem;
     margin-bottom: 0;
+    max-width: 47.2rem;
   }
+
   &.fadeIn {
     animation: fade 0.5s;
   }
+
   &.fadeOut {
     animation: fade 0.5s reverse;
   }
+
   > .box {
     padding-bottom: 97.46%;
+
     > .grid {
+      background: center/70% no-repeat url(bg-pentagon.svg);
       display: grid;
       grid-template:
         '  .     .      .    scissors scissors scissors  .     .     .  ' 129fr
@@ -185,7 +196,6 @@ button {
         '  .     .      .       .        .        .      .     .     .  ' 41fr
         '  .   lizard lizard  lizard     .      rock    rock rock    .  ' 145fr
         / 65fr 80fr 19fr 46fr 52fr 47fr 18fr 80fr 65fr;
-      background: center/70% no-repeat url(bg-pentagon.svg);
     }
   }
 }
@@ -194,39 +204,39 @@ button {
   --gradient-start: hsl(0, 0%, 45%);
   --gradient-end: hsl(0, 0%, 55%);
   --color-outer-shadow: #{darken(gray, 15%)};
-  display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0;
-  font-size: 1rem;
-  background: linear-gradient(
-    to top,
-    var(--gradient-start),
-    var(--gradient-end)
-  );
+  background: linear-gradient(to top,
+  var(--gradient-start),
+  var(--gradient-end));
   border-radius: 50%;
   box-shadow: inset 0 -0.2em var(--color-outer-shadow),
     0 0.2em var(--color-outer-shadow);
+  display: flex;
+  font-size: 1rem;
+  justify-content: center;
+  padding: 0;
   transition: filter 0.15s, transform 0.2s;
   @include mdUp {
     font-size: 1.5rem;
   }
+
   > span {
-    display: block;
-    width: 77%;
-    height: 77%;
     background: darken($c-light, 10%);
     border-radius: 50%;
     box-shadow: inset 0 0.4em rgba($c-dark-text, 0.2);
+    display: block;
+    height: 77%;
+    width: 77%;
   }
 }
 
 button.option {
   &:focus,
   &:hover {
-    outline: none;
     filter: drop-shadow(0 0 0.6rem var(--gradient-start));
+    outline: none;
   }
+
   &:active {
     transform: scale(0.95);
   }
@@ -237,11 +247,9 @@ button.option {
     $g-end: nth($gradient, 2);
     --gradient-start: #{nth($gradient, 1)};
     --gradient-end: #{$g-end};
-    --color-outer-shadow: #{adjust-color(
-        $g-end,
-        $saturation: 10%,
-        $lightness: -15%
-      )};
+    --color-outer-shadow: #{adjust-color($g-end,
+    $saturation: 10%,
+    $lightness: -15%)};
     grid-area: #{$option};
   }
 }
@@ -259,7 +267,7 @@ button.option {
 }
 
 .lizard > span {
-  padding: 19.3% 16.6% 15.9% 16.6%;
+  padding: 19.3% 16.6% 15.9%;
 }
 
 .rock > span {
@@ -267,17 +275,19 @@ button.option {
 }
 
 .rules {
-  padding: 0.9rem 3.6rem;
+  border: 0.2rem solid $c-light;
+  border-radius: 0.8rem;
   color: $c-light;
   font: 600 1.7rem Barlow Semi Condensed, sans-serif;
   letter-spacing: 0.12em;
-  border: 0.2rem solid $c-light;
-  border-radius: 0.8rem;
+  padding: 0.9rem 3.6rem;
   transition: box-shadow 0.15s, background-color 0.25s;
+
   &:focus {
     border-color: $c-score-text;
     outline: none;
   }
+
   &:hover,
   &:active {
     background-color: rgba(white, 0.1);
@@ -285,42 +295,45 @@ button.option {
 }
 
 .overlay {
+  background: rgba(black, 0.5);
+  display: flex;
+  height: 100%;
+  left: 0;
+  overflow: auto;
   position: fixed;
   top: 0;
-  left: 0;
-  z-index: 100;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background: rgba(black, 0.5);
   transition: opacity 1s;
+  width: 100%;
+  z-index: 100;
+
   &.fadeIn {
     animation: fade 0.3s;
   }
+
   &.fadeOut {
     animation: fade 0.3s reverse;
   }
 }
 
 .modal {
-  z-index: 105;
-  display: grid;
-  grid-template-rows: auto 95fr auto 138fr auto;
-  justify-items: center;
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  padding: 9.5rem 3.2rem 6.5rem;
   background: $c-light;
   border-radius: 0.8rem;
+  display: grid;
+  grid-template-rows: auto 95fr auto 138fr auto;
+  height: 100%;
+  justify-items: center;
+  margin: auto;
+  padding: 9.5rem 3.2rem 6.5rem;
+  width: 100%;
+  z-index: 105;
   @include smUp {
     grid-gap: 2rem;
     grid-template: repeat(2, auto) / repeat(2, auto);
-    max-width: 40rem;
     height: auto;
+    max-width: 40rem;
     padding: 3.2rem 3.2rem 4.7rem;
   }
+
   > h2 {
     color: $c-dark-text;
     font: 700 3.2rem/100% Barlow Semi Condensed, sans-serif;
@@ -330,32 +343,37 @@ button.option {
       justify-self: start;
     }
   }
+
   > img {
     grid-row: 3;
-    width: 100%;
     height: auto;
+    width: 100%;
     @include smUp {
       grid-area: 2 / 1 / -1 / -1;
     }
   }
+
   > button {
+    border-radius: 50%;
     grid-row: 5;
     margin: -1.4rem;
     padding: 1.4rem;
-    border-radius: 50%;
     transition: background-color 0.25s, box-shadow 0.25s;
     @include smUp {
-      grid-area: 1 / 2;
       align-self: center;
+      grid-area: 1 / 2;
       justify-self: end;
     }
+
     &:focus {
-      outline: none;
       box-shadow: inset 0 0 0 0.2rem #b8baca;
+      outline: none;
     }
+
     &:hover {
       background-color: #e1e4ed;
     }
+
     &:active {
       background-color: #b8baca;
     }
@@ -366,82 +384,89 @@ button.option {
   display: flex;
   flex-flow: wrap;
   justify-content: center;
-  max-width: 40rem;
   margin: 0 -0.3rem;
+  max-width: 40rem;
   @include lgUp {
     flex-flow: nowrap;
-    max-width: 67.2rem;
     margin: 2.6rem 0 0;
+    max-width: 67.2rem;
   }
+
   &.fadeIn {
     animation: fade 0.6s ease-in;
   }
+
   &.fadeOut {
     animation: fade 0.6s ease-in reverse;
   }
+
   > .col {
     --mx: 2.85rem;
+    align-items: center;
     display: flex;
     flex: 1 1 calc(50% - var(--mx));
     flex-flow: column;
-    align-items: center;
     min-width: 0;
     @include lgUp {
       --mx: 4.3rem;
       flex: 0 1 29.3rem;
     }
+
     &:nth-child(1) {
       margin-right: var(--mx);
     }
+
     &:nth-child(2) {
       margin-left: var(--mx);
       @include lgUp {
         order: 1;
       }
     }
+
     > .label {
       margin-top: 2.6rem;
       @include lgUp {
-        order: -1;
-        margin-top: 0;
         margin-bottom: 6.4rem;
+        margin-top: 0;
+        order: -1;
       }
     }
+
     > .box {
       &::before {
+        background: center / contain no-repeat
+          radial-gradient(circle at center,
+          rgba(white, 0.09) 0%,
+          rgba(white, 0.09) 40%,
+          rgba(white, 0.06) 40%,
+          rgba(white, 0.06) 54%,
+          rgba(white, 0.03) 54%,
+          rgba(white, 0.03) 100%);
+        border-radius: 50%;
+        content: '';
+        height: 0%;
+        left: 50%;
         position: absolute;
         top: 50%;
-        left: 50%;
-        width: 0%;
-        height: 0%;
-        background: center / contain no-repeat
-          radial-gradient(
-            circle at center,
-            rgba(white, 0.09) 0%,
-            rgba(white, 0.09) 40%,
-            rgba(white, 0.06) 40%,
-            rgba(white, 0.06) 54%,
-            rgba(white, 0.03) 54%,
-            rgba(white, 0.03) 100%
-          );
-        border-radius: 50%;
         transform: translate(-50%, -50%);
         transition: width 1s, height 1s;
-        content: '';
+        width: 0%;
       }
+
       &.highlight::before {
-        width: 220%;
         height: 220%;
+        width: 220%;
         @include lgUp {
-          width: 250%;
           height: 250%;
+          width: 250%;
         }
       }
     }
   }
+
   > .center {
-    flex: 1;
     align-self: center;
+    flex: 1;
     margin-top: 9vh;
     visibility: hidden;
     @include lgUp {
@@ -449,27 +474,33 @@ button.option {
       margin-top: 6rem;
       overflow: hidden;
     }
+
     > :nth-child(2) {
       margin-top: 1.6rem;
     }
+
     > .status {
       text-align: center;
     }
+
     > .repeat {
-      max-width: 22rem;
-      margin-right: auto;
       margin-left: auto;
+      margin-right: auto;
+      max-width: 22rem;
     }
   }
+
   &.expanded {
+    @include lgUp {
+      max-width: 96rem;
+    }
+
     > .center {
       flex-grow: 1;
       visibility: visible;
     }
-    @include lgUp {
-      max-width: 96rem;
-    }
   }
+
   .option {
     font-size: 1.5rem;
     @include lgUp {
@@ -479,31 +510,32 @@ button.option {
 }
 
 .square {
-  position: relative;
-  width: 100%;
   height: 0;
   padding-bottom: 100%;
+  position: relative;
+  width: 100%;
+
   > * {
+    left: 50%;
     position: absolute;
     top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
   }
 }
 
 .placeholder {
-  width: 77%;
-  height: 77%;
   background: $c-placeholder;
   border-radius: 50%;
+  height: 77%;
+  width: 77%;
 }
 
 .label {
   color: $c-light;
   font: 700 1.6rem Barlow Semi Condensed, sans-serif;
   letter-spacing: 0.09em;
-  white-space: nowrap;
   text-transform: uppercase;
+  white-space: nowrap;
   @include lgUp {
     font-size: 2.4rem;
     letter-spacing: 0.12em;
@@ -513,24 +545,26 @@ button.option {
 .status {
   color: $c-light;
   font: 700 5.6rem Barlow Semi Condensed, sans-serif;
-  white-space: nowrap;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .repeat {
-  display: block;
-  width: 100%;
-  padding: 1.4rem;
-  color: $c-dark-text;
-  font: 600 1.7rem Barlow Semi Condensed, sans-serif;
-  letter-spacing: 0.12em;
   background: $c-light;
   border-radius: 0.8rem;
+  color: $c-dark-text;
+  display: block;
+  font: 600 1.7rem Barlow Semi Condensed, sans-serif;
+  letter-spacing: 0.12em;
+  padding: 1.4rem;
   transition: box-shadow 0.15s, background-color 0.25s;
+  width: 100%;
+
   &:focus {
-    outline: none;
     box-shadow: 0 0 0 0.3rem $c-score-text;
+    outline: none;
   }
+
   &:hover,
   &:active {
     background-color: rgba($c-light, 0.75);

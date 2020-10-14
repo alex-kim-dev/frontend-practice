@@ -1,5 +1,5 @@
-require('./_modal');
-const {
+import './_modal';
+import {
   $,
   $$,
   animate,
@@ -8,7 +8,7 @@ const {
   genRandomNum,
   getSavedItem,
   saveItem,
-} = require('./_utils');
+} from './_utils';
 
 const $playField = $('.playField');
 const $result = $('.result');
@@ -30,7 +30,7 @@ let isGameInProgress = false;
 
 $score.textContent = score;
 
-const newOptionElement = className => {
+const newOptionElement = (className) => {
   const $option = document.createElement('div');
   $option.classList.add('option', className);
 
@@ -47,7 +47,7 @@ const options = [
   { name: 'Rock', beats: [3, 0] },
   { name: 'Lizard', beats: [4, 1] },
   { name: 'Spock', beats: [0, 2] },
-].map(opt => ({
+].map((opt) => ({
   ...opt,
   $element: newOptionElement(opt.name.toLowerCase()),
 }));
@@ -120,7 +120,7 @@ const newRound = async () => {
   isGameInProgress = false;
 };
 
-$$('.playField .option').forEach($option => {
+$$('.playField .option').forEach(($option) => {
   $option.addEventListener('click', play);
 });
 

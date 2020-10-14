@@ -2,6 +2,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -12,6 +13,7 @@
     flex-grow: 0;
     transform: scale(0.7);
   }
+
   to {
     flex-grow: 1;
     transform: scale(1);
@@ -20,23 +22,25 @@
 
 @keyframes grow {
   from {
-    width: 0;
     height: 0;
+    width: 0;
   }
+
   to {
-    width: 250%;
     height: 250%;
+    width: 250%;
   }
 }
 
 @keyframes flip {
   0% {
-    transform: translate(-50%, -50%) rotateX(-2160deg);
     opacity: 0;
+    transform: translate(-50%, -50%) rotateX(-2160deg);
   }
+
   100% {
-    transform: translate(-50%, -50%) rotateX(0);
     opacity: 1;
+    transform: translate(-50%, -50%) rotateX(0);
   }
 }
 
@@ -44,17 +48,19 @@
   0% {
     transform: scale(1) rotateX(0);
   }
+
   50% {
     transform: scale(2) rotateX(-90deg);
   }
+
   100% {
     transform: scale(1) rotateX(0);
   }
 }
 
 .expand {
-  opacity: 0;
   animation: expand 0.5s, fade 0.25s 0.25s;
+  opacity: 0;
 }
 
 .flip {

@@ -1,9 +1,9 @@
-exports.$ = document.querySelector.bind(document);
+export const $ = document.querySelector.bind(document);
 
-exports.$$ = document.querySelectorAll.bind(document);
+export const $$ = document.querySelectorAll.bind(document);
 
-exports.animate = ($el, animation) =>
-  new Promise(resolve => {
+export const animate = ($el, animation) =>
+  new Promise((resolve) => {
     const removeAnimation = () => {
       $el.classList.remove(animation);
       $el.removeEventListener('animationend', removeAnimation);
@@ -14,19 +14,19 @@ exports.animate = ($el, animation) =>
     $el.addEventListener('animationend', removeAnimation);
   });
 
-exports.delay = (duration = 0) =>
-  new Promise(resolve => {
+export const delay = (duration = 0) =>
+  new Promise((resolve) => {
     setTimeout(resolve, duration);
   });
 
-exports.toggleDisplay = $el => {
+export const toggleDisplay = ($el) => {
   $el.classList.toggle('hidden');
 };
 
-exports.genRandomNum = (min = 0, max = 1) =>
+export const genRandomNum = (min = 0, max = 1) =>
   Math.floor(min + Math.random() * (max - min));
 
-exports.getSavedItem = key => {
+export const getSavedItem = (key) => {
   try {
     return localStorage.getItem(key);
   } catch (err) {
@@ -36,7 +36,7 @@ exports.getSavedItem = key => {
   }
 };
 
-exports.saveItem = (key, value) => {
+export const saveItem = (key, value) => {
   try {
     localStorage.setItem(key, value);
     return true;

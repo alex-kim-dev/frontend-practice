@@ -4,7 +4,7 @@ const $overlay = $('.overlay');
 const $rulesBtn = $('.rules');
 const $closeModalBtn = $('.modal > button');
 
-const hideModal = event => {
+const hideModal = (event) => {
   event.stopPropagation();
   const { target } = event;
 
