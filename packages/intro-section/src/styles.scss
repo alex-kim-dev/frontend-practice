@@ -1,5 +1,7 @@
-@import '../../../includes/reset';
-@import '../../../includes/defaults';
+/* stylelint-disable */
+
+@import 'reset';
+@import 'defaults';
 
 @mixin smUp {
   @media (min-width: rem(768px)) {
@@ -25,9 +27,9 @@ $c-violet-darker: hsl(257, 40%, 29%);
 $c-white: white;
 
 .wrapper {
-  min-height: 100vh;
   background: url(bg-mobile.svg) center top no-repeat, $c-violet;
   background-size: 100%;
+  min-height: 100vh;
   @include lgUp {
     background: url(bg-desktop.svg) left center no-repeat, $c-violet;
     background-size: auto 100%;
@@ -35,10 +37,10 @@ $c-white: white;
 }
 
 .container {
-  max-width: 54rem;
   margin: 0 auto;
-  padding: 3.8rem 3.8rem 4rem;
+  max-width: 54rem;
   overflow: hidden;
+  padding: 3.8rem 3.8rem 4rem;
   @include mdUp {
     max-width: 80rem;
     padding: 8rem 4rem;
@@ -51,8 +53,8 @@ $c-white: white;
       'hero content' 1fr
       'hero footer' auto
       / 48.334vw 36.44vw;
-    max-width: unset;
     height: 100vh;
+    max-width: unset;
     padding: 8vh 5.556vw 5vh;
   }
 }
@@ -64,30 +66,30 @@ $c-white: white;
 }
 
 .logo {
-  width: 12rem;
-  height: 1.9rem;
-  margin-left: 0.2rem;
   background: url(logo.svg) center no-repeat;
   background-size: contain;
+  height: 1.9rem;
+  margin-left: 0.2rem;
+  width: 12rem;
   @include smUp {
-    width: 16.4rem;
     height: 2.6rem;
+    width: 16.4rem;
   }
   @include mdUp {
-    width: 20rem;
     height: 3.2rem;
     margin: 0;
+    width: 20rem;
   }
 }
 
 .heroImage {
-  width: 100%;
+  background: url(illustration-mockups.svg) center no-repeat;
+  background-size: 100% 100%;
   height: 0;
   margin-top: 6.8rem;
   padding-top: 70.9%;
-  background: url(illustration-mockups.svg) center no-repeat;
-  background-size: 100% 100%;
   transform: scale(1.02);
+  width: 100%;
   @include lgUp {
     grid-area: hero;
     margin-top: 13vh;
@@ -105,11 +107,11 @@ $c-white: white;
 }
 
 .heading {
-  margin: 0;
   color: $c-white;
   font: 700 2.4rem Poppins, san-serif;
-  line-height: 150%;
   letter-spacing: -0.01em;
+  line-height: 150%;
+  margin: 0;
   text-transform: capitalize;
   @include smUp {
     font-size: 3.2rem;
@@ -120,46 +122,49 @@ $c-white: white;
 }
 
 .text {
-  margin: 1.3rem 0 0;
   color: $c-white;
   font: 400 1.6rem/150% Open Sans, sans-serif;
+  margin: 1.3rem 0 0;
   @include mdUp {
-    margin-top: 2rem;
     font-size: 1.8rem;
+    margin-top: 2rem;
   }
 }
 
 .button {
-  width: 66.9%;
-  margin-top: 2.4rem;
-  padding: 1.1rem 3.2rem 0.9rem;
-  color: $c-violet;
-  font: 400 1.3rem Poppins, sans-serif;
-  letter-spacing: -0.05em;
   background: $c-white;
   border: none;
   border-radius: 2rem;
   box-shadow: 0.1rem 0.3rem 0.5rem hsla(0, 0%, 0%, 0.3);
+  color: $c-violet;
   cursor: pointer;
+  font: 400 1.3rem Poppins, sans-serif;
+  letter-spacing: -0.05em;
+  margin-top: 2.4rem;
+  padding: 1.1rem 3.2rem 0.9rem;
   transition: 0.2s;
+  width: 66.9%;
   @include smUp {
-    width: unset;
-    font-size: 1.5rem;
     border-radius: 2.1rem;
+    font-size: 1.5rem;
+    width: unset;
   }
   @include mdUp {
-    padding: 1.3rem 6.4rem 1.6rem;
+    border-radius: 2.8rem;
     font-size: 1.8rem;
     letter-spacing: normal;
-    border-radius: 2.8rem;
+    padding: 1.3rem 6.4rem 1.6rem;
   }
+
   &:focus {
-    outline: none;
     box-shadow: 0 0 0 0.4rem $c-violet-darker;
+    outline: none;
   }
+
   &:hover {
     box-shadow: 0.2rem 0.4rem 0.6rem hsla(0, 0%, 0%, 0.4);
   }
+
   &:active {
     background: $c-violet-light;
   }
@@ -176,9 +181,9 @@ $c-white: white;
 .list {
   display: flex;
   justify-content: center;
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
   @include lgUp {
     justify-content: flex-end;
   }
@@ -186,6 +191,7 @@ $c-white: white;
 
 .item {
   display: block;
+
   &:not(:first-child) {
     margin-left: 1rem;
     @include smUp {
@@ -195,35 +201,38 @@ $c-white: white;
 }
 
 .socialLink {
-  display: flex;
   align-items: center;
-  justify-content: center;
-  width: 2.8rem;
-  height: 2.8rem;
   background: transparent;
   border-radius: 50%;
   box-shadow: inset 0 0 0 0.1rem $c-white;
+  display: flex;
+  height: 2.8rem;
+  justify-content: center;
   transition: 0.2s ease-in-out;
+  width: 2.8rem;
   @include smUp {
-    width: 4rem;
     height: 4rem;
+    width: 4rem;
   }
+
   &:focus,
   &:hover {
     background: $c-white;
     outline: none;
+
     .icon {
       color: $c-violet;
     }
   }
+
   &:active {
     background: $c-violet-light;
   }
 }
 
 .icon {
-  display: block;
-  width: 50%;
-  height: 50%;
   color: $c-white;
+  display: block;
+  height: 50%;
+  width: 50%;
 }
