@@ -22,7 +22,7 @@ const animations = {
 
 let currentSlide = 0;
 
-const getData = async url => {
+const getData = async (url) => {
   try {
     const data = await fetch(url);
     return await data.json();
@@ -41,29 +41,29 @@ const createImage = (url, alt) => {
 };
 
 const animate = (elements, animationClass) =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     const removeAnimation = () => {
-      elements.forEach(element => {
+      elements.forEach((element) => {
         element.classList.remove(animationClass);
       });
       elements[0].removeEventListener('animationend', removeAnimation);
       resolve();
     };
 
-    elements.forEach(element => {
+    elements.forEach((element) => {
       element.classList.add(animationClass);
     });
     elements[0].addEventListener('animationend', removeAnimation);
   });
 
-const updateContent = testimonial => {
+const updateContent = (testimonial) => {
   $photo.firstElementChild.replaceWith(testimonial.$photo);
   $quote.textContent = testimonial.quote;
   $author.textContent = testimonial.author;
   $position.textContent = testimonial.position;
 };
 
-const changeSlide = testimonials => ({ target: btn }) => {
+const changeSlide = (testimonials) => ({ target: btn }) => {
   btn.setAttribute('disabled', true);
   const direction = btn.dataset.slide;
 
@@ -80,7 +80,7 @@ const changeSlide = testimonials => ({ target: btn }) => {
   const data = await getData('data.json');
   if (!data) return;
 
-  const testimonials = data.testimonials.map(testimonial => ({
+  const testimonials = data.testimonials.map((testimonial) => ({
     ...testimonial,
     $photo: createImage(
       testimonial.photoUrl,
@@ -90,5 +90,5 @@ const changeSlide = testimonials => ({ target: btn }) => {
 
   document
     .querySelectorAll('[data-slide]')
-    .forEach(btn => btn.addEventListener('click', changeSlide(testimonials)));
+    .forEach((btn) => btn.addEventListener('click', changeSlide(testimonials)));
 })();
