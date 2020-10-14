@@ -1,5 +1,7 @@
-@import '../../../includes/reset';
-@import '../../../includes/defaults';
+/* stylelint-disable */
+
+@import 'reset';
+@import 'defaults';
 
 // Abstracts
 
@@ -59,15 +61,15 @@ body {
 
 .h1 {
   color: var(--text-primary);
-  font-weight: 700;
   font-size: fluidFont(2.4, 2.8, 37.5, 144, rem);
+  font-weight: 700;
   text-transform: capitalize;
 }
 
 .h2 {
   color: var(--text-secondary);
-  font-weight: 700;
   font-size: 2.4rem;
+  font-weight: 700;
   text-transform: capitalize;
 }
 
@@ -77,62 +79,67 @@ body[theme='dark'] .h2 {
 
 .text {
   color: var(--text-secondary);
-  font-weight: 700;
   font-size: 1.4rem;
+  font-weight: 700;
   text-transform: capitalize;
+
   &-big {
     color: var(--text-primary);
-    font-weight: 700;
     font-size: 5.6rem;
-    line-height: 4.8rem;
+    font-weight: 700;
     letter-spacing: -0.036em;
+    line-height: 4.8rem;
   }
+
   &-secondary {
     color: var(--text-secondary);
-    font-weight: 400;
     font-size: 1.2rem;
+    font-weight: 400;
     letter-spacing: 0.42em;
     text-transform: uppercase;
   }
 }
 
 .separator {
-  width: 100%;
-  height: 0.1rem;
-  margin: 2.4rem 0 1.6rem;
   background: var(--separator);
   border: none;
+  height: 0.1rem;
+  margin: 2.4rem 0 1.6rem;
+  width: 100%;
 }
 
 .label {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
+
   > * + * {
     margin-left: 1.3rem;
   }
 }
 
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 4.8rem;
-  height: 2.4rem;
   background: var(--switch-off);
   border-radius: 1.2rem;
   cursor: pointer;
+  display: inline-block;
+  height: 2.4rem;
+  position: relative;
   transition: 0.15s;
+  width: 4.8rem;
+
   &::after {
-    position: absolute;
-    top: 0.3rem;
-    left: 2.6rem;
-    width: 1.8rem;
-    height: 1.8rem;
     background: var(--switch-thumb);
     border-radius: 50%;
-    transition: left 0.25s;
     content: '';
+    height: 1.8rem;
+    left: 2.6rem;
+    position: absolute;
+    top: 0.3rem;
+    transition: left 0.25s;
+    width: 1.8rem;
   }
+
   &:hover {
     background: var(--switch-on);
   }
@@ -142,8 +149,10 @@ input[type='checkbox'] {
   &:focus + .switch {
     box-shadow: 0 0 0 0.2rem var(--switch-focus);
   }
+
   &:checked + .switch {
     background: var(--switch-on);
+
     &::after {
       left: 0.4rem;
     }
@@ -151,53 +160,60 @@ input[type='checkbox'] {
 }
 
 .cell {
-  display: flex;
-  flex-flow: column;
   align-items: center;
-  padding: 3.2rem 3.2rem 2.4rem;
   background: var(--cell);
   border-radius: 0.5rem;
   cursor: pointer;
+  display: flex;
+  flex-flow: column;
+  padding: 3.2rem 3.2rem 2.4rem;
   transition: background-color 0.2s;
+
   &:hover {
     background-color: var(--cell-hover);
   }
 }
 
 .account {
-  display: flex;
   align-items: center;
   color: var(--text-secondary);
-  font-weight: 700;
+  display: flex;
   font-size: 1.2rem;
+  font-weight: 700;
+
   &::before {
-    width: 2rem;
+    content: '';
     height: 2rem;
     margin-right: 0.8rem;
-    content: '';
+    width: 2rem;
   }
 }
 
 .change {
-  display: flex;
   align-items: center;
-  font-weight: 700;
+  display: flex;
   font-size: 1.2rem;
+  font-weight: 700;
+
   &::before {
+    content: '';
     display: block;
-    width: 0.8rem;
     height: 0.4rem;
     margin-right: 0.4rem;
-    content: '';
+    width: 0.8rem;
   }
+
   &[data-change='up'] {
     color: var(--positive);
+
     &::before {
       background: center / contain no-repeat url(icon-up.svg);
     }
   }
+
   &[data-change='down'] {
     color: var(--negative);
+
     &::before {
       background: center / contain no-repeat url(icon-down.svg);
     }
@@ -206,31 +222,32 @@ input[type='checkbox'] {
 
 .stat {
   color: var(--text-primary);
-  font-weight: 700;
   font-size: 3.2rem;
+  font-weight: 700;
 }
 
 .icon {
-  width: 2rem;
   height: 2rem;
+  width: 2rem;
 }
 
 // Layout
 
 .wrapper {
-  position: relative;
+  background: var(--bg);
   min-height: 100vh;
   padding: 3.6rem 2.4rem 4.5rem;
-  background: var(--bg);
+  position: relative;
+
   &::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 23.5rem;
     background: var(--bg-top);
     border-radius: 0 0 2rem 2rem;
     content: '';
+    height: 23.5rem;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
     @include smUp {
       height: 24.4rem;
     }
@@ -238,9 +255,9 @@ input[type='checkbox'] {
 }
 
 .container {
-  position: relative;
-  max-width: 111rem;
   margin: 0 auto;
+  max-width: 111rem;
+  position: relative;
 }
 
 .header {
@@ -249,10 +266,12 @@ input[type='checkbox'] {
   justify-content: space-between;
   @include smUp {
     flex-flow: row;
+
     > .separator {
       display: none;
     }
   }
+
   > .label {
     transform: translateY(-2px);
   }
@@ -262,6 +281,7 @@ input[type='checkbox'] {
   > * + * {
     margin-top: 0.4rem;
   }
+
   > .h1 {
     transform: translateX(-2px);
   }
@@ -284,23 +304,27 @@ input[type='checkbox'] {
 }
 
 .card {
-  position: relative;
   overflow: hidden;
+  position: relative;
+
   &::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 0.4rem;
     background: gray;
     content: '';
+    height: 0.4rem;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
   }
+
   > .text-big {
     margin-top: 2.8rem;
   }
+
   > .text-secondary {
     margin-top: 0.9rem;
   }
+
   > .change {
     margin-top: 2.5rem;
   }
@@ -311,6 +335,7 @@ input[type='checkbox'] {
     &::before {
       background: $color;
     }
+
     > .account::before {
       background: center / contain no-repeat url(icon-#{$platform}.svg);
     }
@@ -322,6 +347,7 @@ input[type='checkbox'] {
 
 .overview {
   margin-top: 4.6rem;
+
   > .grid {
     grid-gap: 1.6rem 2.4rem;
     margin-top: 2.4rem;
@@ -329,23 +355,27 @@ input[type='checkbox'] {
       grid-gap: 2.4rem 3rem;
     }
   }
+
   .cell {
     padding: 2.6rem 3.1rem 1.9rem 2.4rem;
+
     > * + * {
       margin-top: 2.1rem;
     }
   }
+
   .text {
     transform: translateY(-2px);
   }
+
   .change {
     transform: translateY(7px);
   }
 }
 
 .group {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
   width: 100%;
 }
