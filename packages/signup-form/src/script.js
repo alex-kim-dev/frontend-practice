@@ -1,5 +1,5 @@
 const signupForm = document.querySelector('.signupForm');
-const fields = [...signupForm.querySelectorAll('.field')].map(field => ({
+const fields = [...signupForm.querySelectorAll('.field')].map((field) => ({
   field,
   input: field.querySelector('.textInput_input'),
   feedback: field.querySelector('.field_feedback'),
@@ -36,16 +36,16 @@ const hideFeedback = ({ input, field, feedback }) => {
   input.removeAttribute('aria-invalid');
 };
 
-const validate = field => {
+const validate = (field) => {
   const { input } = field;
   const error =
     inputChecks[input.name]
-      .map(check => check(input))
-      .find(errorMsg => errorMsg !== '') || null;
+      .map((check) => check(input))
+      .find((errorMsg) => errorMsg !== '') || null;
   return { ...field, error };
 };
 
-const updateUi = field => {
+const updateUi = (field) => {
   if (field.error) {
     showFeedback(field);
   } else {
@@ -56,7 +56,7 @@ const updateUi = field => {
 
 const hasErrors = ({ error }) => Boolean(error);
 
-const signup = e => {
+const signup = (e) => {
   e.preventDefault();
 
   const invalidFields = fields.map(validate).map(updateUi).filter(hasErrors);

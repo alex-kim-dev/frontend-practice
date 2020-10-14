@@ -1,5 +1,7 @@
-@import '../../../includes/reset';
-@import '../../../includes/defaults';
+/* stylelint-disable */
+
+@import 'reset';
+@import 'defaults';
 
 @mixin mdUp {
   @media (min-width: rem(1024px)) {
@@ -29,49 +31,57 @@ $c-btn-border-hover: hsl(154, 65%, 63%);
 .text {
   color: $c-text-light;
   font: 500 1.6rem/165% Poppins, sans-serif;
+
   &-h2 {
     font-size: 2.8rem;
-    line-height: 125%;
     letter-spacing: -0.01em;
+    line-height: 125%;
     @include mdUp {
       font-size: 5rem;
       line-height: 110%;
     }
   }
+
   &-h3 {
     font-weight: 400;
-    line-height: 165%;
     letter-spacing: -0.02em;
+    line-height: 165%;
     @include mdUp {
       line-height: 150%;
     }
   }
+
   &-bold {
     font-weight: 700;
   }
+
   &-input {
     color: $c-dark-blue;
-    font-weight: 600;
     font-size: 1.4rem;
-    line-height: normal;
+    font-weight: 600;
     letter-spacing: 0.01em;
+    line-height: normal;
     @include mdUp {
       letter-spacing: 0.03em;
     }
   }
+
   &-secondary {
     color: $c-grayish-blue;
-    font-weight: 400;
     font-size: 1.1rem;
+    font-weight: 400;
     line-height: 195%;
   }
+
   &-link {
     color: $c-red;
     font-weight: 600;
+
     &:focus {
       outline: 0.1rem solid $c-dark-blue;
     }
   }
+
   &-error {
     color: $c-red;
     font-size: 1.1rem;
@@ -88,100 +98,111 @@ $c-btn-border-hover: hsl(154, 65%, 63%);
 
 .textInput {
   display: block;
+
   &_input {
-    width: 100%;
-    padding: 1.8rem 1.9rem 1.7rem;
-    overflow: hidden;
     background: transparent;
     border: none;
     border-radius: 0.4rem;
     box-shadow: inset 0 0 0 0.1rem $c-grayish-blue;
+    overflow: hidden;
+    padding: 1.8rem 1.9rem 1.7rem;
     transition: $trs-time;
+    width: 100%;
     @include mdUp {
-      padding-right: 3.2rem;
       padding-left: 3.2rem;
+      padding-right: 3.2rem;
     }
+
     &:focus {
-      outline: none;
       box-shadow: inset 0 0 0 0.1rem $c-dark-blue;
+      outline: none;
     }
   }
+
   &_label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    overflow: hidden;
     border: 0;
     clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
   }
 }
 
 .field {
   position: relative;
+
   &_errorIcon {
-    position: absolute;
-    top: 1.6rem;
-    right: 1.6rem;
-    visibility: hidden;
     opacity: 0;
+    position: absolute;
+    right: 1.6rem;
+    top: 1.6rem;
     transition: $trs-time;
+    visibility: hidden;
     @include mdUp {
       right: 2.7rem;
     }
   }
+
   &_feedback {
-    max-height: 0;
     margin: 0;
+    max-height: 0;
+    opacity: 0;
     padding: 0;
     text-align: right;
-    opacity: 0;
     transition: $trs-time;
   }
+
   &-error {
     .textInput_input {
-      padding-right: 5.6rem;
-      color: $c-red;
       box-shadow: inset 0 0 0 0.2rem $c-red;
+      color: $c-red;
+      padding-right: 5.6rem;
       @include mdUp {
         padding-right: 7.8rem;
       }
+
       &:focus {
         box-shadow: inset 0 0 0 0.2rem $c-red-darker;
       }
     }
+
     .field_errorIcon {
-      visibility: visible;
       opacity: 1;
       transition: opacity $trs-time, visibility 0s $trs-time;
+      visibility: visible;
     }
+
     .field_feedback {
       max-height: 3.2rem;
+      opacity: 1;
       padding-top: 0.6rem;
       visibility: visible;
-      opacity: 1;
     }
   }
 }
 
 .button {
-  padding: 1.7rem 3.2rem 1.1rem;
-  overflow: hidden;
-  color: $c-text-light;
-  font: 600 1.6rem/150% Poppins, sans-serif;
-  letter-spacing: 0.03em;
-  text-align: center;
-  text-transform: uppercase;
   background: $c-green;
   border: none;
   border-bottom: 0.4rem solid $c-btn-border;
   border-radius: 0.6rem;
+  color: $c-text-light;
   cursor: pointer;
+  font: 600 1.6rem/150% Poppins, sans-serif;
+  letter-spacing: 0.03em;
+  overflow: hidden;
+  padding: 1.7rem 3.2rem 1.1rem;
+  text-align: center;
+  text-transform: uppercase;
   transition: $trs-time;
+
   &:focus {
-    outline: none;
     box-shadow: 0 0 0 0.1rem $c-dark-blue;
+    outline: none;
   }
+
   &:hover {
     background: $c-btn-hover;
     border-color: $c-btn-border-hover;
@@ -189,11 +210,11 @@ $c-btn-border-hover: hsl(154, 65%, 63%);
 }
 
 .wrapper {
-  display: flex;
   align-items: center;
+  background: url(bg-intro-mobile.png) center top, $c-red;
+  display: flex;
   justify-content: center;
   min-height: 100vh;
-  background: url(bg-intro-mobile.png) center top, $c-red;
   @include mdUp {
     background: url(bg-intro-desktop.png) center top, $c-red;
   }
@@ -221,12 +242,14 @@ $c-btn-border-hover: hsl(154, 65%, 63%);
     padding: 0;
     text-align: left;
   }
+
   &_heading {
     margin: 0;
     @include mdUp {
       margin-top: 0.6rem;
     }
   }
+
   &_text {
     margin: 2.4rem 0 0;
     @include mdUp {
@@ -239,17 +262,20 @@ $c-btn-border-hover: hsl(154, 65%, 63%);
   margin-top: 2.4rem;
   @include mdUp {
     flex: 1;
-    margin-top: 0;
     margin-left: 1.5rem;
+    margin-top: 0;
   }
+
   &_header {
-    padding: 1.9rem 6.4rem 1.7rem;
     background: $c-blue;
+    padding: 1.9rem 6.4rem 1.7rem;
   }
+
   &_heading {
     margin: 0;
     text-align: center;
   }
+
   &_body {
     margin-top: 2.4rem;
     padding: 2.4rem;
@@ -257,24 +283,28 @@ $c-btn-border-hover: hsl(154, 65%, 63%);
       padding: 4rem;
     }
   }
+
   &_fieldList {
+    list-style: none;
     margin: 0;
     padding: 0;
-    list-style: none;
   }
+
   &_field:not(:first-child) {
     margin-top: 1.6rem;
     @include mdUp {
       margin-top: 2rem;
     }
   }
+
   &_submit {
-    width: 100%;
     margin-top: 1.6rem;
+    width: 100%;
     @include mdUp {
       margin-top: 2rem;
     }
   }
+
   &_agreement {
     margin: 0.8rem 0 0;
     padding: 0 1.6rem;
