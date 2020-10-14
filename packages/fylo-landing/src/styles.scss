@@ -1,5 +1,7 @@
-@import '../../../includes/reset';
-@import '../../../includes/defaults';
+/* stylelint-disable */
+
+@import 'reset';
+@import 'defaults';
 
 $controlShadow: 0 0.6rem 0.4rem hsla(0, 0, 0, 0.05);
 $controlActiveShadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
@@ -35,17 +37,17 @@ $c-light: hsl(0, 0%, 100%);
 // #region Components
 
 .logo {
-  width: 8rem;
-  height: 2.4rem;
   background: url(logo.svg) left center no-repeat;
   background-size: contain;
+  height: 2.4rem;
+  width: 8rem;
   @include smUp {
-    width: 10rem;
     height: 3rem;
+    width: 10rem;
   }
   @include mdUp {
-    width: 16.6rem;
     height: 4.9rem;
+    width: 16.6rem;
   }
 }
 
@@ -54,9 +56,9 @@ $c-light: hsl(0, 0%, 100%);
     display: grid;
     grid-auto-flow: column;
     grid-gap: 2.4rem;
+    list-style: none;
     margin: 0;
     padding: 0;
-    list-style: none;
     @include smUp {
       grid-gap: 4rem;
     }
@@ -64,6 +66,7 @@ $c-light: hsl(0, 0%, 100%);
       grid-gap: 5.6rem;
     }
   }
+
   &_link {
     color: $c-VeryDarkBlue;
     font: 1.2rem Raleway, sans-serif;
@@ -75,9 +78,11 @@ $c-light: hsl(0, 0%, 100%);
     @include mdUp {
       font-size: 1.6rem;
     }
+
     &:focus {
       outline: 0.2rem solid $c-ModerateCyan;
     }
+
     &:hover {
       text-decoration: underline;
     }
@@ -85,17 +90,17 @@ $c-light: hsl(0, 0%, 100%);
 }
 
 .illustration {
-  width: 100%;
-  padding-bottom: 75.46%;
   background-repeat: no-repeat;
   background-size: contain;
+  padding-bottom: 75.46%;
+  width: 100%;
 }
 
 .heading {
-  margin: 0;
   color: $c-VeryDarkBlue;
   font: 700 2.4rem/150% Raleway, sans-serif;
   font-kerning: none;
+  margin: 0;
   @include smUp {
     font-size: 3rem;
   }
@@ -105,9 +110,9 @@ $c-light: hsl(0, 0%, 100%);
 }
 
 .text {
-  margin: 0;
   color: $c-VeryDarkBlue;
   font: 1.4rem/150% Open Sans, sans-serif;
+  margin: 0;
   @include smUp {
     font-size: 1.6rem;
   }
@@ -121,9 +126,11 @@ $c-light: hsl(0, 0%, 100%);
   color: inherit;
   font: 1.6rem Open Sans, sans-serif;
   text-decoration: none;
+
   &:focus {
     outline: 0.1rem solid $c-ModerateCyan;
   }
+
   &:hover {
     text-decoration: underline;
   }
@@ -131,58 +138,63 @@ $c-light: hsl(0, 0%, 100%);
 
 .emailField {
   display: block;
+
   &_input {
-    width: 100%;
-    padding: 1.1rem 2.1rem;
-    font: 1.2rem/140% Open Sans, sans-serif;
     background: $c-light;
     border: 0.1rem solid $c-DesaturatedBlue;
     border-radius: 0.3rem;
     box-shadow: $controlShadow;
+    font: 1.2rem/140% Open Sans, sans-serif;
+    padding: 1.1rem 2.1rem;
     transition: 0.2s;
+    width: 100%;
     @include smUp {
       font-size: 1.4rem;
       line-height: 130%;
     }
     @include mdUp {
-      padding: 1.3rem 2rem 1.1rem;
-      line-height: 140%;
       letter-spacing: 0.03em;
+      line-height: 140%;
+      padding: 1.3rem 2rem 1.1rem;
     }
+
     &::placeholder {
       color: $c-LightGray;
     }
+
     &:focus {
       border-color: $c-BrightBlue;
-      outline: none;
       box-shadow: $controlActiveShadow;
+      outline: none;
     }
   }
 }
 
 .button {
-  padding: 1.2rem 3.2rem;
-  color: $c-light;
-  font: 700 1.4rem Raleway, sans-serif;
   background: $c-BrightBlue;
   border: none;
   border-radius: 0.3rem;
   box-shadow: $controlShadow;
+  color: $c-light;
+  font: 700 1.4rem Raleway, sans-serif;
+  padding: 1.2rem 3.2rem;
   transition: 0.2s;
   @include smUp {
-    padding-top: 1.3rem;
     padding-bottom: 1.3rem;
+    padding-top: 1.3rem;
   }
   @include smUp {
-    padding-top: 1.5rem;
     padding-bottom: 1.4rem;
+    padding-top: 1.5rem;
   }
+
   &:focus,
   &:hover {
-    outline: none;
     box-shadow: $controlActiveShadow;
     filter: brightness(1.2);
+    outline: none;
   }
+
   &:active {
     filter: brightness(0.8);
   }
@@ -202,9 +214,11 @@ $c-light: hsl(0, 0%, 100%);
 .standoutLink {
   display: inline-block;
   text-decoration: none;
+
   &:hover > .standoutLink_underline {
     transform: scaleY(2);
   }
+
   &_label {
     color: $c-ModerateCyan;
     font: 1.2rem Open Sans, sans-serif;
@@ -214,35 +228,37 @@ $c-light: hsl(0, 0%, 100%);
     @include mdUp {
       font-size: 1.6rem;
     }
-    &:after {
-      display: inline-block;
-      width: 1.6rem;
-      height: 1.6rem;
-      margin-left: 0.6rem;
-      vertical-align: middle;
+
+    &::after {
       background: url(icon-arrow.svg) center no-repeat;
       background-size: contain;
       content: '';
+      display: inline-block;
+      height: 1.6rem;
+      margin-left: 0.6rem;
+      vertical-align: middle;
+      width: 1.6rem;
     }
   }
+
   &_underline {
+    background: $c-ModerateCyan;
+    content: '';
     display: block;
-    width: 100%;
     height: 0.1rem;
     margin-top: 0.4rem;
-    background: $c-ModerateCyan;
     transition: 0.2s;
-    content: '';
+    width: 100%;
   }
 }
 
 .testimonials {
-  max-width: 28rem;
-  padding: 2rem 1.2rem 2.1rem 2.6rem;
-  color: $c-VeryDarkBlue;
   background: $c-light;
   border-radius: 0.3rem;
   box-shadow: 0 0.2rem 1rem hsla(0, 0, 0, 0.05);
+  color: $c-VeryDarkBlue;
+  max-width: 28rem;
+  padding: 2rem 1.2rem 2.1rem 2.6rem;
   @include smUp {
     max-width: 33rem;
   }
@@ -250,33 +266,36 @@ $c-light: hsl(0, 0%, 100%);
     max-width: 35.6rem;
     padding: 2.4rem 3.2rem 2.7rem;
   }
+
   &_quote {
-    margin: 0;
     font: 1rem/185% Open Sans, sans-serif;
     letter-spacing: 0.04em;
+    margin: 0;
     @include smUp {
       font-size: 1.2rem;
     }
     @include mdUp {
       font-size: 1.4rem;
-      line-height: 170%;
       letter-spacing: normal;
+      line-height: 170%;
     }
-    &:before {
-      display: block;
-      width: 1.3rem;
-      height: 1.2rem;
-      margin-bottom: 0.8rem;
+
+    &::before {
       background: url(icon-quotes.svg) center no-repeat;
       background-size: contain;
       content: '';
+      display: block;
+      height: 1.2rem;
+      margin-bottom: 0.8rem;
+      width: 1.3rem;
       @include mdUp {
-        width: 1.6rem;
         height: 1.6rem;
         margin-bottom: 0.9rem;
+        width: 1.6rem;
       }
     }
   }
+
   &_author {
     margin: 1.2rem 0 0;
     @include mdUp {
@@ -292,32 +311,35 @@ $c-light: hsl(0, 0%, 100%);
     'person_avatar person_name' auto
     'person_avatar person_position' auto
     / auto 1fr;
+
   &_avatar {
-    grid-area: person_avatar;
-    width: 2.4rem;
-    height: 2.4rem;
     border-radius: 50%;
+    grid-area: person_avatar;
+    height: 2.4rem;
+    width: 2.4rem;
     @include smUp {
-      width: 3.2rem;
       height: 3.2rem;
+      width: 3.2rem;
     }
   }
+
   &_name {
-    grid-area: person_name;
     align-self: end;
-    margin: 0;
     font: 700 1rem Open Sans, sans-serif;
+    grid-area: person_name;
+    margin: 0;
     @include mdUp {
       font-size: 1.1rem;
       letter-spacing: 0.05em;
     }
   }
+
   &_position {
-    grid-area: person_position;
     align-self: start;
-    margin: 0;
     font: 0.6rem Open Sans, sans-serif;
+    grid-area: person_position;
     letter-spacing: 0.05em;
+    margin: 0;
     @include mdUp {
       font-size: 0.8rem;
       letter-spacing: 0.05em;
@@ -329,24 +351,28 @@ $c-light: hsl(0, 0%, 100%);
   display: grid;
   grid-gap: 1.6rem;
   padding-left: 4rem;
+
   [href^='tel']::before {
     background: url(icon-phone.svg) left center no-repeat;
     background-size: contain;
   }
+
   [href^='mailto']::before {
     background: url(icon-email.svg) left center no-repeat;
     background-size: contain;
   }
+
   &_text {
     position: relative;
+
     &::before {
+      content: '';
+      display: block;
+      height: 1.8rem;
+      left: -3.8rem;
       position: absolute;
       top: 0.3rem;
-      left: -3.8rem;
-      display: block;
       width: 2rem;
-      height: 1.8rem;
-      content: '';
     }
   }
 }
@@ -355,9 +381,9 @@ $c-light: hsl(0, 0%, 100%);
   &_list {
     display: grid;
     grid-gap: 1.6rem;
+    list-style: none;
     margin: 0;
     padding: 0;
-    list-style: none;
     @include smUp {
       grid-auto-flow: column;
       grid-gap: 1.6rem 4rem;
@@ -366,6 +392,7 @@ $c-light: hsl(0, 0%, 100%);
     @include lgUp {
       grid-gap: 1.6rem 14.6rem;
     }
+
     .sitemap_item:nth-child(5) {
       margin-top: 3.2rem;
       @include smUp {
@@ -377,53 +404,56 @@ $c-light: hsl(0, 0%, 100%);
 
 .social {
   display: grid;
+  font-size: 1rem;
   grid-gap: 1.2em;
   grid-template-columns: repeat(3, auto);
   justify-content: center;
+  list-style: none;
   margin: 0;
   padding: 0;
-  font-size: 1rem;
-  list-style: none;
+
   &_item {
     display: block;
   }
+
   &_link {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    width: 2.8em;
-    height: 2.8em;
-    color: $c-light;
     background: transparent;
     border-radius: 50%;
     box-shadow: inset 0 0 0 0.1em $c-light;
+    color: $c-light;
+    display: flex;
+    height: 2.8em;
+    justify-content: center;
     transition: 0.2s;
+    width: 2.8em;
     @include mdUp {
-      width: 3.2em;
       height: 3.2em;
+      width: 3.2em;
     }
+
     &:focus,
     &:hover {
-      color: $c-VeryDarkBlue;
       background: $c-light;
+      color: $c-VeryDarkBlue;
       outline: none;
     }
   }
 }
 
 .icon {
-  width: 50%;
   height: 50%;
+  width: 50%;
 }
 
 .srOnly {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
   border: 0;
   clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 // #endregion Components
@@ -432,14 +462,15 @@ $c-light: hsl(0, 0%, 100%);
 
 .header {
   background: $c-light;
+
   &_container {
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: space-between;
     padding: 2.4rem;
     @include mdUp {
-      max-width: $containerLg;
       margin: 0 auto;
+      max-width: $containerLg;
       padding: 4rem;
     }
     @include lgUp {
@@ -450,16 +481,17 @@ $c-light: hsl(0, 0%, 100%);
 
 .intro {
   background: $c-light;
+
   &_container {
     display: grid;
     grid-gap: 3.6rem;
-    max-width: $containerSm;
     margin: 0 auto;
+    max-width: $containerSm;
     padding: 7.4rem 2.4rem 9rem;
     @include mdUp {
+      align-items: center;
       grid-gap: 2.4rem;
       grid-template-columns: repeat(2, 1fr);
-      align-items: center;
       max-width: $containerLg;
       padding: 8rem 4rem 12rem;
     }
@@ -468,15 +500,18 @@ $c-light: hsl(0, 0%, 100%);
       padding: 2.4rem 8rem 15.4rem;
     }
   }
+
   &_image {
     padding: 0 1.2rem;
     @include mdUp {
       padding: 0;
     }
+
     > .illustration {
       background-image: url(illustration-1.svg);
     }
   }
+
   &_content {
     padding: 0 0.8rem;
     text-align: center;
@@ -490,6 +525,7 @@ $c-light: hsl(0, 0%, 100%);
       padding-right: 4rem;
     }
   }
+
   &_text {
     margin-top: 2.4rem;
     @include smUp {
@@ -500,6 +536,7 @@ $c-light: hsl(0, 0%, 100%);
       padding: 0;
     }
   }
+
   &_signup {
     margin-top: 3.2rem;
     @include smUp {
@@ -513,26 +550,27 @@ $c-light: hsl(0, 0%, 100%);
 }
 
 .curvedTop {
+  background: $c-LightGrayishBlue;
+  height: 5.3rem;
+  mask: url(bg-curve-mobile.svg) no-repeat center / 100% 100%;
   position: relative;
   width: 100%;
-  height: 5.3rem;
-  background: $c-LightGrayishBlue;
-  -webkit-mask: url(bg-curve-mobile.svg) no-repeat center / 100% 100%;
   @include mdUp {
-    -webkit-mask-image: url(bg-curve-desktop.svg);
     height: 11.4rem;
+    mask-image: url(bg-curve-desktop.svg);
   }
 }
 
 .benefits {
   background: $c-LightGrayishBlue;
+
   &_container {
-    position: relative;
     display: grid;
     grid-gap: 8.8rem;
-    max-width: $containerSm;
     margin: 0 auto;
+    max-width: $containerSm;
     padding: 4rem 2.4rem 8.2rem;
+    position: relative;
     @include mdUp {
       grid-gap: 4rem;
       grid-template-columns: 1fr 42.34%;
@@ -544,20 +582,24 @@ $c-light: hsl(0, 0%, 100%);
       padding: 6.4rem 8rem 10.5rem;
     }
   }
+
   &_image {
     padding: 0 0.4rem;
     @include mdUp {
       padding: 2.4rem 0 0;
     }
+
     > .illustration {
       background-image: url(illustration-2.svg);
     }
   }
+
   &_content {
     @include mdUp {
       order: -1;
     }
   }
+
   &_heading {
     font-size: 1.6rem;
     text-align: center;
@@ -573,22 +615,26 @@ $c-light: hsl(0, 0%, 100%);
       font-size: 4rem;
     }
   }
+
   &_text {
     @include smUp {
-      max-width: 52rem;
       font-size: 1.6rem;
       line-height: 150%;
+      max-width: 52rem;
     }
   }
+
   &_text:nth-child(2) {
     margin-top: 2.4rem;
     @include mdUp {
       margin-top: 3.7rem;
     }
   }
+
   &_text:nth-child(3) {
     margin-top: 1.6rem;
   }
+
   &_link {
     display: flex;
     justify-content: center;
@@ -598,6 +644,7 @@ $c-light: hsl(0, 0%, 100%);
       margin-top: 1.6rem;
     }
   }
+
   &_card {
     margin: 4rem auto 0;
     @include mdUp {
@@ -608,15 +655,16 @@ $c-light: hsl(0, 0%, 100%);
 
 .promo {
   background: $c-DesaturatedBlue;
+
   &_container {
     padding: 5.3rem 4.4rem 7.1rem;
     @include mdUp {
+      align-items: center;
       display: grid;
       grid-gap: 8rem;
       grid-template-columns: repeat(2, 1fr);
-      align-items: center;
-      max-width: $containerLg;
       margin: 0 auto;
+      max-width: $containerLg;
       text-align: left;
     }
     @include lgUp {
@@ -624,19 +672,21 @@ $c-light: hsl(0, 0%, 100%);
       padding: 10.2rem 8rem 8.6rem;
     }
   }
+
   &_content {
     text-align: center;
     @include smUp {
-      max-width: 40rem;
       margin: 0 auto;
+      max-width: 40rem;
     }
     @include mdUp {
-      max-width: unset;
       margin: 0;
+      max-width: unset;
       padding-right: 2rem;
       text-align: left;
     }
   }
+
   &_heading {
     color: $c-light;
     font-size: 1.8rem;
@@ -647,62 +697,68 @@ $c-light: hsl(0, 0%, 100%);
       font-size: 3.2rem;
     }
   }
+
   &_text {
-    margin-top: 1.5rem;
     color: $c-light;
+    margin-top: 1.5rem;
     @include mdUp {
       font-size: 1.6rem;
-      line-height: 150%;
       letter-spacing: 0.03em;
+      line-height: 150%;
     }
   }
+
   &_signup {
     grid-gap: 0.8rem;
-    width: 24rem;
     margin: 2.4rem auto 0;
+    width: 24rem;
     @include mdUp {
+      align-content: center;
       grid-gap: 1.6rem;
       grid-template: repeat(2, 1fr) / auto;
-      align-content: center;
-      width: 100%;
       margin: 0;
       padding: 0 4rem;
+      width: 100%;
     }
+
     .emailField_input {
-      padding: 0.8rem 0.7rem;
-      font-size: 1rem;
       border-color: $c-light;
+      font-size: 1rem;
+      padding: 0.8rem 0.7rem;
       @include smUp {
         font-size: 1.2rem;
       }
       @include mdUp {
-        padding: 1.5rem 2.1rem;
         letter-spacing: normal;
+        padding: 1.5rem 2.1rem;
       }
+
       &:focus {
         border-color: $c-VeryDarkBlue;
       }
     }
+
     .button {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
       font-size: 1rem;
       line-height: 120%;
+      padding-bottom: 1rem;
+      padding-top: 1rem;
       @include smUp {
         font-size: 1.2rem;
       }
       @include mdUp {
-        width: 20rem;
-        padding: 1.6rem 3.2rem;
         font-size: 1.4rem;
+        padding: 1.6rem 3.2rem;
+        width: 20rem;
       }
     }
   }
 }
 
 .footer {
-  color: $c-light;
   background: $c-VeryDarkBlue;
+  color: $c-light;
+
   &_container {
     display: grid;
     grid-template:
@@ -721,43 +777,47 @@ $c-light: hsl(0, 0%, 100%);
         'footer_sitemap footer_sitemap' auto
         'footer_social footer_social' auto
         / 1fr 1fr;
-      max-width: $containerSm;
       margin: 0 auto;
+      max-width: $containerSm;
     }
     @include mdUp {
+      align-items: start;
       grid-gap: 6rem 4rem;
       grid-template:
         'footer_logo footer_logo' auto
         'footer_contacts footer_sitemap' auto
         'footer_social footer_social' auto
         / 3fr 4fr;
-      align-items: start;
       max-width: $containerLg;
     }
     @include lgUp {
+      align-items: start;
       grid-gap: 2.4rem 11.09%;
       grid-template:
         'footer_logo footer_logo footer_logo' auto
         'footer_contacts footer_sitemap footer_social' auto
         / 23.59% 30.625% 23.59%;
-      align-items: start;
       max-width: $containerLg;
       padding: 10.8rem 8rem 7.2rem;
     }
   }
+
   &_logo {
-    grid-area: footer_logo;
-    width: 17.6rem;
-    height: 5.2rem;
     background: $c-light;
-    -webkit-mask: url(logo.svg) no-repeat center / contain;
+    grid-area: footer_logo;
+    height: 5.2rem;
+    mask: url(logo.svg) no-repeat center / contain;
+    width: 17.6rem;
   }
+
   &_contacts {
     grid-area: footer_contacts;
   }
+
   &_sitemap {
     grid-area: footer_sitemap;
   }
+
   &_social {
     grid-area: footer_social;
     @include lgUp {
