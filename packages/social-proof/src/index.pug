@@ -1,7 +1,8 @@
-extends ../../../includes/layout
+extends layout
 
 block variables
   - const title = "Social proof section";
+  - const challenge = title;
 
 block fonts
   +googleFonts([ 'family=Spartan&display=swap&text=Verifd%20BuyWnthsampgowk.Nl%2CbcvEx!%22CqP', 'family=Spartan:wght@500&display=swap&text=We%20onlyprvidgatucsmbwhx.Sf', 'family=Spartan:wght@700&display=swap&text=10%2C%2B%20ofurselvpdct.Ra5SinwGBThCmIbAW', ])
@@ -44,7 +45,7 @@ block content
             .card.grid__item
               .person
                 img.person__avatar.avatar(
-                  src=`image-${str}.jpg`,
+                  src=`image-${str}.jpg`
                   alt=`${author}`
                 )
                 p.person__name.text-subtitle #{author}

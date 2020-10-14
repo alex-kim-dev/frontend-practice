@@ -1,5 +1,5 @@
-@import '../../../includes/reset';
-@import '../../../includes/defaults';
+@import 'reset';
+@import 'defaults';
 
 // abstracts
 
@@ -40,54 +40,54 @@
 
 .wrapper {
   background:
-    top / 100% auto no-repeat url(bg-pattern-top-mobile.svg),
-    bottom / 100% auto no-repeat url(bg-pattern-bottom-mobile.svg);
+    top / 100% auto no-repeat url('bg-pattern-top-mobile.svg'),
+    bottom / 100% auto no-repeat url('bg-pattern-bottom-mobile.svg');
 
   @include smUp {
     background:
-      top left no-repeat url(bg-pattern-top-desktop.svg),
-      bottom right no-repeat url(bg-pattern-bottom-desktop.svg);
+      top left no-repeat url('bg-pattern-top-desktop.svg'),
+      bottom right no-repeat url('bg-pattern-bottom-desktop.svg');
   }
 }
 
 .social-proof {
+  margin: 0 auto;
   max-width: 44rem;
   min-height: 100vh;
-  margin: 0 auto;
   padding: 8.2rem 2.4rem 10rem;
 
   @include smUp {
+    align-content: start;
+    align-items: center;
     display: grid;
     grid-gap: 7rem 1.6rem;
     grid-template:
       'intro ratings' auto
       'testimonials testimonials' auto
       / 1fr 1fr;
-    align-content: start;
-    align-items: center;
     max-width: none;
-    padding-right: 4rem;
     padding-left: 4rem;
+    padding-right: 4rem;
   }
 
   @include mdUp {
     grid-gap: 7.2rem 3rem;
-    padding-top: 13.1rem;
-    padding-right: 6rem;
     padding-left: 6rem;
+    padding-right: 6rem;
+    padding-top: 13.1rem;
   }
 
   @include lgUp {
-    padding-right: 16.4rem;
     padding-left: 16.4rem;
+    padding-right: 16.4rem;
   }
 
   &__intro {
+    color: var(--c-primary);
     display: grid;
     grid-area: intro;
     grid-row-gap: 2.4rem;
     max-width: 46rem;
-    color: var(--c-primary);
 
     @include xsDown {
       text-align: center;
@@ -99,10 +99,10 @@
   }
 
   &__ratings {
+    color: var(--c-primary);
     display: grid;
     grid-area: ratings;
     grid-row-gap: 1.6rem;
-    color: var(--c-primary);
 
     @include xsDown {
       margin-top: 3.8rem;
@@ -148,8 +148,8 @@
       }
 
       &:nth-child(2) {
-        margin-top: calc(1.6rem + var(--margin));
         margin-bottom: calc(1.6rem + var(--margin));
+        margin-top: calc(1.6rem + var(--margin));
       }
 
       &:nth-child(3) {
@@ -164,13 +164,13 @@
 }
 
 .card {
-  display: grid;
-  grid-gap: 2.6rem;
   align-content: start;
-  padding: 4rem 3.2rem 3.2rem;
-  color: var(--c-light);
   background-color: var(--c-primary);
   border-radius: 0.8rem;
+  color: var(--c-light);
+  display: grid;
+  grid-gap: 2.6rem;
+  padding: 4rem 3.2rem 3.2rem;
 
   @include mdUp {
     padding-bottom: 4rem;
@@ -180,12 +180,12 @@
 // components
 
 .rating {
+  background-color: var(--c-secondary-light);
+  border-radius: 0.8rem;
   display: grid;
   grid-gap: 1.6rem 3.2rem;
   justify-items: center;
   padding: 1.6rem;
-  background-color: var(--c-secondary-light);
-  border-radius: 0.8rem;
 
   @include mdUp {
     &:nth-child(1) {
@@ -193,8 +193,8 @@
     }
 
     &:nth-child(2) {
-      margin-right: 4.8rem;
       margin-left: 4.8rem;
+      margin-right: 4.8rem;
     }
 
     &:nth-child(3) {
@@ -203,27 +203,27 @@
   }
 
   @include lgUp {
-    grid-auto-flow: column;
     align-items: center;
+    grid-auto-flow: column;
     justify-content: start;
     padding: 2rem 3.2rem;
   }
 }
 
 .stars {
-  width: 11.7rem;
+  background: left center url('icon-star.svg');
   height: 1.6rem;
-  background: left center url(icon-star.svg);
+  width: 11.7rem;
 }
 
 .person {
+  align-items: center;
   display: grid;
   grid-gap: 0 2.4rem;
   grid-template:
     'avatar name' auto
     'avatar info' auto
     / auto 1fr;
-  align-items: center;
 
   &__avatar {
     grid-area: avatar;
@@ -234,14 +234,14 @@
   }
 
   &__info {
-    grid-area: info;
     color: var(--c-primary-light);
+    grid-area: info;
   }
 }
 
 .avatar {
-  max-width: 4rem;
   border-radius: 50%;
+  max-width: 4rem;
 }
 
 .quote {
@@ -260,11 +260,11 @@
 // text
 
 .h2 {
-  font-weight: 700;
-  font-size: fluidFont(3.2, 4.8, 37.5, 144, rem);
   font-family: Spartan, sans-serif;
-  line-height: 100%;
+  font-size: fluidFont(3.2, 4.8, 37.5, 144, rem);
+  font-weight: 700;
   letter-spacing: -0.04em;
+  line-height: 100%;
 }
 
 .text {
