@@ -5,38 +5,36 @@ $logo-size-xs: 4.8rem;
 $padding-xs: 2.4rem;
 
 .job {
-  padding: $padding-xs;
-  background-color: white;
+  background-color: #fff;
   border-radius: 0.5rem;
-  margin-top: $logo-size-xs / 2;
   box-shadow: 0 1.5rem 2rem -0.5rem c.$shadow;
+  margin-top: $logo-size-xs / 2;
+  padding: $padding-xs;
 
   @include brp.smUp {
-    display: flex;
     align-items: center;
-    padding: 3.2rem 4rem;
+    display: flex;
     margin-top: 0;
+    padding: 3.2rem 4rem;
   }
 
   &Highlighted {
-    background-image: linear-gradient(
-      to right,
-      c.$primary 0.5rem,
-      transparent 0.5rem,
-    );
+    background-image: linear-gradient(to right,
+    c.$primary 0.5rem,
+    transparent 0.5rem,);
   }
 }
 
 .logo {
-  width: $logo-size-xs;
   height: $logo-size-xs;
   margin-top: -$logo-size-xs / 2 - $padding-xs;
+  width: $logo-size-xs;
 
   @include brp.smUp {
     flex-shrink: 0;
-    width: 8.8rem;
     height: 8.8rem;
     margin-top: 0;
+    width: 8.8rem;
   }
 }
 
@@ -45,18 +43,18 @@ $padding-xs: 2.4rem;
 
   @include brp.smUp {
     flex: 0 1 31rem;
-    margin-top: 0;
     margin-left: 2.4rem;
     margin-right: 1.6rem;
+    margin-top: 0;
   }
 }
 
 .heading {
-  font: 700 1.3rem/190% Spartan, sans-serif;
+  align-items: center;
   color: c.$primary;
   display: flex;
-  align-items: center;
   flex-flow: wrap;
+  font: 700 1.3rem/190% Spartan, sans-serif;
   margin: -0.2rem -0.4rem;
 
   @include brp.smUp {
@@ -74,26 +72,26 @@ $padding-xs: 2.4rem;
 }
 
 .position {
-  font: 700 1.5rem/160% Spartan, sans-serif;
   color: c.$text;
-  text-decoration: none;
   display: block;
+  font: 700 1.5rem/160% Spartan, sans-serif;
   margin-top: 0.8rem;
-
-  &:hover {
-    color: c.$primary;
-  }
+  text-decoration: none;
 
   @include brp.smUp {
     font-size: 1.8rem;
     line-height: 135%;
   }
+
+  &:hover {
+    color: c.$primary;
+  }
 }
 
 .details {
+  color: c.$text-secondary;
   font: 500 1.3rem/185% Spartan, sans-serif;
   letter-spacing: -0.0077em;
-  color: c.$text-secondary;
   margin-top: 0.8rem;
 
   @include brp.smUp {
@@ -101,30 +99,28 @@ $padding-xs: 2.4rem;
     line-height: 160%;
   }
 
-  > :not(:first-child) {
-    &::before {
-      content: '';
-      display: inline-block;
-      margin: 0 0.8rem;
-      width: 0.4rem;
-      height: 0.4rem;
-      border-radius: 50%;
-      background-color: c.$text-secondary;
-      vertical-align: middle;
+  > :not(:first-child)::before {
+    background-color: c.$text-secondary;
+    border-radius: 50%;
+    content: '';
+    display: inline-block;
+    height: 0.4rem;
+    margin: 0 0.8rem;
+    vertical-align: middle;
+    width: 0.4rem;
 
-      @include brp.smUp {
-        margin: 0 1.6rem;
-      }
+    @include brp.smUp {
+      margin: 0 1.6rem;
     }
   }
 }
 
 .hr {
-  border: none;
-  height: 0.1rem;
   background-color: c.$text-secondary;
-  width: 100%;
+  border: 0;
+  height: 0.1rem;
   margin: 1.6rem 0;
+  width: 100%;
 
   @include brp.smUp {
     display: none;
@@ -132,9 +128,9 @@ $padding-xs: 2.4rem;
 }
 
 .tagList {
-  margin: -0.8rem;
   display: flex;
   flex-flow: wrap;
+  margin: -0.8rem;
 
   @include brp.smUp {
     flex: 1 1 26rem;

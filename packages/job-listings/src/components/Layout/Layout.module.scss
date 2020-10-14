@@ -2,18 +2,18 @@
 @use '../breakpoints' as brp;
 
 .wrapper {
-  min-height: 100vh;
   background:
-    url(../../images/bg-header-mobile.svg) top / 100% 15.6rem no-repeat,
+    url('../../images/bg-header-mobile.svg') top / 100% 15.6rem no-repeat,
     linear-gradient(to bottom, c.$primary 15.6rem, transparent 15.6rem),
     c.$back;
+  min-height: 100vh;
   padding: 15.6rem 2.4rem 3.4rem;
 
   @include brp.smUp {
-    padding-bottom: 12rem;
     background-image:
-      url(../../images/bg-header-desktop.svg),
+      url('../../images/bg-header-desktop.svg'),
       linear-gradient(to bottom, c.$primary 15.6rem, transparent 15.6rem);
+    padding-bottom: 12rem;
   }
 }
 

@@ -1,18 +1,18 @@
 @use '../colors' as c;
 
 .chip {
-  display: inline-flex;
   align-items: center;
-  padding: 0 0.8rem;
-  height: 2.4rem;
-  border-radius: 1.2rem;
   background-color: c.$primary;
+  border-radius: 1.2rem;
+  color: #fff;
+  display: inline-flex;
   font: 700 1.1rem/127% Spartan, sans-serif;
+  height: 2.4rem;
   letter-spacing: -0.0072em;
-  text-transform: uppercase;
-  color: white;
-  white-space: nowrap;
+  padding: 0 0.8rem;
   text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .dark {

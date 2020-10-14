@@ -1,7 +1,7 @@
 import { arrayOf, node } from 'prop-types';
 import React from 'react';
 
-import Seo from '../../../../../components/Seo';
+import Seo from '../Seo';
 import styles from './Layout.module.scss';
 
 const Layout = ({ children }) => (

@@ -1,12 +1,9 @@
 const sass = require('sass');
+const siteMetadata = require('site-settings');
 
 module.exports = {
-  siteMetadata: {
-    title: 'Frontend practice',
-    description: 'Frontend projects for practicing with various tech.',
-    author: 'Alex Kim, https://github.com/Alex-K1m',
-  },
-  pathPrefix: '/frontend-practice',
+  siteMetadata,
+  pathPrefix: siteMetadata.baseurl,
 
   plugins: [
     { resolve: 'gatsby-plugin-react-helmet' },
@@ -17,20 +14,13 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'fem',
-        path: `${__dirname}/src/fem`,
-      },
-    },
     { resolve: 'gatsby-transformer-sharp' },
     { resolve: 'gatsby-plugin-sharp' },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'gatsby-starter-linting',
-        short_name: 'starter',
+        name: 'Job listings with filtering',
+        short_name: 'job-listings',
         start_url: '/',
         background_color: '#663399',
         theme_color: '#663399',

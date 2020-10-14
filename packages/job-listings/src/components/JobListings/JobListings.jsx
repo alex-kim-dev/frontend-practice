@@ -17,8 +17,8 @@ const JobListings = () => {
     {
       allFile(
         filter: {
-          sourceInstanceName: { eq: "fem" }
-          relativePath: { glob: "*/*/images/*.svg" }
+          sourceInstanceName: { eq: "images" }
+          extension: { eq: "svg" }
         }
       ) {
         edges {
