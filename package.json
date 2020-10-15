@@ -9,7 +9,21 @@
   "homepage": "https://alex-k1m.github.io/frontend-practice/",
   "bugs": "https://github.com/Alex-K1m/frontend-practice/issues",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "boot": "lerna bootstrap",
+    "build": "lerna run build --parallel --since $(git describe --abbrev=0 --first-parent HEAD^",
+    "build:all": "lerna run build --parallel",
+    "bump": "lerna version",
+    "clean:cache": "lerna run --parallel clean:cache",
+    "fix:code": "eslint --fix .",
+    "fix:misc": "prettier --write \"**/*.{pug,json,yml,yaml,md}\"",
+    "fix:styles": "stylelint --fix \"**/*.scss\"",
+    "lint:code": "eslint .",
+    "lint:misc": "prettier --check \"**/*.{pug,json,yml,yaml,md}\"",
+    "lint:styles": "stylelint \"**/*.scss\"",
+    "list": "lerna ls -la",
+    "status": "lerna changed -a",
+    "test": "lerna run test",
+    "upgrade": "yarn upgrade-interactive --latest"
   },
   "devDependencies": {
     "@prettier/plugin-pug": "^1.8.1",
