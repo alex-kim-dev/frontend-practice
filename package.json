@@ -40,12 +40,24 @@
     "eslint-plugin-react": "^7.21.4",
     "eslint-plugin-react-hooks": "^4.1.2",
     "eslint-plugin-simple-import-sort": "^5.0.3",
+    "husky": "^4.3.0",
     "lerna": "^3.22.1",
+    "lint-staged": "^10.4.0",
     "prettier": "^2.1.2",
     "prettier-plugin-package": "^1.2.0",
     "rimraf": "^3.0.2",
     "stylelint": "^13.7.2",
     "stylelint-config-sass-guidelines": "^7.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": "eslint --fix",
+    "*.scss": "stylelint --fix",
+    "*.{pug,json,yml,yaml,md}": "prettier --write"
   },
   "workspaces": [
     "projects/*",
