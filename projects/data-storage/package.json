@@ -1,6 +1,6 @@
 {
   "name": "data-storage",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "A solution for \"Fylo data storage component\" challenge on frontendmentor.io",
   "license": "MIT",
@@ -14,10 +14,10 @@
     "start": "parcel src/index.pug --out-dir public"
   },
   "dependencies": {
-    "@frontend/site-meta": "^1.0.0"
+    "@frontend/site-meta": "^1.0.1"
   },
   "devDependencies": {
-    "@frontend/browserslist-config": "^1.0.0",
+    "@frontend/browserslist-config": "^1.0.1",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-clean-dist": "^0.0.6",
     "postcss-preset-env": "^6.7.0",
