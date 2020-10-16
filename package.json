@@ -1,6 +1,5 @@
 {
   "name": "frontend",
-  "version": "0.1.0",
   "private": true,
   "description": "Frontend projects for practicing with various tech",
   "license": "MIT",
@@ -10,7 +9,7 @@
   "bugs": "https://github.com/Alex-K1m/frontend-practice/issues",
   "scripts": {
     "boot": "lerna bootstrap",
-    "build": "lerna run build --parallel --since $(git describe --abbrev=0 --first-parent HEAD^",
+    "build": "lerna run build --parallel --since $(git describe --abbrev=0 --first-parent HEAD^)",
     "build:all": "lerna run build --parallel",
     "bump": "lerna version",
     "clean:cache": "lerna run --parallel clean:cache",

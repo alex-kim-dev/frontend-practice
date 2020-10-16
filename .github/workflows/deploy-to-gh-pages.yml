@@ -15,14 +15,17 @@ jobs:
       - name: Install and Build 🔧
         run: |
           yarn install
+          yarn boot
           yarn run build
-          mkdir build
-          cp -r no-framework/prod/* react/public/* build
+          mkdir public
+          cd projects
+          for D in *; do [ -d "${D}" ] && mkdir -p ../public/${D} && cp -r ${D}/public/* ../public/${D}; done
+          cd ..
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: build
+          FOLDER: public
           CLEAN: true

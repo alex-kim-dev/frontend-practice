@@ -2,3 +2,4 @@
 /projects/*/public/
 /projects/*/.cache/
 /projects/*/coverage/
+/public/
