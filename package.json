@@ -51,16 +51,6 @@
     "stylelint": "^13.7.2",
     "stylelint-config-sass-guidelines": "^7.1.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx}": "eslint --fix",
-    "*.scss": "stylelint --fix",
-    "*.{pug,json,yml,yaml,md}": "prettier --write"
-  },
   "workspaces": [
     "projects/*",
     "packages/*"
