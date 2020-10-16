@@ -1,9 +1,12 @@
 const sass = require('sass');
 const siteMetadata = require('@frontend/site-meta');
+const path = require('path');
+
+const pathPrefix = path.join(siteMetadata.baseurl, 'job-listings');
 
 module.exports = {
   siteMetadata,
-  pathPrefix: siteMetadata.baseurl,
+  pathPrefix,
 
   plugins: [
     { resolve: 'gatsby-plugin-react-helmet' },
