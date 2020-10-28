@@ -12,31 +12,15 @@ block content
     header.feature__header
       .feature__heading
         h1
-          span Reliable, efficient delivery
+          span #{content.heading[0]}
           br
-          | Powered by Technology
+          | #{content.heading[1]}
       .feature__caption
-        p.text-muted.
-          Our Artificial Intelligence powered tools use millions of project
-          data points to ensure that your project is successful
+        p.text-muted #{content.caption}
     dl.feature__list
-      .card
-        dt.card__heading Supervisor
-        dd.card__text.text-muted.
-          Monitors activity to identify project roadblocks
-        .card__icon
-      .card
-        dt.card__heading Team Builder
-        dd.card__text.text-muted.
-          Scans our talent network to create the optimal team for your project
-        .card__icon
-      .card
-        dt.card__heading Karma
-        dd.card__text.text-muted.
-          Regularly evaluates our talent to ensure quality
-        .card__icon
-      .card
-        dt.card__heading Calculator
-        dd.card__text.text-muted.
-          Uses data from past projects to provide better delivery estimates
-        .card__icon
+      each props in content.properties
+        - const { heading, text } = props;
+        .card
+          dt.card__heading #{heading}
+          dd.card__text.text-muted #{text}
+          .card__icon
