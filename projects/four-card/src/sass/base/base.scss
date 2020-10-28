@@ -1,0 +1,16 @@
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-size: 1.6rem;
+}

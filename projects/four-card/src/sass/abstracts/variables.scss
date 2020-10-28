@@ -1,0 +1,15 @@
+$breakpoint-sm: 768;
+$breakpoint-xl: 1200;
+
+$cards: (
+  1 hsl(180, 62%, 55%) 'left'   'icon-supervisor.svg',
+  2 hsl(0, 78%, 62%)   'top'    'icon-team-builder.svg',
+  3 hsl(34, 97%, 64%)  'bottom' 'icon-karma.svg',
+  4 hsl(212, 86%, 64%) 'right'  'icon-calculator.svg',
+);
+
+:root {
+  --text-primary: hsl(234, 12%, 34%);
+  --text-secondary: hsl(229, 6%, 66%);
+  --background: hsl(0, 0%, 98%);
+}
