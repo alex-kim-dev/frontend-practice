@@ -1,26 +1,20 @@
-extends includes/layout
-
-block variables
-  - const title = "Feature section using css grid";
-  - const challenge = "Four card feature section";
-
-block fonts
-  +googleFonts([ 'family=Poppins:wght@200&display=swap&text=Reliab%2C%20fcntdvry', 'family=Poppins&display=swap&text=Our%20AtifcalInegpowdsmjhyMvbkSRqU', 'family=Poppins:wght@600&display=swap&text=Powerd%20byTchnlgSupvisamBKCt' ])
+extends includes/seo
 
 block content
-  section.feature
-    header.feature__header
-      .feature__heading
-        h1
-          span #{content.heading[0]}
-          br
-          | #{content.heading[1]}
-      .feature__caption
-        p.text-muted #{content.caption}
-    dl.feature__list
-      each props in content.properties
-        - const { heading, text } = props;
-        .card
-          dt.card__heading #{heading}
-          dd.card__text.text-muted #{text}
-          .card__icon
+  .wrapper
+    section.feature
+      header.feature__header
+        .feature__heading
+          h1
+            span= content.heading[0]
+            br
+            | #{content.heading[1]}
+        .feature__caption
+          p.text-muted= content.caption
+      dl.feature__list
+        each props in content.properties
+          - const { heading, text } = props;
+          .card
+            dt.card__heading= heading
+            dd.card__text.text-muted= text
+            .card__icon
