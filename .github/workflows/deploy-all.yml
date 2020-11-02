@@ -1,0 +1,46 @@
+name: Deploy all
+
+on:
+  - workflow_dispatch
+
+jobs:
+  deploy-all:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install
+        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        run: |
+          yarn install --frozen-lockfile
+          yarn boot
+
+      - name: Test
+        run: |
+          yarn run lint
+          yarn run test
+
+      - name: Build
+        run: |
+          yarn run build:all
+          mkdir dist
+          for D in $(ls projects); do [ -d "projects/${D}/public" ] && cp -r projects/${D}/public dist/${D}; done
+
+      - name: Host
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: dist
+          CLEAN: true
