@@ -1,0 +1,49 @@
+.feature {
+  &__header {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 52rem;
+    text-align: center;
+  }
+
+  &__caption {
+    margin-top: 1.6rem;
+  }
+
+  &__list {
+    display: grid;
+    grid-gap: 2.4rem;
+    justify-content: center;
+    margin-top: 7.5rem;
+
+    @include sm-up {
+      grid-template-columns: repeat(2, 32rem);
+      margin: 7rem auto 0;
+    }
+
+    @include xl-up {
+      grid-gap: 3rem;
+      grid-template:
+        ' .    top     .  ' 1fr
+        'left  top   right' 1fr
+        'left bottom right' 1fr
+        ' .   bottom   .  ' 1fr
+        / 35rem 35rem 35rem;
+      margin-top: 6.4rem;
+    }
+  }
+}
+
+@each $num, $color, $position, $icon in $cards {
+  .card:nth-child(#{$num}) {
+    --color-top: #{$color};
+
+    @include xl-up {
+      grid-area: #{$position};
+    }
+
+    > .card__icon {
+      --icon: url('../images/#{$icon}');
+    }
+  }
+}

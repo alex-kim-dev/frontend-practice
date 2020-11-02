@@ -1,0 +1,22 @@
+{
+  "heading": ["Reliable, efficient delivery", "Powered by Technology"],
+  "caption": "Our Artificial Intelligence powered tools use millions of project data points to ensure that your project is successful",
+  "properties": [
+    {
+      "heading": "Supervisor",
+      "text": "Monitors activity to identify project roadblocks"
+    },
+    {
+      "heading": "Team Builder",
+      "text": "Scans our talent network to create the optimal team for your project"
+    },
+    {
+      "heading": "Karma",
+      "text": "Regularly evaluates our talent to ensure quality"
+    },
+    {
+      "heading": "Calculator",
+      "text": "Uses data from past projects to provide better delivery estimates"
+    }
+  ]
+}

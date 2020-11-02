@@ -1,0 +1,48 @@
+.card {
+  background-color: var(--bg-card, hsl(0, 0%, 100%));
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-top, hsl(0, 0%, 50%)) 0.4rem,
+    transparent 0.4rem
+  );
+  border-radius: 0.8rem;
+  box-shadow: 0 1.6rem 1.6rem hsla(212, 86%, 64%, 0.1);
+  display: flex;
+  flex-flow: column;
+  overflow: hidden;
+  padding: 2.8rem;
+
+  @include xl-up {
+    padding: 3.2rem;
+  }
+
+  &__heading {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 135%;
+  }
+
+  &__text {
+    flex: 1;
+    font-size: 1.3rem;
+    letter-spacing: 0.01em;
+    line-height: 180%;
+    margin-top: 0.4rem;
+
+    @include xl-up {
+      margin-top: 1rem;
+    }
+  }
+
+  &__icon {
+    @include square(5.7rem);
+    align-self: flex-end;
+    background: var(--icon, none) center / contain no-repeat;
+    margin-top: 3.2rem;
+
+    @include xl-up {
+      @include square(6.4rem);
+      margin-top: 3.9rem;
+    }
+  }
+}
