@@ -2,8 +2,6 @@
   padding: 8.4rem 3.2rem 8rem;
 
   @include xl-up {
-    .wrapper {
-      padding-top: 8rem;
-    }
+    padding-top: 8rem;
   }
 }
