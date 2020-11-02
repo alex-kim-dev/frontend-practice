@@ -1,0 +1,9 @@
+.logo {
+  height: 2.1rem;
+  @include sm-up {
+    height: 2.8rem;
+  }
+  @include lg-up {
+    height: 3.3rem;
+  }
+}

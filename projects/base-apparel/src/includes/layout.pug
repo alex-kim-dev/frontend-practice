@@ -17,8 +17,8 @@ html(lang='en')
     meta(name='author' content='Alex Kim, https://github.com/Alex-K1m')
     link(rel='icon' type='image/png' sizes='32x32' href=site.favicon)
     block fonts
-    link(rel='stylesheet' href='styles.scss')
+    link(rel='stylesheet' href='sass/main.scss')
   body
     block content
     if includeJs
-      script(src='script.js')
+      script(defer src='script.js')

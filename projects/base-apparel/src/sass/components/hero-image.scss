@@ -1,0 +1,12 @@
+.hero-image {
+  background: url('../images/hero-mobile.jpg') center no-repeat;
+  background-size: cover;
+  height: 66.6667vw;
+  width: 100vw;
+  @include md-up {
+    background-image: url('../images/hero-desktop.jpg');
+    grid-area: heroImage;
+    height: 100%;
+    width: 100%;
+  }
+}

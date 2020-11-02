@@ -1,4 +1,4 @@
-extends layout
+extends includes/layout
 
 block variables
   - const title = "Coming soon page with accessible & interactive subscription form";
@@ -11,30 +11,30 @@ block fonts
 block content
   .wrapper
     header.header
-      img.logo(src='logo.svg' alt='Base Apparel logo')
+      img.logo(src='images/logo.svg' alt='Base Apparel logo')
     .background
-    .heroImage
+    .hero-image
     main.content
-      h1.content_heading
+      h1.content__heading
         | We're
         br
-        span.content_heading-accent coming soon
-      p.content_text.
+        span.content__heading--accent coming soon
+      p.content__text.
         Hello fellow shoppers! We're currently building our new fashion store
         Add your email below to stay up-to-date with announcements and our
         launch deals.
       form.subscribe(novalidate)
-        label.subscribe_label(for='email') Enter email to subscribe
-        input#email.subscribe_email(
+        label.subscribe__label(for='email') Enter email to subscribe
+        input#email.subscribe__email(
           type='email'
           name='email'
           placeholder='Email Address'
           aria-describedby='feedback'
           required=''
         )
-        .subscribe_errorIcon
-        button.subscribe_submit(type='submit' aria-label='Submit')
-        #feedback.subscribe_feedback(
+        .subscribe__error-icon
+        button.subscribe__submit(type='submit' aria-label='Submit')
+        #feedback.subscribe__feedback(
           aria-live='polite'
           aria-relevant='additions removals'
           aria-atomic='true'

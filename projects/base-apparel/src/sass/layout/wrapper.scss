@@ -1,0 +1,21 @@
+.wrapper {
+  background: $gradient-bg;
+  font-family: Josefin Sans, sans-serif;
+  font-size: 1.6rem;
+  min-height: 100vh;
+
+  @include md-up {
+    background: transparent;
+    display: grid;
+    // grid-template: auto 1fr / 1fr 0 42.361111%;
+    grid-template:
+      'header  . heroImage' auto
+      'content . heroImage' 1fr
+      / 1fr 0 42.361111%;
+    position: relative;
+  }
+
+  @include lg-up {
+    grid-template-columns: 1fr 3.819444% 42.361111%;
+  }
+}

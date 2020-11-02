@@ -1,0 +1,22 @@
+@mixin sm-up {
+  @media (min-width: em($breakpoint-sm)) {
+    @content;
+  }
+}
+
+@mixin md-up {
+  @media (min-width: em($breakpoint-md)) {
+    @content;
+  }
+}
+
+@mixin lg-up {
+  @media (min-width: em($breakpoint-lg)) {
+    @content;
+  }
+}
+
+// @mixin square($size) {
+//   height: $size;
+//   width: $size;
+// }

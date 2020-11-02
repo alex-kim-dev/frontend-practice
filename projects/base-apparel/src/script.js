@@ -1,7 +1,8 @@
-const transitionTime = 300;
 const subscribeForm = document.querySelector('.subscribe');
-const emailInput = document.querySelector('.subscribe_email');
-const feedbackEl = document.querySelector('.subscribe_feedback');
+const emailInput = document.querySelector('.subscribe__email');
+const feedbackEl = document.querySelector('.subscribe__feedback');
+
+const transitionTime = 300;
 
 const isValidEmail = (str) =>
   str.trim().match(/^\w+([.-]\w+)*@\w+([.-]\w+)*\.\w{2,}$/);
@@ -9,17 +10,17 @@ const isValidEmail = (str) =>
 const showFeedback = () => {
   if (isValidEmail(emailInput.value)) {
     feedbackEl.textContent = 'You have been subscribed';
-    subscribeForm.classList.add('subscribe-success');
+    subscribeForm.classList.add('subscribe--success');
   } else {
     feedbackEl.textContent = 'Please provide a valid email';
-    subscribeForm.classList.add('subscribe-error');
+    subscribeForm.classList.add('subscribe--error');
   }
 };
 
 const subscribe = (e) => {
   e.preventDefault();
-  if (subscribeForm.className.match(/subscribe-(success)|(error)/)) {
-    subscribeForm.classList.remove('subscribe-success', 'subscribe-error');
+  if (subscribeForm.className.match(/subscribe--(success)|(error)/)) {
+    subscribeForm.classList.remove('subscribe--success', 'subscribe--error');
     setTimeout(showFeedback, transitionTime);
   } else showFeedback();
 };

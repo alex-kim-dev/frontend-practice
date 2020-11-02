@@ -1,0 +1,11 @@
+.header {
+  display: flex;
+  padding: 3.1rem 3.2rem 3.2rem;
+
+  @include md-up {
+    grid-area: header;
+    margin: auto;
+    padding: 6.5rem 0;
+    width: 44.5rem;
+  }
+}
