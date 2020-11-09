@@ -29,8 +29,12 @@
     @include md-up {
       justify-self: center;
       margin: unset;
-      max-width: 44.5rem;
+      max-width: 44rem;
       width: 100%;
+    }
+
+    @include lg-up {
+      max-width: 50rem;
     }
   }
 
@@ -39,6 +43,7 @@
   }
 
   &__image {
+    background-color: var(--fallback);
     grid-area: hero-image;
   }
 

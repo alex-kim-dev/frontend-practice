@@ -1,0 +1,51 @@
+picture.hero-image
+  source(
+    media='(min-width: 64em)'
+    sizes=`
+      (min-width: 75em) 42.36vw,
+      (min-width: 64em) 50vw
+    `
+    srcset=`
+      images/hero-portrait-512w.webp 512w,
+      images/hero-portrait-768w.webp 768w,
+      images/hero-portrait-1024w.webp 1024w,
+      images/hero-portrait-1220w.webp 1220w
+    `
+    type='image/webp'
+  )
+  source(
+    sizes='100vw'
+    srcset=`
+      images/hero-landscape-375w.webp 375w,
+      images/hero-landscape-512w.webp 512w,
+      images/hero-landscape-768w.webp 768w,
+      images/hero-landscape-1024w.webp 1024w,
+      images/hero-landscape-1220w.webp 1220w
+    `
+    type='image/webp'
+  )
+  img(
+    src='https://fakeimg.pl/768x1200/'
+    alt='Stylish woman in light orange shirt'
+    media='(min-width: 64em)'
+    sizes=`
+      (min-width: 75em) 42.36vw,
+      (min-width: 64em) 50vw
+    `
+    srcset=`
+      images/hero-portrait-512w.jpg 512w,
+      images/hero-portrait-768w.jpg 768w,
+      images/hero-portrait-1024w.jpg 1024w,
+      images/hero-portrait-1220w.jpg 1220w
+    `
+  )
+  source(
+    sizes='100vw'
+    srcset=`
+      images/hero-landscape-375w.jpg 375w,
+      images/hero-landscape-512w.jpg 512w,
+      images/hero-landscape-768w.jpg 768w,
+      images/hero-landscape-1024w.jpg 1024w,
+      images/hero-landscape-1220w.jpg 1220w
+    `
+  )

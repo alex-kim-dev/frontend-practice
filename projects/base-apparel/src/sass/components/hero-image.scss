@@ -1,12 +1,21 @@
 .hero-image {
-  background: url('../images/hero-mobile.jpg') center no-repeat;
-  background-size: cover;
-  height: 66.6667vw;
-  width: 100vw;
+  display: block;
+  overflow: hidden;
+  padding-bottom: 66.67%;
+  position: relative;
 
   @include md-up {
-    background-image: url('../images/hero-desktop.jpg');
     height: 100%;
+    padding-bottom: 0;
+    width: 100%;
+  }
+
+  > img {
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
     width: 100%;
   }
 }
