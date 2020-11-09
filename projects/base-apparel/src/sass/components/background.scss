@@ -1,8 +1,0 @@
-.background {
-  @include md-up {
-    background: url('../images/bg-pattern-desktop.svg') no-repeat;
-    background-size: 100% 100%;
-    grid-area: 1 / 1 / span 2 / span 2;
-    z-index: -1;
-  }
-}

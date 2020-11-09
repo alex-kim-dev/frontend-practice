@@ -10,7 +10,11 @@ html {
 }
 
 body {
-  // background-color: var(--background);
-  // color: var(--text-primary);
+  color: var(--text-body);
   font-size: 1.6rem;
+}
+
+input {
+  color: inherit;
+  font-family: inherit;
 }

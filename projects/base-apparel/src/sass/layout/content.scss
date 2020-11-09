@@ -1,58 +1,32 @@
 .content {
-  color: $color-desaturated-red;
-  margin: 0 auto;
-  max-width: 40rem;
   padding: 6.4rem 3.2rem 3.2rem;
-  text-align: center;
-
-  @include sm-up {
-    max-width: 44.5rem;
-  }
 
   @include md-up {
-    grid-area: content;
-    text-align: left;
-  }
-
-  @include lg-up {
     padding: 6.5rem 0;
   }
 
+  @include lg-up {
+    padding-right: 5.5rem;
+  }
+
   &__heading {
-    font-size: 4rem;
-    font-weight: 300;
-    letter-spacing: 0.27em;
-    line-height: 105%;
-    margin: 0;
     text-transform: uppercase;
-
-    @include sm-up {
-      font-size: 5.6rem;
-      line-height: 110%;
-    }
-
-    @include lg-up {
-      font-size: 6.4rem;
-    }
-
-    // stylelint-disable max-nesting-depth
-    &--accent {
-      color: $color-dark-grayish-red;
-      font-weight: 600;
-    }
   }
 
   &__text {
-    font-size: 1.4rem;
-    line-height: 160%;
-    margin: 1.6rem 0 0;
+    color: var(--text-soft);
+    margin-top: 1.6rem;
 
     @include sm-up {
-      font-size: 1.6rem;
-      letter-spacing: 0.004em;
-      line-height: 175%;
       margin-top: 2rem;
     }
   }
-}
 
+  &__subscribe {
+    margin-top: 3.2rem;
+
+    @include sm-up {
+      margin-top: 4rem;
+    }
+  }
+}

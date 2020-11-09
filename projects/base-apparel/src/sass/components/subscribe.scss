@@ -1,94 +1,96 @@
-// stylelint-disable max-nesting-depth
 .subscribe {
-  margin-top: 3.2rem;
-  position: relative;
+  --trs-time: 0.3s;
+  --round-corner-xs: 2.4rem;
+  --round-corner-sm: 2.8rem;
+
+  --factor: 1;
+  --submit-width: calc(6.67rem * var(--factor));
+  --error-icon-size: calc(1.6rem * var(--factor));
+  --error-icon-spacing: calc(1.07rem * var(--factor));
+  --email-pl: calc(2.13rem * var(--factor));
+  --email-pr: calc(var(--submit-width) + var(--error-icon-spacing));
+  --email-pr-with-error: calc(
+    var(--submit-width)
+    + var(--error-icon-size)
+    + var(--error-icon-spacing)
+    * 2
+  );
 
   @include sm-up {
-    margin-top: 4rem;
+    --factor: 1.5;
   }
 
-  &__label {
-    border: 0;
-    clip: rect(1px, 1px, 1px, 1px);
-    height: 1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+  &__container {
+    position: relative;
   }
 
   &__email {
     background: transparent;
     border: 0;
-    border-radius: 2.4rem;
-    box-shadow: inset 0 0 0 0.1rem $color-desaturated-red;
-    color: $color-dark-grayish-red;
-    font: 1.4rem Josefin Sans, sans-serif;
-    padding: 1.7rem $email-pr-xs 1.6rem $email-pl-xs;
-    transition: $feedback-transition-time;
+    border-radius: var(--round-corner-sm);
+    box-shadow: inset 0 0 0 0.1rem var(--text-soft);
+    font-size: 1.4rem;
+    padding: 1.7rem var(--email-pr) 1.6rem var(--email-pl);
+    transition: var(--trs-time);
     width: 100%;
 
     @include sm-up {
-      border-radius: 2.8rem;
+      border-radius: var(--round-corner-sm);
       font-size: 1.6rem;
-      padding: 2rem $email-pr-lg 2rem $email-pl-lg;
+      padding-bottom: 2rem;
+      padding-top: 2rem;
     }
 
     &::placeholder {
-      color: $color-desaturated-red;
+      color: var(--text-soft);
     }
 
     &:focus {
-      box-shadow: inset 0 0 0 0.2rem $color-desaturated-red;
+      box-shadow: inset 0 0 0 0.2rem var(--text-soft);
       outline: none;
     }
   }
 
   &__error-icon {
-    background: url('../images/icon-error.svg') left no-repeat;
-    background-size: contain;
-    height: $error-icon-size-xs;
+    background: url('../images/icon-error.svg') center / contain no-repeat;
+    height: var(--error-icon-size);
     opacity: 0;
     position: absolute;
-    right: $submit-width-xs + 1rem;
-    top: 1.4rem;
-    transition: all $feedback-transition-time;
+    right: calc(var(--submit-width) + var(--error-icon-spacing));
+    top: 50%;
+    transform: translateY(-50%);
+    transition: var(--trs-time);
     width: 0;
-
-    @include sm-up {
-      height: $error-icon-size-lg;
-      right: $submit-width-lg + 1.6rem;
-      top: 1.6rem;
-    }
   }
 
   &__submit {
-    background: url('../images/icon-arrow.svg') center no-repeat, $gradient-btn;
+    background:
+      url('../images/icon-arrow.svg') center no-repeat,
+      var(--gradient-submit) center / 300% no-repeat;
     border: 0;
-    border-radius: 2.4rem;
+    border-radius: var(--round-corner-sm);
     box-shadow: 0 1rem 1.4rem hsla(0, 36%, 70%, 0.5);
-    height: 4.8rem;
+    height: 100%;
     padding: 0;
     position: absolute;
     right: 0;
     top: 0;
-    width: $submit-width-xs;
+    transition: var(--trs-time);
+    width: var(--submit-width);
 
     @include sm-up {
-      border-radius: 2.8rem;
-      height: 5.6rem;
-      width: $submit-width-lg;
+      border-radius: var(--round-corner-sm);
     }
 
     &:hover,
     &:focus {
-      background: url('../images/icon-arrow.svg') center no-repeat, $gradient-btn-hover;
+      background-position: center, left;
       box-shadow: 0 1.6rem 1.4rem hsla(0, 36%, 70%, 0.5);
       outline: none;
     }
 
     &:active {
-      background: url('../images/icon-arrow.svg') center no-repeat, $gradient-btn-active;
+      background-position: center, right;
       box-shadow: 0 1rem 1.4rem hsla(0, 36%, 70%, 0.5);
     }
   }
@@ -96,46 +98,29 @@
   &__feedback {
     color: transparent;
     font-size: 1.3rem;
-    padding: 0.8rem $email-pl-xs;
-    text-align: left;
-    transition: color $feedback-transition-time;
+    padding: 0.8rem var(--email-pl);
+    transition: color var(--trs-time);
+  }
 
-    @include sm-up {
-      padding: 1.1rem $email-pl-lg;
+  &--error &__email {
+    box-shadow: inset 0 0 0 0.1rem var(--text-danger);
+    padding-right: var(--email-pr-with-error);
+
+    &:focus {
+      box-shadow: inset 0 0 0 0.2rem var(--text-danger);
     }
   }
 
-  &--error {
-    .subscribe__email {
-      box-shadow: inset 0 0 0 0.1rem $color-soft-red;
-      padding-right: $email-pr-err-xs;
-
-      @include sm-up {
-        padding-right: $email-pr-err-lg;
-      }
-
-      &:focus {
-        box-shadow: inset 0 0 0 0.2rem $color-soft-red;
-      }
-    }
-
-    .subscribe__errorIcon {
-      opacity: 1;
-      width: $error-icon-size-xs;
-
-      @include sm-up {
-        width: $error-icon-size-lg;
-      }
-    }
-
-    .subscribe__feedback {
-      color: $color-soft-red;
-    }
+  &--error &__error-icon {
+    opacity: 1;
+    width: var(--error-icon-size);
   }
 
-  &--success {
-    .subscribe__feedback {
-      color: hsl(120, 80%, 40%);
-    }
+  &--error &__feedback {
+    color: var(--text-danger);
+  }
+
+  &--success &__feedback {
+    color: var(--text-success);
   }
 }

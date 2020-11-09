@@ -1,0 +1,35 @@
+body {
+  font-family: Josefin Sans, sans-serif;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 600;
+  letter-spacing: 0.27em;
+  line-height: 105%;
+
+  @include sm-up {
+    font-size: 5.6rem;
+    line-height: 110%;
+  }
+
+  @include lg-up {
+    font-size: 6.4rem;
+  }
+
+  > span {
+    color: var(--text-soft);
+    font-weight: 300;
+  }
+}
+
+p {
+  font-size: 1.4rem;
+  line-height: 160%;
+
+  @include sm-up {
+    font-size: 1.6rem;
+    letter-spacing: 0.004em;
+    line-height: 175%;
+  }
+}
