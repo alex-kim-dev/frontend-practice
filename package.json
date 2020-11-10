@@ -11,7 +11,7 @@
     "boot": "lerna bootstrap",
     "build": "lerna run build --parallel --since $(git describe --abbrev=0 --first-parent HEAD^)",
     "build:all": "lerna run build --parallel",
-    "bump": "lerna version --no-changelog",
+    "bump": "lerna version --conventional-commits --no-changelog",
     "clean:cache": "lerna run --parallel clean:cache",
     "commit": "cz",
     "fix": "concurrently \"yarn:fix:*\"",
