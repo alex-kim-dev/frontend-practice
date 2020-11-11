@@ -127,7 +127,7 @@ p {
   justify-content: center;
 
   &__logo {
-    background: center / contain no-repeat url('logo.svg');
+    background: center / contain no-repeat url('images/logo.svg');
     height: 1.6rem;
     width: 5.2rem;
     @include sm-up {
@@ -309,7 +309,7 @@ p {
 }
 
 .background {
-  background: center / contain no-repeat url('illustration-dashboard.png');
+  background: center / contain no-repeat url('images/illustration-dashboard.png');
   height: 19.6rem;
   margin-top: 3.6rem;
   @include sm-up {
