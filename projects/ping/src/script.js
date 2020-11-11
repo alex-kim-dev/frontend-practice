@@ -1,6 +1,6 @@
-const subscribeForm = document.querySelector('.subscribeForm');
-const emailInput = document.querySelector('.emailField_input');
-const feedbackEl = document.querySelector('.subscribeForm_feedback');
+const subscribeForm = document.querySelector('.subscribe-form');
+const emailInput = document.querySelector('.email-field__input');
+const feedbackEl = document.querySelector('.subscribe-form__feedback');
 const feedbackText = {
   empty: 'Whoops! It looks like you forgot to add your email',
   invalid: 'Please provide a valid email address',
@@ -19,12 +19,12 @@ const showFeedback = (status) => {
   feedbackEl.textContent = feedbackText[status];
   if (status === 'valid') {
     emailInput.removeAttribute('aria-invalid');
-    subscribeForm.classList.remove('subscribeForm-error');
-    subscribeForm.classList.add('subscribeForm-success');
+    subscribeForm.classList.remove('subscribe-form--error');
+    subscribeForm.classList.add('subscribe-form--success');
   } else {
     emailInput.setAttribute('aria-invalid', true);
-    subscribeForm.classList.remove('subscribeForm-success');
-    subscribeForm.classList.add('subscribeForm-error');
+    subscribeForm.classList.remove('subscribe-form--success');
+    subscribeForm.classList.add('subscribe-form--error');
     emailInput.focus();
   }
 };

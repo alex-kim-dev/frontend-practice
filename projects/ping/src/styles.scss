@@ -1,7 +1,8 @@
-/* stylelint-disable */
-
 @import 'reset';
-@import 'defaults';
+
+// #region Abstracts
+
+$breakpoint-sm: 690;
 
 $color-primary-blue: hsl(223, 87%, 63%);
 $color-secondary-pale-blue: hsl(223, 100%, 88%);
@@ -9,213 +10,256 @@ $color-secondary-light-red: hsl(354, 100%, 66%);
 $color-neutral-gray: hsl(0, 0%, 59%);
 $color-neutral-very-dark-blue: hsl(209, 33%, 12%);
 $color-secondary-green: hsl(145, 64%, 49%);
+$color-light: #fff;
 
 $button-shadow: 0 0.6rem 1rem rgba($color-primary-blue, 0.4);
 
-@mixin smUp {
-  @media (min-width: rem(690px)) {
+@function em($value) {
+  @if type-of($value) == 'number' {
+    @return $value / 16 * 1em;
+  } @else {
+    @error 'The parameter should be of type number';
+  }
+}
+
+@mixin sm-up {
+  @media (min-width: em($breakpoint-sm)) {
     @content;
   }
 }
 
-body {
-  background: white;
+// #endregion Abstracts
+
+// #region Utilities
+
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
+.text-gray {
+  color: $color-neutral-gray;
+}
+
+.text-secondary {
+  font-size: 1rem;
+  line-height: 120%;
+  @include sm-up {
+    font-size: 1.2rem;
+    line-height: 125%;
+  }
+}
+
+// #endregion Utilities
+
+// #region Base
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  color: $color-neutral-very-dark-blue;
+  font-size: 1.6rem;
+}
+
+h1,
+p,
+input,
+button {
+  font-family: Libre Franklin, sans-serif;
+}
+
+h1 {
+  font-size: 2.2rem;
+  letter-spacing: 0.005em;
+  line-height: 125%;
+  @include sm-up {
+    font-size: 4.8rem;
+  }
+
+  > span {
+    color: $color-neutral-very-dark-blue;
+    font-weight: 700;
+  }
+}
+
+p {
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: normal;
+  @include sm-up {
+    font-size: 2rem;
+    line-height: 120%;
+  }
+}
+
+// #endregion Base
+
+// #region Classes
+
 .wrapper {
-  background: white;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 40rem;
-  padding: 3.6rem 2.4rem;
-  @include smUp {
+  padding: 8.4rem 2.4rem 3.6rem;
+  @include sm-up {
     max-width: 69rem;
   }
 }
 
-.text {
-  color: $color-neutral-very-dark-blue;
-  font-family: Libre Franklin, sans-serif;
-  font-size: 1.2rem;
-  font-weight: 300;
-  line-height: normal;
-  @include smUp {
-    font-size: 1.6rem;
-  }
-
-  &-h1 {
-    color: $color-neutral-gray;
-    font-size: 2.2rem;
-    letter-spacing: 0.005em;
-    line-height: 125%;
-    @include smUp {
-      font-size: 4.8rem;
-    }
-  }
-
-  &-bold {
-    color: $color-neutral-very-dark-blue;
-    font-weight: 700;
-  }
-
-  &-secondary {
-    color: $color-neutral-gray;
-    font-size: 1rem;
-    line-height: 120%;
-    @include smUp {
-      font-size: 1.2rem;
-      line-height: 125%;
-    }
-  }
-}
-
-.icon {
-  display: block;
-  height: 1.6rem;
-  width: 1.6rem;
-}
-
 .header {
-  margin-top: 4.8rem;
+  display: flex;
+  justify-content: center;
 
-  &_logo {
-    margin: 0 auto;
-  }
-}
-
-.logo {
-  background: url(logo.svg) center no-repeat;
-  background-size: contain;
-  height: 1.6rem;
-  width: 5.2rem;
-  @include smUp {
-    height: 2.6rem;
-    width: 8.45rem;
+  &__logo {
+    background: center / contain no-repeat url('logo.svg');
+    height: 1.6rem;
+    width: 5.2rem;
+    @include sm-up {
+      height: 2.6rem;
+      width: 8.45rem;
+    }
   }
 }
 
 .content {
-  position: relative;
-
-  &_heading {
-    margin: 4rem 0 0;
+  &__heading {
+    margin-top: 4rem;
     text-align: center;
-    @include smUp {
+    @include sm-up {
       margin-top: 5rem;
     }
   }
 
-  &_paragraph {
-    margin: 1.6rem 0 0;
+  &__paragraph {
+    margin-top: 1.7rem;
     text-align: center;
-    @include smUp {
-      font-size: 2rem;
-      line-height: 120%;
+    @include sm-up {
+      margin-top: 1.6rem;
     }
   }
 
-  &_form {
+  &__form {
     margin-top: 3.2rem;
-    @include smUp {
+    min-height: 12.2rem;
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
+    @include sm-up {
       margin-top: 4rem;
+      min-height: 9.4rem;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 }
 
-.subscribeForm {
-  left: 50%;
-  max-width: 69rem;
-  position: absolute;
-  top: 100%;
-  transform: translateX(-50%);
-  width: calc(100% - 4.8rem);
-  @include smUp {
+.subscribe-form {
+  @include sm-up {
     align-items: flex-start;
     display: flex;
     width: 100%;
   }
 
   :first-child {
-    @include smUp {
+    @include sm-up {
       flex: 1;
     }
   }
 
-  &_feedback {
-    border: 0;
+  &__feedback {
     box-sizing: content-box;
+    font-size: 1rem;
+    font-style: italic;
     height: 0;
-    margin: 0;
+    letter-spacing: 0.015em;
+    line-height: 120%;
     opacity: 0;
     overflow: hidden;
-    padding: 0 3.2rem;
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
     text-align: center;
     transition: height 0.2s ease-in-out, padding 0.2s ease-in-out,
       opacity 0.2s ease-in-out;
-    @include smUp {
+    @include sm-up {
+      font-size: 1.2rem;
       text-align: left;
     }
   }
 
-  &_submit {
+  &__submit {
     margin-top: 1rem;
     width: 100%;
-    @include smUp {
+    @include sm-up {
       margin-left: 1.6rem;
       margin-top: 0;
       width: unset;
     }
   }
 
-  &-error {
-    .emailField_input {
-      border-color: $color-secondary-light-red;
-    }
-
-    .subscribeForm_feedback {
-      color: $color-secondary-light-red;
-      font-style: italic;
-      letter-spacing: 0.015em;
-    }
-  }
-
-  &-success {
-    .emailField_input {
-      border-color: $color-secondary-green;
-    }
-
-    .subscribeForm_feedback {
-      color: $color-secondary-green;
-    }
-  }
-
-  &-error,
-  &-success {
-    .subscribeForm_feedback {
+  &--error,
+  &--success {
+    .subscribe-form__feedback {
       height: 2.4rem;
       opacity: 1;
       padding-bottom: 0.2rem;
       padding-top: 0.6rem;
-      @include smUp {
+      /* stylelint-disable-next-line max-nesting-depth */
+      @include sm-up {
         padding-top: 0.8rem;
       }
     }
   }
+
+  &--error {
+    .email-field__input {
+      border-color: $color-secondary-light-red;
+    }
+
+    .subscribe-form__feedback {
+      color: $color-secondary-light-red;
+    }
+  }
+
+  &--success {
+    .email-field__input {
+      border-color: $color-secondary-green;
+    }
+
+    .subscribe-form__feedback {
+      color: $color-secondary-green;
+    }
+  }
 }
 
-.emailField {
+.email-field {
   display: block;
 
-  &_input {
-    background: white;
+  &__input {
+    background: $color-light;
     border: 0.1rem solid $color-secondary-pale-blue;
     border-radius: 2rem;
-    box-sizing: border-box;
-    font: 300 1.2rem Libre Franklin, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
     height: 4rem;
     padding: 0 3.2rem;
     transition: border-color 0.2s;
     width: 100%;
-    @include smUp {
+    @include sm-up {
       border-radius: 2.8rem;
       font-size: 1.6rem;
       height: 5.6rem;
@@ -232,30 +276,18 @@ body {
   }
 }
 
-.srOnly {
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
 .button {
   background: $color-primary-blue;
-  border: none;
+  border: 0;
   border-radius: 2rem;
   box-shadow: $button-shadow;
-  box-sizing: border-box;
-  color: white;
-  font-family: Libre Franklin, sans-serif;
+  color: $color-light;
   font-size: 1.2rem;
   font-weight: 600;
   height: 4rem;
   padding: 0 3.2rem;
   transition: 0.2s;
-  @include smUp {
+  @include sm-up {
     border-radius: 2.8rem;
     font-size: 1.6rem;
     height: 5.6rem;
@@ -277,37 +309,35 @@ body {
 }
 
 .background {
-  background: url(illustration-dashboard.png) center no-repeat;
-  background-size: contain;
+  background: center / contain no-repeat url('illustration-dashboard.png');
   height: 19.6rem;
-  margin-top: 19rem;
-  @include smUp {
+  margin-top: 3.6rem;
+  @include sm-up {
     height: 39rem;
-    margin-top: 18.4rem;
+    margin-top: 4.7rem;
   }
 }
 
 .footer {
   margin-top: 12rem;
-  @include smUp {
-    margin-top: 7rem;
+  @include sm-up {
+    margin-top: 7.2rem;
   }
 
-  &_copyright {
-    margin: 2.4rem 0 0;
+  &__copyright {
+    margin-top: 2.7rem;
     text-align: center;
+    @include sm-up {
+      margin-top: 2.5rem;
+    }
   }
 }
 
 .socialLinks {
   display: flex;
   justify-content: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  text-align: center;
 
-  &_item {
+  &__item {
     display: block;
 
     &:not(:first-child) {
@@ -315,11 +345,10 @@ body {
     }
   }
 
-  &_link {
+  &__link {
     align-items: center;
     border: 0.1rem solid $color-secondary-pale-blue;
     border-radius: 50%;
-    box-sizing: border-box;
     color: $color-primary-blue;
     display: flex;
     height: 3.2rem;
@@ -335,7 +364,7 @@ body {
     &:hover {
       background: $color-primary-blue;
       border-color: $color-primary-blue;
-      color: white;
+      color: $color-light;
     }
 
     &:active {
@@ -344,3 +373,11 @@ body {
     }
   }
 }
+
+.icon {
+  display: block;
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+// #endregion Classes

@@ -4,30 +4,31 @@ include socialLinks
 block content
   .wrapper
     header.header
-      .header_logo.logo
+      .header__logo
     main.content
-      h1.content_heading.text.text-h1
+      h1.content__heading.text-gray
         | We are launching #{''}
-        span.text-bold soon!
-      p.content_paragraph.text Subscribe and get notified
-      form.content_form.subscribeForm(novalidate)
-        div
-          label.emailField.text
-            input.emailField_input(
-              type='email'
-              name='email'
-              placeholder='Your email address...'
-              aria-describedby='feedback'
+        span soon!
+      p.content__paragraph Subscribe and get notified
+      .content__form
+        form.subscribe-form(novalidate)
+          div
+            label.email-field
+              span.sr-only Enter email to subscribe
+              input.email-field__input(
+                type='email'
+                name='email'
+                placeholder='Your email address...'
+                aria-describedby='feedback'
+              )
+            p#feedback.subscribe-form__feedback(
+              aria-live='polite'
+              aria-relevant='additions removals'
+              aria-atomic='true'
             )
-            span.srOnly Enter email to subscribe
-          p#feedback.subscribeForm_feedback.text.text-secondary(
-            aria-live='polite'
-            aria-relevant='additions removals'
-            aria-atomic='true'
-          )
-        button.subscribeForm_submit.button(type='submit') Notify Me
+          button.subscribe-form__submit.button(type='submit') Notify Me
     .background
     footer.footer
-      +socialLinks('socialLinks', 'socialLinks_item', 'socialLinks_link', 'icon')
-      p.footer_copyright.text.text-secondary.
+      +socialLinks('socialLinks', 'socialLinks__item', 'socialLinks__link', 'icon')
+      p.footer__copyright.text-secondary.text-gray.
         © Copyright Ping. All rights reserved.
