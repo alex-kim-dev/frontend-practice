@@ -4,25 +4,25 @@ include includes/input
 block content
   .wrapper
     section.intro
-      header.header
-        h1.header_heading.text.text-h2.text-bold.
+      header.header.text-light
+        h1.text-bold.
           Learn to code by watching others
-        p.header_text.text.
+        p.header_text.
           See how experienced developers solve problems in real-time. Watching
           scripted tutorials is great, but understanding how developers think is invaluable.
-      form.signupForm(novalidate)
-        header.signupForm_header.paper
-          h2.signupForm_heading.text.text-h3
+      form.signup-form(novalidate)
+        header.signup-form__header.paper.text-light
+          h2
             span.text-bold Try it free 7 days
             | #{''} then $20/mo. thereafter
-        .signupForm_body.paper
-          fieldset.signupForm_fieldList
+        .signup-form__body.paper
+          fieldset.signup-form__fieldset
             legend.sr-only Fill in the following 4 fields to get a free trial
             +input('text', 'firstName', 'First Name', true)
             +input('text', 'lastName', 'Last Name', true)
             +input('email', 'email', 'Email Address', true)
             +input('password', 'password', 'Password', true)
-          button.signupForm_submit.button Claim your free trial
-          p.signupForm_agreement.text.text-secondary
+          button.signup-form__submit.button Claim your free trial
+          p.signup-form__agreement.text-secondary
             | By clicking the button, you are agreeing to our #{''}
             a.text-link(href='#') Terms and Services

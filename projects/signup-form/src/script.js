@@ -1,8 +1,8 @@
-const signupForm = document.querySelector('.signupForm');
+const signupForm = document.querySelector('.signup-form');
 const fields = [...signupForm.querySelectorAll('.field')].map((field) => ({
   field,
-  input: field.querySelector('.textInput_input'),
-  feedback: field.querySelector('.field_feedback'),
+  input: field.querySelector('.input__element'),
+  feedback: field.querySelector('.field__feedback'),
 }));
 
 const checkEmpty = ({ value, placeholder }) =>
@@ -25,14 +25,14 @@ const inputChecks = {
 const showFeedback = ({ input, field, feedback, error }) => {
   // eslint-disable-next-line no-param-reassign
   feedback.textContent = error;
-  field.classList.add('field-error');
+  field.classList.add('field--error');
   input.setAttribute('aria-invalid', true);
 };
 
 const hideFeedback = ({ input, field, feedback }) => {
   // eslint-disable-next-line no-param-reassign
   feedback.textContent = '';
-  field.classList.remove('field-error');
+  field.classList.remove('field--error');
   input.removeAttribute('aria-invalid');
 };
 
