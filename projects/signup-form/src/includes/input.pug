@@ -1,4 +1,4 @@
-mixin input(type, name, placeholder, isRequired)
+mixin input({type = 'text', name, placeholder, isRequired = true } = {})
   .field
     label.input
       input.input__element(
