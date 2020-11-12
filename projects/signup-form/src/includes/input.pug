@@ -1,0 +1,18 @@
+mixin input(type, name, placeholder, isRequired)
+  .signupForm_field.field
+    label.textInput
+      input.textInput_input.text.text-input(
+        type=type
+        name=name
+        placeholder=placeholder
+        aria-describedby=`${name}Feedback`
+        required=isRequired ? "" : false
+      )
+      span.textInput_label= placeholder
+    .field_errorIcon
+    p.field_feedback.text.text-error(
+      id=`${name}Feedback`
+      aria-live='polite'
+      aria-relevant='additions removals'
+      aria-atomic='true'
+    )
