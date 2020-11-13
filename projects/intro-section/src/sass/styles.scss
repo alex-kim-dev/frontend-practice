@@ -1,13 +1,118 @@
 @import 'reset';
-@import 'defaults';
+
+// #region Abstracts
+
+$breakpoint-sm: 560;
+$breakpoint-md: 768;
+$breakpoint-lg: 1100;
+$breakpoint-xl: 1440;
+
+$c-violet: hsl(257, 40%, 49%);
+$c-violet-light: hsl(257, 40%, 79%);
+$c-violet-darker: hsl(257, 40%, 29%);
+$c-white: #fff;
+
+@function em($value) {
+  @if type-of($value) == 'number' {
+    @return $value / 16 * 1em;
+  } @else {
+    @error 'The parameter should be of type number';
+  }
+}
+
+@function fluid-size($min, $max, $minVw, $maxVw, $unit) {
+  @return calc(
+    #{$min}#{$unit} + #{$max - $min} *
+    ((100vw - #{$minVw}#{$unit}) / #{$maxVw - $minVw})
+  );
+}
+
+@mixin sm-up {
+  @media (min-width: em($breakpoint-sm)) {
+    @content;
+  }
+}
+
+@mixin md-up {
+  @media (min-width: em($breakpoint-md)) {
+    @content;
+  }
+}
+
+@mixin lg-up {
+  @media (min-width: em($breakpoint-lg)) {
+    @content;
+  }
+}
+
+@mixin xl-up {
+  @media (min-width: em($breakpoint-xl)) {
+    @content;
+  }
+}
+
+// #endregion Abstracts
+
+// #region Base
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  color: $c-white;
+  font-size: 1.6rem;
+}
+
+h1,
+p,
+button {
+  font-family: Poppins, san-serif;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 150%;
+  text-transform: capitalize;
+  @include sm-up {
+    font-size: 3.2rem;
+  }
+  @include md-up {
+    font-size: 4rem;
+  }
+}
+
+p {
+  line-height: 150%;
+  @include md-up {
+    font-size: 1.8rem;
+  }
+}
+
+// #endregion Base
+
+// #region Layout
 
 .wrapper {
   background:
-    center top / 100% no-repeat url('bg-mobile.svg'),
+    center top / 100% no-repeat url('../images/bg-mobile.svg'),
     $c-violet;
   min-height: 100vh;
   @include lg-up {
-    background-image: url('bg-desktop.svg');
+    background-image: url('../images/bg-desktop.svg');
     background-position: left center;
     background-size: auto 100%;
     height: 100vh;
@@ -99,8 +204,12 @@
   }
 }
 
+// #endregion Layout
+
+// #region Components
+
 .logo {
-  background: center / contain no-repeat url('logo.svg');
+  background: center / contain no-repeat url('../images/logo.svg');
   height: 1.9rem;
   margin-left: 0.2rem;
   width: 12rem;
@@ -116,7 +225,7 @@
 }
 
 .hero-image {
-  background: center / contain no-repeat url('illustration-mockups.svg');
+  background: center / contain no-repeat url('../images/illustration-mockups.svg');
   height: 0;
   padding-top: 71.37%;
   transform: scale(1.02);
@@ -210,3 +319,5 @@
     width: 50%;
   }
 }
+
+// #endregion Components
