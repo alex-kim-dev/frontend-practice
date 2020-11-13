@@ -1,8 +1,6 @@
-block variables
-
-mixin googleFonts(queries)
-  each query in queries
-    link(rel='stylesheet' href=`https://fonts.googleapis.com/css2?${query}`)
+- const title = "Single section landing page using viewport units and grid";
+- const challenge = "Huddle landing page with a single introductory section";
+- const googleFontsUrl = "https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Open+Sans&display=swap";
 
 doctype html
 html(lang='en')
@@ -16,9 +14,9 @@ html(lang='en')
     )
     meta(name='author' content='Alex Kim, https://github.com/Alex-K1m')
     link(rel='icon' type='image/png' sizes='32x32' href=site.favicon)
-    block fonts
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+    link(rel='preload' as='style' href=googleFontsUrl)
+    link(rel='stylesheet' href=googleFontsUrl)
     link(rel='stylesheet' href='styles.scss')
   body
     block content
-    if includeJs
-      script(src='script.js')

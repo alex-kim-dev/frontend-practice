@@ -1,12 +1,5 @@
-extends layout
-include socialLinks
-
-block variables
-  - const title = "Single section landing page using viewport units and grid";
-  - const challenge = "Huddle landing page with a single introductory section";
-
-block fonts
-  +googleFonts([ 'family=Open+Sans&display=swap&text=Hudle%20r-imagnsthwybco.Yv%2CC', 'family=Poppins&display=swap&text=Registr', 'family=Poppins:wght@700&display=swap&text=Build%20TheComntyYrFasWLv' ])
+extends includes/seo
+include includes/social-links
 
 block content
   .wrapper
@@ -15,14 +8,12 @@ block content
         .logo
       .heroImage
       main.content
-        h1.heading
-          | Build the community
-          br
-          | your fans will love
+        h1.heading.
+          Build the community your fans will love
         p.text.
-          Huddle re-imagines the way we build communities. You have a voice, but
-          so does your audience. Create connections with your users as you
+          Huddle re-imagines the way we build communities. You have a voice,
+          but so does your audience. Create connections with your users as you
           engage in genuine discussion.
         button.button Register
       footer.footer
-        +socialLinks('list', 'item', 'socialLink', 'icon')
+        +social-links('list', 'item', 'socialLink', 'icon')
