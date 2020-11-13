@@ -2,32 +2,29 @@ include facebook
 include twitter
 include instagram
 
-mixin social-links(listCls, itemCls, linkCls, iconCls)
-  ul(class=listCls)
-    li(class=itemCls)
-      a(
+mixin social-links
+  ul.socials
+    li
+      a.socials__link(
         href='https://facebook.com'
         target='_blank'
         rel='noreferrer'
-        class=linkCls
         aria-label='Facebook'
       )
-        +facebookIcon(iconCls)
-    li(class=itemCls)
-      a(
+        +facebookIcon('socials__icon')
+    li
+      a.socials__link(
         href='https://twitter.com'
         target='_blank'
         rel='noreferrer'
-        class=linkCls
         aria-label='Twitter'
       )
-        +twitterIcon(iconCls)
-    li(class=itemCls)
-      a(
+        +twitterIcon('socials__icon')
+    li
+      a.socials__link(
         href='https://instagram.com'
         target='_blank'
         rel='noreferrer'
-        class=linkCls
         aria-label='Instagram'
       )
-        +instagramIcon(iconCls)
+        +instagramIcon('socials__icon')

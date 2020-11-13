@@ -3,17 +3,16 @@ include includes/social-links
 
 block content
   .wrapper
-    .container
-      header.header
+    .layout
+      header.layout__header
         .logo
-      .heroImage
-      main.content
-        h1.heading.
-          Build the community your fans will love
-        p.text.
+      .layout__hero.hero-image
+      main.layout__content
+        h1 Build the community your fans will love
+        p.layout__paragraph.
           Huddle re-imagines the way we build communities. You have a voice,
           but so does your audience. Create connections with your users as you
           engage in genuine discussion.
-        button.button Register
-      footer.footer
-        +social-links('list', 'item', 'socialLink', 'icon')
+        button.layout__btn.btn Register
+      footer.layout__footer
+        +social-links

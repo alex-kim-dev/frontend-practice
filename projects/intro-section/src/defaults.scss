@@ -1,44 +1,95 @@
-@use 'sass:math' as math;
+$breakpoint-sm: 560;
+$breakpoint-md: 768;
+$breakpoint-lg: 1100;
+$breakpoint-xl: 1440;
 
-@function rem($size) {
-  @return $size / 16px * 1rem;
+$c-violet: hsl(257, 40%, 49%);
+$c-violet-light: hsl(257, 40%, 79%);
+$c-violet-darker: hsl(257, 40%, 29%);
+$c-white: #fff;
+
+@function em($value) {
+  @if type-of($value) == 'number' {
+    @return $value / 16 * 1em;
+  } @else {
+    @error 'The parameter should be of type number';
+  }
 }
 
-@function fluidFont($min, $max, $minVw, $maxVw, $unit) {
+@function fluid-size($min, $max, $minVw, $maxVw, $unit) {
   @return calc(
     #{$min}#{$unit} + #{$max - $min} *
     ((100vw - #{$minVw}#{$unit}) / #{$maxVw - $minVw})
   );
 }
 
-@function roundTo($value, $digits: 2) {
-  $div: math.pow(10, $digits);
-  @return round($value * $div) / $div;
+@mixin sm-up {
+  @media (min-width: em($breakpoint-sm)) {
+    @content;
+  }
 }
 
-@function pct($value, $divider) {
-  @return roundTo($value / $divider * 100%);
+@mixin md-up {
+  @media (min-width: em($breakpoint-md)) {
+    @content;
+  }
+}
+
+@mixin lg-up {
+  @media (min-width: em($breakpoint-lg)) {
+    @content;
+  }
+}
+
+@mixin xl-up {
+  @media (min-width: em($breakpoint-xl)) {
+    @content;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 html {
+  box-sizing: border-box;
   font-size: 62.5%;
 }
 
 body {
+  color: $c-white;
   font-size: 1.6rem;
 }
 
-* {
-  box-sizing: border-box;
+h1,
+p,
+button {
+  font-family: Poppins, san-serif;
 }
 
-/* stylelint-disable-next-line selector-class-pattern */
-.srOnly {
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
+p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 150%;
+  text-transform: capitalize;
+  @include sm-up {
+    font-size: 3.2rem;
+  }
+  @include md-up {
+    font-size: 4rem;
+  }
+}
+
+p {
+  line-height: 150%;
+  @include md-up {
+    font-size: 1.8rem;
+  }
 }
