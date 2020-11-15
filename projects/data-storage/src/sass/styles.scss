@@ -1,19 +1,7 @@
-/* stylelint-disable */
-
 @import 'reset';
-@import 'defaults';
 
-@mixin smUp {
-  @media (min-width: rem(768px)) {
-    @content;
-  }
-}
-
-@mixin mdUp {
-  @media (min-width: rem(1024px)) {
-    @content;
-  }
-}
+$breakpoint-sm: 768;
+$breakpoint-md: 1024;
 
 $c-pale-blue: hsl(243, 100%, 93%);
 $c-grayish-blue: hsl(229, 7%, 55%);
@@ -21,29 +9,88 @@ $c-dark-blue: hsl(228, 56%, 26%);
 $c-very-dark-blue: hsl(229, 57%, 11%);
 $c-peach: hsl(6, 100%, 80%);
 $c-magenta: hsl(335, 100%, 65%);
-$c-light: white;
+$c-light: #fff;
 
-.content {
-  align-content: center;
-  background: center / 100% 100% url('../images/bg-mobile.svg');
+@function em($value) {
+  @if type-of($value) == 'number' {
+    @return $value / 16 * 1em;
+  } @else {
+    @error 'The parameter should be of type number';
+  }
+}
+
+@mixin sm-up {
+  @media (min-width: em($breakpoint-sm)) {
+    @content;
+  }
+}
+
+@mixin md-up {
+  @media (min-width: em($breakpoint-md)) {
+    @content;
+  }
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  background-color: $c-very-dark-blue;
+  color: $c-light;
+  font-size: 1.6rem;
+}
+
+label,
+div {
+  font-family: Raleway, sans-serif;
+}
+
+.wrapper {
+  align-items: center;
+  background: center / 100% 100% no-repeat url('../images/bg-mobile.svg');
+  display: flex;
+
+  justify-content: center;
+  min-height: 100vh;
+  padding: 6.4vmin;
+  @include md-up {
+    background-image: url('../images/bg-desktop.svg');
+    background-position: bottom;
+    background-size: 100% 52.5%;
+  }
+}
+
+.data-storage {
   display: grid;
   grid-auto-columns: minmax(0, 54rem);
   grid-gap: 1.6rem;
   grid-template-columns: minmax(0, 35rem);
-  height: 100vh;
-  justify-content: center;
-  padding: 6.4vmin;
-  @include smUp {
+  @include sm-up {
     grid-auto-flow: column;
     grid-gap: 3rem;
   }
-  @include mdUp {
-    background: bottom / 100% 52.5% no-repeat url('../images/bg-desktop.svg'),
-      $c-very-dark-blue;
-
-    > * {
-      margin-bottom: 2.1rem;
-    }
+  @include md-up {
+    transform: translateY(-2.1rem);
   }
 }
 
@@ -52,6 +99,10 @@ $c-light: white;
   border-radius: 1rem;
   border-top-right-radius: 10rem;
   padding: 4rem;
+
+  > .toolbar {
+    margin-top: 3.2rem;
+  }
 }
 
 .toolbar {
@@ -59,23 +110,20 @@ $c-light: white;
   grid-auto-flow: column;
   grid-gap: 1.6rem;
   justify-content: start;
-  margin-top: 3.2rem;
 
   > li {
     display: flex;
   }
 }
 
-.iconBtn {
+.icon-btn {
   background-color: $c-very-dark-blue;
   background-position: center;
   background-repeat: no-repeat;
-  border: none;
+  border: 0;
   border-radius: 1rem;
   cursor: pointer;
   height: 4.8rem;
-  padding: 0;
-  padding: 0;
   transition: 0.2s ease-in-out;
   width: 4.8rem;
 
@@ -93,11 +141,11 @@ $c-light: white;
   }
 }
 
-.newFile {
+.new-file {
   background-image: url('../images/icon-document.svg');
 }
 
-.newDir {
+.new-dir {
   background-image: url('../images/icon-folder.svg');
 }
 
@@ -112,12 +160,25 @@ $c-light: white;
     'badge' 1fr
     'badge' 1fr
     / 1fr;
-  @include smUp {
+  @include sm-up {
     grid-template:
       'badge' 1fr
       'badge' 1fr
       'stats' auto
       / 1fr;
+  }
+
+  > .stats {
+    grid-area: stats;
+    margin-top: -0.7rem;
+    text-align: center;
+    @include sm-up {
+      text-align: left;
+    }
+  }
+
+  > .badge {
+    grid-area: badge;
   }
 }
 
@@ -125,26 +186,26 @@ $c-light: white;
   background: $c-dark-blue;
   border-radius: 1rem;
   grid-area: 1 / 1 / span 2;
-  @include smUp {
+  @include sm-up {
     grid-row-start: 2;
   }
 }
 
 .stats {
   display: block;
-  grid-area: stats;
-  margin-top: -0.7rem;
   padding: 3.2rem 3.2rem 1.6rem;
-  text-align: center;
-  @include smUp {
+  @include sm-up {
     padding: 0 4rem 4rem;
-    text-align: left;
+  }
+
+  > .meter {
+    margin-top: 1.6rem;
   }
 }
 
 .label {
   color: $c-light;
-  font: 1.4rem Raleway, sans-serif;
+  font-size: 1.4rem;
 
   > span {
     font-weight: 700;
@@ -155,7 +216,10 @@ $c-light: white;
   display: flex;
   flex-flow: wrap;
   justify-content: space-between;
-  margin-top: 1.6rem;
+
+  > .limit {
+    margin-top: 0.8rem;
+  }
 }
 
 .bar {
@@ -170,7 +234,9 @@ $c-light: white;
     background: linear-gradient(to right, $c-peach, $c-magenta);
     border-radius: 0.7rem;
     height: 100%;
+    max-width: 100%;
     position: relative;
+    transition: width 0.5s;
     width: calc(1.4rem + (100% - 1.4rem) * var(--value));
 
     &::after {
@@ -179,7 +245,7 @@ $c-light: white;
       content: '';
       height: 1rem;
       position: absolute;
-      right: 0.2rem;
+      right: 0.3rem;
       top: 0.2rem;
       width: 1rem;
     }
@@ -188,14 +254,13 @@ $c-light: white;
 
 .limit {
   color: $c-light;
-  font: 700 1.2rem Raleway, sans-serif;
-  margin-top: 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
 .badge {
-  grid-area: badge;
   justify-self: center;
-  @include smUp {
+  @include sm-up {
     justify-self: end;
     margin-right: 4rem;
 
@@ -216,11 +281,12 @@ $c-light: white;
     border-radius: 1rem;
     color: $c-grayish-blue;
     display: flex;
-    font: 700 1.3rem Raleway, sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
     letter-spacing: 0.04em;
     padding: 1.2rem 2.4rem;
     text-transform: uppercase;
-    @include smUp {
+    @include sm-up {
       border-bottom-right-radius: 0;
     }
 
@@ -231,14 +297,4 @@ $c-light: white;
       margin-right: 0.8rem;
     }
   }
-}
-
-.hidden {
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
 }

@@ -1,30 +1,29 @@
 extends includes/seo
 
 block content
-  main.content
-    h1.hidden Fylo data storage widget
-    section.control
-      h2.hidden Storage control
-      img(src='images/logo.svg' alt='Fylo logo')
-      ul.toolbar
-        li: button.iconBtn.newFile(aria-label='Create new file')
-        li: button.iconBtn.newDir(aria-label='Create new directory')
-        li: button.iconBtn.upload(aria-label='Upload')
-    section.status
-      h2.hidden Storage status
-      .bg
-      .stats
-        label.label(for='meter')
-          | You’ve used #{''}
-          span 815 GB #{''}
-          | of your storage
-        .meter
-          meter#meter.hidden(value='815' min='0' max='1000' title='GB')
-          .bar
-            div
-          .limit 0 GB
-          .limit 1000 GB
-      .badge
-        div
+  .wrapper
+    .data-storage
+      h1.sr-only Fylo data storage widget
+      section.control
+        h2.sr-only Storage control
+        img(src='images/logo.svg' alt='Fylo logo')
+        ul.toolbar
+          li: button.icon-btn.new-file(aria-label='Create new file')
+          li: button.icon-btn.new-dir(aria-label='Create new directory')
+          li: button.icon-btn.upload(aria-label='Upload')
+      section.status
+        h2.sr-only Storage status
+        .bg
+        .stats
+          label.label(for='meter')
+            | You’ve used #{''}
+            span 815 GB #{''}
+            | of your storage
+          .meter
+            meter#meter.sr-only(value='815' min='0' max='1000' title='GB')
+            .bar: div
+            .limit 0 GB
+            .limit 1000 GB
+        .badge: div
           span 185
           | GB Left
