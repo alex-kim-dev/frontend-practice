@@ -1,18 +1,11 @@
-extends layout
-
-block variables
-  - const title = "Fylo data storage component";
-  - const challenge = title;
-
-block fonts
-  +googleFonts([ 'family=Raleway&display=swap&text=You%E2%80%99ve%20sdfyrtag', 'family=Raleway:wght@700&display=swap&text=815%20GB0LEFT' ])
+extends includes/seo
 
 block content
   main.content
     h1.hidden Fylo data storage widget
     section.control
       h2.hidden Storage control
-      img(src='logo.svg' alt='Fylo logo')
+      img(src='images/logo.svg' alt='Fylo logo')
       ul.toolbar
         li: button.iconBtn.newFile(aria-label='Create new file')
         li: button.iconBtn.newDir(aria-label='Create new directory')

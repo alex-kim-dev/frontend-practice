@@ -25,7 +25,7 @@ $c-light: white;
 
 .content {
   align-content: center;
-  background: center / 100% 100% url(bg-mobile.svg);
+  background: center / 100% 100% url('../images/bg-mobile.svg');
   display: grid;
   grid-auto-columns: minmax(0, 54rem);
   grid-gap: 1.6rem;
@@ -38,7 +38,7 @@ $c-light: white;
     grid-gap: 3rem;
   }
   @include mdUp {
-    background: bottom / 100% 52.5% no-repeat url(bg-desktop.svg),
+    background: bottom / 100% 52.5% no-repeat url('../images/bg-desktop.svg'),
       $c-very-dark-blue;
 
     > * {
@@ -94,15 +94,15 @@ $c-light: white;
 }
 
 .newFile {
-  background-image: url(icon-document.svg);
+  background-image: url('../images/icon-document.svg');
 }
 
 .newDir {
-  background-image: url(icon-folder.svg);
+  background-image: url('../images/icon-folder.svg');
 }
 
 .upload {
-  background-image: url(icon-upload.svg);
+  background-image: url('../images/icon-upload.svg');
 }
 
 .status {
