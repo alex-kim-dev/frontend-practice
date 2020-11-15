@@ -1,6 +1,6 @@
 {
   "name": "data-storage",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "private": true,
   "description": "A solution for \"Fylo data storage component\" challenge on frontendmentor.io",
   "license": "MIT",
