@@ -131,7 +131,7 @@ $light: white;
 
   > p {
     font: 300 4.8vmin/135% Inter, sans-serif;
-    font-size: fluidFont(1.8, 3.2, 37.5, 144, rem);
+    font-size: fluid-font(1.8, 3.2, 37.5, 144, rem);
     @include landscape {
       font-kerning: none;
       line-height: 140%;
@@ -162,7 +162,7 @@ $light: white;
     > cite {
       font-family: Inter, sans-serif;
       font-kerning: none;
-      font-size: fluidFont(1.5, 2, 37.5, 144, rem);
+      font-size: fluid-font(1.5, 2, 37.5, 144, rem);
       line-height: normal;
 
       &:nth-child(1) {
