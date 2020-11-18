@@ -1,12 +1,12 @@
 extends includes/seo
 
 block content
-  main
+  main.wrapper
     article.card
-      header
-        img(src='images/drawers.jpg' alt='Room furniture')
-      .card-body
-        h2.
+      header.card__header
+        img.card__preview(src='images/drawers.jpg' alt='Room furniture')
+      .card__body
+        h1.
           Shift the overall look and feel by adding these wonderful touches to
           furniture in your home
         p.
@@ -14,17 +14,20 @@ block content
           felt slightly bare and uninviting. I’ve got some simple tips to help
           you make any room feel complete.
         .meta
-          img(src='images/avatar-michelle.jpg' alt='Michelle\'s avatar')
-          p Michelle Appleton
-          time(datetime='2020-06-28') 28 Jun 2020
-          button#share.iconBtn(aria-label='Share')
+          img.meta__avatar(
+            src='images/avatar-michelle.jpg'
+            alt='Michelle\'s avatar'
+          )
+          p.meta__name Michelle Appleton
+          time.meta__date(datetime='2020-06-28') 28 Jun 2020
+          button#share.meta__share-btn.icon-btn(aria-label='Share')
             include images/icon-share.svg
         .share.hidden
-          p Share
-          ul
-            li: button.iconBtn(aria-label='Facebook')
+          p.share__label Share
+          ul.share__list
+            li: button.icon-btn(aria-label='Facebook')
               include images/icon-facebook.svg
-            li: button.iconBtn(aria-label='Twitter')
+            li: button.icon-btn(aria-label='Twitter')
               include images/icon-twitter.svg
-            li: button.iconBtn(aria-label='Pinterest')
+            li: button.icon-btn(aria-label='Pinterest')
               include images/icon-pinterest.svg

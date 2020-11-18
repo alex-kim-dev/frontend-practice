@@ -1,7 +1,6 @@
-/* stylelint-disable */
-
 @import 'reset';
-@import 'defaults';
+
+$breakpoint-md: 794;
 
 $very-dark-grayish-blue: hsl(217, 19%, 35%);
 $desaturated-dark-blue: hsl(214, 17%, 51%);
@@ -9,27 +8,74 @@ $grayish-blue: hsl(212, 23%, 69%);
 $light-grayish-blue: hsl(210, 46%, 95%);
 $light: #fff;
 
-@mixin mdUp {
-  @media (min-width: rem(794px)) {
+@function em($value) {
+  @if type-of($value) == 'number' {
+    @return $value / 16 * 1em;
+  } @else {
+    @error 'The parameter should be of type number';
+  }
+}
+
+@mixin md-up {
+  @media (min-width: em($breakpoint-md)) {
     @content;
   }
 }
 
-main {
-  align-items: center;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
   background: $light-grayish-blue;
+  font-family: Manrope, sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.01em;
+}
+
+h1 {
+  color: $very-dark-grayish-blue;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.5;
+  @include md-up {
+    font-size: 2rem;
+    letter-spacing: 0.012em;
+    line-height: 1.4;
+  }
+}
+
+p {
+  color: $desaturated-dark-blue;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.6;
+  @include md-up {
+    letter-spacing: 0.008em;
+  }
+}
+
+.wrapper {
+  align-items: center;
   display: flex;
-  height: 100vh;
   justify-content: center;
-  overflow: auto;
+  min-height: 100vh;
   padding: 2.4rem;
 
   > .card {
-    margin-bottom: 0.7rem;
     max-width: 37.7rem;
-    @include mdUp {
-      margin-bottom: 0;
+    transform: translateY(-0.4rem);
+    @include md-up {
       max-width: 73rem;
+      transform: none;
+      // transform: translateY(-0.4rem);
     }
   }
 }
@@ -40,19 +86,17 @@ main {
   box-shadow: 0 4rem 2.8rem rgba($grayish-blue, 0.2);
   display: flex;
   flex-flow: column;
-  font-family: Manrope, sans-serif;
-  letter-spacing: 0.01em;
   overflow: hidden;
-  @include mdUp {
+  @include md-up {
     flex-flow: row;
     overflow: visible;
   }
 
-  > header {
+  &__header {
     height: 0;
     padding-bottom: 61.15%;
     position: relative;
-    @include mdUp {
+    @include md-up {
       border-bottom-left-radius: 0.8rem;
       border-top-left-radius: 0.8rem;
       flex: 1 0 28.5rem;
@@ -60,122 +104,46 @@ main {
       overflow: hidden;
       padding-bottom: 0;
     }
+  }
 
-    > img {
-      display: block;
-      height: 100%;
-      left: 0;
-      object-fit: cover;
-      object-position: 0 -16px;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      @include mdUp {
-        object-position: left;
-      }
+  &__preview {
+    display: block;
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    object-position: 0 -16px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    @include md-up {
+      object-position: left;
     }
   }
 
-  > .card-body {
+  &__body {
     padding: 3.6rem 3.2rem 2rem;
     position: relative;
-    @include mdUp {
+    @include md-up {
       padding: 3.2rem 4rem;
     }
 
-    > h2 {
-      color: $very-dark-grayish-blue;
-      font-size: 1.6rem;
-      font-weight: 700;
-      line-height: 1.5;
-      @include mdUp {
-        font-size: 2rem;
-        letter-spacing: 0.012em;
-        line-height: 1.4;
-      }
-    }
-
     > p {
-      color: $desaturated-dark-blue;
-      font-size: 1.3rem;
-      font-weight: 500;
-      line-height: 1.6;
       margin-top: 1.2rem;
-      @include mdUp {
-        letter-spacing: 0.008em;
-      }
     }
+  }
 
-    > .meta {
-      margin-top: 3.2rem;
-      @include mdUp {
-        margin-top: 2rem;
-      }
+  &__body > .meta {
+    margin-top: 3.2rem;
+    @include md-up {
+      margin-top: 2rem;
     }
   }
 }
 
-.meta {
-  align-items: center;
-  display: grid;
-  font-size: 1.3rem;
-  grid-gap: 0.5rem 1.6rem;
-  grid-template:
-    'avatar name share' auto
-    'avatar date share' auto
-    / auto 1fr auto;
-  letter-spacing: 0.01em;
-  line-height: 1.2;
-
-  > img {
-    border-radius: 50%;
-    grid-area: avatar;
-    height: 4rem;
-    width: 4rem;
-  }
-
-  > p {
-    align-self: end;
-    color: $very-dark-grayish-blue;
-    font-weight: 700;
-    grid-area: name;
-  }
-
-  > time {
-    align-self: start;
-    color: $grayish-blue;
-    font-weight: 500;
-    grid-area: date;
-  }
-
-  > button {
-    background: $light-grayish-blue;
-    border-radius: 50%;
-    grid-area: share;
-    z-index: 10;
-
-    &.inverse {
-      background: $desaturated-dark-blue;
-
-      > svg > path {
-        fill: $light;
-      }
-
-      &:hover {
-        background: $light-grayish-blue;
-
-        > svg > path {
-          fill: $desaturated-dark-blue;
-        }
-      }
-    }
-  }
-}
-
-.iconBtn {
+.icon-btn {
   align-items: center;
   background: transparent;
-  border: none;
+  border: 0;
   cursor: pointer;
   display: inline-flex;
   height: 3.2rem;
@@ -206,6 +174,62 @@ main {
   }
 }
 
+.meta {
+  align-items: center;
+  display: grid;
+  font-size: 1.3rem;
+  grid-gap: 0.5rem 1.6rem;
+  grid-template:
+    'avatar name share' auto
+    'avatar date share' auto
+    / auto 1fr auto;
+  line-height: 1.2;
+
+  &__avatar {
+    border-radius: 50%;
+    grid-area: avatar;
+    height: 4rem;
+    width: 4rem;
+  }
+
+  &__name {
+    align-self: end;
+    color: $very-dark-grayish-blue;
+    font-weight: 700;
+    grid-area: name;
+  }
+
+  &__date {
+    align-self: start;
+    color: $grayish-blue;
+    font-weight: 500;
+    grid-area: date;
+  }
+
+  &__share-btn {
+    background-color: $light-grayish-blue;
+    border-radius: 50%;
+    grid-area: share;
+    z-index: 10;
+
+    &.inverse {
+      background: $desaturated-dark-blue;
+    }
+
+    &.inverse > svg > path {
+      fill: $light;
+    }
+
+    &.inverse:hover {
+      background: $light-grayish-blue;
+    }
+
+    &.inverse:hover > svg > path {
+      fill: $desaturated-dark-blue;
+    }
+  }
+}
+
 .share {
   align-items: center;
   background: $very-dark-grayish-blue;
@@ -216,7 +240,7 @@ main {
   position: absolute;
   transition: visibility 0s, bottom 0.3s ease-out, opacity 0.3s ease-out;
   width: 100%;
-  @include mdUp {
+  @include md-up {
     border-radius: 0.8rem;
     bottom: 9.6rem;
     left: auto;
@@ -242,35 +266,27 @@ main {
     opacity: 0;
     transition: visibility 0s 0.3s, bottom 0.3s ease-out, opacity 0.3s ease-out;
     visibility: hidden;
-    @include mdUp {
+    @include md-up {
       bottom: 8rem;
     }
   }
 
-  > p {
+  &__label {
     color: $grayish-blue;
-    font: 500 1.2rem Manrope, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
     letter-spacing: 0.48em;
     text-transform: uppercase;
   }
 
-  > ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
+  &__list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 0.4rem;
     margin-left: 1rem;
-    padding: 0;
+  }
 
-    > li {
-      display: block;
-
-      &:not(:first-child) {
-        margin-left: 0.4rem;
-      }
-
-      > button {
-        border-radius: 0.6rem;
-      }
-    }
+  .icon-btn {
+    border-radius: 0.6rem;
   }
 }
