@@ -31,9 +31,8 @@
   ],
   "staticFiles": {
     "staticPath": [
-      "src/image-john.jpg",
-      "src/image-tanya.jpg",
-      "src/data.json"
+      "src/images/image-john.jpg",
+      "src/images/image-tanya.jpg"
     ],
     "watcherGlob": "**"
   }

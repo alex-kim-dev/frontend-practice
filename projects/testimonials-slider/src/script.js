@@ -1,3 +1,5 @@
+import data from './data.json';
+
 const $testimonials = document.querySelector('.testimonials');
 const $photo = $testimonials.querySelector('.photo');
 const $quote = $testimonials.querySelector('.quote > p');
@@ -21,17 +23,6 @@ const animations = {
 };
 
 let currentSlide = 0;
-
-const getData = async (url) => {
-  try {
-    const data = await fetch(url);
-    return await data.json();
-  } catch (err) {
-    // eslint-disable-next-line no-console
-    console.log('An error occur while getting data:\n', err);
-    return null;
-  }
-};
 
 const createImage = (url, alt) => {
   const $img = new Image();
@@ -76,19 +67,14 @@ const changeSlide = (testimonials) => ({ target: btn }) => {
     .then(() => btn.removeAttribute('disabled'));
 };
 
-(async () => {
-  const data = await getData('data.json');
-  if (!data) return;
+const testimonials = data.testimonials.map((testimonial) => ({
+  ...testimonial,
+  $photo: createImage(
+    testimonial.photoUrl,
+    `Member photo - ${testimonial.author}`,
+  ),
+}));
 
-  const testimonials = data.testimonials.map((testimonial) => ({
-    ...testimonial,
-    $photo: createImage(
-      testimonial.photoUrl,
-      `Member photo - ${testimonial.author}`,
-    ),
-  }));
-
-  document
-    .querySelectorAll('[data-slide]')
-    .forEach((btn) => btn.addEventListener('click', changeSlide(testimonials)));
-})();
+document
+  .querySelectorAll('[data-slide]')
+  .forEach((btn) => btn.addEventListener('click', changeSlide(testimonials)));
