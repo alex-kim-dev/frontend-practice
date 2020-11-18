@@ -1,18 +1,10 @@
-extends layout
-
-block variables
-  - const title = "Article preview component with click away listener";
-  - const challenge = "Article preview component";
-  - const includeJs = "true";
-
-block fonts
-  +googleFonts([ 'family=Manrope:wght@500&display=swap&text=Ever%20bniaomdfltkshgw%3FPpyu.I%E2%80%99c28J0SHAR', 'family=Manrope:wght@700&display=swap&text=Shift%20eovralkndbygswucmMAp', ])
+extends includes/seo
 
 block content
   main
     article.card
       header
-        img(src='drawers.jpg' alt='Room furniture')
+        img(src='images/drawers.jpg' alt='Room furniture')
       .card-body
         h2.
           Shift the overall look and feel by adding these wonderful touches to
@@ -22,16 +14,17 @@ block content
           felt slightly bare and uninviting. I’ve got some simple tips to help
           you make any room feel complete.
         .meta
-          img(src='avatar-michelle.jpg' alt='Michelle\'s avatar')
+          img(src='images/avatar-michelle.jpg' alt='Michelle\'s avatar')
           p Michelle Appleton
           time(datetime='2020-06-28') 28 Jun 2020
-          button#share.iconBtn(aria-label='Share'): include icon-share.svg
+          button#share.iconBtn(aria-label='Share')
+            include images/icon-share.svg
         .share.hidden
           p Share
           ul
             li: button.iconBtn(aria-label='Facebook')
-              include icon-facebook.svg
+              include images/icon-facebook.svg
             li: button.iconBtn(aria-label='Twitter')
-              include icon-twitter.svg
+              include images/icon-twitter.svg
             li: button.iconBtn(aria-label='Pinterest')
-              include icon-pinterest.svg
+              include images/icon-pinterest.svg
