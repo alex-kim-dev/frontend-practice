@@ -1,11 +1,17 @@
-/* stylelint-disable */
+// stylelint-disable max-nesting-depth
 
 @import 'reset';
-@import 'defaults';
 
 $dark-blue: hsl(240, 38%, 20%);
 $grayish-blue: hsl(240, 18%, 77%);
-$light: white;
+$light: #fff;
+
+@function fluid-font($min, $max, $minVw, $maxVw, $unit) {
+  @return calc(
+    #{$min}#{$unit} + #{$max - $min} *
+    ((100vw - #{$minVw}#{$unit}) / #{$maxVw - $minVw})
+  );
+}
 
 @mixin landscape {
   @media (orientation: landscape) {
@@ -13,8 +19,24 @@ $light: white;
   }
 }
 
-.content {
-  background: bottom left / 76vw no-repeat url(pattern-curve.svg), $light;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  background-color: $light;
+  font-size: 1.6rem;
+}
+
+.wrapper {
+  background: bottom left / 76vw no-repeat url('../images/pattern-curve.svg');
   min-height: 100vh;
   @include landscape {
     background-size: 42.36vw;
@@ -36,7 +58,7 @@ $light: white;
 
 .slide {
   align-items: center;
-  background: center / contain no-repeat url(pattern-bg.svg);
+  background: center / contain no-repeat url('../images/pattern-bg.svg');
   display: flex;
   flex-flow: column;
   padding: 4.5vh 9.6vw 0;
@@ -66,7 +88,7 @@ $light: white;
     $radius-land: 2.8rem;
     background: center / calc(0.4rem + 1.07vmin) calc(0.6rem + 1.6vmin)
       no-repeat $light;
-    border: none;
+    border: 0;
     cursor: pointer;
     display: block;
     height: calc(2rem + 5.33vmin); // 4rem;
@@ -91,7 +113,7 @@ $light: white;
     }
 
     &:nth-child(1) {
-      background-image: url(icon-prev.svg);
+      background-image: url('../images/icon-prev.svg');
       border-bottom-left-radius: $radius-port;
       border-top-left-radius: $radius-port;
       @include landscape {
@@ -101,7 +123,7 @@ $light: white;
     }
 
     &:nth-child(2) {
-      background-image: url(icon-next.svg);
+      background-image: url('../images/icon-next.svg');
       border-bottom-right-radius: $radius-port;
       border-top-right-radius: $radius-port;
       @include landscape {
@@ -114,7 +136,7 @@ $light: white;
 
 .quote {
   background: top center / calc(3rem + 8vw) calc(2.5rem + 3.75vh) no-repeat
-    url(pattern-quotes.svg);
+    url('../images/pattern-quotes.svg');
   color: $dark-blue;
   margin-top: 5.4vh;
   padding: 3.6vh 2.66vw;
@@ -154,6 +176,7 @@ $light: white;
       flex-flow: row;
       margin-top: 5vh;
 
+      // stylelint-disable-next-line selector-max-compound-selectors
       > cite + cite {
         margin-left: 0.8rem;
       }
