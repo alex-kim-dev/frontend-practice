@@ -1,0 +1,19 @@
+{
+  "heading": "10,000+ of our users love our products.",
+  "text": "We only provide great products combined with excellent customer service. See what our satisfied customers are saying about our services.",
+  "reviewers": ["Reviews", "Report Guru", "BestTech"],
+  "testimonials": [
+    {
+      "author": "Colton Smith",
+      "quote": "We needed the same printed design as the one we had ordered a week prior. Not only did they find the original order, but we also received it in time. Excellent!"
+    },
+    {
+      "author": "Irene Roberts",
+      "quote": "Customer service is always excellent and very quick turn around. Completely delighted with the simplicity of the purchase and the speed of delivery."
+    },
+    {
+      "author": "Anne Wallace",
+      "quote": "Put an order with this company and can only praise them for the very high standard. Will definitely use them again and recommend them to everyone!"
+    }
+  ]
+}

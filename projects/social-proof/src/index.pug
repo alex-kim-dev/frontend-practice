@@ -1,39 +1,20 @@
 extends includes/seo
 
 block content
-  -
-    const reviewers = ['Reviews', 'Report Guru', 'BestTech'];
-    const testimonials = [
-      [
-        'Colton Smith',
-        'We needed the same printed design as the one we had ordered a week prior. Not only did they find the original order, but we also received it in time. Excellent!'
-      ],
-      [
-        'Irene Roberts',
-        'Customer service is always excellent and very quick turn around. Completely delighted with the simplicity of the purchase and the speed of delivery.'
-      ],
-      [
-        'Anne Wallace',
-        'Put an order with this company and can only praise them for the very high standard. Will definitely use them again and recommend them to everyone!'
-      ],
-    ];
-
   .wrapper
     section.social-proof
       .social-proof__intro
-        h2.h2 10,000+ of our users love our products.
-        p.text.
-          We only provide great products combined with excellent customer service.
-          See what our satisfied customers are saying about our services.
+        h2.h2= content.heading
+        p.text= content.text
       .social-proof__ratings
-        each reviewer in reviewers
+        each reviewer in content.reviewers
           .rating
             .stars
             p.text-subtitle Rated 5 Stars in #{reviewer}
       .social-proof__testimonials
         .grid
-          each testimonial in testimonials
-            - const [author, quote] = testimonial;
+          each testimonial in content.testimonials
+            - const { author, quote } = testimonial;
             - const str = author.split(" ")[0].toLowerCase();
             .card.grid__item
               .person
