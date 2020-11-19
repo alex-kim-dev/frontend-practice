@@ -14,7 +14,8 @@
       "monthlyPrice": 24.99,
       "storage": "1 TB Storage",
       "users": "5 Users Allowed",
-      "limit": "Send up to 10 GB"
+      "limit": "Send up to 10 GB",
+      "highlighted": true
     },
     {
       "name": "Master",

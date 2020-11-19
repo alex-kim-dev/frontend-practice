@@ -2,22 +2,26 @@ extends includes/seo
 
 block content
   main.content
-    h1.heading= content.heading
-    input#pricing.srOnly(type='checkbox' checked)
+    h1= content.heading
+    input#pricing.sr-only(type='checkbox' checked)
     label.switch(for='pricing')
-      span.switch_inner
-      span.srOnly= content.switchLabel
+      span.switch__inner
+      span.sr-only= content.switchLabel
     ul.plans
       each plan, i in content.plans
         -
-          const { name, monthlyPrice, storage, users, limit } = plan;
+          const { name, monthlyPrice, storage, users, limit, highlighted } =
+            plan;
           const annualPrice =
             Math.floor(monthlyPrice * content.annualPriceFactor) + 0.99;
-        li.offer(class=`${i === 1 ? "offer-highlighted" : ""}`)
-          h2.offer_heading= name
-          strong.offer_price(data-monthly=monthlyPrice data-annual=annualPrice)
+        li.offer(class=`${highlighted ? "offer--highlighted" : ""}`)
+          h2= name
+          strong.offer__price(
+            data-monthly=monthlyPrice
+            data-annual=annualPrice
+          )
           ul.list
-            li.list_item: p= storage
-            li.list_item: p= users
-            li.list_item: p= limit
-          button.btn(class=`${i === 1 ? "btn-inverse" : ""}`)= content.cta
+            li.list__item: p= storage
+            li.list__item: p= users
+            li.list__item: p= limit
+          button.btn(class=`${highlighted ? "btn--inverse" : ""}`)= content.cta
