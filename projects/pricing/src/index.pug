@@ -1,30 +1,23 @@
 extends includes/seo
 
 block content
-  -
-    const plans = [
-      ['Basic',        19.99, '500 GB',  2,  3],
-      ['Professional', 24.99, '1 TB',    5, 10],
-      ['Master',       39.99, '2 TB',   10, 20],
-    ];
   main.content
-    h1.heading Our pricing
+    h1.heading= content.heading
     input#pricing.srOnly(type='checkbox' checked)
     label.switch(for='pricing')
       span.switch_inner
-      span.srOnly Check for monthly, uncheck for annually prices
+      span.srOnly= content.switchLabel
     ul.plans
-      each offer, i in plans
-        - const [plan, monthly, storage, users, send] = offer;
-        - const annually = Math.floor(monthly * 10) + 0.99;
+      each plan, i in content.plans
+        -
+          const { name, monthlyPrice, storage, users, limit } = plan;
+          const annualPrice =
+            Math.floor(monthlyPrice * content.annualPriceFactor) + 0.99;
         li.offer(class=`${i === 1 ? "offer-highlighted" : ""}`)
-          h2.offer_heading #{plan}
-          strong.offer_price(
-            data-monthly=`${monthly}`
-            data-annually=`${annually}`
-          )
+          h2.offer_heading= name
+          strong.offer_price(data-monthly=monthlyPrice data-annual=annualPrice)
           ul.list
-            li.list_item: p #{storage} Storage
-            li.list_item: p #{users} Users Allowed
-            li.list_item: p Send up to #{send} GB
-          button.btn(class=`${i === 1 ? "btn-inverse" : ""}`) Learn more
+            li.list_item: p= storage
+            li.list_item: p= users
+            li.list_item: p= limit
+          button.btn(class=`${i === 1 ? "btn-inverse" : ""}`)= content.cta

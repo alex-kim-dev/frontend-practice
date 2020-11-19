@@ -178,7 +178,7 @@ input[type='checkbox'] {
 }
 
 input:not(:checked) ~ .plans .offer_price::after {
-  content: attr(data-annually);
+  content: attr(data-annual);
 }
 
 .list {

@@ -1,0 +1,29 @@
+{
+  "heading": "Our pricing",
+  "switchLabel": "Check for monthly, uncheck for annual prices",
+  "plans": [
+    {
+      "name": "Basic",
+      "monthlyPrice": 19.99,
+      "storage": "500 GB Storage",
+      "users": "2 Users Allowed",
+      "limit": "Send up to 3 GB"
+    },
+    {
+      "name": "Professional",
+      "monthlyPrice": 24.99,
+      "storage": "1 TB Storage",
+      "users": "5 Users Allowed",
+      "limit": "Send up to 10 GB"
+    },
+    {
+      "name": "Master",
+      "monthlyPrice": 39.99,
+      "storage": "2 TB Storage",
+      "users": "10 Users Allowed",
+      "limit": "Send up to 20 GB"
+    }
+  ],
+  "annualPriceFactor": 10,
+  "cta": "Learn more"
+}
