@@ -1,3 +1,5 @@
+// stylelint-disable max-nesting-depth
+
 @import 'reset';
 @import 'defaults';
 
@@ -12,25 +14,25 @@
   --c-light: hsl(0, 0%, 100%);
 }
 
-@mixin xsDown {
+@mixin xs-down {
   @media (max-width: rem(767.98px)) {
     @content;
   }
 }
 
-@mixin smUp {
+@mixin sm-up {
   @media (min-width: rem(768px)) {
     @content;
   }
 }
 
-@mixin mdUp {
+@mixin md-up {
   @media (min-width: rem(1024px)) {
     @content;
   }
 }
 
-@mixin lgUp {
+@mixin lg-up {
   @media (min-width: rem(1200px)) {
     @content;
   }
@@ -40,13 +42,13 @@
 
 .wrapper {
   background:
-    top / 100% auto no-repeat url('bg-pattern-top-mobile.svg'),
-    bottom / 100% auto no-repeat url('bg-pattern-bottom-mobile.svg');
+    top / 100% auto no-repeat url('../images/bg-pattern-top-mobile.svg'),
+    bottom / 100% auto no-repeat url('../images/bg-pattern-bottom-mobile.svg');
 
-  @include smUp {
+  @include sm-up {
     background:
-      top left no-repeat url('bg-pattern-top-desktop.svg'),
-      bottom right no-repeat url('bg-pattern-bottom-desktop.svg');
+      top left no-repeat url('../images/bg-pattern-top-desktop.svg'),
+      bottom right no-repeat url('../images/bg-pattern-bottom-desktop.svg');
   }
 }
 
@@ -56,7 +58,7 @@
   min-height: 100vh;
   padding: 8.2rem 2.4rem 10rem;
 
-  @include smUp {
+  @include sm-up {
     align-content: start;
     align-items: center;
     display: grid;
@@ -70,14 +72,14 @@
     padding-right: 4rem;
   }
 
-  @include mdUp {
+  @include md-up {
     grid-gap: 7.2rem 3rem;
     padding-left: 6rem;
     padding-right: 6rem;
     padding-top: 13.1rem;
   }
 
-  @include lgUp {
+  @include lg-up {
     padding-left: 16.4rem;
     padding-right: 16.4rem;
   }
@@ -89,11 +91,11 @@
     grid-row-gap: 2.4rem;
     max-width: 46rem;
 
-    @include xsDown {
+    @include xs-down {
       text-align: center;
     }
 
-    @include mdUp {
+    @include md-up {
       grid-row-gap: 1.3rem;
     }
   }
@@ -104,7 +106,7 @@
     grid-area: ratings;
     grid-row-gap: 1.6rem;
 
-    @include xsDown {
+    @include xs-down {
       margin-top: 3.8rem;
     }
   }
@@ -112,7 +114,7 @@
   &__testimonials {
     grid-area: testimonials;
 
-    @include xsDown {
+    @include xs-down {
       margin-top: 5rem;
     }
   }
@@ -124,23 +126,23 @@
   flex-flow: column;
   margin: calc(var(--margin) * -1);
 
-  @include smUp {
+  @include sm-up {
     flex-flow: row wrap;
     justify-content: center;
   }
 
-  @include lgUp {
+  @include lg-up {
     margin: -1.5rem;
   }
 
   &__item {
     margin: var(--margin);
 
-    @include smUp {
+    @include sm-up {
       flex: 0 0 calc(50% - var(--margin) * 2);
     }
 
-    @include mdUp {
+    @include md-up {
       flex-basis: calc(33.33% - var(--margin) * 2);
 
       &:nth-child(1) {
@@ -157,7 +159,7 @@
       }
     }
 
-    @include lgUp {
+    @include lg-up {
       --margin: 1.5rem;
     }
   }
@@ -172,7 +174,7 @@
   grid-gap: 2.6rem;
   padding: 4rem 3.2rem 3.2rem;
 
-  @include mdUp {
+  @include md-up {
     padding-bottom: 4rem;
   }
 }
@@ -187,7 +189,7 @@
   justify-items: center;
   padding: 1.6rem;
 
-  @include mdUp {
+  @include md-up {
     &:nth-child(1) {
       margin-right: 9.6rem;
     }
@@ -202,7 +204,7 @@
     }
   }
 
-  @include lgUp {
+  @include lg-up {
     align-items: center;
     grid-auto-flow: column;
     justify-content: start;
@@ -211,7 +213,7 @@
 }
 
 .stars {
-  background: left center url('icon-star.svg');
+  background: left center url('../images/icon-star.svg');
   height: 1.6rem;
   width: 11.7rem;
 }
@@ -261,7 +263,7 @@
 
 .h2 {
   font-family: Spartan, sans-serif;
-  font-size: fluidFont(3.2, 4.8, 37.5, 144, rem);
+  font-size: fluid-font(3.2, 4.8, 37.5, 144, rem);
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 100%;

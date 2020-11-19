@@ -1,8 +1,6 @@
-block variables
-
-mixin googleFonts(queries)
-  each query in queries
-    link(rel='stylesheet' href=`https://fonts.googleapis.com/css2?${query}`)
+- const title = "Social proof section";
+- const challenge = "Social proof section";
+- const googleFontsUrl = "https://fonts.googleapis.com/css2?family=Spartan:wght@400;500;700&display=swap";
 
 doctype html
 html(lang='en')
@@ -16,9 +14,9 @@ html(lang='en')
     )
     meta(name='author' content='Alex Kim, https://github.com/Alex-K1m')
     link(rel='icon' type='image/png' sizes='32x32' href=site.favicon)
-    block fonts
-    link(rel='stylesheet' href='styles.scss')
+    link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+    link(rel='preload' as='style' href=googleFontsUrl)
+    link(rel='stylesheet' href=googleFontsUrl)
+    link(rel='stylesheet' href='sass/styles.scss')
   body
     block content
-    if includeJs
-      script(src='script.js')

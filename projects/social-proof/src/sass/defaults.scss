@@ -1,23 +1,12 @@
-@use 'sass:math' as math;
-
 @function rem($size) {
   @return $size / 16px * 1rem;
 }
 
-@function fluidFont($min, $max, $minVw, $maxVw, $unit) {
+@function fluid-font($min, $max, $minVw, $maxVw, $unit) {
   @return calc(
     #{$min}#{$unit} + #{$max - $min} *
     ((100vw - #{$minVw}#{$unit}) / #{$maxVw - $minVw})
   );
-}
-
-@function roundTo($value, $digits: 2) {
-  $div: math.pow(10, $digits);
-  @return round($value * $div) / $div;
-}
-
-@function pct($value, $divider) {
-  @return roundTo($value / $divider * 100%);
 }
 
 html {
