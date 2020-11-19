@@ -272,13 +272,13 @@ input:not(:checked) ~ .plans .offer_price::after {
 // #region Layout
 
 body {
-  background: top -3.6rem right -19.5rem no-repeat url(bg-top.svg),
+  background: top -3.6rem right -19.5rem no-repeat url('../images/bg-top.svg'),
     $very-light-grayish-blue;
   min-height: 100vh;
   padding: 6.4rem 2.4rem 7rem;
   @include smUp {
-    background: top right no-repeat url(bg-top.svg),
-      bottom left no-repeat url(bg-bottom.svg), $very-light-grayish-blue;
+    background: top right no-repeat url('../images/bg-top.svg'),
+      bottom left no-repeat url('../images/bg-bottom.svg'), $very-light-grayish-blue;
     padding-top: 7.1rem;
   }
 }
