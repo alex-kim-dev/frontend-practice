@@ -1,12 +1,12 @@
-// stylelint-disable max-nesting-depth
-
 @import 'reset';
-@import 'defaults';
 
-// abstracts
+// #region Abstracts
+
+$breakpoint-sm: 768;
+$breakpoint-md: 1024;
+$breakpoint-lg: 1200;
 
 :root {
-  // Colors
   --c-primary: hsl(300, 43%, 22%);
   --c-primary-light: hsl(333, 80%, 67%);
   --c-secondary: hsl(303, 10%, 53%);
@@ -14,31 +14,97 @@
   --c-light: hsl(0, 0%, 100%);
 }
 
+@function em($value) {
+  @if type-of($value) == 'number' {
+    @return $value / 16 * 1em;
+  } @else {
+    @error 'The parameter should be of type number';
+  }
+}
+
+@function fluid-font($min, $max, $minVw, $maxVw, $unit) {
+  @return calc(
+    #{$min}#{$unit} + #{$max - $min} *
+    ((100vw - #{$minVw}#{$unit}) / #{$maxVw - $minVw})
+  );
+}
+
 @mixin xs-down {
-  @media (max-width: rem(767.98px)) {
+  @media (max-width: em($breakpoint-sm - 1)) {
     @content;
   }
 }
 
 @mixin sm-up {
-  @media (min-width: rem(768px)) {
+  @media (min-width: em($breakpoint-sm)) {
     @content;
   }
 }
 
 @mixin md-up {
-  @media (min-width: rem(1024px)) {
+  @media (min-width: em($breakpoint-md)) {
     @content;
   }
 }
 
 @mixin lg-up {
-  @media (min-width: rem(1200px)) {
+  @media (min-width: em($breakpoint-lg)) {
     @content;
   }
 }
 
-// layout
+// #endregion Abstracts
+
+// #region Utilities
+
+.h1 {
+  font-size: fluid-font(3.2, 4.8, 37.5, 144, rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 100%;
+}
+
+.text {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 170%;
+
+  &-subtitle {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 100%;
+  }
+
+  &-secondary {
+    font-size: 1.3rem;
+  }
+}
+
+// #endregion Utilities
+
+// #region Base
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Spartan, sans-serif;
+  font-size: 1.6rem;
+}
+
+// #endregion Base
+
+// #region Layout
 
 .wrapper {
   background:
@@ -145,6 +211,7 @@
     @include md-up {
       flex-basis: calc(33.33% - var(--margin) * 2);
 
+      // stylelint-disable max-nesting-depth
       &:nth-child(1) {
         margin-bottom: calc(1.6rem * 2 + var(--margin));
       }
@@ -157,6 +224,7 @@
       &:nth-child(3) {
         margin-top: calc(1.6rem * 2 + var(--margin));
       }
+      // stylelint-enable max-nesting-depth
     }
 
     @include lg-up {
@@ -179,7 +247,9 @@
   }
 }
 
-// components
+// #endregion Layout
+
+// #region Components
 
 .rating {
   background-color: var(--c-secondary-light);
@@ -259,26 +329,4 @@
   }
 }
 
-// text
-
-.h2 {
-  font-family: Spartan, sans-serif;
-  font-size: fluid-font(3.2, 4.8, 37.5, 144, rem);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 100%;
-}
-
-.text {
-  font: 500 1.5rem/170% Spartan, sans-serif;
-  letter-spacing: -0.03em;
-}
-
-.text-subtitle {
-  font: 700 1.4rem/100% Spartan, sans-serif;
-  letter-spacing: -0.04em;
-}
-
-.text-secondary {
-  font: 1.3rem Spartan, sans-serif;
-}
+// #endregion Components
