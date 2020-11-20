@@ -1,7 +1,8 @@
-/* stylelint-disable */
-
 @import 'reset';
-@import 'defaults';
+
+$breakpoint-sm: 560;
+$breakpoint-md: 768;
+$breakpoint-lg: 1300;
 
 $red: hsl(0, 100%, 68%);
 $very-dark-blue: hsl(230, 29%, 20%);
@@ -9,22 +10,64 @@ $dark-grayish-blue: hsl(230, 11%, 40%);
 $grayish-blue: hsl(231, 7%, 65%);
 $light-grayish-blue: hsl(207, 33%, 95%);
 
-@mixin smUp {
-  @media (min-width: rem(560px)) {
+@function em($value) {
+  @if type-of($value) == 'number' {
+    @return $value / 16 * 1em;
+  } @else {
+    @error 'The parameter should be of type number';
+  }
+}
+
+@function fluid-font($min, $max, $minVw, $maxVw, $unit) {
+  @return calc(
+    #{$min}#{$unit} + #{$max - $min} *
+    ((100vw - #{$minVw}#{$unit}) / #{$maxVw - $minVw})
+  );
+}
+
+@mixin sm-up {
+  @media (min-width: em($breakpoint-sm)) {
     @content;
   }
 }
 
-@mixin mdUp {
-  @media (min-width: rem(768px)) {
+@mixin md-up {
+  @media (min-width: em($breakpoint-md)) {
     @content;
   }
 }
 
-@mixin lgUp {
-  @media (min-width: rem(1300px)) {
+@mixin lg-up {
+  @media (min-width: em($breakpoint-lg)) {
     @content;
   }
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
 }
 
 .wrapper {
@@ -33,15 +76,15 @@ $light-grayish-blue: hsl(207, 33%, 95%);
   min-height: 100vh;
   padding: 3.8rem 3.2rem;
   position: relative;
-  @include smUp {
+  @include sm-up {
     background-position: top 12.1rem center;
     padding: 6.4rem;
   }
-  @include mdUp {
+  @include md-up {
     background-position: left 38rem top 21.1rem;
     background-size: auto;
   }
-  @include lgUp {
+  @include lg-up {
     background-position: right -26.8rem top 21.1rem;
     padding: 6.4rem 16.5rem;
   }
@@ -67,182 +110,176 @@ $light-grayish-blue: hsl(207, 33%, 95%);
 
 .logo {
   width: 2.4rem;
-  @include mdUp {
+  @include md-up {
     width: 3.2rem;
   }
 }
 
-.menu {
-  &_checkbox:checked {
-    ~ .menu_list {
-      opacity: 1;
-      transform: translate(-50%, 0);
-      transition: transform 0.3s, opacity 0.3s, visibility 0s;
-      visibility: visible;
-      @include smUp {
-        transform: none;
-      }
-    }
-
-    ~ .menu_hamburger {
-      > span:first-child {
-        transform: rotate(45deg) translate(0.21rem, -0.37rem);
-      }
-
-      > span:nth-child(2) {
-        opacity: 0;
-        transform: scale(0.2);
-      }
-
-      > span:last-child {
-        transform: rotate(-45deg) translate(0.21rem, 0.37rem);
-      }
-    }
+.menu__checkbox:checked {
+  ~ .menu__list {
+    opacity: 1;
+    transition: opacity 0.3s, visibility 0s;
+    visibility: visible;
   }
 
-  &_hamburger {
-    border-radius: 0.4rem;
-    cursor: pointer;
-    display: flex;
-    flex-flow: column;
-    height: 4.8rem;
-    justify-content: center;
-    margin: -1.2rem;
-    padding: 1.2rem;
-    transition: background-color 0.15s;
-    width: 4.8rem;
-    @include smUp {
-      display: none;
+  ~ .menu__hamburger {
+    > span:first-child {
+      transform: rotate(45deg) translate(0.21rem, -0.37rem);
     }
 
-    &:hover {
-      background-color: rgba($dark-grayish-blue, 0.2);
+    > span:nth-child(2) {
+      opacity: 0;
+      transform: scale(0.2);
     }
 
-    &:focus {
-      outline: 0.1rem solid black;
-    }
-
-    > span {
-      background: $dark-grayish-blue;
-      display: block;
-      height: 0.2rem;
-      transition: transform 0.3s, opacity 0.3s;
-      width: 100%;
-
-      &:first-child {
-        transform-origin: top left;
-      }
-
-      &:last-child {
-        transform-origin: bottom left;
-      }
-    }
-
-    > span + span {
-      margin-top: 0.5rem;
+    > span:last-child {
+      transform: rotate(-45deg) translate(0.21rem, 0.37rem);
     }
   }
+}
 
-  &_list {
-    align-items: center;
-    background: white;
-    border-radius: 0.2rem;
-    box-shadow: 0 0.4rem 0.9rem rgba(black, 0.1);
-    display: flex;
-    flex-flow: column;
-    left: 50%;
-    max-width: 31.1rem;
-    opacity: 0;
-    padding: 2.4rem;
-    position: absolute;
-    top: 10rem;
-    transform: translate(-50%, -2rem);
-    transition: transform 0.3s, opacity 0.3s, visibility 0s 0.3s;
-    visibility: hidden;
-    width: calc(100% - 6.4rem);
-    @include smUp {
-      background: transparent;
-      box-shadow: none;
-      flex-flow: row;
-      max-width: none;
-      opacity: 1;
-      padding: 0;
-      position: static;
-      transform: none;
-      transition: none;
-      visibility: visible;
-      width: auto;
-
-      > :nth-child(2) {
-        margin-left: 4.2rem;
-      }
-
-      > :nth-child(3) {
-        margin-left: 4.1rem;
-      }
-
-      > :nth-child(4) {
-        margin-left: 4rem;
-      }
-
-      > :last-child {
-        margin-left: 4.6rem;
-      }
-    }
-
-    > * + * {
-      margin-top: 2.4rem;
-      @include smUp {
-        margin-top: 0;
-      }
-    }
-
-    > li:last-child > .menu_link {
-      color: $grayish-blue;
-    }
+.menu__hamburger {
+  border-radius: 0.4rem;
+  cursor: pointer;
+  display: flex;
+  flex-flow: column;
+  height: 4.8rem;
+  justify-content: center;
+  margin: -1.2rem;
+  padding: 1.2rem;
+  transition: background-color 0.15s;
+  width: 4.8rem;
+  @include sm-up {
+    display: none;
   }
 
-  &_link {
-    color: $very-dark-blue;
-    font: 700 1.8rem Barlow Condensed, sans-serif;
-    letter-spacing: 0.07em;
-    text-decoration: none;
-    text-transform: uppercase;
-    @include smUp {
-      font-size: 1.6rem;
-      letter-spacing: 0.03em;
-    }
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    &:focus {
-      outline: 0.1rem dashed $red;
-    }
+  &:hover {
+    background-color: rgba($dark-grayish-blue, 0.2);
   }
 
-  &_separator {
-    background: hsl(0, 0%, 88%);
-    border: none;
-    height: 0.1rem;
-    margin-bottom: 0;
+  &:focus {
+    outline: 0.1rem solid #000;
+  }
+
+  > span {
+    background: $dark-grayish-blue;
+    display: block;
+    height: 0.2rem;
+    transition: transform 0.3s, opacity 0.3s;
     width: 100%;
-    @include smUp {
-      border-radius: 50%;
-      height: 0.7rem;
-      width: 0.7rem;
+  }
+
+  > span:first-child {
+    transform-origin: top left;
+  }
+
+  > span:last-child {
+    transform-origin: bottom left;
+  }
+
+  > span + span {
+    margin-top: 0.5rem;
+  }
+}
+
+.menu__list {
+  align-items: center;
+  background: #fff;
+  border-radius: 0.2rem;
+  box-shadow: 0 0.4rem 0.9rem rgba(#000, 0.1);
+  display: flex;
+  flex-flow: column;
+  left: 50%;
+  max-width: 31.1rem;
+  opacity: 0;
+  padding: 2.4rem;
+  position: absolute;
+  top: 10rem;
+  transform: translateX(-50%);
+  transition: opacity 0.3s, visibility 0s 0.3s;
+  visibility: hidden;
+  width: calc(100% - 6.4rem);
+  @include sm-up {
+    background: transparent;
+    box-shadow: none;
+    flex-flow: row;
+    max-width: none;
+    opacity: 1;
+    padding: 0;
+    position: static;
+    transform: none;
+    transition: none;
+    visibility: visible;
+    width: auto;
+
+    > :nth-child(2) {
+      margin-left: 4.2rem;
     }
+
+    > :nth-child(3) {
+      margin-left: 4.1rem;
+    }
+
+    > :nth-child(4) {
+      margin-left: 4rem;
+    }
+
+    > :last-child {
+      margin-left: 4.6rem;
+    }
+  }
+
+  > * + * {
+    margin-top: 2.4rem;
+    @include sm-up {
+      margin-top: 0;
+    }
+  }
+
+  > li:last-child > .menu__link {
+    color: $grayish-blue;
+  }
+}
+
+.menu__link {
+  color: $very-dark-blue;
+  font: 700 1.8rem Barlow Condensed, sans-serif;
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  text-transform: uppercase;
+  @include sm-up {
+    font-size: 1.6rem;
+    letter-spacing: 0.03em;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: 0.1rem dashed $red;
+  }
+}
+
+.menu__separator {
+  background: hsl(0, 0%, 88%);
+  border: 0;
+  height: 0.1rem;
+  margin-bottom: 0;
+  width: 100%;
+  @include sm-up {
+    border-radius: 50%;
+    height: 0.7rem;
+    width: 0.7rem;
   }
 }
 
 .intro {
   margin-top: 39rem;
-  @include smUp {
+  @include sm-up {
     margin-top: 30rem;
   }
-  @include mdUp {
+  @include md-up {
     margin-top: 16.2rem;
   }
 
@@ -250,7 +287,7 @@ $light-grayish-blue: hsl(207, 33%, 95%);
     margin-right: 1.6rem;
   }
 
-  &_h1 {
+  &__h1 {
     color: $grayish-blue;
     display: inline-block;
     font: 1.6rem Barlow Condensed, sans-serif;
@@ -259,7 +296,7 @@ $light-grayish-blue: hsl(207, 33%, 95%);
     text-transform: uppercase;
   }
 
-  &_h2 {
+  &__h2 {
     color: $very-dark-blue;
     font-family: Barlow Condensed, sans-serif;
     font-size: fluid-font(4, 6.4, 37.5, 144, rem);
@@ -268,22 +305,22 @@ $light-grayish-blue: hsl(207, 33%, 95%);
     margin-top: 1.6rem;
     max-width: 30rem;
     text-transform: uppercase;
-    @include mdUp {
+    @include md-up {
       max-width: 35rem;
     }
-    @include lgUp {
+    @include lg-up {
       max-width: 55rem;
     }
   }
 
-  &_text {
+  &__text {
     color: $dark-grayish-blue;
     font: 1.8rem Barlow, sans-serif;
     line-height: 145%;
     margin-bottom: 2.7rem;
     margin-top: 1.6rem;
     max-width: 28rem;
-    @include mdUp {
+    @include md-up {
       margin-bottom: 6.4rem;
       margin-top: 3.1rem;
     }
@@ -291,19 +328,19 @@ $light-grayish-blue: hsl(207, 33%, 95%);
 
   > .btn {
     margin-right: 2rem;
-    @include mdUp {
+    @include md-up {
       margin-right: 2.4rem;
     }
   }
 
-  &_label {
+  &__label {
     color: $grayish-blue;
     font: 1.4rem Barlow Condensed, sans-serif;
     letter-spacing: 0.18em;
     line-height: 185%;
     text-transform: uppercase;
     white-space: nowrap;
-    @include mdUp {
+    @include md-up {
       font-size: 1.6rem;
       letter-spacing: 0.29em;
     }
@@ -313,7 +350,7 @@ $light-grayish-blue: hsl(207, 33%, 95%);
 .badge {
   background: $very-dark-blue;
   border-radius: 1.2rem;
-  color: white;
+  color: #fff;
   display: inline-block;
   font: 700 1.6rem Barlow Condensed, sans-serif;
   padding: 0.2rem 1rem 0.4rem;
@@ -322,15 +359,15 @@ $light-grayish-blue: hsl(207, 33%, 95%);
 
 .btn {
   background: $red;
-  border: none;
+  border: 0;
   border-radius: 0.4rem;
-  color: white;
+  color: #fff;
   cursor: pointer;
   font: 700 1.6rem Barlow Condensed, sans-serif;
   padding: 1.1rem 2.4rem 1rem;
   text-transform: uppercase;
   transition: filter 0.15s, transform 0.15s;
-  @include mdUp {
+  @include md-up {
     font-size: 1.8rem;
     letter-spacing: 0.01em;
     padding: 1.3rem 3.2rem;

@@ -5,20 +5,20 @@ block content
     header.header
       img.logo(src='images/logo.svg' alt='Project tracker logo')
       nav.menu
-        input#menuToggle.srOnly.menu_checkbox(type='checkbox')
-        label.menu_hamburger(for='menuToggle')
+        input#menu-toggle.sr-only.menu__checkbox(type='checkbox')
+        label.menu__hamburger(for='menu-toggle')
           span
           span
           span
-        ul.menu_list
+        ul.menu__list
           each label in ['Product', 'Features', 'Pricing']
-            li: a.menu_link(href='javascript:void(0)') #{label}
-          li.menu_separator
-          li: a.menu_link(href='javascript:void(0)') Login
+            li: a.menu__link(href='javascript:void(0)') #{label}
+          li.menu__separator
+          li: a.menu__link(href='javascript:void(0)') Login
     section.intro
       .badge New
-      h1.intro_h1 Monograph Dashboard
-      h2.intro_h2 Powerful insights into your team
-      p.intro_text Project planning and time tracking for agile teams
+      h1.intro__h1 Monograph Dashboard
+      h2.intro__h2 Powerful insights into your team
+      p.intro__text Project planning and time tracking for agile teams
       button.btn Schedule a demo
-      span.intro_label to see a preview
+      span.intro__label to see a preview
