@@ -1,50 +1,8 @@
-/* stylelint-disable */
+// stylelint-disable max-nesting-depth
 
 @import 'reset';
 @import 'defaults';
 @import 'animation';
-
-@mixin smUp {
-  @media (min-width: rem(450px)) {
-    @content;
-  }
-}
-
-@mixin mdUp {
-  @media (min-width: rem(650px)) {
-    @content;
-  }
-}
-
-@mixin lgUp {
-  @media (min-width: rem(930px)) and (orientation: landscape) {
-    @content;
-  }
-}
-
-// Colors
-$c-dark-text: hsl(229, 25%, 31%);
-$c-score-text: hsl(229, 64%, 46%);
-$c-header-outline: hsl(217, 16%, 45%);
-$c-placeholder: hsla(0, 0%, 0%, 0.2);
-$c-light: white;
-
-// Gradients
-$gradients: (
-  scissors: [hsl(39, 89%, 49%),
-  hsl(40, 84%, 53%) ],
-  spock: [hsl(189, 59%, 53%),
-  hsl(189, 58%, 57%) ],
-  paper: [hsl(230, 89%, 62%),
-  hsl(230, 89%, 65%) ],
-  lizard: [hsl(261, 73%, 60%),
-  hsl(261, 72%, 63%) ],
-  rock: [hsl(349, 71%, 52%),
-  hsl(349, 70%, 56%) ],
-);
-$g-radial: radial-gradient(circle at top,
-hsl(214, 47%, 23%),
-hsl(237, 49%, 15%));
 
 .game {
   background: $g-radial;
@@ -54,7 +12,7 @@ hsl(237, 49%, 15%));
   min-height: 100vh;
   overflow: hidden;
   padding: 3.2rem 3.2rem 5.5rem;
-  @include mdUp {
+  @include md-up {
     grid-template-rows: auto 5.86vh auto 1fr auto;
     padding: 4.6rem 3.2rem 3.2rem;
   }
@@ -67,7 +25,7 @@ hsl(237, 49%, 15%));
 
   .content {
     grid-row: 3;
-    @include mdUp {
+    @include md-up {
       margin-bottom: -1.1rem;
       width: 100%;
     }
@@ -75,7 +33,7 @@ hsl(237, 49%, 15%));
 
   .footer {
     grid-row: 5;
-    @include mdUp {
+    @include md-up {
       justify-self: end;
     }
   }
@@ -88,7 +46,7 @@ hsl(237, 49%, 15%));
   display: flex;
   justify-content: space-between;
   padding: 1rem 1rem 1rem 2.1rem;
-  @include mdUp {
+  @include md-up {
     border-radius: 1.6rem;
     padding: 2.1rem 2.2rem 1.5rem 2.8rem;
   }
@@ -98,7 +56,7 @@ hsl(237, 49%, 15%));
   box-sizing: content-box;
   height: auto;
   width: 5rem;
-  @include mdUp {
+  @include md-up {
     width: 11.5rem;
   }
 }
@@ -112,7 +70,7 @@ hsl(237, 49%, 15%));
   flex-flow: column;
   min-width: 8rem;
   padding: 1rem;
-  @include mdUp {
+  @include md-up {
     border-radius: 0.8rem;
     margin: -0.2rem 0;
     min-width: 15rem;
@@ -124,7 +82,7 @@ hsl(237, 49%, 15%));
     font: 600 1rem Barlow Semi Condensed, sans-serif;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    @include mdUp {
+    @include md-up {
       font-size: 1.7rem;
       letter-spacing: 0.12em;
     }
@@ -134,7 +92,7 @@ hsl(237, 49%, 15%));
     color: $c-dark-text;
     font: 700 4rem / 100% Barlow Semi Condensed, sans-serif;
     letter-spacing: -0.02em;
-    @include mdUp {
+    @include md-up {
       font-size: 6.4rem;
       letter-spacing: normal;
     }
@@ -159,18 +117,18 @@ hsl(237, 49%, 15%));
 
 button {
   background: transparent;
-  border: none;
+  border: 0;
   cursor: pointer;
   display: inline-flex;
   text-align: center;
   text-transform: uppercase;
 }
 
-.playField {
+.playfield {
   margin-bottom: 10.67vh;
   max-width: 40rem;
   width: 100%;
-  @include mdUp {
+  @include md-up {
     margin-bottom: 0;
     max-width: 47.2rem;
   }
@@ -187,7 +145,7 @@ button {
     padding-bottom: 97.46%;
 
     > .grid {
-      background: center/70% no-repeat url(bg-pentagon.svg);
+      background: center/70% no-repeat url('../images/bg-pentagon.svg');
       display: grid;
       grid-template:
         '  .     .      .    scissors scissors scissors  .     .     .  ' 129fr
@@ -203,20 +161,23 @@ button {
 .option {
   --gradient-start: hsl(0, 0%, 45%);
   --gradient-end: hsl(0, 0%, 55%);
-  --color-outer-shadow: #{darken(gray, 15%)};
+  --color-outer-shadow: #{darken(#808080, 15%)};
   align-items: center;
-  background: linear-gradient(to top,
-  var(--gradient-start),
-  var(--gradient-end));
+  background: linear-gradient(
+    to top,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
   border-radius: 50%;
-  box-shadow: inset 0 -0.2em var(--color-outer-shadow),
+  box-shadow:
+    inset 0 -0.2em var(--color-outer-shadow),
     0 0.2em var(--color-outer-shadow);
   display: flex;
   font-size: 1rem;
   justify-content: center;
   padding: 0;
   transition: filter 0.15s, transform 0.2s;
-  @include mdUp {
+  @include md-up {
     font-size: 1.5rem;
   }
 
@@ -230,6 +191,7 @@ button {
   }
 }
 
+// stylelint-disable-next-line selector-no-qualifying-type
 button.option {
   &:focus,
   &:hover {
@@ -242,6 +204,7 @@ button.option {
   }
 }
 
+// stylelint-disable order/order
 @each $option, $gradient in $gradients {
   .#{$option} {
     $g-end: nth($gradient, 2);
@@ -253,6 +216,7 @@ button.option {
     grid-area: #{$option};
   }
 }
+// stylelint-enable order/order
 
 .scissors > span {
   padding: 20% 22.8% 16.6% 18.6%;
@@ -290,12 +254,12 @@ button.option {
 
   &:hover,
   &:active {
-    background-color: rgba(white, 0.1);
+    background-color: rgba(#fff, 0.1);
   }
 }
 
 .overlay {
-  background: rgba(black, 0.5);
+  background: rgba(#000, 0.5);
   display: flex;
   height: 100%;
   left: 0;
@@ -326,7 +290,7 @@ button.option {
   padding: 9.5rem 3.2rem 6.5rem;
   width: 100%;
   z-index: 105;
-  @include smUp {
+  @include sm-up {
     grid-gap: 2rem;
     grid-template: repeat(2, auto) / repeat(2, auto);
     height: auto;
@@ -338,7 +302,7 @@ button.option {
     color: $c-dark-text;
     font: 700 3.2rem/100% Barlow Semi Condensed, sans-serif;
     text-transform: uppercase;
-    @include smUp {
+    @include sm-up {
       align-self: center;
       justify-self: start;
     }
@@ -348,7 +312,7 @@ button.option {
     grid-row: 3;
     height: auto;
     width: 100%;
-    @include smUp {
+    @include sm-up {
       grid-area: 2 / 1 / -1 / -1;
     }
   }
@@ -359,7 +323,7 @@ button.option {
     margin: -1.4rem;
     padding: 1.4rem;
     transition: background-color 0.25s, box-shadow 0.25s;
-    @include smUp {
+    @include sm-up {
       align-self: center;
       grid-area: 1 / 2;
       justify-self: end;
@@ -386,7 +350,7 @@ button.option {
   justify-content: center;
   margin: 0 -0.3rem;
   max-width: 40rem;
-  @include lgUp {
+  @include lg-up {
     flex-flow: nowrap;
     margin: 2.6rem 0 0;
     max-width: 67.2rem;
@@ -407,7 +371,7 @@ button.option {
     flex: 1 1 calc(50% - var(--mx));
     flex-flow: column;
     min-width: 0;
-    @include lgUp {
+    @include lg-up {
       --mx: 4.3rem;
       flex: 0 1 29.3rem;
     }
@@ -418,14 +382,14 @@ button.option {
 
     &:nth-child(2) {
       margin-left: var(--mx);
-      @include lgUp {
+      @include lg-up {
         order: 1;
       }
     }
 
     > .label {
       margin-top: 2.6rem;
-      @include lgUp {
+      @include lg-up {
         margin-bottom: 6.4rem;
         margin-top: 0;
         order: -1;
@@ -436,12 +400,12 @@ button.option {
       &::before {
         background: center / contain no-repeat
           radial-gradient(circle at center,
-          rgba(white, 0.09) 0%,
-          rgba(white, 0.09) 40%,
-          rgba(white, 0.06) 40%,
-          rgba(white, 0.06) 54%,
-          rgba(white, 0.03) 54%,
-          rgba(white, 0.03) 100%);
+          rgba(#fff, 0.09) 0%,
+          rgba(#fff, 0.09) 40%,
+          rgba(#fff, 0.06) 40%,
+          rgba(#fff, 0.06) 54%,
+          rgba(#fff, 0.03) 54%,
+          rgba(#fff, 0.03) 100%);
         border-radius: 50%;
         content: '';
         height: 0%;
@@ -456,7 +420,7 @@ button.option {
       &.highlight::before {
         height: 220%;
         width: 220%;
-        @include lgUp {
+        @include lg-up {
           height: 250%;
           width: 250%;
         }
@@ -469,7 +433,7 @@ button.option {
     flex: 1;
     margin-top: 9vh;
     visibility: hidden;
-    @include lgUp {
+    @include lg-up {
       flex: 0 1 0;
       margin-top: 6rem;
       overflow: hidden;
@@ -491,7 +455,7 @@ button.option {
   }
 
   &.expanded {
-    @include lgUp {
+    @include lg-up {
       max-width: 96rem;
     }
 
@@ -503,7 +467,7 @@ button.option {
 
   .option {
     font-size: 1.5rem;
-    @include lgUp {
+    @include lg-up {
       font-size: 3rem;
     }
   }
@@ -536,7 +500,7 @@ button.option {
   letter-spacing: 0.09em;
   text-transform: uppercase;
   white-space: nowrap;
-  @include lgUp {
+  @include lg-up {
     font-size: 2.4rem;
     letter-spacing: 0.12em;
   }

@@ -1,0 +1,78 @@
+$breakpoint-sm: 450;
+$breakpoint-md: 650;
+$breakpoint-lg: 930;
+
+$c-dark-text: hsl(229, 25%, 31%);
+$c-score-text: hsl(229, 64%, 46%);
+$c-header-outline: hsl(217, 16%, 45%);
+$c-placeholder: hsla(0, 0%, 0%, 0.2);
+$c-light: #fff;
+
+$gradients: (
+  scissors: [hsl(39, 89%, 49%),
+  hsl(40, 84%, 53%) ],
+  spock: [hsl(189, 59%, 53%),
+  hsl(189, 58%, 57%) ],
+  paper: [hsl(230, 89%, 62%),
+  hsl(230, 89%, 65%) ],
+  lizard: [hsl(261, 73%, 60%),
+  hsl(261, 72%, 63%) ],
+  rock: [hsl(349, 71%, 52%),
+  hsl(349, 70%, 56%) ],
+);
+$g-radial: radial-gradient(circle at top,
+hsl(214, 47%, 23%),
+hsl(237, 49%, 15%));
+
+@function em($value) {
+  @if type-of($value) == 'number' {
+    @return $value / 16 * 1em;
+  } @else {
+    @error 'The parameter should be of type number';
+  }
+}
+
+@mixin sm-up {
+  @media (min-width: em($breakpoint-sm)) {
+    @content;
+  }
+}
+
+@mixin md-up {
+  @media (min-width: em($breakpoint-md)) {
+    @content;
+  }
+}
+
+@mixin lg-up {
+  @media (min-width: em($breakpoint-lg)) and (orientation: landscape) {
+    @content;
+  }
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}

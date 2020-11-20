@@ -10,7 +10,7 @@ import {
   saveItem,
 } from './_utils';
 
-const $playField = $('.playField');
+const $playField = $('.playfield');
 const $result = $('.result');
 const $leftCol = $('.result > .col:nth-child(1) > .box');
 const $rightCol = $('.result > .col:nth-child(2) > .box');
@@ -120,7 +120,7 @@ const newRound = async () => {
   isGameInProgress = false;
 };
 
-$$('.playField .option').forEach(($option) => {
+$$('.playfield .option').forEach(($option) => {
   $option.addEventListener('click', play);
 });
 

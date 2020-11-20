@@ -1,34 +1,26 @@
-extends layout
-
-block variables
-  - const title = "Rock Paper Scissors Lizard Spock";
-  - const challenge = "Rock, Paper, Scissors game";
-  - const includeJs = "true";
-
-block fonts
-  +googleFonts([ 'family=Barlow+Semi+Condensed:wght@600&display=swap&text=SCORE%20ULYPIKDTHAGN', 'family=Barlow+Semi+Condensed:wght@700&display=swap&text=RULES%20YOWINDAPCKTH-0123456789' ])
+extends includes/seo
 
 block content
   .game
     header.header
-      h1.srOnly #{title}
-      img.title(src='logo-bonus.svg' alt=title)
+      h1.sr-only= title
+      img.title(src='images/logo-bonus.svg' alt=title)
       .score
         div Score
         div 0
-    .content.playField
+    .content.playfield
       .box
         .grid
           button.option.scissors(aria-label='Scissors')
-            span: include icon-scissors.svg
+            span: include images/icon-scissors.svg
           button.option.spock(aria-label='Spock')
-            span: include icon-spock.svg
+            span: include images/icon-spock.svg
           button.option.paper(aria-label='Paper')
-            span: include icon-paper.svg
+            span: include images/icon-paper.svg
           button.option.lizard(aria-label='Lizard')
-            span: include icon-lizard.svg
+            span: include images/icon-lizard.svg
           button.option.rock(aria-label='Rock')
-            span: include icon-rock.svg
+            span: include images/icon-rock.svg
     .content.result.hidden
       .col
         .box
@@ -42,7 +34,7 @@ block content
     .overlay.hidden
       section.modal
         h2 Rules
-        img(src='image-rules-bonus.svg' alt='Scheme of the game rules')
-        button(aria-label='Close Rules'): include icon-close.svg
+        img(src='images/image-rules-bonus.svg' alt='Scheme of the game rules')
+        button(aria-label='Close Rules'): include images/icon-close.svg
     footer.footer
       button.rules Rules
