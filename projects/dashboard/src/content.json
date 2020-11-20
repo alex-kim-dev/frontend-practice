@@ -1,0 +1,86 @@
+{
+  "heading": "Social media dashboard",
+  "total": "Total followers: 23,004",
+  "summary": {
+    "heading": "Summary",
+    "data": [
+      {
+        "platform": "facebook",
+        "account": "@nathanf",
+        "total": [1987, "followers"],
+        "today": 12
+      },
+      {
+        "platform": "twitter",
+        "account": "@nathanf",
+        "total": [1044, "followers"],
+        "today": 99
+      },
+      {
+        "platform": "instagram",
+        "account": "@realnathanf",
+        "total": [11000, "followers"],
+        "today": 1099
+      },
+      {
+        "platform": "youtube",
+        "account": "Nathan F.",
+        "total": [8239, "subscribers"],
+        "today": -144
+      }
+    ]
+  },
+  "overview": {
+    "heading": "Overview - today",
+    "data": [
+      {
+        "heading": "Page views",
+        "platform": "facebook",
+        "stat": 87,
+        "change": 3
+      },
+      {
+        "heading": "Likes",
+        "platform": "facebook",
+        "stat": 52,
+        "change": -2
+      },
+      {
+        "heading": "Likes",
+        "platform": "instagram",
+        "stat": 5462,
+        "change": 2257
+      },
+      {
+        "heading": "Profile views",
+        "platform": "instagram",
+        "stat": 52100,
+        "change": 1375
+      },
+      {
+        "heading": "Retweets",
+        "platform": "twitter",
+        "stat": 117,
+        "change": 303
+      },
+      {
+        "heading": "Likes",
+        "platform": "twitter",
+        "stat": 507,
+        "change": 553
+      },
+      {
+        "heading": "Likes",
+        "platform": "youtube",
+        "stat": 107,
+        "change": -19
+      },
+      {
+        "heading": "Total views",
+        "platform": "youtube",
+        "stat": 1407,
+        "change": -12
+      }
+    ]
+  }
+}
