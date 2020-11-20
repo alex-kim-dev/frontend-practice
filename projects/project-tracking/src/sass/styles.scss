@@ -29,7 +29,7 @@ $light-grayish-blue: hsl(207, 33%, 95%);
 
 .wrapper {
   background: top 12.1rem left 0.9rem / 50.4rem 24.4rem no-repeat
-    url(illustration-devices.svg);
+    url('../images/illustration-devices.svg');
   min-height: 100vh;
   padding: 3.8rem 3.2rem;
   position: relative;
@@ -262,7 +262,7 @@ $light-grayish-blue: hsl(207, 33%, 95%);
   &_h2 {
     color: $very-dark-blue;
     font-family: Barlow Condensed, sans-serif;
-    font-size: fluidFont(4, 6.4, 37.5, 144, rem);
+    font-size: fluid-font(4, 6.4, 37.5, 144, rem);
     font-weight: 700;
     line-height: 100%;
     margin-top: 1.6rem;

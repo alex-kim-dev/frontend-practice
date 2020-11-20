@@ -1,16 +1,9 @@
-extends layout
-
-block variables
-  - const title = "Project tracking intro with css hamburger menu";
-  - const challenge = "Project tracking intro component";
-
-block fonts
-  +googleFonts([ 'family=Barlow&display=swap&text=Project%20planigdmkfs', 'family=Barlow+Condensed&display=swap&text=MONGRAPH%20DSBTEVIW', 'family=Barlow+Condensed:wght@700&display=swap&text=NEW%20PORFULISGHTYAMCD', ])
+extends includes/seo
 
 block content
   .wrapper
     header.header
-      img.logo(src='logo.svg' alt='Project tracker logo')
+      img.logo(src='images/logo.svg' alt='Project tracker logo')
       nav.menu
         input#menuToggle.srOnly.menu_checkbox(type='checkbox')
         label.menu_hamburger(for='menuToggle')
