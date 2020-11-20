@@ -1,9 +1,8 @@
-/* stylelint-disable */
-
 @import 'reset';
-@import 'defaults';
 
-// Abstracts
+// #region Variables
+
+$breakpoint-sm: 600;
 
 :root {
   --bg: #fff;
@@ -21,7 +20,7 @@
   --negative: #dc414c;
 }
 
-body[theme='dark'] {
+[theme='dark'] {
   --bg: #1d1f29;
   --bg-top: #20222f;
   --text-primary: #fff;
@@ -44,20 +43,71 @@ $platforms: (
   ('youtube', #c4032b)
 );
 
-@mixin smUp {
-  @media (min-width: rem(600px)) {
+// #endregion Variables
+
+// #region Functions & Mixins
+
+@function em($value) {
+  @if type-of($value) == 'number' {
+    @return $value / 16 * 1em;
+  } @else {
+    @error 'The parameter should be of type number';
+  }
+}
+
+@function fluid-font($min, $max, $minVw, $maxVw, $unit) {
+  @return calc(
+    #{$min}#{$unit} + #{$max - $min} *
+    ((100vw - #{$minVw}#{$unit}) / #{$maxVw - $minVw})
+  );
+}
+
+@mixin sm-up {
+  @media (min-width: em($breakpoint-sm)) {
     @content;
   }
 }
 
-// Base
+// #endregion Functions & Mixins
+
+// #region Utilities
+
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+// #endregion Utilities
+
+// #region Base
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
 
 body {
   font-family: Inter, sans-serif;
+  font-size: 1.6rem;
   line-height: normal;
 }
 
-// Components
+// #endregion Base
+
+// #region Components
 
 .h1 {
   color: var(--text-primary);
@@ -73,7 +123,7 @@ body {
   text-transform: capitalize;
 }
 
-body[theme='dark'] .h2 {
+[theme='dark'] .h2 {
   color: var(--text-primary);
 }
 
@@ -102,7 +152,7 @@ body[theme='dark'] .h2 {
 
 .separator {
   background: var(--separator);
-  border: none;
+  border: 0;
   height: 0.1rem;
   margin: 2.4rem 0 1.6rem;
   width: 100%;
@@ -145,7 +195,7 @@ body[theme='dark'] .h2 {
   }
 }
 
-input[type='checkbox'] {
+[type='checkbox'] {
   &:focus + .switch {
     box-shadow: 0 0 0 0.2rem var(--switch-focus);
   }
@@ -231,7 +281,9 @@ input[type='checkbox'] {
   width: 2rem;
 }
 
-// Layout
+// #endregion Components
+
+// #region Layout
 
 .wrapper {
   background: var(--bg);
@@ -248,7 +300,7 @@ input[type='checkbox'] {
     position: absolute;
     top: 0;
     width: 100%;
-    @include smUp {
+    @include sm-up {
       height: 24.4rem;
     }
   }
@@ -264,7 +316,7 @@ input[type='checkbox'] {
   display: flex;
   flex-flow: column;
   justify-content: space-between;
-  @include smUp {
+  @include sm-up {
     flex-flow: row;
 
     > .separator {
@@ -289,7 +341,7 @@ input[type='checkbox'] {
 
 .summary {
   margin-top: 4rem;
-  @include smUp {
+  @include sm-up {
     margin-top: 4.6rem;
   }
 }
@@ -298,7 +350,7 @@ input[type='checkbox'] {
   display: grid;
   grid-gap: 2.4rem;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  @include smUp {
+  @include sm-up {
     grid-gap: 3rem;
   }
 }
@@ -308,7 +360,7 @@ input[type='checkbox'] {
   position: relative;
 
   &::before {
-    background: gray;
+    background: #808080;
     content: '';
     height: 0.4rem;
     left: 0;
@@ -351,7 +403,7 @@ input[type='checkbox'] {
   > .grid {
     grid-gap: 1.6rem 2.4rem;
     margin-top: 2.4rem;
-    @include smUp {
+    @include sm-up {
       grid-gap: 2.4rem 3rem;
     }
   }
@@ -359,7 +411,7 @@ input[type='checkbox'] {
   .cell {
     padding: 2.6rem 3.1rem 1.9rem 2.4rem;
 
-    > * + * {
+    > :not(:first-child) {
       margin-top: 2.1rem;
     }
   }
@@ -379,3 +431,5 @@ input[type='checkbox'] {
   justify-content: space-between;
   width: 100%;
 }
+
+// #endregion Layout

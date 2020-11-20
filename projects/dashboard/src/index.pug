@@ -32,16 +32,16 @@ block content
         hr.separator
         label.label.text
           | Dark mode
-          input.srOnly(type='checkbox')
+          input.sr-only(type='checkbox')
           span.switch
       main
         section.summary
-          h2.srOnly Summary
+          h2.sr-only Summary
           ul.grid
             each record in summaryData
               - const [platform, account, total, today] = record;
               li.cell.card(data-platform=`${platform}`)
-                h3.srOnly #{platform}
+                h3.sr-only #{platform}
                 p.account #{account}
                 strong.text-big #{format(total)}
                 p.text-secondary #{platform === 'youtube' ? 'Subscribers' : 'Followers'}
@@ -56,7 +56,7 @@ block content
                 .group
                   h3.text
                     | #{heading}
-                    span.srOnly for #{platform}
+                    span.sr-only for #{platform}
                   .icon(data-platform=`${platform}`)
                 .group
                   p.stat #{format(stat)}
