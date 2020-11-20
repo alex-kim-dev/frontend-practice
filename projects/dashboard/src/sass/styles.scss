@@ -61,7 +61,7 @@ body {
 
 .h1 {
   color: var(--text-primary);
-  font-size: fluidFont(2.4, 2.8, 37.5, 144, rem);
+  font-size: fluid-font(2.4, 2.8, 37.5, 144, rem);
   font-weight: 700;
   text-transform: capitalize;
 }
@@ -207,7 +207,7 @@ input[type='checkbox'] {
     color: var(--positive);
 
     &::before {
-      background: center / contain no-repeat url(icon-up.svg);
+      background: center / contain no-repeat url('../images/icon-up.svg');
     }
   }
 
@@ -215,7 +215,7 @@ input[type='checkbox'] {
     color: var(--negative);
 
     &::before {
-      background: center / contain no-repeat url(icon-down.svg);
+      background: center / contain no-repeat url('../images/icon-down.svg');
     }
   }
 }
@@ -337,11 +337,11 @@ input[type='checkbox'] {
     }
 
     > .account::before {
-      background: center / contain no-repeat url(icon-#{$platform}.svg);
+      background: center / contain no-repeat url('../images/icon-#{$platform}.svg');
     }
   }
   .icon[data-platform='#{$platform}'] {
-    background: center / contain no-repeat url(icon-#{$platform}.svg);
+    background: center / contain no-repeat url('../images/icon-#{$platform}.svg');
   }
 }
 
