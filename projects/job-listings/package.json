@@ -1,6 +1,6 @@
 {
   "name": "job-listings",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "private": true,
   "description": "A solution for \"Job listings with filtering\" challenge on frontendmentor.io",
   "license": "MIT",
