@@ -1,79 +1,72 @@
-extends layout
-include socialLinks
-
-block variables
-  - const title = "Landing page responding to 4 different screen sizes";
-  - const challenge = "Huddle landing page with alternating feature blocks";
-
-block fonts
-  +googleFonts([ 'family=Open+Sans&display=swap', '&family=Poppins:wght@600&display=swap&text=Build%20thecomnyrfaswvGTgFCYUR%3F%C2%A9p2018H.A', 'family=Open+Sans:wght@700&display=swap&text=Get%20sardfoTyIF' ])
+extends includes/seo
+include includes/social-links
 
 block content
   header.header
-    .header_container
+    .header__container
       .logo
       button.button
-        span.button_label Try it free
+        span.button__label Try it free
   main.content
     .hero
-      .hero_container
-        .hero_content.colorDark
+      .hero__container
+        .hero__content.colorDark
           h1.heading.heading-lg Build the community your fans will love
           p.text.
             Huddle re-imagines the way we build communities. You have a voice,
             but so does your audience. Create connections with your users as you
             engage in genuine discussion.
-          button.hero_button.button.button-accent
-            span.button_label Get Started For Free
-        .hero_image.illustration
+          button.hero__button.button.button-accent
+            span.button__label Get Started For Free
+        .hero__image.illustration
     .features
-      ul.features_container
+      ul.features__container
         li.feature.paper
-          .feature_image
+          .feature__image
             .illustration
-          .feature_content
+          .feature__content
             h2.heading.colorDark Grow together
-            p.feature_text.text.colorGray.
+            p.feature__text.text.colorGray.
               Generate meaningful discussions with your audience and build a
               strong, loyal community. Think of the insightful conversations you
               miss out on with a feedback form.
         li.feature.paper
-          .feature_image
+          .feature__image
             .illustration
-          .feature_content
+          .feature__content
             h2.heading.colorDark Flowing conversations
-            p.feature_text.text.colorGray.
+            p.feature__text.text.colorGray.
               You wouldn't paginate a conversation in real life, so why do it
               online? Our threads have just-in-time loading for a more natural
               flow.
         li.feature.paper
-          .feature_image
+          .feature__image
             .illustration
-          .feature_content
+          .feature__content
             h2.heading.colorDark Your users
-            p.feature_text.text.colorGray.
+            p.feature__text.text.colorGray.
               It takes no time at all to integrate Huddle with your app's
               authentication solution. This means, once signed in to your app,
               your users can start chatting immediately.
     .cta.paper.colorDark
-      h2.cta_heading.heading.heading-sm Ready to build your community?
-      button.cta_button.button.button-accent
-        span.button_label Get started for free
+      h2.cta__heading.heading.heading-sm Ready to build your community?
+      button.cta__button.button.button-accent
+        span.button__label Get started for free
   footer.footer.colorLight
-    .footer_container
-      .footer_logo.logo.logo-lg.logo-light
-      address.footer_contacts.contacts.text
-        ul.contacts_list
-          li.contacts_item.
+    .footer__container
+      .footer__logo.logo.logo-lg.logo-light
+      address.footer__contacts.contacts.text
+        ul.contacts__list
+          li.contacts__item.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua
-          li.contacts_item
+          li.contacts__item
             a.text-link(href='tel:+15431234567') +1-543-123-4567
-          li.contacts_item
+          li.contacts__item
             a.text-link(href='mailto:example@huddle.com') example@huddle.com
-      nav.footer_nav.nav
-        ul.nav_list
+      nav.footer__nav.nav
+        ul.nav__list
           each label in ['About Us', 'What We Do', 'FAQ', 'Career', 'Blog', 'Contact Us']
-            li: a.nav_link.text.text-link(href='#')= label
-      +socialLinks('footer_social social', 'social_item', 'social_link', 'icon')
-      p.footer_copyright.copyright © Copyright 2018 Huddle. All rights reserved.
+            li: a.nav__link.text.text-link(href='#')= label
+      +social-links('footer__social social', 'social__item', 'social__link', 'icon')
+      p.footer__copyright.copyright © Copyright 2018 Huddle. All rights reserved.

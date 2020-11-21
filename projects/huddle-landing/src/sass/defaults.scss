@@ -1,0 +1,67 @@
+$breakpoint-sm: 768;
+$breakpoint-md: 1024;
+$breakpoint-lg: 1200;
+
+$illustrations:
+  'illustration-grow-together.svg',
+  'illustration-flowing-conversation.svg',
+  'illustration-your-users.svg';
+$contacts-icons:
+  'icon-location.svg',
+  'icon-phone.svg',
+  'icon-email.svg';
+
+$c-pink: hsl(322, 100%, 66%);
+$c-very-pale-cyan: hsl(193, 100%, 96%);
+$c-very-dark-cyan: hsl(192, 100%, 9%);
+$c-grayish-blue: hsl(208, 11%, 55%);
+$c-light: #fff;
+
+@function em($value) {
+  @if type-of($value) == 'number' {
+    @return $value / 16 * 1em;
+  } @else {
+    @error 'The parameter should be of type number';
+  }
+}
+
+@mixin xs-only {
+  @media (max-width: em($breakpoint-sm - 1)) {
+    @content;
+  }
+}
+
+@mixin sm-up {
+  @media (min-width: em($breakpoint-sm)) {
+    @content;
+  }
+}
+
+@mixin md-up {
+  @media (min-width: em($breakpoint-md)) {
+    @content;
+  }
+}
+
+@mixin lg-up {
+  @media (min-width: em($breakpoint-lg)) {
+    @content;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  // background-color
+  // color
+  font-size: 1.6rem;
+}

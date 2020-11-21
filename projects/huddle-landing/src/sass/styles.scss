@@ -1,41 +1,7 @@
-/* stylelint-disable */
+// stylelint-disable max-nesting-depth
 
 @import 'reset';
 @import 'defaults';
-
-$illustrations: 'illustration-grow-together.svg',
-  'illustration-flowing-conversation.svg', 'illustration-your-users.svg';
-$contactsIcons: 'icon-location.svg', 'icon-phone.svg', 'icon-email.svg';
-
-@mixin xsOnly {
-  @media (max-width: rem(767px)) {
-    @content;
-  }
-}
-
-@mixin smUp {
-  @media (min-width: rem(768px)) {
-    @content;
-  }
-}
-
-@mixin mdUp {
-  @media (min-width: rem(1024px)) {
-    @content;
-  }
-}
-
-@mixin lgUp {
-  @media (min-width: rem(1200px)) {
-    @content;
-  }
-}
-
-$c-pink: hsl(322, 100%, 66%);
-$c-veryPaleCyan: hsl(193, 100%, 96%);
-$c-veryDarkCyan: hsl(192, 100%, 9%);
-$c-grayishBlue: hsl(208, 11%, 55%);
-$c-light: white;
 
 // #region Components
 
@@ -43,19 +9,19 @@ $c-light: white;
   font: 600 2rem/150% Poppins, sans-serif;
   margin: 0;
   text-transform: capitalize;
-  @include smUp {
+  @include sm-up {
     font-size: 2.4rem;
   }
-  @include lgUp {
+  @include lg-up {
     font-size: 2.8rem;
   }
 
   &-lg {
     font-size: 2.4rem;
-    @include smUp {
+    @include sm-up {
       font-size: 3.2rem;
     }
-    @include lgUp {
+    @include lg-up {
       font-size: 4rem;
     }
   }
@@ -64,7 +30,7 @@ $c-light: white;
 .text {
   font: 400 1.6rem/150% Open Sans, sans-serif;
   margin: 0;
-  @include lgUp {
+  @include lg-up {
     font-size: 1.8rem;
   }
 
@@ -83,40 +49,40 @@ $c-light: white;
 }
 
 .colorLight {
-  color: $c-veryPaleCyan;
+  color: $c-very-pale-cyan;
 }
 
 .colorDark {
-  color: $c-veryDarkCyan;
+  color: $c-very-dark-cyan;
 }
 
 .colorGray {
-  color: $c-grayishBlue;
+  color: $c-grayish-blue;
 }
 
 .logo {
-  background: url(logo.svg) left center no-repeat;
+  background: url('../images/logo.svg') left center no-repeat;
   background-size: 100% 100%;
   height: 1.6rem;
   width: 10.4rem;
-  @include smUp {
+  @include sm-up {
     height: 2.4rem;
     width: 15.2rem;
   }
-  @include lgUp {
+  @include lg-up {
     height: 3.2rem;
     width: 20rem;
   }
 
   &-light {
     background: $c-light;
-    mask: url(logo.svg) no-repeat center / contain;
+    mask: url('../images/logo.svg') no-repeat center / contain;
   }
 
   &-lg {
     height: 2.7rem;
     width: 16.8rem;
-    @include lgUp {
+    @include lg-up {
       height: 4rem;
       width: 24rem;
     }
@@ -128,23 +94,23 @@ $c-light: white;
   border: 0.1em solid $c-light;
   border-radius: 1.1em;
   box-shadow: 0 0.4em 0.6em hsla(0, 0%, 0%, 0.1);
-  color: $c-veryDarkCyan;
+  color: $c-very-dark-cyan;
   cursor: pointer;
   font-size: 1rem;
   padding: 0.3em 2.1em 0.5em;
   text-transform: capitalize;
   transition: 0.2s;
-  @include smUp {
+  @include sm-up {
     border-radius: 2em;
     padding: 0.9em 3.1em 1.3em;
   }
-  @include lgUp {
+  @include lg-up {
     border-radius: 2.4em;
     padding: 1.2em 6.3em 1.5em;
   }
 
   &:focus {
-    border: 0.1em solid $c-veryDarkCyan;
+    border: 0.1em solid $c-very-dark-cyan;
     outline: none;
   }
 
@@ -157,12 +123,12 @@ $c-light: white;
     transform: scale(0.98);
   }
 
-  &_label {
+  &__label {
     font: 700 1em/140% Open Sans, sans-serif;
-    @include smUp {
+    @include sm-up {
       font-size: 1.2em;
     }
-    @include lgUp {
+    @include lg-up {
       font-size: 1.4em;
     }
   }
@@ -173,14 +139,14 @@ $c-light: white;
     border-radius: 2em;
     color: $c-light;
     padding: 0.9em 3.1em 1.3em;
-    @include lgUp {
+    @include lg-up {
       border-radius: 2.8em;
       padding: 1.6em 3.1em 1.9em;
     }
 
-    > .button_label {
+    > .button__label {
       font-size: 1.2em;
-      @include lgUp {
+      @include lg-up {
         font-size: 1.4em;
       }
     }
@@ -193,7 +159,7 @@ $c-light: white;
   background-size: contain;
   padding-bottom: 81.3%;
   width: 100%;
-  @include lgUp {
+  @include lg-up {
     padding-bottom: 80.5%;
   }
 }
@@ -210,38 +176,38 @@ $c-light: white;
   grid-gap: 3.2rem;
   padding: 3.2rem 4rem;
   text-align: center;
-  @include smUp {
+  @include sm-up {
     align-items: center;
     grid-template-columns: 1fr 1fr;
     text-align: left;
   }
-  @include lgUp {
+  @include lg-up {
     grid-gap: 16.6rem;
     grid-template-columns: auto auto;
     padding: 5.2rem 2.6rem 5.2rem 12rem;
   }
 
-  &_image {
+  &__image {
     padding: 2.4rem 0.8rem;
-    @include smUp {
+    @include sm-up {
       padding: 2.4rem 0;
     }
-    @include lgUp {
+    @include lg-up {
       padding: 0;
       width: 41.8rem;
     }
   }
 
-  &_content {
+  &__content {
     display: grid;
     grid-gap: 1.4rem;
-    @include lgUp {
+    @include lg-up {
       grid-gap: 1.2rem;
     }
   }
 
-  &_text {
-    @include xsOnly {
+  &__text {
+    @include xs-only {
       font-size: 1.4rem;
     }
   }
@@ -250,21 +216,20 @@ $c-light: white;
 .contacts {
   padding-left: 4rem;
 
-  &_list {
+  &__list {
     display: grid;
     grid-gap: 2.4rem;
     list-style: none;
     margin: 0;
     padding: 0;
-    @for $i from 1 through length($contactsIcons) {
+    @for $i from 1 through length($contacts-icons) {
       :nth-child(#{$i})::before {
-        background: url(#{nth($contactsIcons, $i)}) left center no-repeat;
-        background-size: contain;
+        background: url('../images/#{nth($contacts-icons, $i)}') left center / contain no-repeat;
       }
     }
   }
 
-  &_item {
+  &__item {
     padding-right: 0.1rem;
     position: relative;
 
@@ -283,14 +248,14 @@ $c-light: white;
 .nav {
   justify-self: stretch;
 
-  &_list {
+  &__list {
     align-items: start;
     display: grid;
     grid-gap: 1.6rem;
     list-style: none;
     margin: 0;
     padding: 0;
-    @include lgUp {
+    @include lg-up {
       grid-auto-flow: column;
       grid-column-gap: 28.57%;
       grid-row-gap: 1.6rem;
@@ -298,7 +263,7 @@ $c-light: white;
     }
   }
 
-  &_link {
+  &__link {
     font-size: 1.8rem;
   }
 }
@@ -313,11 +278,11 @@ $c-light: white;
   margin: 0;
   padding: 0;
 
-  &_item {
+  &__item {
     display: block;
   }
 
-  &_link {
+  &__link {
     align-items: center;
     background: transparent;
     border-radius: 50%;
@@ -332,7 +297,7 @@ $c-light: white;
     &:focus,
     &:hover {
       background: $c-light;
-      color: $c-veryDarkCyan;
+      color: $c-very-dark-cyan;
       outline: none;
     }
   }
@@ -364,18 +329,18 @@ $c-light: white;
   top: 0;
   width: 100%;
   z-index: 1;
-  @include smUp {
+  @include sm-up {
     padding: 3.2rem 3.2rem 0;
   }
-  @include lgUp {
+  @include lg-up {
     padding: 4.8rem 8rem 0;
   }
 
-  &_container {
+  &__container {
     align-items: center;
     display: flex;
     justify-content: space-between;
-    @include lgUp {
+    @include lg-up {
       margin: 0 auto;
       max-width: 128rem;
     }
@@ -383,31 +348,31 @@ $c-light: white;
 }
 
 .hero {
-  background: url(bg-hero-mobile.svg) top center no-repeat, $c-veryPaleCyan;
+  background: url('../images/bg-hero-mobile.svg') top center no-repeat, $c-very-pale-cyan;
   background-size: 100%;
   padding: 13rem 3.6rem 3.3rem;
   position: relative;
-  @include smUp {
+  @include sm-up {
     padding-bottom: 5rem;
   }
-  @include mdUp {
-    background-image: url(bg-hero-desktop.svg);
+  @include md-up {
+    background-image: url('../images/bg-hero-desktop.svg');
     padding: 16rem 8rem 6.6rem;
   }
 
-  &_container {
+  &__container {
     display: grid;
     grid-gap: 5.2rem;
-    @include smUp {
+    @include sm-up {
       margin: 0 auto;
       max-width: 54rem;
     }
-    @include mdUp {
+    @include md-up {
       grid-gap: 3.2rem;
       grid-template-columns: 1fr 1fr;
       max-width: unset;
     }
-    @include lgUp {
+    @include lg-up {
       align-items: center;
       grid-gap: 6.4rem;
       grid-template-columns: 65fr 87fr;
@@ -415,19 +380,19 @@ $c-light: white;
     }
   }
 
-  &_content {
+  &__content {
     text-align: center;
-    @include smUp {
+    @include sm-up {
       padding: 0 7.8rem;
     }
-    @include mdUp {
+    @include md-up {
       padding: 0;
       text-align: left;
     }
-    @include lgUp {
+    @include lg-up {
       margin-top: 1.4rem;
     }
-    @include lgUp {
+    @include lg-up {
       :not(:first-child) {
         margin-top: 3rem;
       }
@@ -442,15 +407,15 @@ $c-light: white;
     }
   }
 
-  &_button {
+  &__button {
     width: 24rem;
-    @include lgUp {
+    @include lg-up {
       width: 28rem;
     }
   }
 
-  &_image {
-    background-image: url(illustration-mockups.svg);
+  &__image {
+    background-image: url('../images/illustration-mockups.svg');
     padding-bottom: 71.3%;
   }
 }
@@ -458,31 +423,31 @@ $c-light: white;
 .features {
   background: $c-light;
   padding: 6rem 2rem 23rem;
-  @include smUp {
+  @include sm-up {
     padding-top: 10rem;
   }
-  @include mdUp {
+  @include md-up {
     padding: 16rem 10.4rem 34.3rem;
   }
 
-  &_container {
+  &__container {
     display: grid;
     grid-auto-rows: 1fr;
     grid-gap: 4rem;
     list-style: none;
     margin: 0;
     padding: 0;
-    @include smUp {
+    @include sm-up {
       margin: 0 auto;
       max-width: 123.2rem;
 
-      :nth-child(odd) .feature_image {
+      :nth-child(odd) .feature__image {
         order: 1;
       }
     }
     @for $i from 1 through length($illustrations) {
       :nth-child(#{$i}) .illustration {
-        background-image: url(#{nth($illustrations, $i)});
+        background-image: url('../images/#{nth($illustrations, $i)}');
       }
     }
   }
@@ -496,40 +461,40 @@ $c-light: white;
   text-align: center;
   transform: translateX(-50%);
   width: 35.1rem;
-  @include smUp {
+  @include sm-up {
     padding: 5rem 3rem;
     width: 48rem;
   }
-  @include lgUp {
+  @include lg-up {
     bottom: -9.5rem;
     padding: 6.4rem 10rem 5.2rem;
     width: 80rem;
   }
 
-  &_heading {
+  &__heading {
     font-size: 1.8rem;
-    @include smUp {
+    @include sm-up {
       font-size: 2.4rem;
     }
-    @include lgUp {
+    @include lg-up {
       font-size: 3.2rem;
     }
   }
 
-  &_button {
+  &__button {
     margin-top: 2.4rem;
     width: 20rem;
-    @include xsOnly {
-      > .button_label {
+    @include xs-only {
+      > .button__label {
         font-size: 1em;
         line-height: 160%;
       }
     }
-    @include smUp {
+    @include sm-up {
       margin-top: 3rem;
       width: 24rem;
     }
-    @include lgUp {
+    @include lg-up {
       font-size: 1.4rem;
       margin-top: 3.6rem;
       width: 40rem;
@@ -538,18 +503,18 @@ $c-light: white;
 }
 
 .footer {
-  background: $c-veryDarkCyan;
+  background: $c-very-dark-cyan;
   padding: 13.8rem 1.6rem 4.6rem;
-  @include smUp {
+  @include sm-up {
     padding-left: 8rem;
     padding-right: 8rem;
   }
-  @include mdUp {
+  @include md-up {
     padding: 19rem 8rem 6.4rem 12rem;
   }
 
-  &_container {
-    @include smUp {
+  &__container {
+    @include sm-up {
       display: grid;
       grid-column-gap: 8rem;
       grid-row-gap: 2.4rem;
@@ -560,14 +525,14 @@ $c-light: white;
         'footer_copyright footer_copyright' auto
         / 2fr 1fr;
     }
-    @include mdUp {
+    @include md-up {
       grid-template:
         'footer_logo      footer_logo      footer_logo' auto
         'footer_contacts  footer_nav       footer_social' auto
         'footer_copyright footer_copyright footer_copyright' auto
         / 2fr 1fr 1fr;
     }
-    @include lgUp {
+    @include lg-up {
       grid-column-gap: 9.68%;
       grid-row-gap: 4rem;
       grid-template:
@@ -581,40 +546,40 @@ $c-light: white;
     }
   }
 
-  &_logo {
+  &__logo {
     grid-area: footer_logo;
   }
 
-  &_contacts {
+  &__contacts {
     grid-area: footer_contacts;
-    @include xsOnly {
+    @include xs-only {
       margin-top: 2.4rem;
     }
-    @include lgUp {
+    @include lg-up {
       font-size: 1.6rem;
     }
   }
 
-  &_nav {
+  &__nav {
     grid-area: footer_nav;
-    @include xsOnly {
+    @include xs-only {
       margin-top: 5.6rem;
     }
   }
 
-  &_social {
+  &__social {
     grid-area: footer_social;
-    @include xsOnly {
+    @include xs-only {
       margin-top: 5.3rem;
     }
   }
 
-  &_copyright {
+  &__copyright {
     grid-area: footer_copyright;
-    @include xsOnly {
+    @include xs-only {
       margin-top: 2.4rem;
     }
-    @include mdUp {
+    @include md-up {
       justify-self: end;
     }
   }
