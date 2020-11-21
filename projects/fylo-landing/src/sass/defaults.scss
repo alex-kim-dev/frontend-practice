@@ -1,0 +1,71 @@
+$breakpoint-sm: 560;
+$breakpoint-md: 1024;
+$breakpoint-lg: 1200;
+
+$control-shadow: 0 0.6rem 0.4rem hsla(0, 0, 0, 0.05);
+$control-active-shadow: 0 0.6rem 0.8rem hsla(0, 0, 0, 0.25);
+$container-sm: 60rem;
+$container-lg: 144rem;
+
+$c-very-dark-blue: hsl(243, 87%, 12%);
+$c-desaturated-blue: hsl(238, 22%, 44%);
+$c-bright-blue: hsl(224, 93%, 58%);
+$c-moderate-cyan: hsl(170, 45%, 43%);
+$c-light-grayish-blue: hsl(240, 75%, 98%);
+$c-light-gray: hsl(0, 0%, 75%);
+$c-light: hsl(0, 0%, 100%);
+
+@function em($value) {
+  @if type-of($value) == 'number' {
+    @return $value / 16 * 1em;
+  } @else {
+    @error 'The parameter should be of type number';
+  }
+}
+
+@mixin sm-up {
+  @media (min-width: em($breakpoint-sm)) {
+    @content;
+  }
+}
+
+@mixin md-up {
+  @media (min-width: em($breakpoint-md)) {
+    @content;
+  }
+}
+
+@mixin lg-up {
+  @media (min-width: em($breakpoint-lg)) {
+    @content;
+  }
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  // background-color
+  // color
+  font-size: 1.6rem;
+}

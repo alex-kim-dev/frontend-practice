@@ -1,99 +1,92 @@
-extends layout
-include socialLinks
-
-block variables
-  - const title = "Fylo landing page";
-  - const challenge = "Fylo landing page with two column layout";
-
-block fonts
-  +googleFonts([ 'family=Open+Sans&display=swap', 'family=Open+Sans:wght@700&display=swap&text=Kyle%20Burton', 'family=Raleway&display=swap&text=Featurs%20TmSignI', 'family=Raleway:wght@700&display=swap&text=Al%20yourfiesncat%2Cbwh.GSdpvF' ])
+extends includes/seo
+include includes/social-links
 
 block content
   header.header
-    .header_container
+    .header__container
       .logo
       nav.nav
-        ul.nav_list
+        ul.nav__list
           each label in ['Features', 'Team', 'Sign In']
-            li: a.nav_link(href='#')= label
+            li: a.nav__link(href='#')= label
   main
-    h1.srOnly Fylo - a cloud file storage
+    h1.sr-only Fylo - a cloud file storage
     section.intro
-      .intro_container
-        .intro_image
+      .intro__container
+        .intro__image
           .illustration
-        .intro_content
-          h2.intro_heading.heading
+        .intro__content
+          h2.intro__heading.heading
             | All your files in one secure location, accessible anywhere.
-          p.intro_text.text.
+          p.intro__text.text.
             Fylo stores your most important files in one secure location. Access
             them wherever you need, share and collaborate with friends, family,
             and co-workers.
-          form.intro_signup.signupForm(onsubmit='return false' novalidate)
-            label.emailField
-              input.emailField_input(
+          form.intro__signup.signup-form(onsubmit='return false' novalidate)
+            label.email-field
+              input.email-field__input(
                 type='email'
                 name='email'
                 placeholder='Enter your email...'
               )
-              span.srOnly Email, required
+              span.sr-only Email, required
             button.button(type='submit') Get Started
-    .curvedTop
+    .curved-top
     section.benefits
-      .benefits_container
-        .benefits_image
+      .benefits__container
+        .benefits__image
           .illustration
-        .benefits_content
-          h2.benefits_heading.heading
+        .benefits__content
+          h2.benefits__heading.heading
             | Stay productive, wherever you are
-          p.benefits_text.text.
+          p.benefits__text.text.
             Never let location be an issue when accessing your files. Fylo has you covered for all of your file storage needs.
-          p.benefits_text.text.
+          p.benefits__text.text.
             Securely share files and folders with friends, family and colleagues
             for live collaboration. No email attachments required!
-          .benefits_link
-            a.standoutLink(href='#')
-              span.standoutLink_label See how Fylo works
-              .standoutLink_underline
-          .benefits_card.testimonials
-            blockquote.testimonials_quote.
+          .benefits__link
+            a.standout-link(href='#')
+              span.standout-link__label See how Fylo works
+              .standout-link__underline
+          .benefits__card.testimonials
+            blockquote.testimonials__quote.
               Fylo has improved our team productivity by an order of magnitude.
               Since making the switch our team has become a well-oiled
               collaboration machine.
-            figure.testimonials_author.person
-              img.person_avatar(
-                src='avatar-testimonial.jpg'
+            figure.testimonials__author.person
+              img.person__avatar(
+                src='images/avatar-testimonial.jpg'
                 alt='Kyle Burton\'s avatar'
               )
-              p.person_name Kyle Burton
-              p.person_position Founder & CEO, Huddle
+              p.person__name Kyle Burton
+              p.person__position Founder & CEO, Huddle
     section.promo
-      .promo_container
-        .promo_content
-          h2.promo_heading.heading
+      .promo__container
+        .promo__content
+          h2.promo__heading.heading
             | Get early access today
-          p.promo_text.text.
+          p.promo__text.text.
             It only takes a minute to sign up and our free starter tier is
             extremely generous. If you have any questions, our support
             would be happy to help you.
-        form.promo_signup.signupForm(onsubmit='return false' novalidate)
-          label.emailField
-            input.emailField_input(
+        form.promo__signup.signup-form(onsubmit='return false' novalidate)
+          label.email-field
+            input.email-field__input(
               type='email'
               name='email'
               placeholder='email@example.com'
             )
-            span.srOnly Email, required
+            span.sr-only Email, required
           button.button(type='submit') Get Started For Free
   footer.footer
-    .footer_container
-      .footer_logo.logo
-      address.footer_contacts.contacts
-        a.contacts_text.link(href='tel:+15431234567') Phone: +1-543-123-4567
-        a.contacts_text.link(href='mailto:example@fylo.com') example@fylo.com
-      nav.footer_sitemap.sitemap
-        ul.sitemap_list
+    .footer__container
+      .footer__logo.logo
+      address.footer__contacts.contacts
+        a.contacts__text.link(href='tel:+15431234567') Phone: +1-543-123-4567
+        a.contacts__text.link(href='mailto:example@fylo.com') example@fylo.com
+      nav.footer__sitemap.sitemap
+        ul.sitemap__list
           each label in ['About Us', 'Jobs', 'Press', 'Blog', 'Contact Us', 'Terms', 'Privacy']
-            li.sitemap_item
-              a.sitemap_link.link(href='#')= label
-      +socialLinks('footer_social social', 'social_item', 'social_link', 'icon')
+            li.sitemap__item
+              a.sitemap__link.link(href='#')= label
+      +social-links('footer__social social', 'social__item', 'social__link', 'icon')

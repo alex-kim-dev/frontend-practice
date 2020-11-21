@@ -1,8 +1,8 @@
-include icons/facebook
-include icons/twitter
-include icons/instagram
+include facebook
+include twitter
+include instagram
 
-mixin socialLinks(listCls, itemCls, linkCls, iconCls)
+mixin social-links(listCls, itemCls, linkCls, iconCls)
   ul(class=listCls)
     li(class=itemCls)
       a(
@@ -12,7 +12,7 @@ mixin socialLinks(listCls, itemCls, linkCls, iconCls)
         class=linkCls
         aria-label='Facebook'
       )
-        +facebookIcon(iconCls)
+        +facebook-icon(iconCls)
     li(class=itemCls)
       a(
         href='https://twitter.com'
@@ -21,7 +21,7 @@ mixin socialLinks(listCls, itemCls, linkCls, iconCls)
         class=linkCls
         aria-label='Twitter'
       )
-        +twitterIcon(iconCls)
+        +twitter-icon(iconCls)
     li(class=itemCls)
       a(
         href='https://instagram.com'
@@ -30,4 +30,4 @@ mixin socialLinks(listCls, itemCls, linkCls, iconCls)
         class=linkCls
         aria-label='Instagram'
       )
-        +instagramIcon(iconCls)
+        +instagram-icon(iconCls)
