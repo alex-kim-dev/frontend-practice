@@ -5,14 +5,14 @@
   grid-gap: 1.6rem;
   margin-top: 3.2rem;
 
-  @include brp.smUp {
+  @include brp.sm-up {
     grid-gap: 2.4rem;
     margin-top: 4rem;
   }
 }
 
 .extraMargin {
-  @include brp.smUp {
+  @include brp.sm-up {
     margin-top: 7.6rem;
   }
 }

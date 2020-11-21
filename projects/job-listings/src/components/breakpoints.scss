@@ -1,4 +1,4 @@
-@mixin smUp {
+@mixin sm-up {
   @media (min-width: 48rem) {
     @content;
   }

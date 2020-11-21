@@ -11,7 +11,7 @@ $padding-xs: 2.4rem;
   margin-top: $logo-size-xs / 2;
   padding: $padding-xs;
 
-  @include brp.smUp {
+  @include brp.sm-up {
     align-items: center;
     display: flex;
     margin-top: 0;
@@ -30,7 +30,7 @@ $padding-xs: 2.4rem;
   margin-top: -$logo-size-xs / 2 - $padding-xs;
   width: $logo-size-xs;
 
-  @include brp.smUp {
+  @include brp.sm-up {
     flex-shrink: 0;
     height: 8.8rem;
     margin-top: 0;
@@ -41,7 +41,7 @@ $padding-xs: 2.4rem;
 .body {
   margin-top: 0.8rem;
 
-  @include brp.smUp {
+  @include brp.sm-up {
     flex: 0 1 31rem;
     margin-left: 2.4rem;
     margin-right: 1.6rem;
@@ -57,7 +57,7 @@ $padding-xs: 2.4rem;
   font: 700 1.3rem/190% Spartan, sans-serif;
   margin: -0.2rem -0.4rem;
 
-  @include brp.smUp {
+  @include brp.sm-up {
     font-size: 1.4rem;
     line-height: 175%;
   }
@@ -78,7 +78,7 @@ $padding-xs: 2.4rem;
   margin-top: 0.8rem;
   text-decoration: none;
 
-  @include brp.smUp {
+  @include brp.sm-up {
     font-size: 1.8rem;
     line-height: 135%;
   }
@@ -94,7 +94,7 @@ $padding-xs: 2.4rem;
   letter-spacing: -0.0077em;
   margin-top: 0.8rem;
 
-  @include brp.smUp {
+  @include brp.sm-up {
     font-size: 1.5rem;
     line-height: 160%;
   }
@@ -109,7 +109,7 @@ $padding-xs: 2.4rem;
     vertical-align: middle;
     width: 0.4rem;
 
-    @include brp.smUp {
+    @include brp.sm-up {
       margin: 0 1.6rem;
     }
   }
@@ -122,7 +122,7 @@ $padding-xs: 2.4rem;
   margin: 1.6rem 0;
   width: 100%;
 
-  @include brp.smUp {
+  @include brp.sm-up {
     display: none;
   }
 }
@@ -132,7 +132,7 @@ $padding-xs: 2.4rem;
   flex-flow: wrap;
   margin: -0.8rem;
 
-  @include brp.smUp {
+  @include brp.sm-up {
     flex: 1 1 26rem;
     justify-content: flex-end;
     margin-left: auto;

@@ -9,7 +9,7 @@
   min-height: 100vh;
   padding: 15.6rem 2.4rem 3.4rem;
 
-  @include brp.smUp {
+  @include brp.sm-up {
     background-image:
       url('../../images/bg-header-desktop.svg'),
       linear-gradient(to bottom, c.$primary 15.6rem, transparent 15.6rem);
@@ -21,7 +21,7 @@
   margin: 0 auto;
   max-width: 40rem;
 
-  @include brp.smUp {
+  @include brp.sm-up {
     max-width: 111rem;
   }
 }
