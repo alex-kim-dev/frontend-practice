@@ -5,7 +5,9 @@ env:
   browser: true
 
 overrides:
-  - files: projects/job-listings/**/*.{js,jsx}
+  - files:
+      - projects/job-listings/**/*.{js,jsx}
+      - projects/github-jobs/**/*.{js,jsx}
     parser: babel-eslint
     extends:
       - airbnb
@@ -24,3 +26,20 @@ overrides:
       simple-import-sort/sort: error
       sort-imports: off
       import/order: off
+
+  - files:
+      - projects/github-jobs/**/*.{js,jsx}
+    rules:
+      import/no-extraneous-dependencies:
+        - error
+        - devDependencies:
+            - projects/github-jobs/config/webpack.*.js
+      react/react-in-jsx-scope: off
+
+  - files:
+      - projects/github-jobs/config/**/*.js
+    rules:
+      simple-import-sort/imports: off
+      import/order:
+        - error
+        - newlines-between: always

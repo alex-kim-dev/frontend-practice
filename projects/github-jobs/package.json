@@ -1,0 +1,44 @@
+{
+  "name": "github-jobs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A solution for \"GitHub Jobs API\" challenge on frontendmentor.io",
+  "license": "MIT",
+  "repository": "git@github.com:Alex-K1m/frontend-practice.git",
+  "author": "Alex Kim <45559664+Alex-K1m@users.noreply.github.com>",
+  "homepage": "https://alex-k1m.github.io/frontend-practice/",
+  "bugs": "https://github.com/Alex-K1m/frontend-practice/issues",
+  "scripts": {
+    "analyze": "cross-env NODE_ENV=production webpack --analyze --config config/webpack.prod.js",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
+    "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@frontend/site-meta": "^1.0.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.7",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-react": "^7.12.7",
+    "@frontend/browserslist-config": "^1.0.1",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
+    "babel-loader": "^8.2.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.3.2",
+    "cross-env": "^7.0.2",
+    "html-webpack-plugin": "^5.0.0-alpha.14",
+    "react-refresh": "^0.9.0",
+    "webpack": "^5.6.0",
+    "webpack-bundle-analyzer": "^4.1.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.4.0"
+  },
+  "browserslist": [
+    "extends @frontend/browserslist-config"
+  ]
+}
