@@ -13458,7 +13458,7 @@ jss-plugin-vendor-prefixer@10.5.0:
     css-vendor "^2.0.8"
     jss "10.5.0"
 
-jss-preset-default@10.5.0:
+jss-preset-default@10.5.0, jss-preset-default@^10.5.0:
   version "10.5.0"
   resolved "https://registry.yarnpkg.com/jss-preset-default/-/jss-preset-default-10.5.0.tgz#c94086aaa03afdef7c55895279782b7f2b1b588d"
   integrity sha512-0n02VNi6r4x2MqzHrkDQdTuEMU9gR5oTKRtGlYv46IEtS9mH/wxnC4uFBN3ICGZIhuyS4lgWYDC68PAKWlNEnQ==
@@ -13478,7 +13478,7 @@ jss-preset-default@10.5.0:
     jss-plugin-template "10.5.0"
     jss-plugin-vendor-prefixer "10.5.0"
 
-jss@10.5.0:
+jss@10.5.0, jss@^10.5.0:
   version "10.5.0"
   resolved "https://registry.yarnpkg.com/jss/-/jss-10.5.0.tgz#0c2de8a29874b2dc8162ab7f34ef6573a87d9dd3"
   integrity sha512-B6151NvG+thUg3murLNHRPLxTLwQ13ep4SH5brj4d8qKtogOx/jupnpfkPGSHPqvcwKJaCLctpj2lEk+5yGwMw==
@@ -18383,6 +18383,11 @@ reset-css@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/reset-css/-/reset-css-5.0.1.tgz#1ced0604fdb6836567e40d82de3537afaf3bb4c8"
   integrity sha512-VyuJdNFfp5x/W6e5wauJM59C02Vs0P22sxzZGhQMPaqu/NGTeFxlBFOOw3eq9vQd19gIDdZp7zi89ylyKOJ33Q==
+
+reset-jss@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/reset-jss/-/reset-jss-1.0.0.tgz#ab962773485ae56b8538be3eceebace1bb46f169"
+  integrity sha512-j+PEnE/UiAhVT+UcvsbelaGkG7MpkOfoRFPbgNAnDFkgtCAqjgmA3TlxyfgK85oUDHrhd1YQ7OV6Jfuo9Q7vpw==
 
 resolve-cwd@^2.0.0:
   version "2.0.0"
