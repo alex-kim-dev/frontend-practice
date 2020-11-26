@@ -16,8 +16,10 @@
   },
   "dependencies": {
     "@frontend/site-meta": "^1.0.1",
+    "prop-types": "^15.7.2",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-jss": "^10.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.7",

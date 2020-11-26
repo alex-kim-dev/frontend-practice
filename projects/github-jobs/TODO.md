@@ -2,7 +2,7 @@
 
 ## Dependencies
 
-- [ ] css-in-js
+- [x] css-in-js
 - [ ] router
 - [ ] testing
 - [ ] validation
