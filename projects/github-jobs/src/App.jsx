@@ -3,7 +3,7 @@ import preset from 'jss-preset-default';
 import { JssProvider, ThemeProvider } from 'react-jss';
 import reset from 'reset-jss';
 
-import Hello from './Hello';
+import Wrapper from './components/Wrapper';
 import theme from './theme';
 
 const globalStyles = {
@@ -43,7 +43,7 @@ const App = () => {
   return (
     <JssProvider jss={jss}>
       <ThemeProvider theme={{ ...theme, colors: theme.colors.light }}>
-        <Hello />
+        <Wrapper>Hello World!</Wrapper>
       </ThemeProvider>
     </JssProvider>
   );
