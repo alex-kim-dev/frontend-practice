@@ -42,7 +42,7 @@ jss.createStyleSheet(globalStyles).attach();
 const App = () => {
   return (
     <JssProvider jss={jss}>
-      <ThemeProvider theme={theme.light}>
+      <ThemeProvider theme={{ ...theme, colors: theme.colors.light }}>
         <Hello />
       </ThemeProvider>
     </JssProvider>

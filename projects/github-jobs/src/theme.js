@@ -1,6 +1,22 @@
+const screens = {
+  xs: 0,
+  sm: 600,
+  md: 960,
+  lg: 1280,
+  xl: 1920,
+};
+
+const breakpoints = Object.fromEntries(
+  Object.entries(screens).map(([screen, width]) => [
+    `${screen}Up`,
+    `@media (min-width: ${width / 16}em)`,
+  ]),
+);
+
 export default {
-  light: {
-    color: {
+  breakpoints,
+  colors: {
+    light: {
       accent: '#5964e0',
       accentAlt: '#939bf4',
       neutral: '#eeeffc',
@@ -10,9 +26,7 @@ export default {
       text: '#19202d',
       textAlt: '#6e8098',
     },
-  },
-  dark: {
-    color: {
+    dark: {
       accent: '#5964e0',
       accentAlt: '#939bf4',
       neutral: '#303642',
