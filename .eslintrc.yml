@@ -26,6 +26,9 @@ overrides:
       simple-import-sort/sort: error
       sort-imports: off
       import/order: off
+      react/require-default-props:
+        - error
+        - ignoreFunctionalComponents: true
 
   - files:
       - projects/github-jobs/**/*.{js,jsx}
@@ -43,3 +46,8 @@ overrides:
       import/order:
         - error
         - newlines-between: always
+
+settings:
+  import/resolver:
+    webpack:
+      config: './projects/github-jobs/config/webpack.common.js'
