@@ -10,10 +10,9 @@
 
 ## Components
 
-- [ ] Header
-  - [ ] Container
-    - [ ] Link
-    - [ ] Toggle, optional icon labels
+- [x] Container
+  - [ ] Link
+  - [ ] Toggle, optional icon labels
 - [ ] route `/` or `/positions` or `/positions?search=query`
   - [ ] Search
     - [ ] Container

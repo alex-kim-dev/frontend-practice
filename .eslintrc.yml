@@ -32,12 +32,15 @@ overrides:
 
   - files:
       - projects/github-jobs/**/*.{js,jsx}
+    plugins:
+      - jss
     rules:
       import/no-extraneous-dependencies:
         - error
         - devDependencies:
             - projects/github-jobs/config/webpack.*.js
       react/react-in-jsx-scope: off
+      jss/sort-jss-keys: error
 
   - files:
       - projects/github-jobs/config/**/*.js

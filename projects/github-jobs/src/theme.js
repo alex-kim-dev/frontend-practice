@@ -1,20 +1,27 @@
-const screens = {
+const values = {
   xs: 0,
   sm: 600,
-  md: 960,
+  md: 1050,
   lg: 1280,
-  xl: 1920,
 };
 
 const breakpoints = Object.fromEntries(
-  Object.entries(screens).map(([screen, width]) => [
+  Object.entries(values).map(([screen, width]) => [
     `${screen}Up`,
     `@media (min-width: ${width / 16}em)`,
   ]),
 );
 
+breakpoints.values = values;
+
 export default {
   breakpoints,
+  container: {
+    width: {
+      sm: '81rem',
+      md: '120rem',
+    },
+  },
   colors: {
     light: {
       accent: '#5964e0',
