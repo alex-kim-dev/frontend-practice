@@ -3,6 +3,7 @@ import preset from 'jss-preset-default';
 import { JssProvider, ThemeProvider } from 'react-jss';
 import reset from 'reset-jss';
 
+import Header from './components/Header';
 import Wrapper from './components/Wrapper';
 import theme from './theme';
 
@@ -43,7 +44,9 @@ const App = () => {
   return (
     <JssProvider jss={jss}>
       <ThemeProvider theme={{ ...theme, colors: theme.colors.light }}>
-        <Wrapper>Hello World!</Wrapper>
+        <Wrapper>
+          <Header />
+        </Wrapper>
       </ThemeProvider>
     </JssProvider>
   );
