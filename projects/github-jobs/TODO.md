@@ -3,6 +3,8 @@
 ## Dependencies
 
 - [x] css-in-js
+  - typo
+  - get font
 - [ ] router
 - [ ] testing
 - [ ] validation
@@ -13,7 +15,7 @@
 - [x] Header
   - [x] Container
     - [ ] Link
-    - [ ] Toggle, optional icon labels
+    - [x] Toggle, optional icon labels
 - [ ] route `/` or `/positions` or `/positions?search=query`
   - [ ] Search
     - [ ] Container

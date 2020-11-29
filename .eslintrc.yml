@@ -29,6 +29,9 @@ overrides:
       react/require-default-props:
         - error
         - ignoreFunctionalComponents: true
+      jsx-a11y/label-has-associated-control:
+        - error
+        - assert: either
 
   - files:
       - projects/github-jobs/**/*.{js,jsx}
