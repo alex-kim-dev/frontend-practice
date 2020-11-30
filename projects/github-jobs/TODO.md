@@ -16,7 +16,7 @@
   - [x] Container
     - [ ] Link
     - [x] Toggle, optional icon labels
-- [ ] route `/` or `/positions` or `/positions?search=query`
+- [x] routes `/`, `/?search=query&page=2`
   - [ ] Search
     - [ ] Container
       - [ ] TextField, optional icon
@@ -28,7 +28,7 @@
       - [ ] Card
         - [ ] Logo
         - [ ] Status
-- [ ] route `/positions/:id`
+- [x] route `/:id`
   - [ ] Heading/Company
     - [ ] Container
       - [ ] Button

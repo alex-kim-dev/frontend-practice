@@ -2,6 +2,7 @@ import { create as createJss } from 'jss';
 import preset from 'jss-preset-default';
 import { useContext } from 'react';
 import { JssProvider, ThemeProvider } from 'react-jss';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import reset from 'reset-jss';
 
 import Header from './components/Header';
@@ -50,6 +51,16 @@ const App = () => {
       <ThemeProvider theme={{ ...theme, colors: theme.colors[state.theme] }}>
         <Wrapper>
           <Header />
+          <Router>
+            <Switch>
+              <Route exact path='/:id'>
+                Position
+              </Route>
+              <Route exact path='/'>
+                List
+              </Route>
+            </Switch>
+          </Router>
         </Wrapper>
       </ThemeProvider>
     </JssProvider>
