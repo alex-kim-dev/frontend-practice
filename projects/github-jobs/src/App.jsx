@@ -1,10 +1,12 @@
 import { create as createJss } from 'jss';
 import preset from 'jss-preset-default';
+import { useContext } from 'react';
 import { JssProvider, ThemeProvider } from 'react-jss';
 import reset from 'reset-jss';
 
 import Header from './components/Header';
 import Wrapper from './components/Wrapper';
+import { store } from './store';
 import theme from './theme';
 
 const globalStyles = {
@@ -41,9 +43,11 @@ jss.createStyleSheet(reset).attach();
 jss.createStyleSheet(globalStyles).attach();
 
 const App = () => {
+  const { state } = useContext(store);
+
   return (
     <JssProvider jss={jss}>
-      <ThemeProvider theme={{ ...theme, colors: theme.colors.light }}>
+      <ThemeProvider theme={{ ...theme, colors: theme.colors[state.theme] }}>
         <Wrapper>
           <Header />
         </Wrapper>

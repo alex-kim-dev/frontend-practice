@@ -4,8 +4,10 @@ import iconSun from '@assets/desktop/icon-sun.svg';
 import logo from '@assets/desktop/logo.svg';
 import backMobile from '@assets/mobile/bg-pattern-header.svg';
 import backTablet from '@assets/tablet/bg-pattern-header.svg';
+import { useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 
+import { store } from '../store';
 import Container from './Container';
 import Toggle from './Toggle';
 
@@ -43,6 +45,10 @@ const useStyles = createUseStyles(({ breakpoints: { smUp, mdUp } }) => ({
 
 const Header = () => {
   const css = useStyles();
+  const {
+    state: { theme },
+    actions: { toggleTheme },
+  } = useContext(store);
 
   return (
     <header className={css.header}>
@@ -53,6 +59,8 @@ const Header = () => {
             label='Switch theme'
             iconLeft={iconSun}
             iconRight={iconMoon}
+            onChange={toggleTheme}
+            checked={theme === 'dark'}
           />
         </div>
       </Container>
