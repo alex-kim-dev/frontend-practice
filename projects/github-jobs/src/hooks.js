@@ -25,3 +25,9 @@ export const useBreakpoint = (breakpoint) => {
 
   return match;
 };
+
+export const useThemePreference = () => {
+  const match = useMediaQuery('(prefers-color-scheme: dark)');
+
+  return match;
+};

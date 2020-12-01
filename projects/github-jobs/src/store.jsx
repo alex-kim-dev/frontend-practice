@@ -1,7 +1,7 @@
 import { node } from 'prop-types';
 import { createContext, useLayoutEffect, useReducer } from 'react';
 
-import { isDarkThemePreffered, onSystemThemeChange } from './utils';
+import { useThemePreference } from './hooks';
 
 const store = createContext({});
 
@@ -24,13 +24,13 @@ const reducer = (state, action) => {
 
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const isDarkThemePreffered = useThemePreference();
 
   const toggleTheme = () => dispatch({ type: TOGGLE_THEME });
 
   useLayoutEffect(() => {
-    if (isDarkThemePreffered) toggleTheme();
-    return onSystemThemeChange(toggleTheme);
-  }, []);
+    toggleTheme();
+  }, [isDarkThemePreffered]);
 
   const actions = {
     toggleTheme,
