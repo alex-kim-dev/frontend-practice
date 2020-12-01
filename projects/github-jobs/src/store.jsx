@@ -36,7 +36,7 @@ const StateProvider = ({ children }) => {
     toggleTheme,
   };
 
-  return <store.Provider value={{ state, actions }}>{children}</store.Provider>;
+  return <store.Provider value={[state, actions]}>{children}</store.Provider>;
 };
 
 StateProvider.propTypes = { children: node };

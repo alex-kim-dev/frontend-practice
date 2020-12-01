@@ -45,7 +45,7 @@ jss.createStyleSheet(reset).attach();
 jss.createStyleSheet(globalStyles).attach();
 
 const App = () => {
-  const { state } = useContext(store);
+  const [state] = useContext(store);
 
   return (
     <JssProvider jss={jss}>

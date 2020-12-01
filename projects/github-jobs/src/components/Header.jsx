@@ -45,10 +45,7 @@ const useStyles = createUseStyles(({ breakpoints: { smUp, mdUp } }) => ({
 
 const Header = () => {
   const css = useStyles();
-  const {
-    state: { theme },
-    actions: { toggleTheme },
-  } = useContext(store);
+  const [{ theme }, { toggleTheme }] = useContext(store);
 
   return (
     <header className={css.header}>
