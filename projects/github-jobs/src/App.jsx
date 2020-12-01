@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import reset from 'reset-jss';
 
 import Header from './components/Header';
+import Search from './components/Search';
 import Wrapper from './components/Wrapper';
 import { store } from './store';
 import theme from './theme';
@@ -57,7 +58,7 @@ const App = () => {
                 Position
               </Route>
               <Route exact path='/'>
-                List
+                <Search />
               </Route>
             </Switch>
           </Router>
