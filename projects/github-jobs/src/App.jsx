@@ -23,7 +23,12 @@ const globalStyles = {
     },
 
     body: {
+      fontFamily: 'Kumbh Sans, sans-serif',
       fontSize: '1.6rem',
+    },
+
+    'button, input': {
+      fontFamily: 'inherit',
     },
 
     '.sr-only': {

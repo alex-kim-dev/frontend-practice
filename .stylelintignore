@@ -3,3 +3,4 @@
 /projects/*/.cache/
 /projects/*/coverage/
 /public/
+/**/*.jsx

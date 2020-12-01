@@ -1,6 +1,7 @@
 import { createUseStyles } from 'react-jss';
 
 import { useBreakpoint } from '../hooks';
+import Button from './Button';
 import Container from './Container';
 
 const useStyles = createUseStyles(({ colors: c, breakpoints: { smUp } }) => ({
@@ -30,19 +31,6 @@ const useStyles = createUseStyles(({ colors: c, breakpoints: { smUp } }) => ({
     width: 48,
   },
 
-  tempBtn2: {
-    backgroundColor: '#666',
-    height: 48,
-    minWidth: 48,
-  },
-
-  tempBtn3: {
-    backgroundColor: '#666',
-    height: 48,
-    maxWidth: 123,
-    minWidth: 80,
-  },
-
   tempCheckbox: {
     backgroundColor: '#888',
     height: 48,
@@ -60,9 +48,11 @@ const Search = () => {
   const css = useStyles();
   const isSmUp = useBreakpoint('smUp');
 
+  const handleSubmit = (e) => e.preventDefault();
+
   return (
     <Container>
-      <form className={css.form}>
+      <form className={css.form} onSubmit={handleSubmit}>
         <div className={css.tempInput} />
         {isSmUp ? (
           <>
@@ -70,12 +60,12 @@ const Search = () => {
             <div className={css.tempInput} />
             <div className={css.tempHr} />
             <div className={css.tempCheckbox} />
-            <div className={css.tempBtn3} />
+            <Button type='submit'>Search</Button>
           </>
         ) : (
           <>
             <div className={css.tempBtn1} />
-            <div className={css.tempBtn2} />
+            <Button type='submit'>Icon</Button>
           </>
         )}
       </form>

@@ -3,9 +3,7 @@
 ## Dependencies
 
 - [x] css-in-js
-  - typo
-  - get font
-- [ ] router
+- [x] router
 - [ ] testing
 - [ ] validation
 - [ ] animation
