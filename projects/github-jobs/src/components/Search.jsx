@@ -1,17 +1,21 @@
 import { createUseStyles } from 'react-jss';
 
+import { useBreakpoint } from '../hooks';
 import Container from './Container';
 
-const useStyles = createUseStyles(({ colors: c }) => ({
+const useStyles = createUseStyles(({ colors: c, breakpoints: { smUp } }) => ({
   form: {
     backgroundColor: c.back,
     borderRadius: '0.6rem',
     display: 'grid',
-    // gridTemplateColumns: '1fr auto auto',
-    gridTemplateColumns:
-      'minmax(0, 46.3rem) min-content minmax(0, 30rem) min-content auto auto',
+    gridTemplateColumns: '1fr auto auto',
     overflow: 'hidden',
     padding: '1.6rem',
+
+    [smUp]: {
+      gridTemplateColumns:
+        'minmax(0, 46.3rem) min-content minmax(0, 30rem) min-content auto auto',
+    },
   },
 
   tempInput: {
@@ -54,19 +58,26 @@ const useStyles = createUseStyles(({ colors: c }) => ({
 
 const Search = () => {
   const css = useStyles();
+  const isSmUp = useBreakpoint('smUp');
 
   return (
     <Container>
       <form className={css.form}>
-        {/* <div className={css.tempInput} />
-        <div className={css.tempBtn1} />
-        <div className={css.tempBtn2} /> */}
         <div className={css.tempInput} />
-        <div className={css.tempHr} />
-        <div className={css.tempInput} />
-        <div className={css.tempHr} />
-        <div className={css.tempCheckbox} />
-        <div className={css.tempBtn3} />
+        {isSmUp ? (
+          <>
+            <div className={css.tempHr} />
+            <div className={css.tempInput} />
+            <div className={css.tempHr} />
+            <div className={css.tempCheckbox} />
+            <div className={css.tempBtn3} />
+          </>
+        ) : (
+          <>
+            <div className={css.tempBtn1} />
+            <div className={css.tempBtn2} />
+          </>
+        )}
       </form>
     </Container>
   );
