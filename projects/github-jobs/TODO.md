@@ -19,7 +19,7 @@
     - [ ] Container
       - [ ] TextField, optional icon
       - [ ] Checkbox, label
-      - [ ] Button, text/icon variants
+      - [x] Button, text/icon variants
       - [ ] Modal
   - [ ] Grid
     - [ ] Container

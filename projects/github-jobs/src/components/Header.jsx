@@ -1,7 +1,7 @@
 import backDesktop from '@assets/desktop/bg-pattern-header.svg';
-import iconMoon from '@assets/desktop/icon-moon.svg';
-import iconSun from '@assets/desktop/icon-sun.svg';
 import logo from '@assets/desktop/logo.svg';
+import IconMoon from '@assets/icons/icon-moon.svg';
+import IconSun from '@assets/icons/icon-sun.svg';
 import backMobile from '@assets/mobile/bg-pattern-header.svg';
 import backTablet from '@assets/tablet/bg-pattern-header.svg';
 import { useContext } from 'react';
@@ -54,8 +54,8 @@ const Header = () => {
           <img src={logo} alt='Devjobs' />
           <Toggle
             label='Switch theme'
-            iconLeft={iconSun}
-            iconRight={iconMoon}
+            iconLeft={<IconSun />}
+            iconRight={<IconMoon />}
             onChange={toggleTheme}
             checked={theme === 'dark'}
           />

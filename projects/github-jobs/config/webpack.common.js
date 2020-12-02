@@ -52,15 +52,19 @@ module.exports = {
         resolve: { extensions: ['.js', '.jsx'] },
         use: ['babel-loader'],
       },
-
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
         type: 'asset/resource',
       },
-
       {
         test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        exclude: path.resolve(__dirname, '../src/assets/icons'),
         type: 'asset/inline',
+      },
+      {
+        test: /\.svg$/,
+        include: path.resolve(__dirname, '../src/assets/icons'),
+        use: ['@svgr/webpack'],
       },
     ],
   },

@@ -1,4 +1,4 @@
-import { bool, func, string } from 'prop-types';
+import { bool, element, func, string } from 'prop-types';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles(({ colors: c }) => ({
@@ -39,14 +39,14 @@ const Toggle = ({
   label,
   checked = false,
   onChange = () => {},
-  iconLeft = '',
-  iconRight = '',
+  iconLeft = null,
+  iconRight = null,
 }) => {
   const css = useStyles({ iconLeft, iconRight });
 
   return (
     <div className={css.wrapper}>
-      {iconLeft && <img src={iconLeft} alt='' aria-hidden='true' />}
+      {iconLeft}
       <label>
         <span className='sr-only'>{label}</span>
         <span className={css.toggle}>
@@ -59,7 +59,7 @@ const Toggle = ({
           <span className={css.knob} />
         </span>
       </label>
-      {iconRight && <img src={iconRight} alt='' aria-hidden='true' />}
+      {iconRight}
     </div>
   );
 };
@@ -68,8 +68,8 @@ Toggle.propTypes = {
   label: string.isRequired,
   checked: bool,
   onChange: func,
-  iconLeft: string,
-  iconRight: string,
+  iconLeft: element,
+  iconRight: element,
 };
 
 export default Toggle;

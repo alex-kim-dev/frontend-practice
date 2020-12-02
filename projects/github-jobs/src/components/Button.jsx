@@ -67,7 +67,7 @@ const Button = ({
   ...props
 }) => {
   const [{ theme: currentTheme }] = useContext(store);
-  const hasIcon = children?.type === 'svg';
+  const hasIcon = typeof children !== 'string';
   const css = useStyles({ variant, fullWidth, hasIcon, currentTheme });
 
   return (

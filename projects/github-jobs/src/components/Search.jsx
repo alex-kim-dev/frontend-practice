@@ -1,3 +1,5 @@
+import IconFilter from '@assets/icons/icon-filter.svg';
+import IconSearch from '@assets/icons/icon-search.svg';
 import { createUseStyles } from 'react-jss';
 
 import { useBreakpoint } from '../hooks';
@@ -22,13 +24,6 @@ const useStyles = createUseStyles(({ colors: c, breakpoints: { smUp } }) => ({
   tempInput: {
     backgroundColor: '#aaa',
     height: 48,
-  },
-
-  tempBtn1: {
-    backgroundColor: '#888',
-    height: 48,
-    marginRight: 10,
-    width: 48,
   },
 
   tempCheckbox: {
@@ -64,8 +59,12 @@ const Search = () => {
           </>
         ) : (
           <>
-            <div className={css.tempBtn1} />
-            <Button type='submit'>Icon</Button>
+            <Button variant='neutral'>
+              <IconFilter />
+            </Button>
+            <Button type='submit'>
+              <IconSearch viewBox='0 0 24 24' width='20' height='20' />
+            </Button>
           </>
         )}
       </form>
