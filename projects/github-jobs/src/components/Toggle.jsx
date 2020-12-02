@@ -23,6 +23,14 @@ const useStyles = createUseStyles(({ colors: c }) => ({
     '& :checked + span': {
       marginLeft: '2.4rem',
     },
+
+    '&:focus-within': {
+      boxShadow: `0 0 0 0.2rem #19202d`,
+    },
+
+    '&:hover > span': {
+      backgroundColor: c.accentAlt,
+    },
   },
 
   knob: {
