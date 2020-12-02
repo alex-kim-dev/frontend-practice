@@ -18,7 +18,7 @@
   - [ ] Search
     - [ ] Container
       - [ ] TextField, optional icon
-      - [ ] Checkbox, label
+      - [x] Checkbox, label
       - [x] Button, text/icon variants
       - [ ] Modal
   - [ ] Grid

@@ -1,47 +1,61 @@
 import IconFilter from '@assets/icons/icon-filter.svg';
 import IconSearch from '@assets/icons/icon-search.svg';
+import { useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import { useBreakpoint } from '../hooks';
+import { store } from '../store';
 import Button from './Button';
+import Checkbox from './Checkbox';
 import Container from './Container';
 
-const useStyles = createUseStyles(({ colors: c, breakpoints: { smUp } }) => ({
-  form: {
-    backgroundColor: c.back,
-    borderRadius: '0.6rem',
-    display: 'grid',
-    gridTemplateColumns: '1fr auto auto',
-    overflow: 'hidden',
-    padding: '1.6rem',
+const useStyles = createUseStyles(
+  ({ colors: c, breakpoints: { smUp, mdUp } }) => ({
+    form: {
+      backgroundColor: c.back,
+      borderRadius: '0.6rem',
+      display: 'grid',
+      gridTemplateColumns: '1fr auto auto',
+      overflow: 'hidden',
+      padding: '1.6rem',
 
-    [smUp]: {
-      gridTemplateColumns:
-        'minmax(0, 46.3rem) min-content minmax(0, 30rem) min-content auto auto',
+      [smUp]: {
+        gridTemplateColumns:
+          'minmax(0, 46.3rem) min-content minmax(0, 30rem) min-content auto auto',
+      },
     },
-  },
 
-  tempInput: {
-    backgroundColor: '#aaa',
-    height: 48,
-  },
+    fullTime: {
+      paddingLeft: '2rem',
+      paddingRight: '2.8rem',
 
-  tempCheckbox: {
-    backgroundColor: '#888',
-    height: 48,
-    maxWidth: 206,
-    minWidth: 156,
-  },
+      [mdUp]: {
+        paddingLeft: '3.2rem',
+        paddingRight: '2.6rem',
+      },
+    },
 
-  tempHr: {
-    height: 48,
-    width: 1,
-  },
-}));
+    tempInput: {
+      backgroundColor: '#aaa',
+      height: 48,
+    },
+
+    tempHr: {
+      height: 48,
+      width: 1,
+    },
+  }),
+);
 
 const Search = () => {
   const css = useStyles();
   const isSmUp = useBreakpoint('smUp');
+  const [
+    {
+      search: { isFullTime },
+    },
+    { changeFullTime },
+  ] = useContext(store);
 
   const handleSubmit = (e) => e.preventDefault();
 
@@ -54,7 +68,13 @@ const Search = () => {
             <div className={css.tempHr} />
             <div className={css.tempInput} />
             <div className={css.tempHr} />
-            <div className={css.tempCheckbox} />
+            <div className={css.fullTime}>
+              <Checkbox
+                label='Full Time Only'
+                checked={isFullTime}
+                onChange={changeFullTime}
+              />
+            </div>
             <Button type='submit'>Search</Button>
           </>
         ) : (
