@@ -6,6 +6,7 @@ import backMobile from '@assets/mobile/bg-pattern-header.svg';
 import backTablet from '@assets/tablet/bg-pattern-header.svg';
 import { useContext } from 'react';
 import { createUseStyles } from 'react-jss';
+import { Link } from 'react-router-dom';
 
 import { store } from '../store';
 import Container from './Container';
@@ -51,7 +52,9 @@ const Header = () => {
     <header className={css.header}>
       <Container>
         <div className={css.inner}>
-          <img src={logo} alt='Devjobs' />
+          <Link to='/'>
+            <img src={logo} alt='Devjobs' />
+          </Link>
           <Toggle
             label='Switch theme'
             iconLeft={<IconSun />}

@@ -59,9 +59,9 @@ const App = () => {
   return (
     <JssProvider jss={jss}>
       <ThemeProvider theme={{ ...theme, colors: theme.colors[state.theme] }}>
-        <Wrapper>
-          <Header />
-          <Router>
+        <Router>
+          <Wrapper>
+            <Header />
             <Switch>
               <Route exact path='/:id'>
                 Position
@@ -70,8 +70,8 @@ const App = () => {
                 <Search />
               </Route>
             </Switch>
-          </Router>
-        </Wrapper>
+          </Wrapper>
+        </Router>
       </ThemeProvider>
     </JssProvider>
   );

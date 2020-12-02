@@ -12,7 +12,7 @@
 
 - [x] Header
   - [x] Container
-    - [ ] Link
+    - [x] Link
     - [x] Toggle, optional icon labels
 - [x] routes `/`, `/?search=query&page=2`
   - [ ] Search
