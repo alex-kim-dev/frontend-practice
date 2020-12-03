@@ -15,12 +15,12 @@
     - [x] Link
     - [x] Toggle, optional icon labels
 - [x] routes `/`, `/?search=query&page=2`
-  - [ ] Search
-    - [ ] Container
+  - [x] Search
+    - [x] Container
       - [x] TextField, optional icon
       - [x] Checkbox, label
       - [x] Button, text/icon variants
-      - [ ] Modal
+      - [x] Modal
   - [ ] Grid
     - [ ] Container
       - [ ] Card
@@ -49,7 +49,7 @@ const state = {
     description: '',
     location: '',
     isFullTime: false,
+    isSModalOpen: false,
   },
-  isSearchModalOpen: false,
 };
 ```

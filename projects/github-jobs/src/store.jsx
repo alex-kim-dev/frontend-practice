@@ -11,6 +11,7 @@ const initialState = {
     description: '',
     location: '',
     isFullTime: false,
+    isModalOpen: false,
   },
 };
 
@@ -18,6 +19,7 @@ const TOGGLE_THEME = 'TOGGLE_THEME';
 const CHANGE_FULL_TIME = 'CHANGE_FULL_TIME';
 const CHANGE_DESCRIPTION = 'CHANGE_DESCRIPTION';
 const CHANGE_LOCATION = 'CHANGE_LOCATION';
+const TOGGLE_SEARCH_MODAL = 'TOGGLE_SEARCH_MODAL';
 
 const reducer = (state, action) => {
   const { type, payload } = action;
@@ -44,6 +46,12 @@ const reducer = (state, action) => {
         search: { ...state.search, location: payload },
       };
 
+    case TOGGLE_SEARCH_MODAL:
+      return {
+        ...state,
+        search: { ...state.search, isModalOpen: !state.search.isModalOpen },
+      };
+
     default:
       return state;
   }
@@ -63,6 +71,8 @@ const StateProvider = ({ children }) => {
   const changeLocation = ({ target: { value } }) =>
     dispatch({ type: CHANGE_LOCATION, payload: value });
 
+  const toggleSearchModal = () => dispatch({ type: TOGGLE_SEARCH_MODAL });
+
   useLayoutEffect(() => {
     toggleTheme();
   }, [isDarkThemePreffered]);
@@ -72,6 +82,7 @@ const StateProvider = ({ children }) => {
     changeFullTime,
     changeDescription,
     changeLocation,
+    toggleSearchModal,
   };
 
   return <store.Provider value={[state, actions]}>{children}</store.Provider>;

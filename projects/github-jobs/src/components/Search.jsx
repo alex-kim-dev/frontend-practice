@@ -1,7 +1,7 @@
 import IconFilter from '@assets/icons/icon-filter.svg';
 import IconLocation from '@assets/icons/icon-location.svg';
 import IconSearch from '@assets/icons/icon-search.svg';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import { useBreakpoint } from '../hooks';
@@ -10,6 +10,7 @@ import { hexToRgba } from '../utils';
 import Button from './Button';
 import Checkbox from './Checkbox';
 import Container from './Container';
+import Modal from './Modal';
 import TextField from './TextField';
 
 const useSearchStyles = createUseStyles(
@@ -52,9 +53,7 @@ const useSearchStyles = createUseStyles(
     },
 
     location: {
-      [smUp]: {
-        padding: '1.6rem 2.4rem',
-      },
+      padding: '1.6rem 2.4rem',
     },
 
     fullTime: {
@@ -70,6 +69,14 @@ const useSearchStyles = createUseStyles(
 
     submit: {
       padding: '1.6rem 1.6rem 1.6rem 1rem',
+    },
+
+    modalBody: {
+      padding: '1.2rem 2.4rem 2.4rem',
+
+      '& > * + *': {
+        marginTop: '1.2rem',
+      },
     },
   }),
 );
@@ -94,12 +101,87 @@ const Search = () => {
   const isMdUp = useBreakpoint('mdUp');
   const [
     {
-      search: { description, location, isFullTime },
+      search: { description, location, isFullTime, isModalOpen },
     },
-    { changeDescription, changeLocation, changeFullTime },
+    { changeDescription, changeLocation, changeFullTime, toggleSearchModal },
   ] = useContext(store);
 
+  useEffect(() => {
+    if (isSmUp && isModalOpen) toggleSearchModal();
+  }, [isModalOpen, isSmUp, toggleSearchModal]);
+
   const handleSubmit = (e) => e.preventDefault();
+
+  const extendedUI = (
+    <>
+      <Separator vertical />
+      <div className={css.location}>
+        <TextField
+          label='location'
+          placeholder='Filter by location…'
+          icon={<IconLocation />}
+          value={location}
+          onChange={changeLocation}
+        />
+      </div>
+      <Separator vertical />
+      <div className={css.fullTime}>
+        <Checkbox
+          label={`Full Time${isMdUp ? ' Only' : ''}`}
+          checked={isFullTime}
+          onChange={changeFullTime}
+        />
+      </div>
+      <div className={css.submit}>
+        <Button type='submit' fullWidth>
+          Search
+        </Button>
+      </div>
+    </>
+  );
+
+  const compactUI = (
+    <>
+      <div className={css.filter}>
+        <Button
+          variant='neutral'
+          onClick={isModalOpen ? undefined : toggleSearchModal}
+        >
+          <IconFilter />
+        </Button>
+      </div>
+      <div className={css.submit}>
+        <Button type='submit'>
+          <IconSearch viewBox='0 0 24 24' width='20' height='20' />
+        </Button>
+      </div>
+    </>
+  );
+
+  const modalUI = (
+    <Modal onClose={toggleSearchModal}>
+      <div className={css.location}>
+        <TextField
+          label='location'
+          placeholder='Filter by location…'
+          icon={<IconLocation />}
+          value={location}
+          onChange={changeLocation}
+        />
+      </div>
+      <Separator />
+      <div className={css.modalBody}>
+        <Checkbox
+          label='Full Time Only'
+          checked={isFullTime}
+          onChange={changeFullTime}
+        />
+        <Button type='submit' fullWidth>
+          Search
+        </Button>
+      </div>
+    </Modal>
+  );
 
   return (
     <Container>
@@ -113,46 +195,8 @@ const Search = () => {
             onChange={changeDescription}
           />
         </div>
-        {isSmUp ? (
-          <>
-            <Separator vertical />
-            <div className={css.location}>
-              <TextField
-                label='location'
-                placeholder='Filter by location…'
-                icon={<IconLocation />}
-                value={location}
-                onChange={changeLocation}
-              />
-            </div>
-            <Separator vertical />
-            <div className={css.fullTime}>
-              <Checkbox
-                label={`Full Time${isMdUp ? ' Only' : ''}`}
-                checked={isFullTime}
-                onChange={changeFullTime}
-              />
-            </div>
-            <div className={css.submit}>
-              <Button type='submit' fullWidth>
-                Search
-              </Button>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className={css.filter}>
-              <Button variant='neutral'>
-                <IconFilter />
-              </Button>
-            </div>
-            <div className={css.submit}>
-              <Button type='submit'>
-                <IconSearch viewBox='0 0 24 24' width='20' height='20' />
-              </Button>
-            </div>
-          </>
-        )}
+        {isSmUp ? extendedUI : compactUI}
+        {isModalOpen && modalUI}
       </form>
     </Container>
   );
