@@ -1,4 +1,5 @@
 import IconFilter from '@assets/icons/icon-filter.svg';
+import IconLocation from '@assets/icons/icon-location.svg';
 import IconSearch from '@assets/icons/icon-search.svg';
 import { useContext } from 'react';
 import { createUseStyles } from 'react-jss';
@@ -8,6 +9,7 @@ import { store } from '../store';
 import Button from './Button';
 import Checkbox from './Checkbox';
 import Container from './Container';
+import TextField from './TextField';
 
 const useStyles = createUseStyles(
   ({ colors: c, breakpoints: { smUp, mdUp } }) => ({
@@ -25,6 +27,20 @@ const useStyles = createUseStyles(
       },
     },
 
+    description: {
+      [mdUp]: {
+        paddingLeft: '1.6rem',
+        paddingRight: '1.6rem',
+      },
+    },
+
+    location: {
+      [mdUp]: {
+        paddingLeft: '2.4rem',
+        paddingRight: '1.6rem',
+      },
+    },
+
     fullTime: {
       paddingLeft: '2rem',
       paddingRight: '2.8rem',
@@ -35,12 +51,8 @@ const useStyles = createUseStyles(
       },
     },
 
-    tempInput: {
-      backgroundColor: '#aaa',
-      height: 48,
-    },
-
     tempHr: {
+      backgroundColor: c.text,
       height: 48,
       width: 1,
     },
@@ -62,11 +74,23 @@ const Search = () => {
   return (
     <Container>
       <form className={css.form} onSubmit={handleSubmit}>
-        <div className={css.tempInput} />
+        <div className={css.description}>
+          <TextField
+            label='description'
+            placeholder='Filter by title, companies, expertise…'
+            icon={<IconSearch />}
+          />
+        </div>
         {isSmUp ? (
           <>
             <div className={css.tempHr} />
-            <div className={css.tempInput} />
+            <div className={css.location}>
+              <TextField
+                label='location'
+                placeholder='Filter by location…'
+                icon={<IconLocation />}
+              />
+            </div>
             <div className={css.tempHr} />
             <div className={css.fullTime}>
               <Checkbox

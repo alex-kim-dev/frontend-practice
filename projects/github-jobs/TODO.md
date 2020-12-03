@@ -17,7 +17,7 @@
 - [x] routes `/`, `/?search=query&page=2`
   - [ ] Search
     - [ ] Container
-      - [ ] TextField, optional icon
+      - [x] TextField, optional icon
       - [x] Checkbox, label
       - [x] Button, text/icon variants
       - [ ] Modal
