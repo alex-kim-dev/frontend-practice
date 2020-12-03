@@ -14,6 +14,7 @@ const useStyles = createUseStyles(({ colors: c }) => ({
     fontWeight: 700,
     paddingBottom: '1.2rem',
     paddingTop: '1.2rem',
+    whiteSpace: 'nowrap',
 
     '& > input:checked + span': {
       background: `center no-repeat url(${iconCheck}), ${c.accent}`,
@@ -41,6 +42,10 @@ const useStyles = createUseStyles(({ colors: c }) => ({
       backgroundColor: hexToRgba(c.accent, 0.25),
     },
   },
+
+  label: {
+    transform: 'translateY(0.2rem)',
+  },
 }));
 
 const Checkbox = ({ label, checked = false, onChange = () => {} }) => {
@@ -55,7 +60,7 @@ const Checkbox = ({ label, checked = false, onChange = () => {} }) => {
         checked={checked}
       />
       <span className={css.box} />
-      <span>{label}</span>
+      <span className={css.label}>{label}</span>
     </label>
   );
 };

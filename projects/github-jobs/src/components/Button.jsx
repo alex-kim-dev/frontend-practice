@@ -43,7 +43,10 @@ const useStyles = createUseStyles(({ colors: c }) => ({
       fontSize: '1.6rem',
       fontWeight: 700,
       justifyContent: 'center',
-      padding: hasIcon ? '1.4rem' : '1.6rem 4rem',
+      padding: [
+        hasIcon ? '1.4rem' : '1.6rem',
+        hasIcon || fullWidth ? '1.4rem' : '2.8rem',
+      ],
       textDecoration: 'none',
       transition: 'background-color 0.2s',
       width: fullWidth && '100%',

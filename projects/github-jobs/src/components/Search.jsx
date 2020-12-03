@@ -6,67 +6,97 @@ import { createUseStyles } from 'react-jss';
 
 import { useBreakpoint } from '../hooks';
 import { store } from '../store';
+import { hexToRgba } from '../utils';
 import Button from './Button';
 import Checkbox from './Checkbox';
 import Container from './Container';
 import TextField from './TextField';
 
-const useStyles = createUseStyles(
+const useSearchStyles = createUseStyles(
   ({ colors: c, breakpoints: { smUp, mdUp } }) => ({
+    filter: {
+      padding: '1.6rem 0',
+    },
+
     form: {
       backgroundColor: c.back,
       borderRadius: '0.6rem',
       display: 'grid',
       gridTemplateColumns: '1fr auto auto',
       overflow: 'hidden',
-      padding: '1.6rem',
 
       [smUp]: {
-        gridTemplateColumns:
-          'minmax(0, 46.3rem) min-content minmax(0, 30rem) min-content auto auto',
+        gridTemplateColumns: [
+          'minmax(0, 46.3rem)',
+          'min-content',
+          'minmax(0, 30rem)',
+          'min-content',
+          'min-content',
+          'auto',
+        ].join(' '),
       },
     },
 
     description: {
+      padding: '1.6rem 1rem 1.6rem 1.6rem',
+
+      [smUp]: {
+        paddingLeft: '2.4rem',
+        paddingRight: '2.4rem',
+      },
+
       [mdUp]: {
-        paddingLeft: '1.6rem',
-        paddingRight: '1.6rem',
+        paddingLeft: '3.2rem',
+        paddingRight: '3.2rem',
       },
     },
 
     location: {
-      [mdUp]: {
-        paddingLeft: '2.4rem',
-        paddingRight: '1.6rem',
+      [smUp]: {
+        padding: '1.6rem 2.4rem',
       },
     },
 
     fullTime: {
-      paddingLeft: '2rem',
-      paddingRight: '2.8rem',
+      [smUp]: {
+        padding: '1.6rem 1.8rem 1.6rem 2rem',
+      },
 
       [mdUp]: {
         paddingLeft: '3.2rem',
-        paddingRight: '2.6rem',
+        paddingRight: '1.6rem',
       },
     },
 
-    tempHr: {
-      backgroundColor: c.text,
-      height: 48,
-      width: 1,
+    submit: {
+      padding: '1.6rem 1.6rem 1.6rem 1rem',
     },
   }),
 );
 
+const useSeparatorStyles = createUseStyles(({ colors: c }) => ({
+  separator: ({ vertical }) => ({
+    backgroundColor: hexToRgba(c.textAlt, 0.2),
+    height: vertical ? '100%' : '0.1rem',
+    width: vertical ? '0.1rem' : '100%',
+  }),
+}));
+
+const Separator = ({ vertical = false }) => {
+  const css = useSeparatorStyles({ vertical });
+
+  return <div className={css.separator} />;
+};
+
 const Search = () => {
-  const css = useStyles();
+  const css = useSearchStyles();
   const isSmUp = useBreakpoint('smUp');
+  const isMdUp = useBreakpoint('mdUp');
   const [
     {
-      search: { isFullTime },
+      search: { description, location, isFullTime },
     },
-    { changeFullTime },
+    { changeDescription, changeLocation, changeFullTime },
   ] = useContext(store);
 
   const handleSubmit = (e) => e.preventDefault();
@@ -78,44 +108,54 @@ const Search = () => {
           <TextField
             label='description'
             placeholder='Filter by title, companies, expertise…'
-            icon={<IconSearch />}
+            icon={isSmUp ? <IconSearch /> : null}
+            value={description}
+            onChange={changeDescription}
           />
         </div>
         {isSmUp ? (
           <>
-            <div className={css.tempHr} />
+            <Separator vertical />
             <div className={css.location}>
               <TextField
                 label='location'
                 placeholder='Filter by location…'
                 icon={<IconLocation />}
+                value={location}
+                onChange={changeLocation}
               />
             </div>
-            <div className={css.tempHr} />
+            <Separator vertical />
             <div className={css.fullTime}>
               <Checkbox
-                label='Full Time Only'
+                label={`Full Time${isMdUp ? ' Only' : ''}`}
                 checked={isFullTime}
                 onChange={changeFullTime}
               />
             </div>
-            <Button type='submit'>Search</Button>
+            <div className={css.submit}>
+              <Button type='submit' fullWidth>
+                Search
+              </Button>
+            </div>
           </>
         ) : (
           <>
-            <Button variant='neutral'>
-              <IconFilter />
-            </Button>
-            <Button type='submit'>
-              <IconSearch viewBox='0 0 24 24' width='20' height='20' />
-            </Button>
+            <div className={css.filter}>
+              <Button variant='neutral'>
+                <IconFilter />
+              </Button>
+            </div>
+            <div className={css.submit}>
+              <Button type='submit'>
+                <IconSearch viewBox='0 0 24 24' width='20' height='20' />
+              </Button>
+            </div>
           </>
         )}
       </form>
     </Container>
   );
 };
-
-Search.propTypes = {};
 
 export default Search;

@@ -24,6 +24,7 @@ const useStyles = createUseStyles(({ colors: c }) => ({
     flex: 1,
     fontSize: '1.6rem',
     padding: '1.8rem 0 1.4rem',
+    textOverflow: 'ellipsis',
     width: '100%',
 
     '&:focus': {
