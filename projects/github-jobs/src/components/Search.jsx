@@ -1,8 +1,9 @@
 import IconFilter from '@assets/icons/icon-filter.svg';
 import IconLocation from '@assets/icons/icon-location.svg';
 import IconSearch from '@assets/icons/icon-search.svg';
-import { useContext, useEffect } from 'react';
+import { useContext, useLayoutEffect } from 'react';
 import { createUseStyles } from 'react-jss';
+import { useHistory } from 'react-router-dom';
 
 import { useBreakpoint } from '../hooks';
 import { store } from '../store';
@@ -103,16 +104,45 @@ const Search = () => {
     {
       search: { description, location, isFullTime, isModalOpen },
     },
-    { changeDescription, changeLocation, changeFullTime, toggleSearchModal },
+    {
+      changeDescription,
+      changeLocation,
+      changeFullTime,
+      toggleSearchModal,
+      setJobsLoading,
+      setJobsError,
+      setJobsData,
+    },
   ] = useContext(store);
+  const history = useHistory();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isSmUp && isModalOpen) toggleSearchModal();
   }, [isModalOpen, isSmUp, toggleSearchModal]);
 
-  const handleSubmit = (e) => e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  const extendedUI = (
+    setJobsLoading(true);
+    setJobsError(null);
+    setJobsData(null);
+
+    const url = new URL('https://cors-anywhere.herokuapp.com/');
+    url.pathname = 'https://jobs.github.com/positions.json';
+    if (description) url.searchParams.append('search', description);
+    if (location) url.searchParams.append('location', location);
+    if (isFullTime) url.searchParams.append('full_time', 'on');
+
+    history.push(`/?${url.searchParams.toString()}`);
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => setJobsData(data))
+      .catch((err) => setJobsError(err))
+      .finally(() => setJobsLoading(false));
+  };
+
+  const extendedSearch = (
     <>
       <Separator vertical />
       <div className={css.location}>
@@ -140,7 +170,7 @@ const Search = () => {
     </>
   );
 
-  const compactUI = (
+  const compactSearch = (
     <>
       <div className={css.filter}>
         <Button
@@ -158,7 +188,7 @@ const Search = () => {
     </>
   );
 
-  const modalUI = (
+  const modal = (
     <Modal onClose={toggleSearchModal}>
       <div className={css.location}>
         <TextField
@@ -195,8 +225,8 @@ const Search = () => {
             onChange={changeDescription}
           />
         </div>
-        {isSmUp ? extendedUI : compactUI}
-        {isModalOpen && modalUI}
+        {isSmUp ? extendedSearch : compactSearch}
+        {isModalOpen && modal}
       </form>
     </Container>
   );

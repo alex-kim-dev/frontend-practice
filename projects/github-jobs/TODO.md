@@ -51,5 +51,10 @@ const state = {
     isFullTime: false,
     isSModalOpen: false,
   },
+  jobs: {
+    loading: false,
+    error: null,
+    data: null,
+  },
 };
 ```

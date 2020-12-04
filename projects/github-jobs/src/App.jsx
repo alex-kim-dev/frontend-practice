@@ -55,6 +55,7 @@ jss.createStyleSheet(globalStyles).attach();
 
 const App = () => {
   const [state] = useContext(store);
+  const { isLoading, error, data } = state.jobs;
 
   return (
     <JssProvider jss={jss}>
@@ -68,6 +69,18 @@ const App = () => {
               </Route>
               <Route exact path='/'>
                 <Search />
+                <div
+                  style={{
+                    color: 'gray',
+                    fontSize: '2.4rem',
+                    marginTop: '2.4rem',
+                    textAlign: 'center',
+                  }}
+                >
+                  {isLoading && 'Loading...'}
+                  {error && error.toString()}
+                  {data && `Entries fetched: ${data.length}`}
+                </div>
               </Route>
             </Switch>
           </Wrapper>
