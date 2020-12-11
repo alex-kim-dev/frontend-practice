@@ -8,7 +8,7 @@ import { useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 import { Link } from 'react-router-dom';
 
-import { store } from '../store';
+import { actions, state } from '../store';
 import Container from './Container';
 import Toggle from './Toggle';
 
@@ -46,7 +46,8 @@ const useStyles = createUseStyles(({ breakpoints: { smUp, mdUp } }) => ({
 
 const Header = () => {
   const css = useStyles();
-  const [{ theme }, { toggleTheme }] = useContext(store);
+  const { theme } = useContext(state);
+  const { toggleTheme } = useContext(actions);
 
   return (
     <header className={css.header}>

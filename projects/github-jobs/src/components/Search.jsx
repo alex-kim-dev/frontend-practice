@@ -6,7 +6,7 @@ import { createUseStyles } from 'react-jss';
 import { useHistory } from 'react-router-dom';
 
 import { useBreakpoint } from '../hooks';
-import { store } from '../store';
+import { actions, state } from '../store';
 import { hexToRgba } from '../utils';
 import Button from './Button';
 import Checkbox from './Checkbox';
@@ -100,32 +100,34 @@ const Search = () => {
   const css = useSearchStyles();
   const isSmUp = useBreakpoint('smUp');
   const isMdUp = useBreakpoint('mdUp');
-  const [
-    {
-      search: { description, location, isFullTime, isModalOpen },
-    },
-    {
-      changeDescription,
-      changeLocation,
-      changeFullTime,
-      toggleSearchModal,
-      setJobsLoading,
-      setJobsError,
-      setJobsData,
-    },
-  ] = useContext(store);
+  const {
+    search: { description, location, isFullTime, isModalOpen },
+  } = useContext(state);
+  const {
+    changeDescription,
+    changeLocation,
+    changeFullTime,
+    toggleSearchModal,
+    setJobs,
+  } = useContext(actions);
   const history = useHistory();
 
   useLayoutEffect(() => {
     if (isSmUp && isModalOpen) toggleSearchModal();
   }, [isModalOpen, isSmUp, toggleSearchModal]);
 
+  const handleDescriptionChange = ({ target: { value } }) => {
+    changeDescription(value);
+  };
+
+  const handleLocationChange = ({ target: { value } }) => {
+    changeLocation(value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setJobsLoading(true);
-    setJobsError(null);
-    setJobsData(null);
+    setJobs([true, null, null]);
 
     const url = new URL('https://cors-anywhere.herokuapp.com/');
     url.pathname = 'https://jobs.github.com/positions.json';
@@ -137,9 +139,8 @@ const Search = () => {
 
     fetch(url)
       .then((response) => response.json())
-      .then((data) => setJobsData(data))
-      .catch((err) => setJobsError(err))
-      .finally(() => setJobsLoading(false));
+      .then((data) => setJobs([false, null, data]))
+      .catch((error) => setJobs([false, error, null]));
   };
 
   const extendedSearch = (
@@ -151,7 +152,7 @@ const Search = () => {
           placeholder='Filter by location…'
           icon={<IconLocation />}
           value={location}
-          onChange={changeLocation}
+          onChange={handleLocationChange}
         />
       </div>
       <Separator vertical />
@@ -196,7 +197,7 @@ const Search = () => {
           placeholder='Filter by location…'
           icon={<IconLocation />}
           value={location}
-          onChange={changeLocation}
+          onChange={handleLocationChange}
         />
       </div>
       <Separator />
@@ -222,7 +223,7 @@ const Search = () => {
             placeholder='Filter by title, companies, expertise…'
             icon={isSmUp ? <IconSearch /> : null}
             value={description}
-            onChange={changeDescription}
+            onChange={handleDescriptionChange}
           />
         </div>
         {isSmUp ? extendedSearch : compactSearch}

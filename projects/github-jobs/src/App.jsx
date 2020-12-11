@@ -4,7 +4,7 @@ import 'fontsource-kumbh-sans/700-normal.css';
 
 import { create as createJss } from 'jss';
 import preset from 'jss-preset-default';
-import { useContext } from 'react';
+import { memo, useContext, useLayoutEffect } from 'react';
 import { JssProvider, ThemeProvider } from 'react-jss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import reset from 'reset-jss';
@@ -12,7 +12,7 @@ import reset from 'reset-jss';
 import Header from './components/Header';
 import Search from './components/Search';
 import Wrapper from './components/Wrapper';
-import { store } from './store';
+import { actions, state } from './store';
 import theme from './theme';
 
 const globalStyles = {
@@ -54,12 +54,42 @@ jss.createStyleSheet(reset).attach();
 jss.createStyleSheet(globalStyles).attach();
 
 const App = () => {
-  const [state] = useContext(store);
-  const { isLoading, error, data } = state.jobs;
+  const {
+    theme: currentTheme,
+    jobs: [isLoading, error, data],
+  } = useContext(state);
+  const {
+    changeDescription,
+    changeLocation,
+    changeFullTime,
+    setJobs,
+  } = useContext(actions);
+
+  useLayoutEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    const description = query.get('search');
+    const location = query.get('location');
+    const isFullTime = query.get('full_time');
+
+    if (description) changeDescription(description);
+    if (location) changeLocation(location);
+    if (isFullTime) changeFullTime();
+
+    setJobs([true, null, null]);
+
+    const url = new URL('https://cors-anywhere.herokuapp.com/');
+    url.pathname = 'https://jobs.github.com/positions.json';
+    url.search = query;
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((json) => setJobs([false, null, json]))
+      .catch((err) => setJobs([false, err, null]));
+  }, [changeDescription, changeLocation, changeFullTime, setJobs]);
 
   return (
     <JssProvider jss={jss}>
-      <ThemeProvider theme={{ ...theme, colors: theme.colors[state.theme] }}>
+      <ThemeProvider theme={{ ...theme, colors: theme.colors[currentTheme] }}>
         <Router>
           <Wrapper>
             <Header />
@@ -90,4 +120,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default memo(App);

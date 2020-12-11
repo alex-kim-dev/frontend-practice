@@ -12,3 +12,11 @@ export const hexToRgba = (hex, alpha) => {
 
   return `rgba(${values})`;
 };
+
+export const constantToCamelCase = (str) => {
+  const [first, ...rest] = str.toLowerCase().split('_');
+  return [
+    first,
+    ...rest.map((word) => `${word[0].toUpperCase()}${word.slice(1)}`),
+  ].join('');
+};

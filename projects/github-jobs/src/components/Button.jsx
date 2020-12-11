@@ -11,7 +11,7 @@ import {
 import { useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 
-import { store } from '../store';
+import { state } from '../store';
 
 const useStyles = createUseStyles(({ colors: c }) => ({
   button: ({ variant, fullWidth, hasIcon, currentTheme }) => {
@@ -69,7 +69,7 @@ const Button = ({
   children,
   ...props
 }) => {
-  const [{ theme: currentTheme }] = useContext(store);
+  const { theme: currentTheme } = useContext(state);
   const hasIcon = typeof children !== 'string';
   const css = useStyles({ variant, fullWidth, hasIcon, currentTheme });
 
