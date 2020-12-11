@@ -1,0 +1,97 @@
+import { shape } from 'prop-types';
+import { createUseStyles } from 'react-jss';
+import { Link } from 'react-router-dom';
+
+import Logo from './Logo';
+import Status from './Status';
+
+const useStyles = createUseStyles(({ colors: c }) => ({
+  wrapper: {
+    display: 'grid',
+    gridAutoFlow: 'column',
+    gridTemplate: '2.5rem 2.5rem 1fr / auto',
+    height: '100%',
+  },
+
+  logo: {
+    gridArea: '1 / 1 / span 2',
+    marginLeft: '3.2rem',
+    zIndex: 1,
+  },
+
+  body: {
+    backgroundColor: c.back,
+    borderRadius: '0.6rem',
+    display: 'flex',
+    flexFlow: 'column',
+    gridArea: '2 / 1 / span 2',
+    justifyContent: 'space-between',
+    padding: '4.9rem 3.2rem 3.2rem',
+  },
+
+  title: {
+    fontSize: '2rem',
+    fontWeight: 700,
+    marginTop: '1.6rem',
+
+    '& > a': {
+      color: c.text,
+      textDecoration: 'none',
+
+      '&:hover': {
+        color: c.textAlt,
+      },
+    },
+  },
+
+  company: {
+    color: c.textAlt,
+    marginTop: '1.7rem',
+  },
+
+  location: {
+    color: c.accent,
+    fontSize: '1.4rem',
+    fontWeight: 700,
+    justifySelf: 'flex-end',
+    lineHeight: '140%',
+    marginTop: '2.6rem',
+  },
+}));
+
+const Card = ({ position }) => {
+  const css = useStyles();
+  const {
+    id,
+    type,
+    // created_at: createdAt,
+    company,
+    location,
+    title,
+    company_logo: logoUrl,
+  } = position;
+
+  return (
+    <div className={css.wrapper}>
+      <div className={css.logo}>
+        <Logo src={logoUrl} alt={`${company} logo`} />
+      </div>
+      <div className={css.body}>
+        <div>
+          <Status list={['some time ago', type]} />
+          <h3 className={css.title}>
+            <Link to={id}>{title}</Link>
+          </h3>
+          <p className={css.company}>{company}</p>
+        </div>
+        <p className={css.location}>{location}</p>
+      </div>
+    </div>
+  );
+};
+
+Card.propTypes = {
+  position: shape().isRequired,
+};
+
+export default Card;

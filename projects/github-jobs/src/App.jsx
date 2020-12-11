@@ -9,6 +9,7 @@ import { JssProvider, ThemeProvider } from 'react-jss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import reset from 'reset-jss';
 
+import Grid from './components/Grid';
 import Header from './components/Header';
 import Search from './components/Search';
 import Wrapper from './components/Wrapper';
@@ -103,14 +104,14 @@ const App = () => {
                   style={{
                     color: 'gray',
                     fontSize: '2.4rem',
-                    marginTop: '2.4rem',
+                    marginTop: '8rem',
                     textAlign: 'center',
                   }}
                 >
                   {isLoading && 'Loading...'}
                   {error && error.toString()}
-                  {data && `Entries fetched: ${data.length}`}
                 </div>
+                {data && <Grid data={data} />}
               </Route>
             </Switch>
           </Wrapper>

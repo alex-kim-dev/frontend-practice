@@ -21,11 +21,11 @@
       - [x] Checkbox, label
       - [x] Button, text/icon variants
       - [x] Modal
-  - [ ] Grid
-    - [ ] Container
-      - [ ] Card
-        - [ ] Logo
-        - [ ] Status
+  - [x] Grid
+    - [x] Container
+      - [x] Card
+        - [x] Logo
+        - [x] Status
 - [x] route `/:id`
   - [ ] Heading/Company
     - [ ] Container
