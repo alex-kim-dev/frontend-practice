@@ -74,7 +74,7 @@ const Card = ({ position }) => {
   return (
     <div className={css.wrapper}>
       <div className={css.logo}>
-        <Logo src={logoUrl} alt={`${company} logo`} />
+        <Logo src={logoUrl || undefined} alt={`${company} logo`} />
       </div>
       <div className={css.body}>
         <div>

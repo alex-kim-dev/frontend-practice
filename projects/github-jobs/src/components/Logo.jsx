@@ -1,9 +1,10 @@
+import logo from '@assets/desktop/logo.svg';
 import { string } from 'prop-types';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles(({ colors: c }) => ({
   wrapper: {
-    backgroundColor: c.textAlt,
+    backgroundColor: c.accent,
     borderRadius: '1.5rem',
     height: '5rem',
     overflow: 'hidden',
@@ -16,7 +17,7 @@ const useStyles = createUseStyles(({ colors: c }) => ({
   },
 }));
 
-const Logo = ({ src, alt }) => {
+const Logo = ({ src = logo, alt = 'No logo provided' }) => {
   const css = useStyles();
 
   return (
@@ -27,8 +28,8 @@ const Logo = ({ src, alt }) => {
 };
 
 Logo.propTypes = {
-  src: string.isRequired,
-  alt: string.isRequired,
+  src: string,
+  alt: string,
 };
 
 export default Logo;
