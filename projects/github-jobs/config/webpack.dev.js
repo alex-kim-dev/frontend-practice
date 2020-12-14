@@ -37,4 +37,11 @@ module.exports = merge(common, {
       },
     ],
   },
+
+  cache: {
+    type: 'filesystem',
+    buildDependencies: {
+      config: [__filename],
+    },
+  },
 });
