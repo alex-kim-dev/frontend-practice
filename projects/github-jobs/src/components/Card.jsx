@@ -2,6 +2,7 @@ import { shape } from 'prop-types';
 import { createUseStyles } from 'react-jss';
 import { Link } from 'react-router-dom';
 
+import { getRelativeTimeSince } from '../utils';
 import Logo from './Logo';
 import Status from './Status';
 
@@ -64,12 +65,14 @@ const Card = ({ position }) => {
   const {
     id,
     type,
-    // created_at: createdAt,
+    created_at: createdAt,
     company,
     location,
     title,
     company_logo: logoUrl,
   } = position;
+
+  const relativeTime = getRelativeTimeSince(new Date(createdAt));
 
   return (
     <div className={css.wrapper}>
@@ -78,7 +81,7 @@ const Card = ({ position }) => {
       </div>
       <div className={css.body}>
         <div>
-          <Status list={['some time ago', type]} />
+          <Status list={[relativeTime, type]} />
           <h3 className={css.title}>
             <Link to={id}>{title}</Link>
           </h3>

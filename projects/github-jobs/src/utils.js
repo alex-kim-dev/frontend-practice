@@ -20,3 +20,22 @@ export const constantToCamelCase = (str) => {
     ...rest.map((word) => `${word[0].toUpperCase()}${word.slice(1)}`),
   ].join('');
 };
+
+export const getRelativeTimeSince = (date = Date.now()) => {
+  const MS_IN_SECOND = 1000;
+  const periods = [
+    ['week', 604800],
+    ['day', 86400],
+    ['hour', 3600],
+    ['minute', 60],
+    ['less than a minute', Number.MIN_SAFE_INTEGER],
+  ];
+
+  const diff = (Date.now() - date) / MS_IN_SECOND;
+  const [unit, duration] = periods.find(([, time]) => diff >= time);
+  const number = Math.trunc(diff / duration);
+
+  return `${number >= 1 ? number : ''} ${unit}${
+    number > 1 ? 's' : ''
+  } ago`.trim();
+};
