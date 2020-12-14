@@ -9,9 +9,9 @@
   "homepage": "https://alex-k1m.github.io/frontend-practice/",
   "bugs": "https://github.com/Alex-K1m/frontend-practice/issues",
   "scripts": {
-    "analyze": "cross-env NODE_ENV=production webpack --analyze --config ./config/webpack.prod.js",
-    "build": "cross-env NODE_ENV=production webpack --config c./onfig/webpack.prod.js",
-    "start": "cross-env NODE_ENV=development webpack serve --config ./config/webpack.dev.js",
+    "analyze": "cross-env NODE_ENV=production webpack --analyze --config config/webpack.prod.js",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
+    "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
