@@ -27,9 +27,9 @@
         - [x] Logo
         - [x] Status
 - [x] route `/:id`
-  - [ ] Heading/Company
-    - [ ] Container
-      - [ ] Button
+  - [x] Heading/Company
+    - [x] Container
+      - [x] Button
   - [ ] Content/Position (style markdown elements)
     - [ ] Container
       - [ ] Status

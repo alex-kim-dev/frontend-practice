@@ -1,15 +1,21 @@
 import logo from '@assets/desktop/logo.svg';
-import { string } from 'prop-types';
+import { oneOf, string } from 'prop-types';
 import { createUseStyles } from 'react-jss';
 
+const pxToRem = (px) => px / 10;
+
+const logoDimensions = {
+  small: 50,
+  large: 140,
+};
+
 const useStyles = createUseStyles(({ colors: c }) => ({
-  wrapper: {
-    backgroundColor: c.accent,
-    borderRadius: '1.5rem',
-    height: '5rem',
+  wrapper: ({ size }) => ({
+    backgroundColor: c.neutral,
+    height: `${pxToRem(logoDimensions[size])}rem`,
     overflow: 'hidden',
-    width: '5rem',
-  },
+    width: `${pxToRem(logoDimensions[size])}rem`,
+  }),
 
   logo: {
     objectFit: 'contain',
@@ -17,12 +23,18 @@ const useStyles = createUseStyles(({ colors: c }) => ({
   },
 }));
 
-const Logo = ({ src = logo, alt = 'No logo provided' }) => {
-  const css = useStyles();
+const Logo = ({ src = logo, alt = '', size = 'small' }) => {
+  const css = useStyles({ size });
 
   return (
     <div className={css.wrapper}>
-      <img src={src} alt={alt} className={css.logo} width='50' height='50' />
+      <img
+        src={src}
+        alt={alt}
+        className={css.logo}
+        width={logoDimensions[size]}
+        height={logoDimensions[size]}
+      />
     </div>
   );
 };
@@ -30,6 +42,7 @@ const Logo = ({ src = logo, alt = 'No logo provided' }) => {
 Logo.propTypes = {
   src: string,
   alt: string,
+  size: oneOf(['small', 'large']),
 };
 
 export default Logo;

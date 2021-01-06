@@ -15,8 +15,11 @@ const useStyles = createUseStyles(({ colors: c }) => ({
   },
 
   logo: {
+    borderRadius: '1.5rem',
     gridArea: '1 / 1 / span 2',
+    justifySelf: 'start',
     marginLeft: '3.2rem',
+    overflow: 'hidden',
     zIndex: 1,
   },
 

@@ -11,6 +11,7 @@ import reset from 'reset-jss';
 
 import Grid from './components/Grid';
 import Header from './components/Header';
+import Position from './components/Position';
 import Search from './components/Search';
 import Wrapper from './components/Wrapper';
 import { actions, state } from './store';
@@ -96,7 +97,7 @@ const App = () => {
             <Header />
             <Switch>
               <Route exact path='/:id'>
-                Position
+                <Position />
               </Route>
               <Route exact path='/'>
                 <Search />

@@ -47,6 +47,7 @@ const useStyles = createUseStyles(({ colors: c }) => ({
         hasIcon ? '1.4rem' : '1.6rem',
         hasIcon || fullWidth ? '1.4rem' : '2.8rem',
       ],
+      textAlign: 'center',
       textDecoration: 'none',
       transition: 'background-color 0.2s',
       width: fullWidth && '100%',
