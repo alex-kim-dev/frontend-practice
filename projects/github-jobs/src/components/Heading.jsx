@@ -1,9 +1,7 @@
-import { useContext } from 'react';
+import { shape, string } from 'prop-types';
 import { createUseStyles } from 'react-jss';
-import { useParams } from 'react-router-dom';
 
 import { useBreakpoint } from '../hooks';
-import { state } from '../store';
 import Button from './Button';
 import Logo from './Logo';
 
@@ -78,17 +76,10 @@ const useStyles = createUseStyles(({ breakpoints: { smUp }, colors: c }) => ({
   },
 }));
 
-const Heading = () => {
+const Heading = ({ data: { company, url, logoUrl } }) => {
   const css = useStyles();
   const isSmUp = useBreakpoint('smUp');
 
-  const { id } = useParams();
-  const {
-    jobs: [, , data],
-  } = useContext(state);
-
-  const position = data.find((record) => record.id === id);
-  const { company, company_url: url, company_logo: logoUrl } = position;
   const website = new URL(url).hostname;
 
   return (
@@ -119,6 +110,12 @@ const Heading = () => {
   );
 };
 
-Heading.propTypes = {};
+Heading.propTypes = {
+  data: shape({
+    company: string,
+    url: string,
+    logoUrl: string,
+  }).isRequired,
+};
 
 export default Heading;

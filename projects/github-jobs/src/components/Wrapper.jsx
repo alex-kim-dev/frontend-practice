@@ -4,6 +4,8 @@ import { createUseStyles } from 'react-jss';
 const useStyles = createUseStyles(({ colors: c }) => ({
   wrapper: {
     backgroundColor: c.backAlt,
+    display: 'flex',
+    flexFlow: 'column',
     minHeight: '100vh',
   },
 }));
