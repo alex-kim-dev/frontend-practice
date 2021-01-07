@@ -34,11 +34,11 @@
     - [ ] Container
       - [ ] Status
       - [ ] Button
-  - [ ] Summary/Apply
-    - [ ] Container
-  - [ ] Cta
-    - [ ] Container
-      - [ ] Button
+  - [x] Summary/Apply
+    - [x] Container
+  - [x] Cta
+    - [x] Container
+      - [x] Button
 
 ## Data
 

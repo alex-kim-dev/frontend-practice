@@ -6,6 +6,7 @@ import { state } from '../store';
 import Container from './Container';
 import Cta from './Cta';
 import Heading from './Heading';
+import Summary from './Summary';
 
 const useStyles = createUseStyles({
   wrapper: {
@@ -30,7 +31,7 @@ const Position = () => {
     company_url: url,
     // created_at: createdAt,
     // description,
-    // how_to_apply: summary,
+    how_to_apply: summary,
     // location,
     title,
     // type,
@@ -40,6 +41,7 @@ const Position = () => {
     <article className={css.wrapper}>
       <Container maxWidth='sm'>
         <Heading data={{ company, url, logoUrl }} />
+        {summary && <Summary content={summary} />}
       </Container>
       <Cta data={{ title, company, url }} />
     </article>
