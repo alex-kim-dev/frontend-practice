@@ -30,10 +30,10 @@
   - [x] Heading/Company
     - [x] Container
       - [x] Button
-  - [ ] Content/Position (style markdown elements)
-    - [ ] Container
-      - [ ] Status
-      - [ ] Button
+  - [x] Content/Position (style markdown elements)
+    - [x] Container
+      - [x] Status
+      - [x] Button
   - [x] Summary/Apply
     - [x] Container
   - [x] Cta
