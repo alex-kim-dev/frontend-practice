@@ -102,6 +102,7 @@ const Search = () => {
   const isMdUp = useBreakpoint('mdUp');
   const {
     search: { description, location, isFullTime, isModalOpen },
+    jobs: [isLoading],
   } = useContext(state);
   const {
     changeDescription,
@@ -126,6 +127,7 @@ const Search = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (isLoading) return;
 
     setJobs([true, null, null]);
 
@@ -164,7 +166,7 @@ const Search = () => {
         />
       </div>
       <div className={css.submit}>
-        <Button type='submit' fullWidth>
+        <Button type='submit' fullWidth loading={isLoading}>
           Search
         </Button>
       </div>

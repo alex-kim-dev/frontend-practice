@@ -9,6 +9,7 @@ import { JssProvider, ThemeProvider } from 'react-jss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import reset from 'reset-jss';
 
+import ErrorMessage from './components/ErrorMessage';
 import Grid from './components/Grid';
 import Header from './components/Header';
 import Position from './components/Position';
@@ -58,7 +59,7 @@ jss.createStyleSheet(globalStyles).attach();
 const App = () => {
   const {
     theme: currentTheme,
-    jobs: [isLoading, error, data],
+    jobs: [, error, data],
   } = useContext(state);
   const {
     changeDescription,
@@ -89,6 +90,8 @@ const App = () => {
       .catch((err) => setJobs([false, err, null]));
   }, [changeDescription, changeLocation, changeFullTime, setJobs]);
 
+  const errMsg = 'Error while getting jobs, please try again';
+
   return (
     <JssProvider jss={jss}>
       <ThemeProvider theme={{ ...theme, colors: theme.colors[currentTheme] }}>
@@ -101,17 +104,8 @@ const App = () => {
               </Route>
               <Route exact path='/'>
                 <Search />
-                <div
-                  style={{
-                    color: 'gray',
-                    fontSize: '2.4rem',
-                    marginTop: '8rem',
-                    textAlign: 'center',
-                  }}
-                >
-                  {isLoading && 'Loading...'}
-                  {error && error.toString()}
-                </div>
+                {error && <ErrorMessage message={errMsg} />}
+                {data?.length === 0 && <ErrorMessage message='Nothing found' />}
                 {data && <Grid data={data} />}
               </Route>
             </Switch>

@@ -8,15 +8,18 @@ const useStyles = createUseStyles(({ breakpoints: { smUp, mdUp } }) => ({
   grid: {
     display: 'grid',
     gridGap: '2.4rem',
+    marginTop: '3.2rem',
 
     [smUp]: {
       gridGap: '4rem 1.1rem',
       gridTemplateColumns: 'repeat(2, 1fr)',
+      marginTop: '4.5rem',
     },
 
     [mdUp]: {
       gridColumnGap: '3rem',
       gridTemplateColumns: 'repeat(3, 1fr)',
+      marginTop: '8rem',
     },
   },
 }));
