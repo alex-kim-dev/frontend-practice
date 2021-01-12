@@ -14,7 +14,7 @@ import { createUseStyles } from 'react-jss';
 import { state } from '../store';
 
 const useStyles = createUseStyles(({ colors: c }) => ({
-  button: ({ variant, fullWidth, hasIcon, currentTheme }) => {
+  button: ({ variant, fullWidth, hasIcon, loading, currentTheme }) => {
     const variantColors = {
       primary: {
         back: c.accent,
@@ -37,7 +37,7 @@ const useStyles = createUseStyles(({ colors: c }) => ({
       backgroundColor: variantColors[variant].back,
       border: 0,
       borderRadius: '0.5rem',
-      color: variantColors[variant].text,
+      color: loading ? 'transparent' : variantColors[variant].text,
       cursor: 'pointer',
       display: 'inline-flex',
       fontSize: '1.6rem',
@@ -47,6 +47,7 @@ const useStyles = createUseStyles(({ colors: c }) => ({
         hasIcon ? '1.4rem' : '1.6rem',
         hasIcon || fullWidth ? '1.4rem' : '2.8rem',
       ],
+      position: 'relative',
       textAlign: 'center',
       textDecoration: 'none',
       transition: 'background-color 0.2s',
@@ -61,22 +62,42 @@ const useStyles = createUseStyles(({ colors: c }) => ({
       },
     };
   },
+
+  spinner: {
+    animation: '$spin 1s infinite linear',
+    border: '0.3rem solid rgba(255, 255, 255, 0.4)',
+    borderLeft: '0.3rem solid #fff',
+    borderRadius: '50%',
+    display: 'block',
+    height: '2.4rem',
+    left: 'calc(50% - 1.2rem)',
+    position: 'absolute',
+    top: 'calc(50% - 1.2rem)',
+    width: '2.4rem',
+  },
+
+  '@keyframes spin': {
+    from: { transform: 'rotate(0deg)' },
+    to: { transform: 'rotate(360deg)' },
+  },
 }));
 
 const Button = ({
   as: Element = 'button',
   variant = 'primary',
   fullWidth = false,
+  loading = false,
   children,
   ...props
 }) => {
   const { theme: currentTheme } = useContext(state);
   const hasIcon = typeof children !== 'string';
-  const css = useStyles({ variant, fullWidth, hasIcon, currentTheme });
+  const css = useStyles({ variant, fullWidth, hasIcon, loading, currentTheme });
 
   return (
     <Element className={css.button} {...props}>
       {children}
+      {loading && <span className={css.spinner} />}
     </Element>
   );
 };
@@ -85,6 +106,7 @@ Button.propTypes = {
   as: elementType,
   variant: oneOf(['primary', 'secondary', 'neutral']),
   fullWidth: bool,
+  loading: bool,
   children: oneOfType([string, element]).isRequired,
 };
 
