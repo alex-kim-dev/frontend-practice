@@ -3,6 +3,8 @@ import bgPatternXs from '@assets/mobile/bg-pattern-detail-footer.svg';
 import { string } from 'prop-types';
 import { createUseStyles } from 'react-jss';
 
+import HtmlContent from './HtmlContent';
+
 const useStyles = createUseStyles(({ colors: c, breakpoints: { smUp } }) => ({
   content: {
     lineHeight: '165%',
@@ -10,7 +12,7 @@ const useStyles = createUseStyles(({ colors: c, breakpoints: { smUp } }) => ({
     wordBreak: 'break-word',
 
     '& a': {
-      color: 'inherit',
+      color: '#fff',
       fontWeight: 700,
     },
   },
@@ -42,10 +44,9 @@ const Summary = ({ content }) => {
   return (
     <section className={css.section}>
       <h3 className={css.heading}>How to Apply</h3>
-      <div
-        className={css.content}
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+      <div className={css.content}>
+        <HtmlContent html={content} />
+      </div>
     </section>
   );
 };
