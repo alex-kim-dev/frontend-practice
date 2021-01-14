@@ -4,18 +4,17 @@ import 'fontsource-kumbh-sans/700-normal.css';
 
 import { create as createJss } from 'jss';
 import preset from 'jss-preset-default';
-import { memo, useContext, useLayoutEffect } from 'react';
+import { useContext } from 'react';
 import { JssProvider, ThemeProvider } from 'react-jss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import reset from 'reset-jss';
 
-import ErrorMessage from './components/ErrorMessage';
-import Grid from './components/Grid';
-import Header from './components/Header';
-import Position from './components/Position';
-import Search from './components/Search';
-import Wrapper from './components/Wrapper';
-import { actions, state } from './store';
+import { state } from '@/store';
+
+import Header from './components/layout/Header';
+import Wrapper from './components/layout/Wrapper';
+import Home from './components/pages/Home';
+import Position from './components/pages/Position';
 import theme from './theme';
 
 const globalStyles = {
@@ -57,63 +56,27 @@ jss.createStyleSheet(reset).attach();
 jss.createStyleSheet(globalStyles).attach();
 
 const App = () => {
-  const {
-    theme: currentTheme,
-    jobs: [, error, data],
-  } = useContext(state);
-  const {
-    changeDescription,
-    changeLocation,
-    changeFullTime,
-    setJobs,
-  } = useContext(actions);
-
-  useLayoutEffect(() => {
-    const query = new URLSearchParams(window.location.search);
-    const description = query.get('search');
-    const location = query.get('location');
-    const isFullTime = query.get('full_time');
-
-    if (description) changeDescription(description);
-    if (location) changeLocation(location);
-    if (isFullTime) changeFullTime();
-
-    setJobs([true, null, null]);
-
-    const url = new URL('https://cors-anywhere.herokuapp.com/');
-    url.pathname = 'https://jobs.github.com/positions.json';
-    url.search = query;
-
-    fetch(url)
-      .then((response) => response.json())
-      .then((json) => setJobs([false, null, json]))
-      .catch((err) => setJobs([false, err, null]));
-  }, [changeDescription, changeLocation, changeFullTime, setJobs]);
-
-  const errMsg = 'Error while getting jobs, please try again';
+  const { theme: currentTheme } = useContext(state);
 
   return (
     <JssProvider jss={jss}>
       <ThemeProvider theme={{ ...theme, colors: theme.colors[currentTheme] }}>
-        <Router>
-          <Wrapper>
+        <Wrapper>
+          <Router>
             <Header />
             <Switch>
               <Route exact path='/:id'>
                 <Position />
               </Route>
               <Route exact path='/'>
-                <Search />
-                {error && <ErrorMessage message={errMsg} />}
-                {data?.length === 0 && <ErrorMessage message='Nothing found' />}
-                {data && <Grid data={data} />}
+                <Home />
               </Route>
             </Switch>
-          </Wrapper>
-        </Router>
+          </Router>
+        </Wrapper>
       </ThemeProvider>
     </JssProvider>
   );
 };
 
-export default memo(App);
+export default App;

@@ -1,10 +1,10 @@
+import Logo from '@components/common/Logo';
+import Status from '@components/common/Status';
 import { shape } from 'prop-types';
 import { createUseStyles } from 'react-jss';
 import { Link } from 'react-router-dom';
 
-import { getRelativeTimeSince } from '../utils';
-import Logo from './Logo';
-import Status from './Status';
+import { getRelativeTimeSince } from '@/utils';
 
 const useStyles = createUseStyles(({ colors: c }) => ({
   wrapper: {

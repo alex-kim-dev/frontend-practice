@@ -1,8 +1,8 @@
 import { node } from 'prop-types';
 import { createContext, useLayoutEffect, useMemo, useReducer } from 'react';
 
-import { useThemePreference } from './hooks';
-import { constantToCamelCase } from './utils';
+import { useThemePreference } from '@/hooks';
+import { constantToCamelCase } from '@/utils';
 
 const stateContext = createContext();
 const actionsContext = createContext();

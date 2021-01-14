@@ -1,8 +1,8 @@
+import Container from '@components/layout/Container';
 import { arrayOf, shape } from 'prop-types';
 import { createUseStyles } from 'react-jss';
 
 import Card from './Card';
-import Container from './Container';
 
 const useStyles = createUseStyles(({ breakpoints: { smUp, mdUp } }) => ({
   grid: {

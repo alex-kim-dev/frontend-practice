@@ -8,9 +8,10 @@ import { useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 import { Link } from 'react-router-dom';
 
-import { actions, state } from '../store';
+import { actions, state } from '@/store';
+
+import Toggle from '../common/Toggle';
 import Container from './Container';
-import Toggle from './Toggle';
 
 const useStyles = createUseStyles(({ breakpoints: { smUp, mdUp } }) => ({
   header: {

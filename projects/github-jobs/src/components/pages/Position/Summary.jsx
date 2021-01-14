@@ -3,7 +3,7 @@ import bgPatternXs from '@assets/mobile/bg-pattern-detail-footer.svg';
 import { string } from 'prop-types';
 import { createUseStyles } from 'react-jss';
 
-import HtmlContent from './HtmlContent';
+import HtmlContent from '../../common/HtmlContent';
 
 const useStyles = createUseStyles(({ colors: c, breakpoints: { smUp } }) => ({
   content: {

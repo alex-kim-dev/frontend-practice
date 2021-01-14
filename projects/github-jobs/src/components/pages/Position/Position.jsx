@@ -1,9 +1,10 @@
+import Container from '@components/layout/Container';
 import { useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useParams } from 'react-router-dom';
 
-import { state } from '../store';
-import Container from './Container';
+import { state } from '@/store';
+
 import Content from './Content';
 import Cta from './Cta';
 import Heading from './Heading';

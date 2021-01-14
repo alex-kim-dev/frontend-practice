@@ -11,7 +11,7 @@ import {
 import { useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 
-import { state } from '../store';
+import { state } from '@/store';
 
 const useStyles = createUseStyles(({ colors: c }) => ({
   button: ({ variant, fullWidth, hasIcon, loading, currentTheme }) => {

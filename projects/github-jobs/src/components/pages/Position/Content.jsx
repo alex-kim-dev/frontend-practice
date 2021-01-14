@@ -2,12 +2,13 @@ import { shape, string } from 'prop-types';
 import { useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 
-import { useBreakpoint } from '../hooks';
-import { state } from '../store';
-import { getRelativeTimeSince } from '../utils';
-import Button from './Button';
-import HtmlContent from './HtmlContent';
-import Status from './Status';
+import { useBreakpoint } from '@/hooks';
+import { state } from '@/store';
+import { getRelativeTimeSince } from '@/utils';
+
+import Button from '../../common/Button';
+import HtmlContent from '../../common/HtmlContent';
+import Status from '../../common/Status';
 
 const useStyles = createUseStyles(({ colors: c, breakpoints: { smUp } }) => ({
   description: {

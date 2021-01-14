@@ -1,9 +1,10 @@
+import Container from '@components/layout/Container';
 import { shape, string } from 'prop-types';
 import { createUseStyles } from 'react-jss';
 
-import { useBreakpoint } from '../hooks';
-import Button from './Button';
-import Container from './Container';
+import { useBreakpoint } from '@/hooks';
+
+import Button from '../../common/Button';
 
 const useStyles = createUseStyles(({ colors: c }) => ({
   flex: {

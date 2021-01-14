@@ -1,7 +1,7 @@
 import { element, func, string } from 'prop-types';
 import { createUseStyles } from 'react-jss';
 
-import { hexToRgba } from '../utils';
+import { hexToRgba } from '@/utils';
 
 const useStyles = createUseStyles(({ colors: c }) => ({
   wrapper: {

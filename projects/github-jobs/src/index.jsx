@@ -1,7 +1,8 @@
 import ReactDOM from 'react-dom';
 
+import { StateProvider } from '@/store';
+
 import App from './App';
-import { StateProvider } from './store';
 
 ReactDOM.render(
   <StateProvider>

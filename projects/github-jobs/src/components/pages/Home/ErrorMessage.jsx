@@ -1,7 +1,6 @@
+import Container from '@components/layout/Container';
 import { string } from 'prop-types';
 import { createUseStyles } from 'react-jss';
-
-import Container from './Container';
 
 const useStyles = createUseStyles(({ colors: c }) => ({
   error: {

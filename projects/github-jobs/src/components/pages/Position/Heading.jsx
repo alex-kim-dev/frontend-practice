@@ -1,9 +1,10 @@
 import { shape, string } from 'prop-types';
 import { createUseStyles } from 'react-jss';
 
-import { useBreakpoint } from '../hooks';
-import Button from './Button';
-import Logo from './Logo';
+import { useBreakpoint } from '@/hooks';
+
+import Button from '../../common/Button';
+import Logo from '../../common/Logo';
 
 const useStyles = createUseStyles(({ breakpoints: { smUp }, colors: c }) => ({
   wrapper: {

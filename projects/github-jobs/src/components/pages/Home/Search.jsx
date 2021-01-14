@@ -1,18 +1,18 @@
 import IconFilter from '@assets/icons/icon-filter.svg';
 import IconLocation from '@assets/icons/icon-location.svg';
 import IconSearch from '@assets/icons/icon-search.svg';
+import Button from '@components/common/Button';
+import Checkbox from '@components/common/Checkbox';
+import TextField from '@components/common/TextField';
+import Container from '@components/layout/Container';
+import Modal from '@components/layout/Modal';
 import { useContext, useLayoutEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useHistory } from 'react-router-dom';
 
-import { useBreakpoint } from '../hooks';
-import { actions, state } from '../store';
-import { hexToRgba } from '../utils';
-import Button from './Button';
-import Checkbox from './Checkbox';
-import Container from './Container';
-import Modal from './Modal';
-import TextField from './TextField';
+import { useBreakpoint } from '@/hooks';
+import { actions, state } from '@/store';
+import { hexToRgba } from '@/utils';
 
 const useSearchStyles = createUseStyles(
   ({ colors: c, breakpoints: { smUp, mdUp } }) => ({
