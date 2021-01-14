@@ -52,7 +52,7 @@ const Cta = ({ data: { title, company, url } }) => {
           )}
           <Button
             as='a'
-            href={url}
+            href={url || '#'}
             target='_blank'
             rel='noreferrer'
             variant='secondary'

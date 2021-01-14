@@ -39,3 +39,38 @@ export const getRelativeTimeSince = (date = Date.now()) => {
     number > 1 ? 's' : ''
   } ago`.trim();
 };
+
+const parseUrl = (url) => {
+  try {
+    return new URL(url);
+  } catch {
+    return null;
+  }
+};
+
+export const normalizeJobs = (jobs) =>
+  jobs.map(
+    ({
+      id,
+      type,
+      created_at: createdAt,
+      company,
+      company_url: url,
+      location,
+      title,
+      description,
+      how_to_apply: howToApply,
+      company_logo: logo,
+    }) => ({
+      id,
+      type,
+      createdAt: new Date(createdAt),
+      company,
+      url: parseUrl(url),
+      location,
+      title,
+      description,
+      howToApply,
+      logo,
+    }),
+  );

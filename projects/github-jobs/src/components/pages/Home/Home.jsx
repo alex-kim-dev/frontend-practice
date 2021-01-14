@@ -1,6 +1,7 @@
 import { useContext, useLayoutEffect } from 'react';
 
 import { actions, state } from '@/store';
+import { normalizeJobs } from '@/utils';
 
 import ErrorMessage from './ErrorMessage';
 import Grid from './Grid';
@@ -35,7 +36,7 @@ const Home = () => {
 
     fetch(url)
       .then((response) => response.json())
-      .then((json) => setJobs([false, null, json]))
+      .then((json) => setJobs([false, null, normalizeJobs(json)]))
       .catch((err) => setJobs([false, err, null]));
   }, [changeDescription, changeLocation, changeFullTime, setJobs]);
 

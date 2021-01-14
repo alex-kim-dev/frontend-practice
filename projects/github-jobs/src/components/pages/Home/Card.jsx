@@ -65,22 +65,14 @@ const useStyles = createUseStyles(({ colors: c }) => ({
 
 const Card = ({ position }) => {
   const css = useStyles();
-  const {
-    id,
-    type,
-    created_at: createdAt,
-    company,
-    location,
-    title,
-    company_logo: logoUrl,
-  } = position;
+  const { id, type, createdAt, company, location, title, logo } = position;
 
-  const relativeTime = getRelativeTimeSince(new Date(createdAt));
+  const relativeTime = getRelativeTimeSince(createdAt);
 
   return (
     <div className={css.wrapper}>
       <div className={css.logo}>
-        <Logo src={logoUrl || undefined} alt={`${company} logo`} />
+        <Logo src={logo || undefined} alt={`${company} logo`} />
       </div>
       <div className={css.body}>
         <div>

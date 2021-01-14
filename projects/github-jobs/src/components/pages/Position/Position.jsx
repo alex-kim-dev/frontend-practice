@@ -29,11 +29,11 @@ const Position = () => {
   const position = data.find((record) => record.id === id);
   const {
     company,
-    company_logo: logoUrl,
-    company_url: url,
-    created_at: createdAt,
+    logo,
+    url,
+    createdAt,
     description,
-    how_to_apply: summary,
+    howToApply,
     location,
     title,
     type,
@@ -42,11 +42,11 @@ const Position = () => {
   return (
     <article className={css.wrapper}>
       <Container maxWidth='sm'>
-        <Heading data={{ company, url, logoUrl }} />
+        <Heading data={{ company, url, logoUrl: logo }} />
         <Content
           data={{ createdAt, type, title, location, url, description }}
         />
-        {summary && <Summary content={summary} />}
+        {howToApply && <Summary content={howToApply} />}
       </Container>
       <Cta data={{ title, company, url }} />
     </article>

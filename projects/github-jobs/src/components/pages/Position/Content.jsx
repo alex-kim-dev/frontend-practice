@@ -1,4 +1,4 @@
-import { shape, string } from 'prop-types';
+import { instanceOf, shape, string } from 'prop-types';
 import { useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 
@@ -78,7 +78,7 @@ const Content = ({
   const css = useStyles(theme);
   const isSmUp = useBreakpoint('smUp');
 
-  const relativeTime = getRelativeTimeSince(new Date(createdAt));
+  const relativeTime = getRelativeTimeSince(createdAt);
 
   return (
     <section className={css.section}>
@@ -91,7 +91,7 @@ const Content = ({
         <Button
           fullWidth={isSmUp ? undefined : true}
           as='a'
-          href={url}
+          href={url || '#'}
           target='_blank'
           rel='noreferrer'
         >
@@ -107,7 +107,7 @@ const Content = ({
 
 Content.propTypes = {
   data: shape({
-    createdAt: string,
+    createdAt: instanceOf(Date),
     type: string,
     title: string,
     location: string,
