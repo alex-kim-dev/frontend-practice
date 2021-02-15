@@ -1,8 +1,9 @@
 const { merge } = require('webpack-merge');
-const { url, baseurl } = require('@frontend/site-meta');
 
 const paths = require('./paths');
 const common = require('./webpack.common.js');
+
+const { url, baseurl } = require('@frontend/site-meta');
 
 module.exports = merge(common, {
   mode: 'production',

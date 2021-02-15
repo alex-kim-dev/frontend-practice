@@ -101,4 +101,4 @@ const StateProvider = ({ children }) => {
 
 StateProvider.propTypes = { children: node };
 
-export { stateContext as state, actionsContext as actions, StateProvider };
+export { actionsContext as actions, stateContext as state, StateProvider };

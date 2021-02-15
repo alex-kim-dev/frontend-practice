@@ -6,6 +6,7 @@ import Checkbox from '@components/common/Checkbox';
 import TextField from '@components/common/TextField';
 import Container from '@components/layout/Container';
 import Modal from '@components/layout/Modal';
+import { bool } from 'prop-types';
 import { useContext, useLayoutEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useHistory } from 'react-router-dom';
@@ -94,6 +95,10 @@ const Separator = ({ vertical = false }) => {
   const css = useSeparatorStyles({ vertical });
 
   return <div className={css.separator} />;
+};
+
+Separator.propTypes = {
+  vertical: bool,
 };
 
 const Search = () => {
