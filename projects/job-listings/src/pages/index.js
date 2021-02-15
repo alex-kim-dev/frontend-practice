@@ -1,1 +1,3 @@
-export { default } from '../components/JobListings';
+import JobListings from '../components/JobListings';
+
+export default JobListings;

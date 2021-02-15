@@ -184,7 +184,7 @@ p {
 
 .offer {
   border-radius: 0.4rem;
-  box-shadow: 0 2rem 2.4rem hsla(0, 0, 0, 0.1);
+  box-shadow: 0 2rem 2.4rem hsla(0, 0%, 0%, 0.1);
   max-width: 40rem;
   overflow: hidden;
 
@@ -249,7 +249,7 @@ p {
   background: $color-primary-bright-yellow;
   border: 0.2rem solid $color-primary-bright-yellow;
   border-radius: 0.4rem;
-  box-shadow: 0 1rem 0.8rem hsla(0, 0, 0, 0.1);
+  box-shadow: 0 1rem 0.8rem hsla(0, 0%, 0%, 0.1);
   color: $color-light;
   font-size: 1.6rem;
   font-weight: 700;
@@ -263,7 +263,7 @@ p {
 
   &:active {
     background: darken($color-primary-bright-yellow, 7%);
-    box-shadow: 0 0.5rem 0.4rem hsla(0, 0, 0, 0.1);
+    box-shadow: 0 0.5rem 0.4rem hsla(0, 0%, 0%, 0.1);
   }
 
   &:focus {
@@ -273,7 +273,7 @@ p {
 
   &:hover {
     background: lighten($color-primary-bright-yellow, 7%);
-    box-shadow: 0 1rem 1rem hsla(0, 0, 0, 0.2);
+    box-shadow: 0 1rem 1rem hsla(0, 0%, 0%, 0.2);
   }
 }
 

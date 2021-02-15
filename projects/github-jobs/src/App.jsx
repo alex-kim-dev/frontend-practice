@@ -1,6 +1,6 @@
-import 'fontsource-kumbh-sans/300-normal.css';
-import 'fontsource-kumbh-sans/400-normal.css';
-import 'fontsource-kumbh-sans/700-normal.css';
+import '@fontsource/kumbh-sans/300.css';
+import '@fontsource/kumbh-sans/400.css';
+import '@fontsource/kumbh-sans/700.css';
 
 import { create as createJss } from 'jss';
 import preset from 'jss-preset-default';

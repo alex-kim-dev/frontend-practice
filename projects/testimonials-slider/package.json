@@ -20,11 +20,11 @@
     "@frontend/browserslist-config": "^1.0.1",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-clean-dist": "^0.0.6",
-    "parcel-plugin-static-files-copy": "^2.5.0",
+    "parcel-plugin-static-files-copy": "^2.5.1",
     "postcss-preset-env": "^6.7.0",
     "postcss-sort-media-queries": "1.7.26",
     "pug": "^3.0.0",
-    "sass": "^1.27.0"
+    "sass": "^1.32.7"
   },
   "browserslist": [
     "extends @frontend/browserslist-config"

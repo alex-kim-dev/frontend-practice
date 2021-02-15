@@ -1,10 +1,13 @@
-const sass = require('sass');
 const siteMetadata = require('@frontend/site-meta');
 const path = require('path');
 
 const pathPrefix = path.join(siteMetadata.baseurl, 'job-listings');
 
 module.exports = {
+  flags: {
+    DEV_SSR: false,
+  },
+
   siteMetadata,
   pathPrefix,
 
@@ -34,8 +37,6 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sass',
       options: {
-        implementation: sass,
-        precision: 4,
         useResolveUrlLoader: true,
       },
     },
