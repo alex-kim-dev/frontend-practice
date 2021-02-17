@@ -1,6 +1,6 @@
 {
   "name": "github-jobs",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": true,
   "description": "A solution for \"GitHub Jobs API\" challenge on frontendmentor.io",
   "license": "MIT",
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@fontsource/kumbh-sans": "^4.2.1",
-    "@frontend/site-meta": "^1.0.1",
+    "@frontend/site-meta": "^1.0.2",
     "clsx": "^1.1.1",
     "jss": "^10.5.1",
     "jss-preset-default": "^10.5.1",

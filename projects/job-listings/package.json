@@ -1,6 +1,6 @@
 {
   "name": "job-listings",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "description": "A solution for \"Job listings with filtering\" challenge on frontendmentor.io",
   "license": "MIT",
@@ -26,7 +26,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@frontend/site-meta": "^1.0.1",
+    "@frontend/site-meta": "^1.0.2",
     "classnames": "^2.2.6",
     "gatsby": "^2.32.3",
     "gatsby-image": "^2.11.0",

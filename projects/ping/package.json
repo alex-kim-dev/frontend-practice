@@ -1,6 +1,6 @@
 {
   "name": "ping",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "description": "A solution for \"Ping coming soon page\" challenge on frontendmentor.io",
   "license": "MIT",
@@ -22,7 +22,7 @@
     "start": "parcel src/index.pug --out-dir public"
   },
   "dependencies": {
-    "@frontend/site-meta": "^1.0.1"
+    "@frontend/site-meta": "^1.0.2"
   },
   "devDependencies": {
     "@frontend/browserslist-config": "^1.0.1",

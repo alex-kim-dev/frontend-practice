@@ -1,6 +1,6 @@
 {
   "name": "fylo-landing",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": true,
   "description": "A solution for \"Fylo landing page with two column layout\" challenge on frontendmentor.io",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "start": "parcel src/index.pug --out-dir public"
   },
   "dependencies": {
-    "@frontend/site-meta": "^1.0.1"
+    "@frontend/site-meta": "^1.0.2"
   },
   "devDependencies": {
     "@frontend/browserslist-config": "^1.0.1",
