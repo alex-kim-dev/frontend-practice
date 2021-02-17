@@ -9,11 +9,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          persist-credentials: false
 
-      - name: Cache dependencies
+      - name: Restore Lerna
         uses: actions/cache@v2
+        id: lerna-cache
         with:
           path: |
             node_modules
@@ -21,7 +20,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install
-        if: steps.cache-dependencies.outputs.cache-hit != 'true'
+        if: steps.lerna-cache.outputs.cache-hit != 'true'
         run: |
           yarn install --frozen-lockfile
           yarn boot
@@ -34,13 +33,11 @@ jobs:
       - name: Build
         run: |
           yarn run build:all
-          mkdir dist
-          for D in $(ls projects); do [ -d "projects/${D}/public" ] && cp -r projects/${D}/public dist/${D}; done
+          mkdir build
+          ls -F projects | grep "\/$" | xargs -I % cp -r projects/%public build/% 2>/dev/null
 
-      - name: Host
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: dist
-          CLEAN: true
+          branch: gh-pages
+          folder: build
