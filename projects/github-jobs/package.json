@@ -17,8 +17,7 @@
     "lint": "concurrently \"yarn:lint:*\"",
     "lint:code": "eslint .",
     "lint:misc": "prettier --check \"**/*.{pug,json,yml,yaml,md}\"",
-    "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js"
   },
   "dependencies": {
     "@fontsource/kumbh-sans": "^4.2.1",
