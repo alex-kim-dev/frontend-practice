@@ -1,6 +1,6 @@
 {
   "name": "signup-form",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "A solution for \"Intro component with sign-up form\" challenge on frontendmentor.io",
   "license": "MIT",

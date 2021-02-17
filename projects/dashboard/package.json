@@ -1,6 +1,6 @@
 {
   "name": "dashboard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "A solution for \"Social media dashboard with theme switcher\" challenge on frontendmentor.io",
   "license": "MIT",

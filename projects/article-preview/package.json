@@ -1,6 +1,6 @@
 {
   "name": "article-preview",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "A solution for \"Article preview component\" challenge on frontendmentor.io",
   "license": "MIT",
