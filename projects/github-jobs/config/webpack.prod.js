@@ -1,4 +1,5 @@
 const { merge } = require('webpack-merge');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const paths = require('./paths');
 const common = require('./webpack.common.js');
@@ -10,7 +11,7 @@ module.exports = merge(common, {
 
   target: 'browserslist',
 
-  devtool: false,
+  devtool: 'source-map',
 
   output: {
     path: paths.build,
@@ -20,6 +21,13 @@ module.exports = merge(common, {
 
   optimization: {
     minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          mangle: false,
+        },
+      }),
+    ],
     runtimeChunk: {
       name: 'runtime',
     },
@@ -29,5 +37,12 @@ module.exports = merge(common, {
     hints: false,
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
+  },
+
+  resolve: {
+    alias: {
+      'react-dom$': 'react-dom/profiling',
+      'scheduler/tracing': 'scheduler/tracing-profiling',
+    },
   },
 });
