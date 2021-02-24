@@ -2,6 +2,7 @@ import '@fontsource/kumbh-sans/300.css';
 import '@fontsource/kumbh-sans/400.css';
 import '@fontsource/kumbh-sans/700.css';
 
+import { baseurl } from '@frontend/site-meta';
 import { create as createJss } from 'jss';
 import preset from 'jss-preset-default';
 import { useContext } from 'react';
@@ -55,6 +56,9 @@ const jss = createJss(preset());
 jss.createStyleSheet(reset).attach();
 jss.createStyleSheet(globalStyles).attach();
 
+const basename =
+  process.env.NODE_ENV === 'production' ? `${baseurl}/github-jobs` : '';
+
 const App = () => {
   const { theme: currentTheme } = useContext(state);
 
@@ -62,7 +66,7 @@ const App = () => {
     <JssProvider jss={jss}>
       <ThemeProvider theme={{ ...theme, colors: theme.colors[currentTheme] }}>
         <Wrapper>
-          <Router>
+          <Router basename={basename}>
             <Header />
             <Switch>
               <Route exact path='/:id'>
