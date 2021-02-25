@@ -43,14 +43,15 @@
 ## Data
 
 ```js
-const state = {
+const globalState = {
   theme: 'dark/light',
   search: {
     description: '',
     location: '',
     isFullTime: false,
-    isSModalOpen: false,
   },
   jobs: [false, null, null], // loading, error, data
 };
+
+// + local state for the search form
 ```

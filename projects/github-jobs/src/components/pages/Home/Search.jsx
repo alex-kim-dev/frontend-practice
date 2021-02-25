@@ -7,7 +7,7 @@ import TextField from '@components/common/TextField';
 import Container from '@components/layout/Container';
 import Modal from '@components/layout/Modal';
 import { bool } from 'prop-types';
-import { useContext, useLayoutEffect } from 'react';
+import { useContext, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useHistory } from 'react-router-dom';
 
@@ -105,34 +105,38 @@ const Search = () => {
   const css = useSearchStyles();
   const isSmUp = useBreakpoint('smUp');
   const isMdUp = useBreakpoint('mdUp');
+
   const {
-    search: { description, location, isFullTime, isModalOpen },
+    search,
     jobs: [isLoading],
   } = useContext(state);
-  const {
-    changeDescription,
-    changeLocation,
-    changeFullTime,
-    toggleSearchModal,
-    setJobs,
-  } = useContext(actions);
+  const { saveSearch, setJobs } = useContext(actions);
   const history = useHistory();
 
-  useLayoutEffect(() => {
-    if (isSmUp && isModalOpen) toggleSearchModal();
-  }, [isModalOpen, isSmUp, toggleSearchModal]);
+  const [description, setDescription] = useState(search.description);
+  const [location, setLocation] = useState(search.location);
+  const [isFullTime, setFullTime] = useState(search.isFullTime);
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const handleDescriptionChange = ({ target: { value } }) => {
-    changeDescription(value);
+    setDescription(value);
   };
 
   const handleLocationChange = ({ target: { value } }) => {
-    changeLocation(value);
+    setLocation(value);
+  };
+
+  const handleFullTimeChange = ({ target: { checked } }) => {
+    setFullTime(checked);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isLoading) return;
+
+    const searchData = { description, location, isFullTime };
+    saveSearch(searchData);
+    // TODO add action: getJobs(searchData);
 
     setJobs([true, null, null]);
 
@@ -167,7 +171,7 @@ const Search = () => {
         <Checkbox
           label={`Full Time${isMdUp ? ' Only' : ''}`}
           checked={isFullTime}
-          onChange={changeFullTime}
+          onChange={handleFullTimeChange}
         />
       </div>
       <div className={css.submit}>
@@ -182,8 +186,9 @@ const Search = () => {
     <>
       <div className={css.filter}>
         <Button
+          type='button'
           variant='neutral'
-          onClick={isModalOpen ? undefined : toggleSearchModal}
+          onClick={() => setModalOpen(true)}
         >
           <IconFilter />
         </Button>
@@ -197,7 +202,7 @@ const Search = () => {
   );
 
   const modal = (
-    <Modal onClose={toggleSearchModal}>
+    <Modal onClose={() => setModalOpen(false)}>
       <div className={css.location}>
         <TextField
           label='location'
@@ -212,7 +217,7 @@ const Search = () => {
         <Checkbox
           label='Full Time Only'
           checked={isFullTime}
-          onChange={changeFullTime}
+          onChange={handleFullTimeChange}
         />
         <Button type='submit' fullWidth>
           Search
@@ -234,7 +239,7 @@ const Search = () => {
           />
         </div>
         {isSmUp ? extendedSearch : compactSearch}
-        {isModalOpen && modal}
+        {!isSmUp && isModalOpen && modal}
       </form>
     </Container>
   );

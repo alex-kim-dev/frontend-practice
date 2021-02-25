@@ -13,20 +13,12 @@ const initialState = {
     description: '',
     location: '',
     isFullTime: false,
-    isModalOpen: false,
   },
   jobs: [false, null, null], // loading, error, data
 };
 
 const actionTypes = Object.fromEntries(
-  [
-    'TOGGLE_THEME',
-    'CHANGE_FULL_TIME',
-    'CHANGE_DESCRIPTION',
-    'CHANGE_LOCATION',
-    'TOGGLE_SEARCH_MODAL',
-    'SET_JOBS',
-  ].map((str) => [str, str]),
+  ['TOGGLE_THEME', 'SAVE_SEARCH', 'SET_JOBS'].map((str) => [str, str]),
 );
 
 const reducer = (state, action) => {
@@ -36,29 +28,8 @@ const reducer = (state, action) => {
     case actionTypes.TOGGLE_THEME:
       return { ...state, theme: state.theme === 'light' ? 'dark' : 'light' };
 
-    case actionTypes.CHANGE_FULL_TIME:
-      return {
-        ...state,
-        search: { ...state.search, isFullTime: !state.search.isFullTime },
-      };
-
-    case actionTypes.CHANGE_DESCRIPTION:
-      return {
-        ...state,
-        search: { ...state.search, description: payload },
-      };
-
-    case actionTypes.CHANGE_LOCATION:
-      return {
-        ...state,
-        search: { ...state.search, location: payload },
-      };
-
-    case actionTypes.TOGGLE_SEARCH_MODAL:
-      return {
-        ...state,
-        search: { ...state.search, isModalOpen: !state.search.isModalOpen },
-      };
+    case actionTypes.SAVE_SEARCH:
+      return { ...state, search: payload };
 
     case actionTypes.SET_JOBS:
       return { ...state, jobs: payload };
@@ -70,7 +41,7 @@ const reducer = (state, action) => {
 
 const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const isDarkThemePreffered = useThemePreference();
+  const isDarkThemePreferred = useThemePreference();
 
   const actions = useMemo(
     () =>
@@ -88,7 +59,7 @@ const StateProvider = ({ children }) => {
 
   useLayoutEffect(() => {
     actions.toggleTheme();
-  }, [actions, isDarkThemePreffered]);
+  }, [actions, isDarkThemePreferred]);
 
   return (
     <stateContext.Provider value={state}>
