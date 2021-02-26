@@ -13,7 +13,7 @@ import { useHistory } from 'react-router-dom';
 
 import { getJobs, saveSearch } from '@/actions';
 import { useBreakpoint, useDispatch, useStore } from '@/hooks';
-import { hexToRgba } from '@/utils';
+import { getSearchParams, hexToRgba, makeUrlQuery } from '@/utils';
 
 const useSearchStyles = createUseStyles(
   ({ colors: c, breakpoints: { smUp, mdUp } }) => ({
@@ -119,19 +119,14 @@ const Search = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   useLayoutEffect(() => {
-    const query = new URLSearchParams(window.location.search);
-    const searchData = {
-      description: query.get('search') ?? '',
-      location: query.get('location') ?? '',
-      isFullTime: query.get('full_time') === 'on',
-    };
+    const searchParams = getSearchParams();
 
-    setDescription(searchData.description);
-    setLocation(searchData.location);
-    setFullTime(searchData.isFullTime);
+    setDescription(searchParams.description);
+    setLocation(searchParams.location);
+    setFullTime(searchParams.isFullTime);
 
-    dispatch(saveSearch(searchData));
-    dispatch(getJobs(searchData));
+    dispatch(saveSearch(searchParams));
+    dispatch(getJobs(searchParams));
   }, [dispatch]);
 
   const handleDescriptionChange = ({ target: { value } }) => {
@@ -150,16 +145,13 @@ const Search = () => {
     e.preventDefault();
     if (isLoading) return;
 
-    const searchData = { description, location, isFullTime };
-    dispatch(saveSearch(searchData));
-    dispatch(getJobs(searchData));
+    const searchParams = { description, location, isFullTime };
+    const query = makeUrlQuery(searchParams);
 
-    const searchParams = new URLSearchParams();
-    if (description) searchParams.append('search', description);
-    if (location) searchParams.append('location', location);
-    if (isFullTime) searchParams.append('full_time', 'on');
+    dispatch(saveSearch(searchParams));
+    dispatch(getJobs(searchParams));
 
-    history.push(`/?${searchParams.toString()}`);
+    history.push(`/?${query}`);
   };
 
   const extendedSearch = (

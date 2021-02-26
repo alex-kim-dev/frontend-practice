@@ -1,5 +1,5 @@
 import { actionTypes as at } from './store';
-import { normalizeJobs } from './utils';
+import { makeJobsUrl, normalizeJobs } from './utils';
 
 export const toggleTheme = () => ({ type: at.TOGGLE_THEME });
 
@@ -14,17 +14,11 @@ export const setJobsError = (payload) => ({ type: at.SET_JOBS_ERROR, payload });
 
 export const setJobsData = (payload) => ({ type: at.SET_JOBS_DATA, payload });
 
-export const getJobs = ({ description, location, isFullTime }) => (
-  dispatch,
-) => {
+export const getJobs = (searchParams) => (dispatch) => {
   dispatch(setJobsLoading(true));
   dispatch(setJobsError(null));
 
-  const url = new URL('https://cors-anywhere.herokuapp.com/');
-  url.pathname = 'https://jobs.github.com/positions.json';
-  if (description) url.searchParams.append('search', description);
-  if (location) url.searchParams.append('location', location);
-  if (isFullTime) url.searchParams.append('full_time', 'on');
+  const url = makeJobsUrl(searchParams);
 
   fetch(url)
     .then((response) => response.json())

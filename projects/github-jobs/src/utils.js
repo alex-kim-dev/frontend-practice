@@ -1,3 +1,6 @@
+const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+const jobsEndpoint = 'https://jobs.github.com/positions.json';
+
 export const capitalize = (str) => `${str[0].toUpperCase()}${str.slice(1)}`;
 
 export const hexToRgba = (hex, alpha) => {
@@ -74,3 +77,27 @@ export const normalizeJobs = (jobs) =>
       logo,
     }),
   );
+
+export const makeUrlQuery = ({ description, location, isFullTime }) => {
+  const query = new URLSearchParams();
+  if (description) query.append('search', description);
+  if (location) query.append('location', location);
+  if (isFullTime) query.append('full_time', 'on');
+  return query;
+};
+
+export const makeJobsUrl = (searchParams) => {
+  const url = new URL(corsProxy);
+  url.pathname = jobsEndpoint;
+  url.search = makeUrlQuery(searchParams);
+  return url;
+};
+
+export const getSearchParams = () => {
+  const query = new URLSearchParams(window.location.search);
+  return {
+    description: query.get('search') ?? '',
+    location: query.get('location') ?? '',
+    isFullTime: query.get('full_time') === 'on',
+  };
+};
