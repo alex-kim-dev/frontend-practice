@@ -50,7 +50,11 @@ const globalState = {
     location: '',
     isFullTime: false,
   },
-  jobs: [false, null, null], // loading, error, data
+  jobs: {
+    isLoading: false,
+    error: null,
+    data: null,
+  },
 };
 
 // + local state for the search form

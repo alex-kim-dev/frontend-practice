@@ -4,11 +4,11 @@ import IconMoon from '@assets/icons/icon-moon.svg';
 import IconSun from '@assets/icons/icon-sun.svg';
 import backMobile from '@assets/mobile/bg-pattern-header.svg';
 import backTablet from '@assets/tablet/bg-pattern-header.svg';
-import { useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 import { Link } from 'react-router-dom';
 
-import { actions, state } from '@/store';
+import { toggleTheme } from '@/actions';
+import { useDispatch, useStore } from '@/hooks';
 
 import Toggle from '../common/Toggle';
 import Container from './Container';
@@ -47,8 +47,8 @@ const useStyles = createUseStyles(({ breakpoints: { smUp, mdUp } }) => ({
 
 const Header = () => {
   const css = useStyles();
-  const { theme } = useContext(state);
-  const { toggleTheme } = useContext(actions);
+  const { theme } = useStore();
+  const dispatch = useDispatch();
 
   return (
     <header className={css.header}>
@@ -61,7 +61,7 @@ const Header = () => {
             label='Switch theme'
             iconLeft={<IconSun />}
             iconRight={<IconMoon />}
-            onChange={toggleTheme}
+            onChange={() => dispatch(toggleTheme())}
             checked={theme === 'dark'}
           />
         </div>

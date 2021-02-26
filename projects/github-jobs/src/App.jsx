@@ -5,17 +5,17 @@ import '@fontsource/kumbh-sans/700.css';
 import { baseurl } from '@frontend/site-meta';
 import { create as createJss } from 'jss';
 import preset from 'jss-preset-default';
-import { useContext } from 'react';
+import { useLayoutEffect } from 'react';
 import { JssProvider, ThemeProvider } from 'react-jss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import reset from 'reset-jss';
 
-import { state } from '@/store';
-
+import { toggleTheme } from './actions';
 import Header from './components/layout/Header';
 import Wrapper from './components/layout/Wrapper';
 import Home from './components/pages/Home';
 import Position from './components/pages/Position';
+import { useDispatch, useStore, useThemePreference } from './hooks';
 import theme from './theme';
 
 const globalStyles = {
@@ -60,7 +60,13 @@ const basename =
   process.env.NODE_ENV === 'production' ? `${baseurl}/github-jobs` : '';
 
 const App = () => {
-  const { theme: currentTheme } = useContext(state);
+  const { theme: currentTheme } = useStore();
+  const isDarkThemePreferred = useThemePreference();
+  const dispatch = useDispatch();
+
+  useLayoutEffect(() => {
+    if (isDarkThemePreferred) dispatch(toggleTheme());
+  }, [isDarkThemePreferred, dispatch]);
 
   return (
     <JssProvider jss={jss}>

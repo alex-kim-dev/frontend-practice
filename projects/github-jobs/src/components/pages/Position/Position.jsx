@@ -1,9 +1,8 @@
 import Container from '@components/layout/Container';
-import { useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useParams } from 'react-router-dom';
 
-import { state } from '@/store';
+import { useStore } from '@/hooks';
 
 import Content from './Content';
 import Cta from './Cta';
@@ -23,8 +22,8 @@ const Position = () => {
   const css = useStyles();
   const { id } = useParams();
   const {
-    jobs: [, , data],
-  } = useContext(state);
+    jobs: { data },
+  } = useStore();
 
   const position = data.find((record) => record.id === id);
   const {

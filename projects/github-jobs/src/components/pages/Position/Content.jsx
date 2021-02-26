@@ -1,9 +1,7 @@
 import { instanceOf, shape, string } from 'prop-types';
-import { useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 
-import { useBreakpoint } from '@/hooks';
-import { state } from '@/store';
+import { useBreakpoint, useStore } from '@/hooks';
 import { getRelativeTimeSince } from '@/utils';
 
 import Button from '../../common/Button';
@@ -74,7 +72,7 @@ const useStyles = createUseStyles(({ colors: c, breakpoints: { smUp } }) => ({
 const Content = ({
   data: { createdAt, type, title, location, url, description },
 }) => {
-  const { theme } = useContext(state);
+  const { theme } = useStore();
   const css = useStyles(theme);
   const isSmUp = useBreakpoint('smUp');
 

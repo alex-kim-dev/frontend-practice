@@ -7,12 +7,12 @@ import TextField from '@components/common/TextField';
 import Container from '@components/layout/Container';
 import Modal from '@components/layout/Modal';
 import { bool } from 'prop-types';
-import { useContext, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import { useHistory } from 'react-router-dom';
 
-import { useBreakpoint } from '@/hooks';
-import { actions, state } from '@/store';
+import { getJobs, saveSearch } from '@/actions';
+import { useBreakpoint, useDispatch, useStore } from '@/hooks';
 import { hexToRgba } from '@/utils';
 
 const useSearchStyles = createUseStyles(
@@ -108,15 +108,31 @@ const Search = () => {
 
   const {
     search,
-    jobs: [isLoading],
-  } = useContext(state);
-  const { saveSearch, setJobs } = useContext(actions);
+    jobs: { isLoading },
+  } = useStore();
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const [description, setDescription] = useState(search.description);
   const [location, setLocation] = useState(search.location);
   const [isFullTime, setFullTime] = useState(search.isFullTime);
   const [isModalOpen, setModalOpen] = useState(false);
+
+  useLayoutEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    const searchData = {
+      description: query.get('search') ?? '',
+      location: query.get('location') ?? '',
+      isFullTime: query.get('full_time') === 'on',
+    };
+
+    setDescription(searchData.description);
+    setLocation(searchData.location);
+    setFullTime(searchData.isFullTime);
+
+    dispatch(saveSearch(searchData));
+    dispatch(getJobs(searchData));
+  }, [dispatch]);
 
   const handleDescriptionChange = ({ target: { value } }) => {
     setDescription(value);
@@ -135,23 +151,15 @@ const Search = () => {
     if (isLoading) return;
 
     const searchData = { description, location, isFullTime };
-    saveSearch(searchData);
-    // TODO add action: getJobs(searchData);
+    dispatch(saveSearch(searchData));
+    dispatch(getJobs(searchData));
 
-    setJobs([true, null, null]);
+    const searchParams = new URLSearchParams();
+    if (description) searchParams.append('search', description);
+    if (location) searchParams.append('location', location);
+    if (isFullTime) searchParams.append('full_time', 'on');
 
-    const url = new URL('https://cors-anywhere.herokuapp.com/');
-    url.pathname = 'https://jobs.github.com/positions.json';
-    if (description) url.searchParams.append('search', description);
-    if (location) url.searchParams.append('location', location);
-    if (isFullTime) url.searchParams.append('full_time', 'on');
-
-    history.push(`/?${url.searchParams.toString()}`);
-
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => setJobs([false, null, data]))
-      .catch((error) => setJobs([false, error, null]));
+    history.push(`/?${searchParams.toString()}`);
   };
 
   const extendedSearch = (

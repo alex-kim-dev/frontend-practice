@@ -1,11 +1,8 @@
-import { node } from 'prop-types';
-import { createContext, useLayoutEffect, useMemo, useReducer } from 'react';
-
-import { useThemePreference } from '@/hooks';
-import { constantToCamelCase } from '@/utils';
+import { arrayOf, node, oneOfType } from 'prop-types';
+import { createContext, useMemo, useReducer } from 'react';
 
 const stateContext = createContext();
-const actionsContext = createContext();
+const dispatchContext = createContext();
 
 const initialState = {
   theme: 'light',
@@ -14,12 +11,20 @@ const initialState = {
     location: '',
     isFullTime: false,
   },
-  jobs: [false, null, null], // loading, error, data
+  jobs: {
+    isLoading: false,
+    error: null,
+    data: null,
+  },
 };
 
-const actionTypes = Object.fromEntries(
-  ['TOGGLE_THEME', 'SAVE_SEARCH', 'SET_JOBS'].map((str) => [str, str]),
-);
+export const actionTypes = {
+  TOGGLE_THEME: 'TOGGLE_THEME',
+  SAVE_SEARCH: 'SAVE_SEARCH',
+  SET_JOBS_LOADING: 'SET_JOBS_LOADING',
+  SET_JOBS_ERROR: 'SET_JOBS_ERROR',
+  SET_JOBS_DATA: 'SET_JOBS_DATA',
+};
 
 const reducer = (state, action) => {
   const { type, payload } = action;
@@ -31,45 +36,42 @@ const reducer = (state, action) => {
     case actionTypes.SAVE_SEARCH:
       return { ...state, search: payload };
 
-    case actionTypes.SET_JOBS:
-      return { ...state, jobs: payload };
+    case actionTypes.SET_JOBS_LOADING:
+      return { ...state, jobs: { ...state.jobs, isLoading: payload } };
+
+    case actionTypes.SET_JOBS_ERROR:
+      return { ...state, jobs: { ...state.jobs, error: payload } };
+
+    case actionTypes.SET_JOBS_DATA:
+      return { ...state, jobs: { ...state.jobs, data: payload } };
 
     default:
       return state;
   }
 };
 
-const StateProvider = ({ children }) => {
+const StoreProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const isDarkThemePreferred = useThemePreference();
 
-  const actions = useMemo(
-    () =>
-      Object.values(actionTypes).reduce(
-        (acc, type) => ({
-          ...acc,
-          [constantToCamelCase(type)](payload) {
-            dispatch({ type, payload });
-          },
-        }),
-        {},
-      ),
+  const dispatchWithThunks = useMemo(
+    () => (action) => {
+      if (typeof action === 'function') action(dispatch);
+      else dispatch(action);
+    },
     [dispatch],
   );
 
-  useLayoutEffect(() => {
-    actions.toggleTheme();
-  }, [actions, isDarkThemePreferred]);
-
   return (
     <stateContext.Provider value={state}>
-      <actionsContext.Provider value={actions}>
+      <dispatchContext.Provider value={dispatchWithThunks}>
         {children}
-      </actionsContext.Provider>
+      </dispatchContext.Provider>
     </stateContext.Provider>
   );
 };
 
-StateProvider.propTypes = { children: node };
+StoreProvider.propTypes = {
+  children: oneOfType([node, arrayOf(node)]),
+};
 
-export { actionsContext as actions, stateContext as state, StateProvider };
+export { dispatchContext, stateContext, StoreProvider };

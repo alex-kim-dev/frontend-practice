@@ -8,10 +8,9 @@ import {
   oneOfType,
   string,
 } from 'prop-types';
-import { useContext } from 'react';
 import { createUseStyles } from 'react-jss';
 
-import { state } from '@/store';
+import { useStore } from '@/hooks';
 
 const useStyles = createUseStyles(({ colors: c }) => ({
   button: ({ variant, fullWidth, hasIcon, loading, currentTheme }) => {
@@ -90,7 +89,7 @@ const Button = ({
   children,
   ...props
 }) => {
-  const { theme: currentTheme } = useContext(state);
+  const { theme: currentTheme } = useStore();
   const hasIcon = typeof children !== 'string';
   const css = useStyles({ variant, fullWidth, hasIcon, loading, currentTheme });
 
