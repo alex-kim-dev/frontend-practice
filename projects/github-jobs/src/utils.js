@@ -1,4 +1,4 @@
-const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+const corsProxy = 'https://cors.bridged.cc/';
 const jobsEndpoint = 'https://jobs.github.com/positions.json';
 
 export const capitalize = (str) => `${str[0].toUpperCase()}${str.slice(1)}`;
