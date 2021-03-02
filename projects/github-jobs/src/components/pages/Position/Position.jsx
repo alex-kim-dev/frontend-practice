@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import { useStore } from '@/hooks';
 
+import ScrollToTop from '../../common/ScrollToTop';
 import Content from './Content';
 import Cta from './Cta';
 import Heading from './Heading';
@@ -39,16 +40,19 @@ const Position = () => {
   } = position;
 
   return (
-    <article className={css.wrapper}>
-      <Container maxWidth='sm'>
-        <Heading data={{ company, url, logoUrl: logo }} />
-        <Content
-          data={{ createdAt, type, title, location, url, description }}
-        />
-        {howToApply && <Summary content={howToApply} />}
-      </Container>
-      <Cta data={{ title, company, url }} />
-    </article>
+    <>
+      <ScrollToTop />
+      <article className={css.wrapper}>
+        <Container maxWidth='sm'>
+          <Heading data={{ company, url, logoUrl: logo }} />
+          <Content
+            data={{ createdAt, type, title, location, url, description }}
+          />
+          {howToApply && <Summary content={howToApply} />}
+        </Container>
+        <Cta data={{ title, company, url }} />
+      </article>
+    </>
   );
 };
 
