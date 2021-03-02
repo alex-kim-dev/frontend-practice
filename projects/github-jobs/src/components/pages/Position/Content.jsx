@@ -109,7 +109,7 @@ Content.propTypes = {
     type: string,
     title: string,
     location: string,
-    url: string,
+    url: instanceOf(URL),
     description: string,
   }).isRequired,
 };

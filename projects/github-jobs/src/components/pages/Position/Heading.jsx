@@ -1,4 +1,4 @@
-import { shape, string } from 'prop-types';
+import { instanceOf, shape, string } from 'prop-types';
 import { createUseStyles } from 'react-jss';
 
 import { useBreakpoint } from '@/hooks';
@@ -81,7 +81,7 @@ const Heading = ({ data: { company, url, logo } }) => {
   const css = useStyles();
   const isSmUp = useBreakpoint('smUp');
 
-  const website = url ?? '';
+  const website = url?.hostname ?? '';
 
   return (
     <header className={css.wrapper}>
@@ -114,7 +114,7 @@ const Heading = ({ data: { company, url, logo } }) => {
 Heading.propTypes = {
   data: shape({
     company: string,
-    url: string,
+    url: instanceOf(URL),
     logo: string,
   }).isRequired,
 };
