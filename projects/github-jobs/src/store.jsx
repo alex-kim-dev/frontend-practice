@@ -1,6 +1,8 @@
 import { arrayOf, node, oneOfType } from 'prop-types';
 import { createContext, useMemo, useReducer } from 'react';
 
+import { mergeJobs } from './utils';
+
 const stateContext = createContext();
 const dispatchContext = createContext();
 
@@ -10,20 +12,23 @@ const initialState = {
     description: '',
     location: '',
     isFullTime: false,
+    page: 1,
   },
   jobs: {
     isLoading: false,
     error: null,
-    data: null,
+    data: [],
   },
 };
 
 export const actionTypes = {
   TOGGLE_THEME: 'TOGGLE_THEME',
   SAVE_SEARCH: 'SAVE_SEARCH',
+  NEXT_PAGE: 'NEXT_PAGE',
   SET_JOBS_LOADING: 'SET_JOBS_LOADING',
   SET_JOBS_ERROR: 'SET_JOBS_ERROR',
   SET_JOBS_DATA: 'SET_JOBS_DATA',
+  APPEND_JOBS_DATA: 'APPEND_JOBS_DATA',
 };
 
 const reducer = (state, action) => {
@@ -34,7 +39,10 @@ const reducer = (state, action) => {
       return { ...state, theme: state.theme === 'light' ? 'dark' : 'light' };
 
     case actionTypes.SAVE_SEARCH:
-      return { ...state, search: payload };
+      return {
+        ...state,
+        search: { ...payload, page: initialState.search.page },
+      };
 
     case actionTypes.SET_JOBS_LOADING:
       return { ...state, jobs: { ...state.jobs, isLoading: payload } };
@@ -43,7 +51,17 @@ const reducer = (state, action) => {
       return { ...state, jobs: { ...state.jobs, error: payload } };
 
     case actionTypes.SET_JOBS_DATA:
-      return { ...state, jobs: { ...state.jobs, data: payload } };
+      return {
+        ...state,
+        search: { ...state.search, page: state.search.page + 1 },
+        jobs: {
+          ...state.jobs,
+          data:
+            state.search.page === initialState.search.page
+              ? payload
+              : mergeJobs(state.jobs.data, payload),
+        },
+      };
 
     default:
       return state;

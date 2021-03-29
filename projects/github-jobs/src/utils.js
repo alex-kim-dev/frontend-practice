@@ -78,11 +78,12 @@ export const normalizeJobs = (jobs) =>
     }),
   );
 
-export const makeUrlQuery = ({ description, location, isFullTime }) => {
+export const makeUrlQuery = ({ description, location, isFullTime, page }) => {
   const query = new URLSearchParams();
   if (description) query.append('search', description);
   if (location) query.append('location', location);
   if (isFullTime) query.append('full_time', 'on');
+  if (page) query.append('page', page);
   return query;
 };
 
@@ -101,3 +102,8 @@ export const getSearchParams = () => {
     isFullTime: query.get('full_time') === 'on',
   };
 };
+
+export const mergeJobs = (jobs, jobsToAppend) => [
+  ...jobs,
+  ...jobsToAppend.filter(({ id }) => !jobs.some((job) => job.id === id)),
+];

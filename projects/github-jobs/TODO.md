@@ -49,11 +49,12 @@ const globalState = {
     description: '',
     location: '',
     isFullTime: false,
+    page: 1,
   },
   jobs: {
     isLoading: false,
     error: null,
-    data: null,
+    data: [],
   },
 };
 

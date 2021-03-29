@@ -14,6 +14,11 @@ export const setJobsError = (payload) => ({ type: at.SET_JOBS_ERROR, payload });
 
 export const setJobsData = (payload) => ({ type: at.SET_JOBS_DATA, payload });
 
+export const appendJobsData = (payload) => ({
+  type: at.APPEND_JOBS_DATA,
+  payload,
+});
+
 export const getJobs = (searchParams) => (dispatch) => {
   dispatch(setJobsLoading(true));
   dispatch(setJobsError(null));
