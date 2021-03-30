@@ -5,15 +5,17 @@ import Button from '@components/common/Button';
 import Checkbox from '@components/common/Checkbox';
 import TextField from '@components/common/TextField';
 import Container from '@components/layout/Container';
-import Modal from '@components/layout/Modal';
 import { bool } from 'prop-types';
 import { useLayoutEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
+import ReactModal from 'react-modal';
 import { useHistory } from 'react-router-dom';
 
 import { getJobs, saveSearch } from '@/actions';
 import { useBreakpoint, useDispatch, useStore } from '@/hooks';
 import { getSearchParams, hexToRgba, makeUrlQuery } from '@/utils';
+
+ReactModal.setAppElement('#root');
 
 const useSearchStyles = createUseStyles(
   ({ colors: c, breakpoints: { smUp, mdUp } }) => ({
@@ -71,6 +73,26 @@ const useSearchStyles = createUseStyles(
 
     submit: {
       padding: '1.6rem 1.6rem 1.6rem 1rem',
+    },
+
+    overlay: {
+      alignItems: 'center',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      display: 'flex',
+      height: '100%',
+      justifyContent: 'center',
+      left: 0,
+      padding: '2.4rem',
+      position: 'fixed',
+      top: 0,
+      width: '100%',
+      zIndex: 10,
+    },
+
+    modal: {
+      backgroundColor: c.back,
+      borderRadius: '0.6rem',
+      width: '100%',
     },
 
     modalBody: {
@@ -202,7 +224,13 @@ const Search = () => {
   );
 
   const modal = (
-    <Modal onClose={() => setModalOpen(false)}>
+    <ReactModal
+      isOpen={!isSmUp && isModalOpen}
+      onRequestClose={() => setModalOpen(false)}
+      contentLabel='Additional search filters'
+      className={css.modal}
+      overlayClassName={css.overlay}
+    >
       <div className={css.location}>
         <TextField
           label='location'
@@ -219,16 +247,21 @@ const Search = () => {
           checked={isFullTime}
           onChange={handleFullTimeChange}
         />
-        <Button type='submit' fullWidth>
+        <Button
+          type='submit'
+          fullWidth
+          form='searchForm'
+          onClick={() => setModalOpen(false)}
+        >
           Search
         </Button>
       </div>
-    </Modal>
+    </ReactModal>
   );
 
   return (
     <Container>
-      <form className={css.form} onSubmit={handleSubmit}>
+      <form id='searchForm' className={css.form} onSubmit={handleSubmit}>
         <div className={css.description}>
           <TextField
             label='description'
@@ -239,7 +272,7 @@ const Search = () => {
           />
         </div>
         {isSmUp ? extendedSearch : compactSearch}
-        {!isSmUp && isModalOpen && modal}
+        {modal}
       </form>
     </Container>
   );
