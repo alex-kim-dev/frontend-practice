@@ -15,6 +15,14 @@ const useStyles = createUseStyles(({ colors: c, breakpoints: { smUp } }) => ({
       color: '#fff',
       fontWeight: 700,
     },
+
+    '& code, & pre': {
+      backgroundColor: c.accentAlt,
+    },
+
+    '& ul > li::before, & ol > li::before': {
+      color: '#fff',
+    },
   },
 
   heading: {
@@ -23,7 +31,6 @@ const useStyles = createUseStyles(({ colors: c, breakpoints: { smUp } }) => ({
   },
 
   section: {
-    // TODO stretch or pin to bottom right?
     background: `center / 100% 100% no-repeat url(${bgPatternXs})`,
     backgroundColor: c.accent,
     borderRadius: '0.6rem',

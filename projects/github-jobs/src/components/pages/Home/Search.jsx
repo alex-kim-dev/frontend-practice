@@ -6,14 +6,14 @@ import Checkbox from '@components/common/Checkbox';
 import TextField from '@components/common/TextField';
 import Container from '@components/layout/Container';
 import { bool } from 'prop-types';
-import { useLayoutEffect, useState } from 'react';
+import { useState } from 'react';
 import { createUseStyles } from 'react-jss';
 import ReactModal from 'react-modal';
 import { useHistory } from 'react-router-dom';
 
 import { getJobs, saveSearch } from '@/actions';
 import { useBreakpoint, useDispatch, useStore } from '@/hooks';
-import { getSearchParams, hexToRgba, makeUrlQuery } from '@/utils';
+import { hexToRgba, makeUrlQuery } from '@/utils';
 
 ReactModal.setAppElement('#root');
 
@@ -140,17 +140,6 @@ const Search = () => {
   const [isFullTime, setFullTime] = useState(search.isFullTime);
   const [isModalOpen, setModalOpen] = useState(false);
 
-  useLayoutEffect(() => {
-    const searchParams = getSearchParams();
-
-    setDescription(searchParams.description);
-    setLocation(searchParams.location);
-    setFullTime(searchParams.isFullTime);
-
-    dispatch(saveSearch(searchParams));
-    dispatch(getJobs(searchParams));
-  }, [dispatch]);
-
   const handleDescriptionChange = ({ target: { value } }) => {
     setDescription(value);
   };
@@ -216,7 +205,7 @@ const Search = () => {
         </Button>
       </div>
       <div className={css.submit}>
-        <Button type='submit'>
+        <Button type='submit' loading={isLoading}>
           <IconSearch viewBox='0 0 24 24' width='20' height='20' />
         </Button>
       </div>

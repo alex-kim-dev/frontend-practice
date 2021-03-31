@@ -5,7 +5,6 @@
 - [x] css-in-js
 - [x] router
 - [ ] testing
-- [ ] validation
 - [ ] animation
 
 ## Components

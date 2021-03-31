@@ -27,6 +27,15 @@ const Position = () => {
   } = useStore();
 
   const position = data.find((record) => record.id === id);
+
+  if (!position)
+    return (
+      <>
+        <ScrollToTop />
+        <Container maxWidth='sm'>No data</Container>
+      </>
+    );
+
   const {
     company,
     logo,

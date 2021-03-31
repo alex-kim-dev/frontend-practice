@@ -2,8 +2,13 @@ import { node } from 'prop-types';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles(({ colors: c }) => ({
+  '@global': {
+    body: {
+      backgroundColor: c.backAlt,
+    },
+  },
+
   wrapper: {
-    backgroundColor: c.backAlt,
     display: 'flex',
     flexFlow: 'column',
     minHeight: '100vh',

@@ -41,6 +41,7 @@ const useStyles = createUseStyles(({ breakpoints: { smUp }, colors: c }) => ({
     gridArea: '2 / 1 / span 2',
     padding: '4.9rem 3.2rem 3.2rem',
     textAlign: 'center',
+    wordBreak: 'break-word',
 
     [smUp]: {
       borderBottomLeftRadius: 0,
@@ -77,7 +78,7 @@ const useStyles = createUseStyles(({ breakpoints: { smUp }, colors: c }) => ({
   },
 }));
 
-const Heading = ({ data: { company, url, logo } }) => {
+const Heading = ({ data: { company, url, logoUrl } }) => {
   const css = useStyles();
   const isSmUp = useBreakpoint('smUp');
 
@@ -87,7 +88,7 @@ const Heading = ({ data: { company, url, logo } }) => {
     <header className={css.wrapper}>
       <div className={css.logo}>
         <Logo
-          src={logo || undefined}
+          src={logoUrl || undefined}
           alt={`${company} logo`}
           size={isSmUp ? 'large' : 'small'}
         />
@@ -115,7 +116,7 @@ Heading.propTypes = {
   data: shape({
     company: string,
     url: instanceOf(URL),
-    logo: string,
+    logoUrl: string,
   }).isRequired,
 };
 

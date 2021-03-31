@@ -11,6 +11,7 @@ const useStyles = createUseStyles(({ colors: c }) => ({
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'space-between',
+    wordBreak: 'break-word',
 
     '& > * + *': {
       marginLeft: '2rem',

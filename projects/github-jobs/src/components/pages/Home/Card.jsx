@@ -31,6 +31,7 @@ const useStyles = createUseStyles(({ colors: c }) => ({
     gridArea: '2 / 1 / span 2',
     justifyContent: 'space-between',
     padding: '4.9rem 3.2rem 3.2rem',
+    wordBreak: 'break-word',
   },
 
   title: {

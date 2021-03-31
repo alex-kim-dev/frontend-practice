@@ -39,6 +39,7 @@ const useStyles = createUseStyles(({ colors: c }) => ({
       color: loading ? 'transparent' : variantColors[variant].text,
       cursor: 'pointer',
       display: 'inline-flex',
+      flex: '0 0 auto',
       fontSize: '1.6rem',
       fontWeight: 700,
       justifyContent: 'center',
@@ -53,7 +54,7 @@ const useStyles = createUseStyles(({ colors: c }) => ({
       width: fullWidth && '100%',
 
       '& svg path': {
-        fill: variantColors[variant].text,
+        fill: loading ? 'transparent' : variantColors[variant].text,
       },
 
       '&:hover': {

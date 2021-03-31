@@ -30,6 +30,7 @@ const Logo = ({ src = logo, alt = '', size = 'small' }) => {
     <div className={css.wrapper}>
       <img
         src={src}
+        loading='lazy'
         alt={alt}
         className={css.logo}
         width={logoDimensions[size]}
