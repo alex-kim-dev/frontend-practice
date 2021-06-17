@@ -23,10 +23,10 @@ const Position = () => {
   const css = useStyles();
   const { id } = useParams();
   const {
-    jobs: { data },
+    jobs: { list },
   } = useStore();
 
-  const position = data.find((record) => record.id === id);
+  const position = list.find((record) => record.id === id);
 
   if (!position)
     return (

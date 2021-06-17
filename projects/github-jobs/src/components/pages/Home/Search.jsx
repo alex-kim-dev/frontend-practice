@@ -11,7 +11,7 @@ import { createUseStyles } from 'react-jss';
 import ReactModal from 'react-modal';
 import { useHistory } from 'react-router-dom';
 
-import { getJobs, saveSearch } from '@/actions';
+import { getJobsList, saveSearch } from '@/actions';
 import { useBreakpoint, useDispatch, useStore } from '@/hooks';
 import { hexToRgba, makeUrlQuery } from '@/utils';
 
@@ -160,7 +160,7 @@ const Search = () => {
     const query = makeUrlQuery(searchParams);
 
     dispatch(saveSearch(searchParams));
-    dispatch(getJobs(searchParams));
+    dispatch(getJobsList(searchParams));
 
     history.push(`/?${query}`);
   };

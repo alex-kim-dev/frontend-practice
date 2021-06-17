@@ -1,9 +1,12 @@
 import Button from '@components/common/Button';
 import Container from '@components/layout/Container';
+import { useLayoutEffect } from 'react';
 import { createUseStyles } from 'react-jss';
+import { useLocation } from 'react-router-dom';
 
-import { getJobs } from '@/actions';
+import { getJobsList, saveSearch } from '@/actions';
 import { useDispatch, useStore } from '@/hooks';
+import { parseSearchQuery } from '@/utils';
 
 import ErrorMessage from './ErrorMessage';
 import Grid from './Grid';
@@ -28,42 +31,43 @@ const useStyles = createUseStyles(({ breakpoints: { smUp, mdUp } }) => ({
 const Home = () => {
   const {
     search,
-    jobs: { isLoading, error, data },
+    jobs: { status, list },
   } = useStore();
   const dispatch = useDispatch();
   const css = useStyles();
+  const location = useLocation();
+
+  useLayoutEffect(() => {
+    // TODO if params are the same || list is empty ?
+    // or useParams -> useState(initial) -> useEffect to fetch once on App mount
+    const searchParams = parseSearchQuery(location.search);
+    dispatch(saveSearch(searchParams));
+    dispatch(getJobsList(searchParams));
+  }, [dispatch, location]);
 
   const errMsg = 'Error while getting jobs, please try again';
   const noResultsMsg = 'Nothing found';
 
   const handleLoadMoreClick = () => {
-    if (isLoading) return;
-    dispatch(getJobs(search));
+    if (status === 'loading') return;
+    dispatch(getJobsList(search));
   };
 
-  const renderBody = () => {
-    if (error) return <ErrorMessage message={errMsg} />;
+  if (status === 'failed') return <ErrorMessage message={errMsg} />;
 
-    return data.length === 0 ? (
-      <ErrorMessage message={noResultsMsg} />
-    ) : (
-      <>
-        <Grid data={data} />
-        <Container>
-          <div className={css.loadMore}>
-            <Button loading={isLoading} onClick={handleLoadMoreClick}>
-              Load More
-            </Button>
-          </div>
-        </Container>
-      </>
-    );
-  };
+  if (status === 'noresults') return <ErrorMessage message={noResultsMsg} />;
 
   return (
     <>
       <Search />
-      {renderBody()}
+      <Grid data={list} />
+      <Container>
+        <div className={css.loadMore}>
+          <Button loading={status === 'loading'} onClick={handleLoadMoreClick}>
+            Load More
+          </Button>
+        </div>
+      </Container>
     </>
   );
 };

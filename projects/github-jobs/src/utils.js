@@ -1,5 +1,6 @@
 const corsProxy = 'https://cors.bridged.cc/';
-const jobsEndpoint = 'https://jobs.github.com/positions.json';
+const jobsListEndpoint = 'https://jobs.github.com/positions.json';
+const jobEndpoint = (id) => `https://jobs.github.com/positions/${id}.json`;
 
 export const capitalize = (str) => `${str[0].toUpperCase()}${str.slice(1)}`;
 
@@ -51,32 +52,37 @@ const parseUrl = (url) => {
   }
 };
 
-export const normalizeJobs = (jobs) =>
-  jobs.map(
-    ({
-      id,
-      type,
-      created_at: createdAt,
-      company,
-      company_url: url,
-      location,
-      title,
-      description,
-      how_to_apply: howToApply,
-      company_logo: logo,
-    }) => ({
-      id,
-      type,
-      createdAt: new Date(createdAt),
-      company,
-      url: parseUrl(url),
-      location,
-      title,
-      description,
-      howToApply,
-      logo,
-    }),
+export const normalizeJob = ({
+  id,
+  type,
+  created_at: createdAt,
+  company,
+  company_url: url,
+  location,
+  title,
+  description,
+  how_to_apply: howToApply,
+  company_logo: logo,
+}) => ({
+  id,
+  type,
+  createdAt: new Date(createdAt),
+  company,
+  url: parseUrl(url),
+  location,
+  title,
+  description,
+  howToApply,
+  logo,
+});
+
+export const parseSearchQuery = (str) => {
+  const params = new URLSearchParams(str);
+  return [...params].reduce(
+    (acc, [key, value]) => ({ ...acc, [key]: value }),
+    {},
   );
+};
 
 export const makeUrlQuery = ({ description, location, isFullTime, page }) => {
   const query = new URLSearchParams();
@@ -87,11 +93,16 @@ export const makeUrlQuery = ({ description, location, isFullTime, page }) => {
   return query;
 };
 
-export const makeJobsUrl = (searchParams) => {
+export const makeJobsListUrl = (searchParams) => {
   const url = new URL(corsProxy);
-  url.pathname = jobsEndpoint;
+  url.pathname = jobsListEndpoint;
   url.search = makeUrlQuery(searchParams);
   return url;
+};
+
+export const makeJobUrl = (id) => {
+  const url = new URL(corsProxy);
+  url.pathname = jobEndpoint(id);
 };
 
 export const getSearchParams = () => {

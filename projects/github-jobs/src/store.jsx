@@ -15,9 +15,10 @@ const initialState = {
     page: 1,
   },
   jobs: {
-    isLoading: false,
+    status: 'idle',
     error: null,
-    data: [],
+    list: [],
+    specific: [],
   },
 };
 
@@ -25,10 +26,10 @@ export const actionTypes = {
   TOGGLE_THEME: 'TOGGLE_THEME',
   SAVE_SEARCH: 'SAVE_SEARCH',
   NEXT_PAGE: 'NEXT_PAGE',
-  SET_JOBS_LOADING: 'SET_JOBS_LOADING',
+  SET_JOBS_STATUS: 'SET_JOBS_STATUS',
   SET_JOBS_ERROR: 'SET_JOBS_ERROR',
-  SET_JOBS_DATA: 'SET_JOBS_DATA',
-  APPEND_JOBS_DATA: 'APPEND_JOBS_DATA',
+  SAVE_JOBS_LIST: 'SAVE_JOBS_LIST',
+  SAVE_SPECIFIC_JOB: 'SAVE_SPECIFIC_JOB',
 };
 
 const reducer = (state, action) => {
@@ -44,22 +45,32 @@ const reducer = (state, action) => {
         search: { ...payload, page: initialState.search.page },
       };
 
-    case actionTypes.SET_JOBS_LOADING:
-      return { ...state, jobs: { ...state.jobs, isLoading: payload } };
+    case actionTypes.SET_JOBS_STATUS:
+      return { ...state, jobs: { ...state.jobs, status: payload } };
 
     case actionTypes.SET_JOBS_ERROR:
       return { ...state, jobs: { ...state.jobs, error: payload } };
 
-    case actionTypes.SET_JOBS_DATA:
+    case actionTypes.SAVE_JOBS_LIST:
       return {
         ...state,
         search: { ...state.search, page: state.search.page + 1 },
         jobs: {
           ...state.jobs,
-          data:
+          list:
             state.search.page === initialState.search.page
               ? payload
-              : mergeJobs(state.jobs.data, payload),
+              : mergeJobs(state.jobs.list, payload),
+        },
+      };
+
+    case actionTypes.SAVE_SPECIFIC_JOB:
+      return {
+        ...state,
+        search: { ...state.search },
+        jobs: {
+          ...state.jobs,
+          specific: state.jobs.specific.concat(payload),
         },
       };
 

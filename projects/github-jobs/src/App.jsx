@@ -10,14 +10,13 @@ import { JssProvider, ThemeProvider } from 'react-jss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import reset from 'reset-jss';
 
-import { getJobs, saveSearch, toggleTheme } from './actions';
+import { toggleTheme } from './actions';
 import Header from './components/layout/Header';
 import Wrapper from './components/layout/Wrapper';
 import Home from './components/pages/Home';
 import Position from './components/pages/Position';
 import { useDispatch, useStore, useThemePreference } from './hooks';
 import theme from './theme';
-import { getSearchParams } from './utils';
 
 const globalStyles = {
   '@global': {
@@ -69,20 +68,11 @@ const App = () => {
     if (isDarkThemePreferred) dispatch(toggleTheme());
   }, [isDarkThemePreferred, dispatch]);
 
-  useLayoutEffect(() => {
-    if (window.location.pathname === '/') {
-      const searchParams = getSearchParams();
-
-      dispatch(saveSearch(searchParams));
-      dispatch(getJobs(searchParams));
-    }
-  }, [dispatch]);
-
   return (
     <JssProvider jss={jss}>
       <ThemeProvider theme={{ ...theme, colors: theme.colors[currentTheme] }}>
-        <Wrapper>
-          <Router basename={basename}>
+        <Router basename={basename}>
+          <Wrapper>
             <Header />
             <Switch>
               <Route exact path='/:id'>
@@ -92,8 +82,8 @@ const App = () => {
                 <Home />
               </Route>
             </Switch>
-          </Router>
-        </Wrapper>
+          </Wrapper>
+        </Router>
       </ThemeProvider>
     </JssProvider>
   );

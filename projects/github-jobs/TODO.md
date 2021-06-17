@@ -51,9 +51,10 @@ const globalState = {
     page: 1,
   },
   jobs: {
-    isLoading: false,
+    status: 'idle', // loading, failed, noresults
     error: null,
-    data: [],
+    list: [],
+    specific: [],
   },
 };
 
