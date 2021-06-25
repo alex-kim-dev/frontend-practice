@@ -9,20 +9,18 @@
   "bugs": "https://github.com/Alex-K1m/frontend-practice/issues",
   "scripts": {
     "boot": "lerna bootstrap",
-    "build": "lerna run build --parallel --since $(git describe --abbrev=0 --first-parent HEAD^)",
-    "build:all": "lerna run build --parallel",
+    "build": "lerna run build --since $(git describe --abbrev=0 --first-parent HEAD^)",
+    "build:all": "lerna run build",
     "bump": "lerna version --conventional-commits --no-changelog",
-    "clean:cache": "lerna run --parallel clean:cache",
+    "clean:cache": "lerna run clean:cache",
     "commit": "cz",
     "fix": "lerna run fix --since $(git describe --abbrev=0 --first-parent HEAD^)",
     "fix:all": "lerna run fix",
     "lint": "lerna run lint --since $(git describe --abbrev=0 --first-parent HEAD^)",
     "lint:all": "lerna run lint",
     "list": "lerna ls -la",
-    "postinstall": "husky install",
-    "status": "lerna changed -a",
-    "test": "lerna run test",
-    "upgrade": "yarn upgrade-interactive --latest"
+    "prepare": "is-ci || husky install",
+    "status": "lerna changed -a"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
@@ -30,6 +28,7 @@
     "commitizen": "^4.2.3",
     "cz-conventional-changelog": "3.3.0",
     "husky": "^5.0.9",
+    "is-ci": "^2.0.0",
     "lerna": "^3.22.1",
     "lint-staged": "^10.5.4"
   },

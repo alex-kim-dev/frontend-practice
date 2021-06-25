@@ -11,11 +11,11 @@
   "scripts": {
     "build": "parcel build src/index.pug --public-url ./ --no-cache --out-dir public",
     "clean:cache": "rimraf .cache",
-    "fix": "concurrently \"yarn:fix:*\"",
-    "fix:misc": "prettier --write \"**/*.{pug,json,yml,yaml,md}\"",
+    "fix": "concurrently \"npm:fix:*\"",
+    "fix:format": "prettier --write \"**/*.{pug,json,yml,yaml,md}\"",
     "fix:styles": "stylelint --fix \"**/*.scss\"",
-    "lint": "concurrently \"yarn:lint:*\"",
-    "lint:misc": "prettier --check \"**/*.{pug,json,yml,yaml,md}\"",
+    "lint": "concurrently \"npm:lint:*\"",
+    "lint:format": "prettier --check \"**/*.{pug,json,yml,yaml,md}\"",
     "lint:styles": "stylelint \"**/*.scss\"",
     "start": "parcel src/index.pug --out-dir public"
   },
