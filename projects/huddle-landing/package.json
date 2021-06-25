@@ -1,6 +1,6 @@
 {
   "name": "huddle-landing",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": true,
   "description": "A solution for \"Huddle landing page with alternating feature blocks\" challenge on frontendmentor.io",
   "license": "MIT",

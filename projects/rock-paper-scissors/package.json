@@ -1,6 +1,6 @@
 {
   "name": "rock-paper-scissors",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "description": "A solution for \"Rock, Paper, Scissors game\" challenge on frontendmentor.io",
   "license": "MIT",
