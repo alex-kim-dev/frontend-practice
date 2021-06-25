@@ -11,7 +11,7 @@ block content
         header.signup-form__header.paper.text-light
           h2
             span.text-bold= content.promo[0]
-            | #{content.promo[1]}
+            | #{ content.promo[1] }
         .signup-form__body.paper
           fieldset.signup-form__fieldset
             legend.sr-only= content.legend
@@ -21,5 +21,5 @@ block content
             +input({ type: 'password', name: 'password', placeholder: 'Password' })
           button.signup-form__submit.button= content.submit
           p.signup-form__agreement.text-secondary
-            | #{content.agreement[0]}
+            | #{ content.agreement[0] }
             a.text-link(href='#')= content.agreement[1]

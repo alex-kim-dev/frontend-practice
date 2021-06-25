@@ -10,7 +10,7 @@ block content
         each reviewer in content.reviewers
           .rating
             .stars
-            p.text-subtitle Rated 5 Stars in #{reviewer}
+            p.text-subtitle Rated 5 Stars in #{ reviewer }
       .social-proof__testimonials
         .grid
           each testimonial in content.testimonials
@@ -22,6 +22,6 @@ block content
                   src=`images/image-${str}.jpg`
                   alt=`${author}`
                 )
-                p.person__name.text-subtitle #{author}
+                p.person__name.text-subtitle #{ author }
                 p.person__info.text-secondary Verified Buyer
-              blockquote.quote #{quote}
+              blockquote.quote #{ quote }

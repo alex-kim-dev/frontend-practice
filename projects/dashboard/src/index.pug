@@ -29,7 +29,7 @@ block content
                 strong.text-big= format(total[0])
                 p.text-secondary= total[1]
                 p.change(data-change=getLabel(today))
-                  | #{Math.abs(today)} Today
+                  | #{ Math.abs(today) } Today
         section.overview
           h2.h2= content.overview.heading
           ul.grid
@@ -38,10 +38,10 @@ block content
               li.cell
                 .group
                   h3.text
-                    | #{heading}
-                    span.sr-only for #{platform}
+                    | #{ heading }
+                    span.sr-only for #{ platform }
                   .icon(data-platform=platform)
                 .group
                   p.stat= format(stat)
                   p.change(data-change=getLabel(change))
-                    | #{Math.abs(change)}%
+                    | #{ Math.abs(change) }%

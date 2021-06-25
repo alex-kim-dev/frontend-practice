@@ -54,18 +54,20 @@ const updateContent = (testimonial) => {
   $position.textContent = testimonial.position;
 };
 
-const changeSlide = (testimonials) => ({ target: btn }) => {
-  btn.setAttribute('disabled', true);
-  const direction = btn.dataset.slide;
+const changeSlide =
+  (testimonials) =>
+  ({ target: btn }) => {
+    btn.setAttribute('disabled', true);
+    const direction = btn.dataset.slide;
 
-  currentSlide =
-    Math.abs(currentSlide + factor[direction]) % testimonials.length;
+    currentSlide =
+      Math.abs(currentSlide + factor[direction]) % testimonials.length;
 
-  animate(elementsToAnimate, animations.hide[direction])
-    .then(() => updateContent(testimonials[currentSlide]))
-    .then(() => animate(elementsToAnimate, animations.show[direction]))
-    .then(() => btn.removeAttribute('disabled'));
-};
+    animate(elementsToAnimate, animations.hide[direction])
+      .then(() => updateContent(testimonials[currentSlide]))
+      .then(() => animate(elementsToAnimate, animations.show[direction]))
+      .then(() => btn.removeAttribute('disabled'));
+  };
 
 const testimonials = data.testimonials.map((testimonial) => ({
   ...testimonial,

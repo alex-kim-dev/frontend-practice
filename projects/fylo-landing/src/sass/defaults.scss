@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 $breakpoint-sm: 560;
 $breakpoint-md: 1024;
 $breakpoint-lg: 1200;
@@ -17,7 +19,7 @@ $c-light: hsl(0, 0%, 100%);
 
 @function em($value) {
   @if type-of($value) == 'number' {
-    @return $value / 16 * 1em;
+    @return math.div($value, 16) * 1em;
   } @else {
     @error 'The parameter should be of type number';
   }

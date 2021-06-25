@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import 'reset';
 
 // #region Abstracts
@@ -16,7 +17,7 @@ $button-shadow: 0 0.6rem 1rem rgba($color-primary-blue, 0.4);
 
 @function em($value) {
   @if type-of($value) == 'number' {
-    @return $value / 16 * 1em;
+    @return math.div($value, 16) * 1em;
   } @else {
     @error 'The parameter should be of type number';
   }
