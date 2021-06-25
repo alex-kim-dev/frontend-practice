@@ -18,3 +18,5 @@ dev
 prod
 .cache
 public
+
+/yarn.lock

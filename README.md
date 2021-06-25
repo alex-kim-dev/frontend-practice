@@ -6,7 +6,7 @@ This is a monorepo - a single git repository shared by a number of projects. All
 
 ## Built with
 
-- Yarn workspaces - managing dependencies
+- Npm workspaces - managing dependencies
 - Lerna - a monorepo manager
 - ESLint, Stylelint, Prettier - linting & formatting
 - Husky, Lint Staged - cleaning code before each commit
@@ -17,7 +17,9 @@ To find out which libraries/frameworks are used in a particular project check it
 ## Prerequisites
 
 - [NodeJS](https://nodejs.org/en/)
-- [Yarn v1](https://classic.yarnpkg.com/en/):
+- [Npm v7](https://github.blog/2020-10-13-presenting-v7-0-0-of-the-npm-cli/)
+
+Npm v7 comes with Node.js v15+, so if you have a previous version of Node make sure Npm is updated to v7.
 
 ## Run locally
 
@@ -31,19 +33,19 @@ git clone https://github.com/Alex-K1m/frontend-practice.git
 
 ```shell
 cd frontend-practice
-npx lerna bootstrap
+npm ci
 ```
 
 3. Run development server for a particular project
 
 ```shell
-yarn workspace <project> start
+npm run -w <project> start
 # or
 cd projects/<project>
-yarn start
+npm start
 ```
 
-You can find the project names inside `projects` directory or by executing `yarn run list`.
+You can find the project names inside `projects` directory or by executing `npm run list`.
 
 ## Scripts
 
