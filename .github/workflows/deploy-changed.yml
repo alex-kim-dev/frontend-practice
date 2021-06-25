@@ -1,10 +1,12 @@
-name: Deploy all
+name: Deploy changed
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 jobs:
-  deploy-all:
+  deploy-changed:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,15 +35,21 @@ jobs:
         run: npm ci
 
       - name: Lint
-        run: npm run lint:all
+        run: npm run lint
 
       - name: Build
-        run: npm run build:all
+        run: npm run build
 
       - name: Prepare for Deploy
+        id: prepare
         run: |
           mkdir dist
           for D in $(ls projects); do [ -d "projects/${D}/public" ] && cp -r projects/${D}/public dist/${D}; done
+          workspaces=$(npx lerna list --all --json)
+          changed=$(npx lerna changed --all --json)
+          same=$(echo -e "$workspaces\n$changed" | npx json -gc 'this.location.includes("/projects/")' -a name | sort | uniq -u)
+          exclude="${same//$'\n'/'%0A'}"
+          echo "::set-output name=exclude::$exclude"
 
       - name: Update version
         run: |
@@ -54,3 +62,4 @@ jobs:
         with:
           branch: gh-pages
           folder: dist
+          clean-exclude: ${{ steps.prepare.outputs.exclude }}
