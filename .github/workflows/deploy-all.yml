@@ -47,7 +47,7 @@ jobs:
         run: |
           git config user.name "Alex Kim"
           git config user.email "45559664+Alex-K1m@users.noreply.github.com"
-          npm run bump
+          npm run bump -- --yes
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
