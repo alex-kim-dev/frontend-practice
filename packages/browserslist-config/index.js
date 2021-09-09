@@ -1,1 +1,1 @@
-module.exports = ['>0.25%', 'not dead', 'not IE<=11', 'not chrome 49'];
+module.exports = ['>0.5%', 'not dead', 'not IE<=11', 'not op_mini all'];
