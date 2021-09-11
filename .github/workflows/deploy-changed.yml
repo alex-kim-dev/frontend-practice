@@ -17,19 +17,8 @@ jobs:
       - name: Setup npm v7
         uses: actions/setup-node@v2
         with:
-          node-version: "15"
-
-      - name: Get npm cache directory
-        id: npm-cache-dir
-        run: echo "::set-output name=dir::$(npm config get cache)"
-
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        id: npm-cache
-        with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-          restore-keys: ${{ runner.os }}-node-
+          node-version: '15'
+          cache: 'npm'
 
       - name: Install
         run: npm ci
