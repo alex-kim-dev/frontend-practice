@@ -1,6 +1,6 @@
 {
   "name": "intro-section",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": true,
   "description": "A solution for \"Huddle landing page with a single introductory section\" challenge on frontendmentor.io",
   "license": "MIT",
@@ -26,7 +26,7 @@
     "@frontend/site-meta": "^1.0.2"
   },
   "devDependencies": {
-    "@frontend/browserslist-config": "^1.0.1",
+    "@frontend/browserslist-config": "^1.0.2",
     "@parcel/transformer-pug": "^2.0.0-rc.0",
     "@parcel/transformer-sass": "^2.0.0-rc.0",
     "@prettier/plugin-pug": "^1.16.5",
