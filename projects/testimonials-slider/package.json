@@ -11,7 +11,7 @@
   "scripts": {
     "build": "parcel build src/index.pug --public-url ./ --dist-dir public --cache-dir .parcel-cache",
     "clean:cache": "shx rm -rf .parcel-cache",
-    "copy-static": "shx cp src/images/image-*.jpg public",
+    "copy-static": "shx mkdir -p public && shx cp src/images/image-*.jpg public",
     "fix": "concurrently \"npm:fix:*\"",
     "fix:code": "eslint --fix .",
     "fix:format": "prettier --write \"**/*.{pug,json,yml,yaml,md}\"",
