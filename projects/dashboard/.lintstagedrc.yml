@@ -1,0 +1,3 @@
+'*.js': eslint --fix
+'*.scss': stylelint --fix
+'*.{pug,json,yml,yaml,md}': prettier --write

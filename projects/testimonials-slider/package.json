@@ -21,6 +21,7 @@
     "lint:format": "prettier --check \"**/*.{pug,json,yml,yaml,md}\"",
     "lint:styles": "stylelint \"**/*.scss\"",
     "prebuild": "shx rm -rf public/** && npm run copy-static",
+    "precommit": "lint-staged --quiet",
     "prestart": "shx rm -rf public/** && npm run copy-static",
     "start": "parcel src/index.pug --dist-dir public --cache-dir .parcel-cache --no-autoinstall"
   },
@@ -32,6 +33,7 @@
     "@parcel/transformer-pug": "^2.0.0-rc.0",
     "@parcel/transformer-sass": "^2.0.0-rc.0",
     "concurrently": "^6.2.1",
+    "lint-staged": "^11.1.2",
     "parcel": "^2.0.0-rc.0",
     "postcss-preset-env": "^6.7.0",
     "postcss-sort-media-queries": "3.11.12",
