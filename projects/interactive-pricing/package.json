@@ -1,0 +1,45 @@
+{
+  "name": "interactive-pricing",
+  "version": "1.0.0-beta.0",
+  "private": true,
+  "description": "A solution for \"Interactive pricing component\" challenge on frontendmentor.io",
+  "license": "MIT",
+  "repository": "git@github.com:Alex-K1m/frontend-practice.git",
+  "author": "Alex Kim <45559664+Alex-K1m@users.noreply.github.com>",
+  "homepage": "https://alex-k1m.github.io/frontend-practice/",
+  "bugs": "https://github.com/Alex-K1m/frontend-practice/issues",
+  "scripts": {
+    "build": "vite build",
+    "fix": "concurrently \"npm:fix:*\"",
+    "fix:code": "npm run lint:code -- --fix",
+    "fix:format": "npm run lint:format -- --write",
+    "fix:styles": "npm run lint:styles -- --fix",
+    "lint": "concurrently \"npm:lint:*\"",
+    "lint:code": "eslint --ignore-path .gitignore .",
+    "lint:format": "prettier --ignore-path .gitignore --check \"**/*.{json,yml,md}\"",
+    "lint:styles": "stylelint --ignore-path .gitignore \"**/*.css\"",
+    "precommit": "lint-staged --quiet",
+    "serve": "vite preview",
+    "start": "vite"
+  },
+  "dependencies": {
+    "@frontend/site-meta": "^1.0.2"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.1",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "lint-staged": "^11.1.2",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-sort-media-queries": "3.11.12",
+    "prettier": "^2.4.0",
+    "prettier-plugin-package": "^1.3.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-sass-guidelines": "^8.0.0",
+    "vite": "^2.5.7",
+    "vite-plugin-html": "^2.1.0"
+  }
+}
