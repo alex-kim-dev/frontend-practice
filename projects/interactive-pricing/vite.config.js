@@ -11,6 +11,7 @@ export default defineConfig(({ mode }) => ({
 
   build: {
     outDir: '../public',
+    emptyOutDir: true,
     sourcemap: true,
   },
 

@@ -1,3 +1,4 @@
 plugins:
   postcss-preset-env: true
-  postcss-sort-media-queries: true
+  # issues with output & source maps (esbuild minifcation)
+  # postcss-sort-media-queries: true
