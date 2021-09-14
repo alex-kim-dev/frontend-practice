@@ -11,7 +11,7 @@
     "boot": "lerna bootstrap",
     "build": "lerna run build --since $(git describe --abbrev=0 --first-parent HEAD^)",
     "build:all": "lerna run build",
-    "bump": "lerna version --conventional-commits --no-changelog",
+    "bump": "lerna version --conventional-commits --conventional-graduate --no-changelog",
     "clean:cache": "lerna run clean:cache",
     "commit": "cz",
     "fix": "lerna run fix --since $(git describe --abbrev=0 --first-parent HEAD^)",
