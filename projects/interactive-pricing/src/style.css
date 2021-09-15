@@ -1,31 +1,68 @@
-/*
-## Colors
+@import 'modern-css-reset';
 
-### Primary
+/* Variables */
 
-- Soft Cyan (Full Slider Bar): hsl(174, 77%, 80%)
-- Strong Cyan (Slider Backround): hsl(174, 86%, 45%)
-- Light Grayish Red (Discount Background): hsl(14, 92%, 95%)
-- Light Red (Discount Text): hsl(15, 100%, 70%)
-- Pale Blue (CTA Text): hsl(226, 100%, 87%)
+:root {
+  /* Primary */
+  --soft-cyan: hsl(174, 77%, 80%); /* Full Slider Bar */
+  --strong-cyan: hsl(174, 86%, 45%); /* Slider Backround */
+  --light-grayish-red: hsl(14, 92%, 95%); /* Discount Background */
+  --light-red: hsl(15, 100%, 70%); /* Discount Text */
+  --pale-blue: hsl(226, 100%, 87%); /* CTA Text */
 
-### Neutral
+  /* Neutral */
+  --white: hsl (0, 0%, 100%); /* Pricing Component Background */
+  --very-pale-blue: hsl(230, 100%, 99%); /* Main Background */
+  --light-grayish-blue: hsl(224, 65%, 95%); /* Empty Slider Bar */
+  --light-grayish-blue-2: hsl(223, 50%, 87%); /* Toggle Background */
+  --grayish-blue: hsl(225, 20%, 60%); /* Text */
+  --dark-desaturated-blue: hsl(227, 35%, 25%); /* Text & CTA Background */
+}
 
-- White (Pricing Component Background): hsl (0, 0%, 100%)
-- Very Pale Blue (Main Background): hsl(230, 100%, 99%)
-- Light Grayish Blue (Empty Slider Bar): hsl(224, 65%, 95%)
-- Light Grayish Blue (Toggle Background): hsl(223, 50%, 87%)
-- Grayish Blue (Text): hsl(225, 20%, 60%)
-- Dark Desaturated Blue (Text & CTA Background): hsl(227, 35%, 25%)
+/* Utils */
 
-## Typography
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
 
-### Body Copy
+/* Base */
 
-- Font size (Introductory Paragraph): 15px
+html {
+  font-size: 62.5%;
+}
 
-### Font
+body {
+  font-size: 1.6rem;
+  font-family: 'Manrope', sans-serif;
+}
 
-- Family: [Manrope](https://fonts.google.com/specimen/Manrope)
-- Weights: 600, 800
-*/
+/* Layout */
+
+.container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2.4rem 2.4rem 5.5rem;
+  background:
+    top left / auto 50% no-repeat url('./images/bg-pattern.svg'),
+    var(--very-pale-blue);
+}
+
+@media (min-width: 37.5em /* 600px */) {
+  .container {
+    padding: 3.6rem 3.6rem 10.6rem;
+    background-size: 100% 56.125%;
+  }
+}
+
+/* Components */
