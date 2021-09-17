@@ -6,6 +6,8 @@
   /* Primary */
   --soft-cyan: hsl(174, 77%, 80%); /* Full Slider Bar */
   --strong-cyan: hsl(174, 86%, 45%); /* Slider Backround */
+  --lighter-cyan: hsl(174, 73%, 70%); /* Slider Backround (hover) */
+  --stronger-cyan: hsl(174, 65%, 41%); /* Slider Backround (active) */
   --light-grayish-red: hsl(14, 92%, 95%); /* Discount Background */
   --light-red: hsl(15, 100%, 70%); /* Discount Text */
   --pale-blue: hsl(226, 100%, 87%); /* CTA Text */
@@ -142,9 +144,56 @@ body {
 
 .pricing__slider {
   grid-area: slider;
+}
+
+.slider {
+  --position: 2;
+  --clamped-pos: clamp(0, var(--position), 4);
+  --thumb-size: 4rem;
+  --bar-thickness: 0.8rem;
+  --transition-duration: 0.25s;
+
+  position: relative;
   width: 100%;
-  height: 0.8rem;
-  background-color: var(--soft-cyan);
+  padding: calc((var(--thumb-size) - var(--bar-thickness)) / 2) 0;
+}
+
+.slider__bar {
+  height: var(--bar-thickness);
+  border-radius: 0.4rem;
+  background:
+    calc(100% - var(--clamped-pos) * 25%) / 200% 100% no-repeat linear-gradient(
+      to right,
+      var(--soft-cyan) 50%,
+      transparent 50%
+    ),
+    var(--light-grayish-blue);
+  transition: background-position var(--transition-duration);
+}
+
+.slider__thumb {
+  position: absolute;
+  top: 0;
+  left: calc((100% - var(--thumb-size)) * var(--clamped-pos) / 4);
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  border-radius: 50%;
+  background:
+    center no-repeat url('./images/icon-slider.svg'),
+    var(--strong-cyan);
+  box-shadow: 0 1.5rem 3rem hsla(174, 100%, 50%, 0.6);
+  cursor: pointer;
+  transition:
+    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    left var(--transition-duration);
+}
+
+.slider__thumb:hover {
+  background-color: var(--lighter-cyan);
+}
+
+.slider__thumb:active {
+  background-color: var(--stronger-cyan);
 }
 
 @media (min-width: 37.5em /* 600px */) {

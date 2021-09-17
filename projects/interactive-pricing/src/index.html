@@ -29,12 +29,26 @@
       </header>
       <div class="group">
         <div class="pricing">
-          <div class="pricing__views">100k pageviews</div>
-          <div class="pricing__slider"></div>
-          <div class="pricing__price">
+          <div class="pricing__views" aria-hidden="true">100k pageviews</div>
+          <div class="pricing__slider">
+            <div class="slider">
+              <div class="slider__bar"></div>
+              <div
+                class="slider__thumb"
+                role="slider"
+                tabindex="0"
+                aria-label="Pageviews"
+                aria-valuemin="10000"
+                aria-valuemax="1000000"
+                aria-valuenow="100000"
+                aria-valuetext="100K pageviews"
+              ></div>
+            </div>
+          </div>
+          <output class="pricing__price">
             <strong class="pricing__value">$16.00</strong>
             <span>/ month</span>
-          </div>
+          </output>
         </div>
       </div>
     </main>
