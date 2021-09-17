@@ -114,10 +114,30 @@ body {
 
 .pricing__views {
   grid-area: views;
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: 0.1425em;
+  text-transform: uppercase;
 }
 
 .pricing__price {
+  display: flex;
+  flex-flow: wrap;
   grid-area: price;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.pricing__value {
+  color: var(--dark-desaturated-blue);
+  font-weight: 800;
+  font-size: 3.2rem;
+  letter-spacing: -0.025em;
+}
+
+.pricing__price > span {
+  margin-left: 0.8rem;
 }
 
 .pricing__slider {
@@ -170,10 +190,17 @@ body {
   }
 
   .pricing__views {
+    font-size: 1.4rem;
+    letter-spacing: 0.143em;
     text-align: left;
   }
 
   .pricing__price {
     justify-self: end;
+    font-size: 1.6rem;
+  }
+
+  .pricing__value {
+    font-size: 4rem;
   }
 }
