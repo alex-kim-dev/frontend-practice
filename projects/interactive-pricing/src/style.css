@@ -11,7 +11,7 @@
   --pale-blue: hsl(226, 100%, 87%); /* CTA Text */
 
   /* Neutral */
-  --white: hsl (0, 0%, 100%); /* Pricing Component Background */
+  --white: hsl(0, 0%, 100%); /* Pricing Component Background */
   --very-pale-blue: hsl(230, 100%, 99%); /* Main Background */
   --light-grayish-blue: hsl(224, 65%, 95%); /* Empty Slider Bar */
   --light-grayish-blue-2: hsl(223, 50%, 87%); /* Toggle Background */
@@ -90,11 +90,13 @@ body {
   line-height: 177%;
 }
 
-div {
+.group {
   width: 100%;
-  max-width: 54rem; /* and 38 */
-  height: 47.8rem;
-  border: 1px solid #000;
+  max-width: 38rem;
+  padding: 3.4rem 2.4rem 3.2rem;
+  border-radius: 0.8rem;
+  background-color: var(--white);
+  box-shadow: 0 2rem 3rem -0.5rem hsla(230, 29%, 61%, 0.15);
 }
 
 @media (min-width: 37.5em /* 600px */) {
@@ -126,5 +128,9 @@ div {
 
   .subheading > br {
     display: none;
+  }
+
+  .group {
+    max-width: 54rem;
   }
 }
