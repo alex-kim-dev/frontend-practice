@@ -1,6 +1,6 @@
 {
   "name": "four-card",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": true,
   "description": "A solution for \"Four card feature section\" challenge on frontendmentor.io",
   "license": "MIT",
@@ -23,7 +23,7 @@
     "start": "parcel src/index.pug --dist-dir public --cache-dir .parcel-cache --no-autoinstall"
   },
   "dependencies": {
-    "@frontend/site-meta": "^1.0.2"
+    "@frontend/site-meta": "^1.0.3"
   },
   "devDependencies": {
     "@frontend/browserslist-config": "^1.0.2",
