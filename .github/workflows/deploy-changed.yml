@@ -43,7 +43,7 @@ jobs:
       - name: Update version
         run: |
           git config user.name "Alex Kim"
-          git config user.email "45559664+Alex-K1m@users.noreply.github.com"
+          git config user.email "45559664+alex-kim-dev@users.noreply.github.com"
           npm run bump -- --yes
 
       - name: Deploy

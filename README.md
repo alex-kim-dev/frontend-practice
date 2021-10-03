@@ -1,6 +1,6 @@
 # Frontend practice
 
-Currently I am doing [Frontend Mentor](https://www.frontendmentor.io/) challenges. You can find my solutions at [my profile](https://www.frontendmentor.io/profile/Alex-K1m). Feel free to leave a comment or give it a like.
+Currently I am doing [Frontend Mentor](https://www.frontendmentor.io/) challenges. You can find my solutions at [my profile](https://www.frontendmentor.io/profile/alex-kim-dev). Feel free to leave a comment or give it a like.
 
 This is a monorepo - a single git repository shared by a number of projects. All the solutions are located in the `projects` directory.
 
@@ -26,7 +26,7 @@ Npm v7 comes with Node.js v15+, so if you have a previous version of Node make s
 1. Get the repo
 
 ```shell
-git clone https://github.com/Alex-K1m/frontend-practice.git
+git clone https://github.com/alex-kim-dev/frontend-practice.git
 ```
 
 2. Install dependencies
