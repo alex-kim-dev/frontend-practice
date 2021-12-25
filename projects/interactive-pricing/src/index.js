@@ -35,13 +35,23 @@ const $thumb = $pricingWidget.querySelector('.slider__thumb');
 const $views = $pricingWidget.querySelector('.pricing__views');
 const $value = $pricingWidget.querySelector('.pricing__value');
 
+const priceFormatter = new Intl.NumberFormat('en', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2,
+});
+
+const viewsFormatter = new Intl.NumberFormat('en', {
+  notation: 'compact',
+});
+
 /** @arg {number} option */
 const updatePricing = (option) => {
   const { price, views } = pricingData[option];
-  const viewsText = `${views} pageviews`;
+  const viewsText = viewsFormatter.format(views).concat(' pageviews');
 
   $views.textContent = viewsText;
-  $value.textContent = price;
+  $value.textContent = priceFormatter.format(price);
 
   $slider.style.setProperty('--position', option);
   $thumb.setAttribute('aria-valuenow', views);
