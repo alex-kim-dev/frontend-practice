@@ -96,6 +96,31 @@ const handleSliderKeyDown = (event) => {
 };
 
 /** @arg {MouseEvent} event */
+const handleSliderDrag = (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  $thumb.focus();
+  document.body.classList.add('dragging');
+
+  /** @arg {MouseEvent} event */
+  const handleMouseMove = ({ pageX }) => {
+    const { left, width } = $bar.getBoundingClientRect();
+    state.sliderPosition = Math.round(
+      ((pageX - left) / width) * sliderPositionMax,
+    );
+  };
+
+  const handleMouseUp = () => {
+    document.body.classList.remove('dragging');
+    document.removeEventListener('mousemove', handleMouseMove);
+    document.removeEventListener('mouseup', handleMouseUp);
+  };
+
+  document.addEventListener('mousemove', handleMouseMove);
+  document.addEventListener('mouseup', handleMouseUp);
+};
+
+/** @arg {MouseEvent} event */
 const handleSliderClick = (event) => {
   $thumb.focus();
 
@@ -105,4 +130,7 @@ const handleSliderClick = (event) => {
 };
 
 $thumb.addEventListener('keydown', handleSliderKeyDown);
+$thumb.addEventListener('mousedown', handleSliderDrag);
 $bar.addEventListener('click', handleSliderClick);
+
+// FIXME take the thumb width in account when calculating a new position

@@ -35,6 +35,10 @@
   clip-path: inset(50%);
 }
 
+.dragging * {
+  cursor: grabbing !important;
+}
+
 /* Base */
 
 html {
