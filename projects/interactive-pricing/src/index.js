@@ -18,6 +18,17 @@ const $thumb = $pricingWidget.querySelector('.slider__thumb');
 const $views = $pricingWidget.querySelector('.pricing__views');
 const $value = $pricingWidget.querySelector('.pricing__value');
 
+/**
+ * Calculates the slider's thumb position, taking into account that the thumb moves within a range of the bar width minus the thumb width.
+ * @arg {number} offset X coordinate relative to the left edge of the slider
+ */
+const getSliderPosition = (offset) =>
+  Math.round(
+    ((offset - $thumb.clientWidth / 2) /
+      ($bar.clientWidth - $thumb.clientWidth)) *
+      sliderPositionMax,
+  );
+
 const priceFormatter = new Intl.NumberFormat('en', {
   style: 'currency',
   currency: 'USD',
@@ -104,10 +115,8 @@ const handleSliderDrag = (event) => {
 
   /** @arg {MouseEvent} event */
   const handleMouseMove = ({ pageX }) => {
-    const { left, width } = $bar.getBoundingClientRect();
-    state.sliderPosition = Math.round(
-      ((pageX - left) / width) * sliderPositionMax,
-    );
+    const { left } = $bar.getBoundingClientRect();
+    state.sliderPosition = getSliderPosition(pageX - left);
   };
 
   const handleMouseUp = () => {
@@ -121,16 +130,11 @@ const handleSliderDrag = (event) => {
 };
 
 /** @arg {MouseEvent} event */
-const handleSliderClick = (event) => {
+const handleSliderClick = ({ offsetX }) => {
   $thumb.focus();
-
-  state.sliderPosition = Math.round(
-    (event.offsetX / $bar.clientWidth) * sliderPositionMax,
-  );
+  state.sliderPosition = getSliderPosition(offsetX);
 };
 
 $thumb.addEventListener('keydown', handleSliderKeyDown);
 $thumb.addEventListener('mousedown', handleSliderDrag);
 $bar.addEventListener('click', handleSliderClick);
-
-// FIXME take the thumb width in account when calculating a new position
