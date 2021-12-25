@@ -1,5 +1,3 @@
-/* eslint-disable no-underscore-dangle */
-
 import './style.css';
 
 const pricingData = [
@@ -12,21 +10,6 @@ const pricingData = [
 
 const sliderPositionMin = 0;
 const sliderPositionMax = pricingData.length - 1;
-
-const state = {
-  _sliderPosition: Math.floor(sliderPositionMax / 2),
-
-  get sliderPosition() {
-    return this._sliderPosition;
-  },
-
-  set sliderPosition(position) {
-    this._sliderPosition = Math.min(
-      Math.max(position, sliderPositionMin),
-      sliderPositionMax,
-    );
-  },
-};
 
 const $pricingWidget = document.getElementById('pricing-widget');
 const $slider = $pricingWidget.querySelector('.slider');
@@ -46,7 +29,7 @@ const viewsFormatter = new Intl.NumberFormat('en', {
 });
 
 /** @arg {number} option */
-const updatePricing = (option) => {
+function updatePricing(option) {
   const { price, views } = pricingData[option];
   const viewsText = viewsFormatter.format(views).concat(' pageviews');
 
@@ -56,7 +39,33 @@ const updatePricing = (option) => {
   $slider.style.setProperty('--position', option);
   $thumb.setAttribute('aria-valuenow', views);
   $thumb.setAttribute('aria-valuetext', viewsText);
-};
+}
+
+const state = new Proxy(
+  { sliderPosition: Math.floor(sliderPositionMax / 2) },
+  {
+    set: (container, prop, value) => {
+      switch (prop) {
+        case 'sliderPosition': {
+          const position = Math.min(
+            Math.max(value, sliderPositionMin),
+            sliderPositionMax,
+          );
+          if (container[prop] !== position) {
+            container[prop] = position;
+            updatePricing(position);
+          }
+          return true;
+        }
+
+        default: {
+          container[prop] = value;
+          return true;
+        }
+      }
+    },
+  },
+);
 
 /** @arg {KeyboardEvent} event */
 const handleSliderKeyDown = (event) => {
@@ -84,8 +93,6 @@ const handleSliderKeyDown = (event) => {
     default:
       break;
   }
-
-  updatePricing(state.sliderPosition);
 };
 
 /** @arg {MouseEvent} event */
@@ -95,8 +102,6 @@ const handleSliderClick = (event) => {
   state.sliderPosition = Math.round(
     (event.offsetX / $bar.clientWidth) * sliderPositionMax,
   );
-
-  updatePricing(state.sliderPosition);
 };
 
 $thumb.addEventListener('keydown', handleSliderKeyDown);
