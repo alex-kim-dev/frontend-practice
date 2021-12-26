@@ -7,6 +7,8 @@ const pricingData = [
   { views: 5e5, price: 24 },
   { views: 1e6, price: 36 },
 ];
+/** Yearly discount in percent */
+const discount = 25;
 
 const sliderPositionMin = 0;
 const sliderPositionMax = pricingData.length - 1;
@@ -17,6 +19,7 @@ const $bar = $pricingWidget.querySelector('.slider__bar');
 const $thumb = $pricingWidget.querySelector('.slider__thumb');
 const $views = $pricingWidget.querySelector('.pricing__views');
 const $value = $pricingWidget.querySelector('.pricing__value');
+const $switch = $pricingWidget.querySelector('.switch__checkbox');
 
 /**
  * Calculates the slider's thumb position, taking into account that the thumb moves within a range of the bar width minus the thumb width.
@@ -39,23 +42,28 @@ const viewsFormatter = new Intl.NumberFormat('en', {
   notation: 'compact',
 });
 
-/** @arg {number} option */
-function updatePricing(option) {
-  const { price, views } = pricingData[option];
+/** @arg {{ sliderPosition: number, yearlyBilling: boolean }} state */
+const render = ({ sliderPosition, yearlyBilling }) => {
+  const { price, views } = pricingData[sliderPosition];
   const viewsText = viewsFormatter.format(views).concat(' pageviews');
 
   $views.textContent = viewsText;
-  $value.textContent = priceFormatter.format(price);
+  $value.textContent = priceFormatter.format(
+    price * (yearlyBilling ? 1 - discount / 100 : 1),
+  );
 
-  $slider.style.setProperty('--position', option);
+  $slider.style.setProperty('--position', sliderPosition);
   $thumb.setAttribute('aria-valuenow', views);
   $thumb.setAttribute('aria-valuetext', viewsText);
-}
+};
 
 const state = new Proxy(
-  { sliderPosition: Math.floor(sliderPositionMax / 2) },
+  Object.seal({
+    sliderPosition: Math.floor(sliderPositionMax / 2),
+    yearlyBilling: false,
+  }),
   {
-    set: (container, prop, value) => {
+    set: (container, prop, value, proxy) => {
       switch (prop) {
         case 'sliderPosition': {
           const position = Math.min(
@@ -64,16 +72,23 @@ const state = new Proxy(
           );
           if (container[prop] !== position) {
             container[prop] = position;
-            updatePricing(position);
+            render(proxy);
           }
-          return true;
+          break;
         }
 
-        default: {
-          container[prop] = value;
-          return true;
+        case 'yearlyBilling': {
+          if (container[prop] !== value) {
+            container[prop] = value;
+            render(proxy);
+          }
+          break;
         }
+
+        // no default
       }
+
+      return true;
     },
   },
 );
@@ -135,6 +150,12 @@ const handleSliderClick = ({ offsetX }) => {
   state.sliderPosition = getSliderPosition(offsetX);
 };
 
+/** @arg {Event} event */
+const handleSwitchChange = (event) => {
+  state.yearlyBilling = event.currentTarget.checked;
+};
+
 $thumb.addEventListener('keydown', handleSliderKeyDown);
 $thumb.addEventListener('mousedown', handleSliderDrag);
 $bar.addEventListener('click', handleSliderClick);
+$switch.addEventListener('change', handleSwitchChange);
