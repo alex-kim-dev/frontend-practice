@@ -268,8 +268,65 @@ body {
 
 .chip--md {
   display: none;
+  margin-left: 0.8rem;
   padding-right: 0.6rem;
   padding-left: 0.6rem;
+}
+
+.separator {
+  height: 0.1rem;
+  margin: 4rem -2.4rem 0 -2.4rem;
+  border: none;
+  background-color: var(--light-grayish-blue);
+}
+
+.bottom-group {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2.4rem;
+  text-align: center;
+}
+
+.bottom-group > :nth-child(2) {
+  flex-shrink: 0;
+  margin-top: 3.2rem;
+}
+
+.benefits {
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+  word-break: break-word;
+  list-style: none;
+}
+
+.benefits__item::before {
+  margin-right: 1.4rem;
+  content: url('./images/icon-check.svg');
+}
+
+.benefits__item:not(:first-child) {
+  margin-top: 1rem;
+}
+
+.cta {
+  display: inline-block;
+  padding: 1.2rem 4.6rem;
+  border: none;
+  border-radius: 2.1rem;
+  color: var(--pale-blue);
+  font-weight: 800;
+  font-size: 1.2rem;
+  background-color: var(--dark-desaturated-blue);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.cta:hover,
+.cta:active {
+  color: var(--white);
 }
 
 @media (min-width: 37.5em /* 600px */) {
@@ -305,6 +362,7 @@ body {
 
   .group {
     max-width: 54rem;
+    padding: 4rem 4.8rem 3.2rem;
   }
 
   .pricing {
@@ -343,5 +401,21 @@ body {
 
   .chip--md {
     display: inline;
+  }
+
+  .separator {
+    margin-right: -4.8rem;
+    margin-left: -4.8rem;
+  }
+
+  .bottom-group {
+    flex-direction: row;
+    margin-top: 3.2rem;
+    text-align: left;
+  }
+
+  .bottom-group > :nth-child(2) {
+    margin-top: 0;
+    margin-left: 3.2rem;
   }
 }
