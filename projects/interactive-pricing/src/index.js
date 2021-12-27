@@ -55,6 +55,7 @@ const render = ({ sliderPosition, yearlyBilling }) => {
   $slider.style.setProperty('--position', sliderPosition);
   $thumb.setAttribute('aria-valuenow', views);
   $thumb.setAttribute('aria-valuetext', viewsText);
+  $switch.setAttribute('aria-checked', yearlyBilling);
 };
 
 const state = new Proxy(
