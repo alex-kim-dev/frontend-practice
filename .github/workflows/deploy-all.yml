@@ -12,10 +12,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup npm v7
+      - name: Setup Nodejs
         uses: actions/setup-node@v2
         with:
-          node-version: '15'
+          node-version: '16'
           cache: 'npm'
 
       - name: Install
