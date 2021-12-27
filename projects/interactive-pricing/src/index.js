@@ -121,15 +121,15 @@ const handleSliderKeyDown = (event) => {
   }
 };
 
-/** @arg {MouseEvent} event */
-const handleSliderDrag = (event) => {
-  event.preventDefault();
-  event.stopPropagation();
+const handleSliderDrag = (e) => {
+  e.preventDefault();
+  e.stopPropagation();
   $thumb.focus();
   document.body.classList.add('dragging');
 
-  /** @arg {MouseEvent} event */
-  const handleMouseMove = ({ pageX }) => {
+  /** @arg {MouseEvent | TouchEvent} event */
+  const handleMouseMove = (event) => {
+    const { pageX } = event instanceof MouseEvent ? event : event.touches[0];
     const { left } = $bar.getBoundingClientRect();
     state.sliderPosition = getSliderPosition(pageX - left);
   };
@@ -137,11 +137,15 @@ const handleSliderDrag = (event) => {
   const handleMouseUp = () => {
     document.body.classList.remove('dragging');
     document.removeEventListener('mousemove', handleMouseMove);
+    document.removeEventListener('touchmove', handleMouseMove);
     document.removeEventListener('mouseup', handleMouseUp);
+    document.removeEventListener('touchend', handleMouseUp);
   };
 
   document.addEventListener('mousemove', handleMouseMove);
+  document.addEventListener('touchmove', handleMouseMove);
   document.addEventListener('mouseup', handleMouseUp);
+  document.addEventListener('touchend', handleMouseUp);
 };
 
 /** @arg {MouseEvent} event */
@@ -157,5 +161,6 @@ const handleSwitchChange = (event) => {
 
 $thumb.addEventListener('keydown', handleSliderKeyDown);
 $thumb.addEventListener('mousedown', handleSliderDrag);
+$thumb.addEventListener('touchstart', handleSliderDrag);
 $bar.addEventListener('click', handleSliderClick);
 $switch.addEventListener('change', handleSwitchChange);
