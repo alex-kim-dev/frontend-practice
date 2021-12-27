@@ -63,7 +63,7 @@ body {
   min-height: 100vh;
   padding: 2.4rem 2.4rem 5.5rem;
   background:
-    top left / auto 50% no-repeat url('./images/bg-pattern.svg'),
+    top left / auto 40rem no-repeat url('./images/bg-pattern.svg'),
     var(--very-pale-blue);
 }
 
@@ -331,8 +331,9 @@ body {
 
 @media (min-width: 37.5em /* 600px */) {
   .container {
-    padding: 3.6rem 3.6rem 10.6rem;
-    background-size: 100% 56.125%;
+    justify-content: flex-start;
+    padding: 6.7rem 3.6rem 10.6rem;
+    background-size: 100% 45rem;
   }
 
   .container > * + * {
