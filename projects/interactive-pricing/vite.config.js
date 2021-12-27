@@ -3,7 +3,9 @@ import { defineConfig } from 'vite';
 import { minifyHtml, injectHtml } from 'vite-plugin-html';
 
 export default defineConfig(({ mode }) => ({
-  base: `${mode === 'production' ? siteMeta.baseurl : ''}/`,
+  base: `${
+    mode === 'production' ? siteMeta.baseurl.concat('/interactive-pricing') : ''
+  }/`,
 
   root: 'src',
 
