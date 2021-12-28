@@ -1,6 +1,6 @@
 {
   "name": "single-price",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "private": true,
   "description": "A solution for \"Single price grid component\" challenge on frontendmentor.io",
   "license": "MIT",

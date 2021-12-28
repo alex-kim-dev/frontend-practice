@@ -1,6 +1,6 @@
 {
   "name": "ping",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "private": true,
   "description": "A solution for \"Ping coming soon page\" challenge on frontendmentor.io",
   "license": "MIT",
