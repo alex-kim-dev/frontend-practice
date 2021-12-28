@@ -1,0 +1,34 @@
+@import "modern-css-reset";
+
+/* Variables */
+
+/* Utils */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+/* Base */
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  /* c, fw, ff */
+
+  font-size: 1.6rem;
+  line-height: normal;
+}
+
+/* Components */
+
+/* @media (min-width: 37.5em) {} */

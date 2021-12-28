@@ -1,0 +1,15 @@
+extends:
+  - airbnb-base
+  - plugin:prettier/recommended
+env:
+  es2021: true
+  browser: true
+
+parserOptions:
+  ecmaVersion: 2021
+  sourceType: module
+
+overrides:
+  - files: vite.config.js
+    rules:
+      import/no-extraneous-dependencies: off

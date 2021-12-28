@@ -1,0 +1,10 @@
+extends:
+  - stylelint-config-standard
+  - stylelint-config-rational-order
+
+rules:
+  order/properties-order: []
+  plugin/rational-order:
+    - true
+    - border-in-box-model: true
+  selector-class-pattern: ^(?:(?:o|c|u|t|s|is|has|_|js|qa)-)?[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*(?:__[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:--[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:\\[.+\\])?$
