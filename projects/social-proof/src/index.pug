@@ -15,7 +15,7 @@ block content
         .grid
           each testimonial in content.testimonials
             - const { author, quote } = testimonial;
-            - const str = author.split(" ")[0].toLowerCase();
+            - const str = author.split(' ')[0].toLowerCase();
             .card.grid__item
               .person
                 img.person__avatar.avatar(

@@ -1,24 +1,24 @@
-@import 'modern-css-reset';
+@import "modern-css-reset";
 
 /* Variables */
 
 :root {
   /* Primary */
-  --soft-cyan: hsl(174, 77%, 80%); /* Full Slider Bar */
-  --strong-cyan: hsl(174, 86%, 45%); /* Slider Backround */
-  --lighter-cyan: hsl(174, 73%, 70%); /* Slider Backround (hover) */
-  --stronger-cyan: hsl(174, 65%, 41%); /* Slider Backround (active) */
-  --light-grayish-red: hsl(14, 92%, 95%); /* Discount Background */
-  --light-red: hsl(15, 100%, 70%); /* Discount Text */
-  --pale-blue: hsl(226, 100%, 87%); /* CTA Text */
+  --soft-cyan: hsl(174deg 77% 80%); /* Full Slider Bar */
+  --strong-cyan: hsl(174deg 86% 45%); /* Slider Backround */
+  --lighter-cyan: hsl(174deg 73% 70%); /* Slider Backround (hover) */
+  --stronger-cyan: hsl(174deg 65% 41%); /* Slider Backround (active) */
+  --light-grayish-red: hsl(14deg 92% 95%); /* Discount Background */
+  --light-red: hsl(15deg 100% 70%); /* Discount Text */
+  --pale-blue: hsl(226deg 100% 87%); /* CTA Text */
 
   /* Neutral */
-  --white: hsl(0, 0%, 100%); /* Pricing Component Background */
-  --very-pale-blue: hsl(230, 100%, 99%); /* Main Background */
-  --light-grayish-blue: hsl(224, 65%, 95%); /* Empty Slider Bar */
-  --light-grayish-blue-2: hsl(223, 50%, 87%); /* Toggle Background */
-  --grayish-blue: hsl(225, 20%, 60%); /* Text */
-  --dark-desaturated-blue: hsl(227, 35%, 25%); /* Text & CTA Background */
+  --white: hsl(0deg 0% 100%); /* Pricing Component Background */
+  --very-pale-blue: hsl(230deg 100% 99%); /* Main Background */
+  --light-grayish-blue: hsl(224deg 65% 95%); /* Empty Slider Bar */
+  --light-grayish-blue-2: hsl(223deg 50% 87%); /* Toggle Background */
+  --grayish-blue: hsl(225deg 20% 60%); /* Text */
+  --dark-desaturated-blue: hsl(227deg 35% 25%); /* Text & CTA Background */
 }
 
 /* Utils */
@@ -49,7 +49,7 @@ body {
   color: var(--grayish-blue);
   font-weight: 600;
   font-size: 1.6rem;
-  font-family: 'Manrope', sans-serif;
+  font-family: Manrope, sans-serif;
   line-height: normal;
 }
 
@@ -63,7 +63,7 @@ body {
   min-height: 100vh;
   padding: 2.4rem 2.4rem 5.5rem;
   background:
-    top left / auto 40rem no-repeat url('./images/bg-pattern.svg'),
+    top left / auto 40rem no-repeat url("./images/bg-pattern.svg"),
     var(--very-pale-blue);
 }
 
@@ -78,7 +78,7 @@ body {
   max-width: 38rem;
   min-height: 14.5rem;
   text-align: center;
-  background: center / auto 100% no-repeat url('./images/pattern-circles.svg');
+  background: center / auto 100% no-repeat url("./images/pattern-circles.svg");
 }
 
 .header > * + * {
@@ -104,16 +104,16 @@ body {
   text-align: center;
   word-break: break-word;
   background-color: var(--white);
-  box-shadow: 0 2rem 3rem -0.5rem hsla(230, 29%, 61%, 0.15);
+  box-shadow: 0 2rem 3rem -0.5rem hsl(230deg 29% 61% / 15%);
 }
 
 .pricing {
   display: grid;
   grid-gap: 2.4rem;
   grid-template:
-    'views ' auto
-    'slider' auto
-    'price ' auto
+    "views " auto
+    "slider" auto
+    "price " auto
     / auto;
   align-items: center;
 }
@@ -184,9 +184,9 @@ body {
   height: var(--thumb-size);
   border-radius: 50%;
   background:
-    center no-repeat url('./images/icon-slider.svg'),
+    center no-repeat url("./images/icon-slider.svg"),
     var(--strong-cyan);
-  box-shadow: 0 1.5rem 3rem hsla(174, 100%, 50%, 0.6);
+  box-shadow: 0 1.5rem 3rem hsl(174deg 100% 50% / 60%);
   cursor: pointer;
   transition:
     background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
@@ -249,7 +249,7 @@ body {
   border-radius: 50%;
   background-color: var(--white);
   transition: transform 0.2s;
-  content: '';
+  content: "";
 }
 
 .switch__checkbox:checked::before {
@@ -275,7 +275,7 @@ body {
 
 .separator {
   height: 0.1rem;
-  margin: 4rem -2.4rem 0 -2.4rem;
+  margin: 4rem -2.4rem 0;
   border: none;
   background-color: var(--light-grayish-blue);
 }
@@ -304,7 +304,7 @@ body {
 
 .benefits__item::before {
   margin-right: 1.4rem;
-  content: url('./images/icon-check.svg');
+  content: url("./images/icon-check.svg");
 }
 
 .benefits__item:not(:first-child) {
@@ -368,8 +368,8 @@ body {
 
   .pricing {
     grid-template:
-      'views  price ' auto
-      'slider slider' auto
+      "views  price " auto
+      "slider slider" auto
       / 1fr 1fr;
   }
 

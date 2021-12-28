@@ -6,7 +6,7 @@ mixin input({type = 'text', name, placeholder, isRequired = true } = {})
         name=name
         placeholder=placeholder
         aria-describedby=`${name}Feedback`
-        required=isRequired ? "" : false
+        required=isRequired ? '' : false
       )
       span.sr-only= placeholder
     .field__error-icon
