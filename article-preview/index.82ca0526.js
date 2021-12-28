@@ -1,2 +1,0 @@
-const $shareBtn=document.getElementById("share"),$shareUi=document.querySelector(".share"),toggleShareUi=()=>{$shareUi.classList.toggle("hidden"),$shareBtn.classList.toggle("inverse")},hideShareUiOnClickAway=({target:e})=>{e.closest(".share, #share")||$shareUi.classList.contains("hidden")||toggleShareUi()};$shareBtn.addEventListener("click",toggleShareUi),document.addEventListener("click",hideShareUiOnClickAway);
-//# sourceMappingURL=index.82ca0526.js.map
