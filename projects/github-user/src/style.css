@@ -4,19 +4,24 @@
 
 :root {
   --accent: hsl(212deg 100% 50%);
+  --accent-light: hsl(212deg 100% 69%);
   --text: hsl(217deg 35% 45%);
   --text-accent: hsl(217deg 21% 21%);
+  --text-secondary: hsl(217deg 20% 51%);
   --bg-primary: hsl(227deg 100% 98%);
   --bg-secondary: hsl(0deg 0% 100%);
   --shadow: 0 1.6rem 3rem -1rem hsla(227deg 46% 51% / 20%);
+  --icon-filter: none;
 }
 
 body[data-theme="dark"] {
   --text: hsl(0deg 100% 100%);
   --text-accent: hsl(0deg 100% 100%);
+  --text-secondary: hsl(0deg 100% 100%);
   --bg-primary: hsl(220deg 40% 13%);
   --bg-secondary: hsl(222deg 41% 20%);
   --shadow: none;
+  --icon-filter: brightness(5);
 }
 
 /* Utils */
@@ -33,6 +38,11 @@ body[data-theme="dark"] {
   clip-path: inset(50%);
 }
 
+.muted {
+  opacity: 0.5;
+  mix-blend-mode: normal;
+}
+
 /* Base */
 
 html {
@@ -46,6 +56,21 @@ body {
   line-height: normal;
   overflow-wrap: break-word;
   background-color: var(--bg-primary);
+}
+
+img {
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 /* Components */
@@ -184,7 +209,7 @@ body {
 
 .btn:hover,
 .btn:active {
-  background-color: hsl(212deg 100% 69%);
+  background-color: var(--accent-light);
 }
 
 .form {
@@ -202,6 +227,120 @@ body {
 .form__submit {
   flex: 0 0 auto;
   min-height: 4.6rem;
+}
+
+.content {
+  display: grid;
+  grid-column-gap: 2rem;
+  grid-template:
+    "avatar  name"      auto
+    "avatar  login"     auto
+    "avatar  join-date" auto
+    "bio     bio"       auto
+    "meta    meta"      auto
+    "details details"   auto
+    / 7rem auto;
+  padding: 3.2rem 2.4rem 4.8rem;
+  font-size: 1.3rem;
+}
+
+.content__avatar {
+  grid-area: avatar;
+  align-self: start;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.content__name {
+  grid-area: name;
+  color: var(--text-accent);
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+.content__login {
+  grid-area: login;
+  color: var(--accent);
+}
+
+.content__join-date {
+  grid-area: join-date;
+  color: var(--text-secondary);
+}
+
+.content__bio {
+  grid-area: bio;
+  margin-top: 3.2rem;
+  line-height: 193%;
+}
+
+.content__meta {
+  display: grid;
+  grid-area: meta;
+  grid-auto-flow: column;
+  grid-gap: 0.8rem 1.2rem;
+  grid-template: repeat(2, auto) / repeat(3, 1fr);
+  justify-items: center;
+  max-width: 100%;
+  margin-top: 2.4rem;
+  padding: 1.8rem 1.4rem;
+  border-radius: 1rem;
+  background-color: var(--bg-primary);
+}
+
+.content__meta-title {
+  font-size: 1.1rem;
+}
+
+.content__meta-value {
+  color: var(--text-accent);
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.content__details {
+  grid-area: details;
+  margin: 2.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.content__details-item {
+  display: flex;
+  align-items: center;
+}
+
+.content__details-item:not(:first-child) {
+  margin-top: 1.6rem;
+}
+
+.content__details-item::before {
+  display: inline-block;
+  flex-shrink: 0;
+  align-self: flex-start;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1.3rem;
+  vertical-align: middle;
+  background: left center no-repeat;
+  filter: var(--icon-filter);
+  content: "";
+}
+
+.content__details-item:nth-child(1)::before {
+  background-image: url("./images/icon-location.svg");
+}
+
+.content__details-item:nth-child(2)::before {
+  background-image: url("./images/icon-website.svg");
+}
+
+.content__details-item:nth-child(3)::before {
+  background-image: url("./images/icon-twitter.svg");
+}
+
+.content__details-item:nth-child(4)::before {
+  background-image: url("./images/icon-company.svg");
 }
 
 @media (min-width: 35em /* 560px */) {
@@ -239,11 +378,19 @@ body {
   .form {
     padding: 1rem;
   }
+
+  .content {
+    padding: 4rem;
+  }
 }
 
 @media (min-width: 52em /* 832px */) {
   .app-container {
     max-width: calc(73rem + 4.8rem * 2);
     padding: 14.4rem 4.8rem;
+  }
+
+  .content {
+    padding: 4.4rem 4.8rem 4.8rem;
   }
 }
