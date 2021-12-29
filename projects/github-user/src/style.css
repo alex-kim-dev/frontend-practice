@@ -3,15 +3,20 @@
 /* Variables */
 
 :root {
+  --accent: hsl(212deg 100% 50%);
   --text: hsl(217deg 35% 45%);
   --text-accent: hsl(217deg 21% 21%);
-  --bg: hsl(227deg 100% 98%);
+  --bg-primary: hsl(227deg 100% 98%);
+  --bg-secondary: hsl(0deg 0% 100%);
+  --shadow: 0 1.6rem 3rem -1rem hsla(227deg 46% 51% / 20%);
 }
 
 body[data-theme="dark"] {
   --text: hsl(0deg 100% 100%);
   --text-accent: hsl(0deg 100% 100%);
-  --bg: hsl(220deg 40% 13%);
+  --bg-primary: hsl(220deg 40% 13%);
+  --bg-secondary: hsl(222deg 41% 20%);
+  --shadow: none;
 }
 
 /* Utils */
@@ -40,15 +45,24 @@ body {
   font-family: "Space Mono", monospace;
   line-height: normal;
   overflow-wrap: break-word;
-  background-color: var(--bg);
+  background-color: var(--bg-primary);
 }
 
 /* Components */
 
 .app-container {
+  max-width: 48rem;
   margin-right: auto;
   margin-left: auto;
   padding: 3.2rem 2.4rem;
+}
+
+.app-container > :nth-child(2) {
+  margin-top: 3.6rem;
+}
+
+.app-container > :nth-child(3) {
+  margin-top: 1.6rem;
 }
 
 .header {
@@ -109,10 +123,121 @@ body {
   filter: brightness(0) invert(72%) sepia(45%) saturate(684%) hue-rotate(189deg) brightness(89%) contrast(84%);
 }
 
+.surface {
+  border-radius: 1.5rem;
+  background-color: var(--bg-secondary);
+  box-shadow: var(--shadow);
+}
+
+.icon-search {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  background:
+    center / contain no-repeat url("./images/icon-search.svg"),
+    transparent;
+}
+
+.text-field {
+  display: grid;
+  grid-gap: 0.8rem;
+  grid-template: auto / auto 1fr;
+  align-items: center;
+}
+
+.text-field__icon {
+  grid-area: 1 / 1 / 2 / 2;
+  margin-left: 0.8rem;
+}
+
+.text-field__input {
+  caret-color: var(--accent);
+  grid-area: 1 / 1 / 2 / -1;
+  width: 100%;
+  min-width: 0;
+  min-height: 4.6rem;
+  padding-left: calc(2rem + 0.8rem * 2);
+  border: none;
+  color: var(--text);
+  font-size: 1.3rem;
+  background-color: transparent;
+}
+
+.text-field__input::placeholder {
+  color: inherit;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: 1rem;
+  color: hsl(0deg 0% 100%);
+  font-weight: 700;
+  font-size: 1.4rem;
+  background-color: var(--accent);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: hsl(212deg 100% 69%);
+}
+
+.form {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+  padding: 0.7rem;
+}
+
+.form__field {
+  flex: 1 1 16.4rem;
+  margin-right: 0.7rem;
+}
+
+.form__submit {
+  flex: 0 0 auto;
+  min-height: 4.6rem;
+}
+
 @media (min-width: 35em /* 560px */) {
   .app-container {
     max-width: calc(57.6rem + 3.2rem * 2);
     padding: 14rem 3.2rem;
+  }
+
+  .app-container > :nth-child(3) {
+    margin-top: 2.4rem;
+  }
+
+  .icon-search {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .text-field__icon {
+    margin-left: 2.2rem;
+  }
+
+  .text-field__input {
+    min-height: 5rem;
+    padding-left: calc(2.2rem + 2.4rem + 2.4rem);
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    min-height: 5rem;
+    padding-right: 2.4rem;
+    padding-left: 2.4rem;
+    font-size: 1.6rem;
+  }
+
+  .form {
+    padding: 1rem;
   }
 }
 

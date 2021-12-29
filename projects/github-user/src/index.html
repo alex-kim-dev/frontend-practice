@@ -24,6 +24,7 @@
         <h1 class="header__title">devfinder</h1>
         <button
           class="theme-switch"
+          type="button"
           role="switch"
           aria-checked="false"
           aria-labelledby="label-theme-switch"
@@ -31,11 +32,21 @@
           <span id="label-theme-switch" class="sr-only">Dark theme</span>
         </button>
       </header>
+      <form class="surface form" name="Search form">
+        <label class="text-field form__field">
+          <span class="sr-only">Github username</span>
+          <i class="icon-search text-field__icon"></i>
+          <input
+            type="text"
+            class="text-field__input"
+            name="username"
+            placeholder="Search GitHub username…"
+          />
+        </label>
+        <button type="submit" class="btn form__submit">Search</button>
+      </form>
     </main>
     <pre hidden>
-      Search GitHub username...
-      Search
-
       Joined
 
       Repos
