@@ -12,17 +12,27 @@
     <link rel="icon" type="image/png" sizes="32x32" href="<%- favicon %>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <script type="module" src="/index.js"></script>
   </head>
   <body>
-    <h1>New challenge!</h1>
+    <main class="app-container">
+      <header class="header">
+        <h1 class="header__title">devfinder</h1>
+        <button
+          class="theme-switch"
+          role="switch"
+          aria-checked="false"
+          aria-labelledby="label-theme-switch"
+        >
+          <span id="label-theme-switch" class="sr-only">Dark theme</span>
+        </button>
+      </header>
+    </main>
     <pre hidden>
-      devfinder
-
-      Light
-      Dark
-
       Search GitHub username...
       Search
 

@@ -2,6 +2,18 @@
 
 /* Variables */
 
+:root {
+  --text: hsl(217deg 35% 45%);
+  --text-accent: hsl(217deg 21% 21%);
+  --bg: hsl(227deg 100% 98%);
+}
+
+body[data-theme="dark"] {
+  --text: hsl(0deg 100% 100%);
+  --text-accent: hsl(0deg 100% 100%);
+  --bg: hsl(220deg 40% 13%);
+}
+
 /* Utils */
 
 .sr-only {
@@ -23,12 +35,90 @@ html {
 }
 
 body {
-  /* c, fw, ff */
-
+  color: var(--text);
   font-size: 1.6rem;
+  font-family: "Space Mono", monospace;
   line-height: normal;
+  overflow-wrap: break-word;
+  background-color: var(--bg);
 }
 
 /* Components */
 
-/* @media (min-width: 37.5em) {} */
+.app-container {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 3.2rem 2.4rem;
+}
+
+.header {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+}
+
+.header__title {
+  margin-right: 2.4rem;
+  color: var(--text-accent);
+  font-weight: 700;
+  font-size: 2.6rem;
+  font-variant-ligatures: common-ligatures;
+}
+
+.theme-switch {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 0;
+  border: none;
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: calc(2.5 / 13 * 1em);
+  text-transform: uppercase;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.theme-switch::before {
+  content: "Dark";
+}
+
+.theme-switch[aria-checked="true"]::before {
+  content: "Light";
+}
+
+.theme-switch::after {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 1.6rem;
+  background: center / contain no-repeat url("./images/icon-moon.svg");
+  content: "";
+}
+
+.theme-switch[aria-checked="true"]::after {
+  background-image: url("./images/icon-sun.svg");
+}
+
+.theme-switch:hover,
+.theme-switch:active {
+  filter: brightness(0) invert(8%) sepia(12%) saturate(1744%) hue-rotate(181deg) brightness(93%) contrast(83%);
+}
+
+.theme-switch[aria-checked="true"]:hover,
+.theme-switch[aria-checked="true"]:active {
+  filter: brightness(0) invert(72%) sepia(45%) saturate(684%) hue-rotate(189deg) brightness(89%) contrast(84%);
+}
+
+@media (min-width: 35em /* 560px */) {
+  .app-container {
+    max-width: calc(57.6rem + 3.2rem * 2);
+    padding: 14rem 3.2rem;
+  }
+}
+
+@media (min-width: 52em /* 832px */) {
+  .app-container {
+    max-width: calc(73rem + 4.8rem * 2);
+    padding: 14.4rem 4.8rem;
+  }
+}
