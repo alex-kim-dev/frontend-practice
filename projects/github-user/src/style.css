@@ -5,6 +5,7 @@
 :root {
   --accent: hsl(212deg 100% 50%);
   --accent-light: hsl(212deg 100% 69%);
+  --danger: hsl(0deg 91% 62%);
   --text: hsl(217deg 35% 45%);
   --text-accent: hsl(217deg 21% 21%);
   --text-secondary: hsl(217deg 20% 51%);
@@ -171,23 +172,53 @@ ul {
 }
 
 .btn {
+  --color: hsl(0deg 0% 100%);
+  --bg-color: var(--accent);
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.8rem 1.6rem;
   border: none;
   border-radius: 1rem;
-  color: hsl(0deg 0% 100%);
+  color: var(--color);
   font-weight: 700;
   font-size: 1.4rem;
-  background-color: var(--accent);
+  background-color: var(--bg-color);
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
-.btn:hover,
-.btn:active {
+.btn:disabled {
+  cursor: not-allowed;
+  filter: saturate(0.3) contrast(0.7);
+}
+
+.btn:enabled:hover,
+.btn:enabled:active {
   background-color: var(--accent-light);
+}
+
+.btn--loading {
+  color: transparent;
+}
+
+.btn--loading::after {
+  position: absolute;
+  top: calc(50% - 1.2rem);
+  left: calc(50% - 1.2rem);
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 0.2rem solid var(--color);
+  border-color: var(--color) transparent;
+  border-radius: 50%;
+  animation: rotate 1.2s linear infinite;
+  content: "";
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .meta {
@@ -282,19 +313,27 @@ ul {
 
 .form {
   display: flex;
-  flex-flow: wrap;
+  align-items: center;
   justify-content: space-between;
   padding: 0.7rem;
 }
 
 .form__field {
   flex: 1 1 16.4rem;
-  margin-right: 0.7rem;
+}
+
+.form__feedback {
+  margin-left: 0.7rem;
+  color: var(--danger);
+  font-weight: 700;
+  font-size: 1.3rem;
 }
 
 .form__submit {
+  position: relative;
   flex: 0 0 auto;
   min-height: 4.6rem;
+  margin-left: 0.7rem;
 }
 
 .user {
@@ -358,6 +397,19 @@ ul {
 
 /* Media queries */
 
+@media (max-width: 40em /* 640px */) {
+  .form {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .form__feedback {
+    flex-basis: 100%;
+    order: 1;
+    text-align: center;
+  }
+}
+
 @media (min-width: 35em /* 560px */) {
   .icon-search {
     width: 2.4rem;
@@ -412,6 +464,10 @@ ul {
     padding: 1rem;
   }
 
+  .form__feedback {
+    font-size: 1.5rem;
+  }
+
   .user {
     grid-column-gap: 4rem;
     padding: 4rem;
@@ -455,6 +511,14 @@ ul {
   .app-container {
     max-width: calc(73rem + 4.8rem * 2);
     padding: 14.4rem 4.8rem 10rem;
+  }
+
+  .form__feedback {
+    margin-left: 2.4rem;
+  }
+
+  .form__submit {
+    margin-left: 2.4rem;
   }
 
   .user {
