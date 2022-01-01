@@ -206,4 +206,7 @@ const handleSearchSubmit = (event) => {
 $switch.addEventListener('click', handleThemeChange);
 $form.addEventListener('submit', handleSearchSubmit);
 
+const prefersDark = window?.matchMedia('(prefers-color-scheme: dark)').matches;
+state.theme = prefersDark ? themes.dark : themes.light;
+
 fetchUser('octocat');
