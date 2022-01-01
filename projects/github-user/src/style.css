@@ -281,6 +281,14 @@ ul {
   background-image: url("./images/icon-company.svg");
 }
 
+.details__item:not(.muted) > span {
+  display: none;
+}
+
+.details__item.muted > a {
+  display: none;
+}
+
 /* Views */
 
 .app-container {

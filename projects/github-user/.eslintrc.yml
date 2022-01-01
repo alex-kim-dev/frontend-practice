@@ -13,3 +13,10 @@ overrides:
   - files: vite.config.js
     rules:
       import/no-extraneous-dependencies: off
+
+  - files: src/index.js
+    rules:
+      no-param-reassign:
+        - error
+        - props: true
+          ignorePropertyModificationsFor: [container]
