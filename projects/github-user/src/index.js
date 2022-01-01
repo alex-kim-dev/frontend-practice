@@ -5,14 +5,17 @@ const $$ = document.querySelectorAll.bind(document);
 const $switch = $('.theme-switch');
 const $form = $('.form');
 const $submit = $('.form__submit');
+const $user = $('.user');
 const $feedback = $('.form__feedback');
-const $avatar = $('.user__avatar > img');
+const $avatar = $('.avatar');
 const $name = $('.user__name');
-const $login = $('.user__login > .link');
+const $login = $('.login');
 const $joined = $('.user__joined');
 const $bio = $('.user__bio');
 const [$repos, $followers, $following] = $$('.meta__value');
 const [$location, $website, $twitter, $company] = $$('.details__item');
+
+const apiEndpoint = 'https://api.github.com/users/';
 
 const themes = {
   light: 'light',
@@ -24,7 +27,7 @@ const intialUserData = {
   name: 'The Octocat',
   login: 'octocat',
   joined: 'Joined 25 Jan 2011',
-  bio: null,
+  bio: '',
   meta: {
     repos: 8,
     followers: 3938,
@@ -33,12 +36,19 @@ const intialUserData = {
   details: {
     location: 'San Francisco',
     website: 'https://github.blog',
-    twitter: null,
+    twitter: '',
     company: '@github',
   },
 };
 
-const apiEndpoint = 'https://api.github.com/users/';
+const toggleAttr = (element, condition) => (attr, value) =>
+  element[condition ? 'setAttribute' : 'removeAttribute'](attr, value);
+
+const toggleClass = (element, condition) => (cls) =>
+  element.classList[condition ? 'add' : 'remove'](cls);
+
+const toggleMuted = (element, condition) =>
+  toggleClass(element, condition)('muted');
 
 const formatUserData = (data) => ({
   avatar: data.avatar_url,
@@ -51,155 +61,149 @@ const formatUserData = (data) => ({
       year: 'numeric',
     }),
   ),
-  bio: data.bio, // nullable
+  bio: data.bio ?? '',
   meta: {
     repos: data.public_repos,
     followers: data.followers,
     following: data.following,
   },
   details: {
-    location: data.location, // nullable
-    website: data.blog, // nullable
-    twitter: data.twitter_username, // without @, nullable
-    company: data.company, // with @, nullable
+    location: data.location ?? '',
+    website: data.blog ?? '',
+    twitter: data.twitter_username ?? '', // without @
+    company: data.company ?? '', // with @
   },
 });
 
-const renderTheme = (theme) => {
-  switch (theme) {
-    case themes.light: {
-      document.body.removeAttribute('data-theme');
-      $switch.setAttribute('aria-checked', false);
-      return;
-    }
-    case themes.dark: {
-      document.body.setAttribute('data-theme', themes.dark);
-      $switch.setAttribute('aria-checked', true);
-    }
-    // no default
-  }
-};
+const render = {
+  theme: (theme) => {
+    const isDark = theme === themes.dark;
+    toggleAttr(document.body, isDark)('data-theme', themes.dark);
+    $switch.setAttribute('aria-checked', isDark);
+  },
 
-const renderSearchState = ({ isLoading, user, error }) => {
-  $submit.classList[isLoading ? 'add' : 'remove']('btn--loading');
-  $submit[isLoading ? 'setAttribute' : 'removeAttribute']('disabled', '');
+  isLoading: (isLoading) => {
+    toggleClass($submit, isLoading)('btn--loading');
+    toggleAttr($submit, isLoading)('disabled', '');
 
-  const errorMsg =
-    error?.cause?.status === 404 ? 'No results' : 'Error fetching data';
-  $feedback.textContent = error ? errorMsg : '';
+    $user.setAttribute('aria-busy', isLoading);
+    toggleMuted($user, isLoading);
+  },
 
-  $avatar.src = user.avatar;
+  error: (error) => {
+    $feedback.textContent = (() => {
+      if (error?.cause?.status === 404) return 'No results';
+      if (error?.cause instanceof Response) return 'Error fetching data';
+      return error?.message ?? '';
+    })();
+  },
 
-  $name.textContent = user.name;
+  user: ({ avatar, name, login, joined, bio, meta, details }) => {
+    const { location, website, twitter, company } = details;
 
-  $login.href = `https://github.com/${user.login}`;
-  $login.textContent = '@'.concat(user.login);
+    $avatar.setAttribute('src', '');
+    $avatar.setAttribute('src', avatar);
 
-  $joined.textContent = user.joined;
+    $name.textContent = name;
 
-  $bio.textContent = user.bio ?? 'This profile has no bio';
-  $bio.classList[user.bio ? 'remove' : 'add']('muted');
+    $login.setAttribute('href', `https://github.com/${login}`);
+    $login.textContent = '@'.concat(login);
 
-  $repos.textContent = user.meta.repos;
-  $followers.textContent = user.meta.followers;
-  $following.textContent = user.meta.following;
+    $joined.textContent = joined;
 
-  const { location, website, twitter, company } = user.details;
+    $bio.textContent = bio || 'This profile has no bio';
+    toggleMuted($bio, !bio);
 
-  $location.textContent = location ?? 'Not Available';
-  $location.classList[location ? 'remove' : 'add']('muted');
+    $repos.textContent = meta.repos;
+    $followers.textContent = meta.followers;
+    $following.textContent = meta.following;
 
-  if (website) {
+    $location.textContent = location || 'Not Available';
+    toggleMuted($location, !location);
+
     $website.firstElementChild.setAttribute('href', website);
     $website.firstElementChild.textContent = website;
-  }
-  $website.classList[website ? 'remove' : 'add']('muted');
+    toggleMuted($website, !website);
 
-  if (twitter) {
     $twitter.firstElementChild.setAttribute(
       'href',
       `https://twitter.com/${twitter}`,
     );
     $twitter.firstElementChild.textContent = '@'.concat(twitter);
-  }
-  $twitter.classList[twitter ? 'remove' : 'add']('muted');
+    toggleMuted($twitter, !twitter);
 
-  if (company) {
     $company.firstElementChild.setAttribute(
       'href',
-      `https://github.com/${company.slice(1)}`,
+      `https://github.com/${company?.slice(1)}`,
     );
     $company.firstElementChild.textContent = company;
-  }
-  $company.classList[company ? 'remove' : 'add']('muted');
+    toggleMuted($company, !company);
+  },
 };
 
 const state = new Proxy(
   Object.seal({
     theme: themes.light,
-    search: { isLoading: false, user: intialUserData, error: null },
+    isLoading: false,
+    user: intialUserData,
+    error: null,
   }),
   {
     set: (container, prop, value) => {
-      switch (prop) {
-        case 'theme': {
-          if (container[prop] !== value) {
-            container[prop] = value;
-            renderTheme(value);
-          }
-          break;
-        }
-
-        case 'search': {
-          container[prop] = value;
-          renderSearchState(value);
-          break;
-        }
-
-        // no default
+      if (container[prop] !== value) {
+        container[prop] = value;
+        render[prop](value);
       }
-
       return true;
     },
   },
 );
 
-$switch.addEventListener('click', ({ currentTarget }) => {
+const fetchUser = async (username) => {
+  if (!username) {
+    state.error = new Error('The field is empty');
+    return;
+  }
+
+  state.isLoading = true;
+  state.error = null;
+
+  try {
+    const response = await fetch(`${apiEndpoint}${username}`);
+    const { ok, status, statusText } = response;
+
+    if (!ok) {
+      const error = new Error(`${status}: ${statusText}`);
+      error.cause = response;
+      throw error;
+    }
+
+    state.user = formatUserData(await response.json());
+  } catch (error) {
+    state.error = error;
+  } finally {
+    state.isLoading = false;
+  }
+};
+
+const handleThemeChange = ({ currentTarget }) => {
   state.theme =
     currentTarget.getAttribute('aria-checked') === 'true'
       ? themes.light
       : themes.dark;
-});
+};
 
-$form.addEventListener('submit', (event) => {
+const handleSearchSubmit = (event) => {
   event.preventDefault();
 
-  state.search = { ...state.search, isLoading: true };
-  const username = new FormData(event.currentTarget).get('username');
+  if (state.isLoading) return;
 
-  fetch(`${apiEndpoint}${username}`)
-    .then((response) => {
-      const { ok, status, statusText } = response;
-      if (!ok) {
-        const error = new Error(`${status}: ${statusText}`);
-        error.cause = response;
-        throw error;
-      }
+  const username = new FormData(event.currentTarget).get('username').trim();
 
-      return response.json();
-    })
-    .then((data) => {
-      state.search = {
-        ...state.search,
-        isLoading: false,
-        user: formatUserData(data),
-      };
-    })
-    .catch((error) => {
-      state.search = {
-        ...state.search,
-        isLoading: false,
-        error,
-      };
-    });
-});
+  fetchUser(username);
+};
+
+$switch.addEventListener('click', handleThemeChange);
+$form.addEventListener('submit', handleSearchSubmit);
+
+fetchUser('octocat');

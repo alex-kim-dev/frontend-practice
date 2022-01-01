@@ -32,7 +32,7 @@
           <span id="label-theme-switch" class="sr-only">Dark theme</span>
         </button>
       </header>
-      <form class="surface form" name="Search form">
+      <form role="search" class="surface form" name="Search form">
         <label class="text-field form__field">
           <span class="sr-only">Github username</span>
           <i class="icon-search text-field__icon"></i>
@@ -41,18 +41,23 @@
             class="text-field__input"
             name="username"
             placeholder="Search GitHub username…"
+            aria-required="true"
           />
         </label>
         <p class="form__feedback" role="alert"></p>
         <button type="submit" class="btn form__submit">Search</button>
       </form>
-      <article class="surface user">
+      <article class="surface user" aria-live="polite" aria-busy="false">
         <div class="user__avatar">
-          <img src="./images/avatar-octocat.png" alt="User's avatar" />
+          <img
+            src="./images/avatar-octocat.png"
+            alt="User's avatar"
+            class="avatar"
+          />
         </div>
         <h2 class="user__name">The Octocat</h2>
         <p class="user__login">
-          <a href="https://github.com/octocat" class="link" target="_blank">
+          <a href="https://github.com/octocat" class="login" target="_blank">
             @octocat
           </a>
         </p>

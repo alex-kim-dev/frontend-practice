@@ -42,6 +42,7 @@ body[data-theme="dark"] {
 .muted {
   opacity: 0.5;
   mix-blend-mode: normal;
+  transition: opacity 0.25s, mix-blend-mode 0.25s;
 }
 
 /* Base */
@@ -363,8 +364,10 @@ ul {
   grid-area: avatar;
   align-self: start;
   width: 7rem;
+  height: 7rem;
   border-radius: 50%;
   overflow: hidden;
+  box-shadow: inset 0 0 0.4rem var(--accent);
 }
 
 .user__name {
@@ -484,6 +487,7 @@ ul {
 
   .user__avatar {
     width: 11.7rem;
+    height: 11.7rem;
   }
 
   .user__name {
