@@ -143,7 +143,7 @@ const render = {
 
 const state = new Proxy(
   Object.seal({
-    theme: themes.light,
+    theme: themes.dark,
     isLoading: false,
     user: intialUserData,
     error: null,
